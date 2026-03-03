@@ -1,8 +1,0 @@
-./build
-./install/
-./logs/
-cw1_world_spawner/
-panda_description/
-panda_moveit_config/
-realsense_gazebo_plugin/
-rpl_panda_with_rs/
