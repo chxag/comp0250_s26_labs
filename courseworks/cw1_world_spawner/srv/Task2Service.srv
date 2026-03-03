@@ -1,0 +1,4 @@
+geometry_msgs/PointStamped[] basket_locs
+---
+string[] basket_colours
+

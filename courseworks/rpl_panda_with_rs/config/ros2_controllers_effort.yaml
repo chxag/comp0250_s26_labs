@@ -1,0 +1,79 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 100
+    use_sim_time: true
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    panda_arm_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    panda_hand_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+panda_arm_controller:
+  ros__parameters:
+    allow_nonzero_velocity_at_trajectory_end: true
+    joints:
+      - panda_joint1
+      - panda_joint2
+      - panda_joint3
+      - panda_joint4
+      - panda_joint5
+      - panda_joint6
+      - panda_joint7
+    command_interfaces:
+      - effort
+    state_interfaces:
+      - position
+      - velocity
+    constraints:
+      goal_time: 8.0
+      stopped_velocity_tolerance: 2.0
+    gains:
+      panda_joint1: {p: 1200.0, i: 0.0, d: 50.0, i_clamp: 10000.0, ff_velocity_scale: 0.0}
+      panda_joint2: {p: 3000.0, i: 0.02, d: 100.0, i_clamp: 10000.0, ff_velocity_scale: 0.0}
+      panda_joint3: {p: 1800.0, i: 0.01, d: 50.0, i_clamp: 1.0, ff_velocity_scale: 0.0}
+      panda_joint4: {p: 1800.0, i: 0.01, d: 70.0, i_clamp: 10000.0, ff_velocity_scale: 0.0}
+      panda_joint5: {p: 1200.0, i: 0.01, d: 70.0, i_clamp: 1.0, ff_velocity_scale: 0.0}
+      panda_joint6: {p: 700.0, i: 0.01, d: 50.0, i_clamp: 1.0, ff_velocity_scale: 0.0}
+      panda_joint7: {p: 200.0, i: 0.0, d: 20.0, i_clamp: 1.0, ff_velocity_scale: 0.0}
+    state_publish_rate: 100.0
+    action_monitor_rate: 20.0
+
+panda_hand_controller:
+  ros__parameters:
+    allow_nonzero_velocity_at_trajectory_end: true
+    joints:
+      - panda_finger_joint1
+      - panda_finger_joint2
+    command_interfaces:
+      - effort
+    state_interfaces:
+      - position
+      - velocity
+    constraints:
+      goal_time: 6.0
+      stopped_velocity_tolerance: 0.2
+      panda_finger_joint1:
+        trajectory: 0.03
+        goal: 0.02
+      panda_finger_joint2:
+        trajectory: 0.03
+        goal: 0.02
+    gains:
+      panda_finger_joint1:
+        p: 20.0
+        i: 0.0
+        d: 1.5
+        i_clamp: 1.0
+        ff_velocity_scale: 0.0
+      panda_finger_joint2:
+        p: 20.0
+        i: 0.0
+        d: 1.5
+        i_clamp: 1.0
+        ff_velocity_scale: 0.0
+    state_publish_rate: 25.0
+    action_monitor_rate: 20.0
