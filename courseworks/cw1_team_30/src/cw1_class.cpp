@@ -116,9 +116,41 @@ cw1::cw1(const rclcpp::Node::SharedPtr &node)
   }
 
   RCLCPP_INFO(node_->get_logger(), "cw1 template class initialised with compatibility scaffold");
+
+  // MoveIt! interface initialisation
+  arm_group = std::make_shared<moveit::planning_interface::MoveGroupInterface>(node_, "panda_arm");
+  hand_group = std::make_shared<moveit::planning_interface::MoveGroupInterface>(node_, "hand");
+  arm_group->setPlanningTime(10.0);
+  arm_group->setMaxVelocityScalingFactor(0.3);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
+
+bool cw1::moveToPose(const geometry_msgs::msg::Pose target_pose)
+{
+  arm_group->setPoseTarget(target_pose);
+  moveit::planning_interface::MoveGroupInterface::Plan plan;
+  arm_group->setGoalOrientationTolerance(0.05);
+  arm_group->setGoalPositionTolerance(0.01);
+
+  bool success = (arm_group->plan(plan) == moveit::core::MoveItErrorCode::SUCCESS);
+  if (success) {
+    success = (arm_group->execute(plan) == moveit::core::MoveItErrorCode::SUCCESS);
+  }
+  return success;
+}
+
+bool cw1::setGripper(double width)
+{
+  hand_group->setJointValueTarget("panda_finger_joint1", width);
+  hand_group->setJointValueTarget("panda_finger_joint2", width);
+  moveit::planning_interface::MoveGroupInterface::Plan plan;
+  bool success = (hand_group->plan(plan) == moveit::core::MoveItErrorCode::SUCCESS);
+  if (success) {
+    success = (hand_group->execute(plan) == moveit::core::MoveItErrorCode::SUCCESS);
+  }
+  return success;
+}
 
 void
 cw1::t1_callback(
@@ -126,14 +158,44 @@ cw1::t1_callback(
   std::shared_ptr<cw1_world_spawner::srv::Task1Service::Response> response)
 {
   /* function which should solve task 1 */
-
-  (void)request;
   (void)response;
-  RCLCPP_INFO_STREAM(
-    node_->get_logger(),
-    "Task 1 callback triggered (template stub). joint_msgs=" <<
-      joint_state_msg_count_.load(std::memory_order_relaxed) <<
-      ", cloud_msgs=" << cloud_msg_count_.load(std::memory_order_relaxed));
+
+  geometry_msgs::msg::Pose grasp_pose; 
+  grasp_pose.orientation.x = 1.0;
+  grasp_pose.orientation.y = 0.0;
+  grasp_pose.orientation.z = 0.0;
+  grasp_pose.orientation.w = 0.0;
+
+  double obj_x = request->object_loc.pose.position.x;
+  double obj_y = request->object_loc.pose.position.y;
+  double obj_z = request->object_loc.pose.position.z;
+
+  const double TCP_OFFSET = 0.1034;
+
+  setGripper(0.04);
+
+  grasp_pose.position.x = obj_x;
+  grasp_pose.position.y = obj_y;
+  grasp_pose.position.z = obj_z + TCP_OFFSET + 0.05;
+  moveToPose(grasp_pose);
+
+  grasp_pose.position.z = obj_z + TCP_OFFSET;
+  moveToPose(grasp_pose);
+
+  setGripper(0.022);
+
+  grasp_pose.position.z = obj_z + TCP_OFFSET + 0.3;
+  moveToPose(grasp_pose);
+
+  double goal_x = request->goal_loc.point.x;
+  double goal_y = request->goal_loc.point.y;
+
+  grasp_pose.position.x = goal_x;
+  grasp_pose.position.y = goal_y;
+  grasp_pose.position.z = obj_z + TCP_OFFSET + 0.3;
+  moveToPose(grasp_pose);
+
+  setGripper(0.04);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
