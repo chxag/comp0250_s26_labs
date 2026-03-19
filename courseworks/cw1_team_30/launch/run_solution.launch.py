@@ -101,7 +101,7 @@ def generate_launch_description():
         ),
 
         Node(
-            package='cw1_team_x',
+            package='cw1_team_30',
             executable='cw1_solution_node',
             name='cw1_solution_node',
             output='screen',
