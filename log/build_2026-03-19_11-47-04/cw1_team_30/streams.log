@@ -1,0 +1,163 @@
+[0.012s] Invoking command in '/home/charvi/comp0250_s26_labs/build/cw1_team_30': CMAKE_PREFIX_PATH=/home/charvi/comp0250_s26_labs/install/cw1_world_spawner:/home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs:/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin:/home/charvi/comp0250_s26_labs/install/panda_moveit_config:/home/charvi/comp0250_s26_labs/install/panda_description:/home/charvi/comp0250_s26_labs/install/cw1_team_x:/home/charvi/comp0250_s26_labs/install/cw1_team_30:/opt/ros/humble LD_LIBRARY_PATH=/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib:/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/lib:/home/charvi/comp0250_s26_labs/install/cw1_team_x/lib:/home/charvi/comp0250_s26_labs/install/cw1_team_30/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --build /home/charvi/comp0250_s26_labs/build/cw1_team_30 -- -j12 -l12
+[0.098s] [  8%] Built target cw1_team_30__cpp
+[0.099s] [ 11%] Built target cw1_team_30__rosidl_generator_c
+[0.116s] [ 11%] Built target ament_cmake_python_copy_cw1_team_30
+[0.134s] [ 20%] Built target cw1_team_30__rosidl_typesupport_introspection_c
+[0.137s] [ 28%] Built target cw1_team_30__rosidl_typesupport_fastrtps_c
+[0.143s] [ 45%] Built target cw1_team_30__rosidl_typesupport_cpp
+[0.143s] [ 42%] Built target cw1_team_30__rosidl_typesupport_c
+[0.144s] [ 62%] Built target cw1_team_30__rosidl_typesupport_introspection_cpp
+[0.145s] [ 62%] Built target cw1_team_30__rosidl_typesupport_fastrtps_cpp
+[0.164s] [35m[1mConsolidate compiler generated dependencies of target cw1_team_30_cw1_class_lib[0m
+[0.171s] [ 62%] Built target cw1_team_30
+[0.198s] [ 65%] [32mBuilding CXX object CMakeFiles/cw1_team_30_cw1_class_lib.dir/src/cw1_class.cpp.o[0m
+[0.199s] [ 68%] Built target cw1_team_30__py
+[0.226s] [ 74%] Built target cw1_team_30__rosidl_generator_py
+[0.254s] [ 82%] Built target cw1_team_30__rosidl_typesupport_c__pyext
+[0.254s] [ 91%] Built target cw1_team_30__rosidl_typesupport_introspection_c__pyext
+[0.254s] [ 91%] Built target cw1_team_30__rosidl_typesupport_fastrtps_c__pyext
+[0.415s] running egg_info
+[0.437s] writing cw1_team_30.egg-info/PKG-INFO
+[0.437s] writing dependency_links to cw1_team_30.egg-info/dependency_links.txt
+[0.438s] writing top-level names to cw1_team_30.egg-info/top_level.txt
+[0.510s] reading manifest file 'cw1_team_30.egg-info/SOURCES.txt'
+[0.511s] writing manifest file 'cw1_team_30.egg-info/SOURCES.txt'
+[0.542s] [ 91%] Built target ament_cmake_python_build_cw1_team_30_egg
+[18.154s] [ 94%] [32m[1mLinking CXX shared library libcw1_team_30_cw1_class_lib.so[0m
+[18.740s] [ 94%] Built target cw1_team_30_cw1_class_lib
+[18.778s] [ 97%] [32m[1mLinking CXX executable cw1_solution_node[0m
+[19.625s] [100%] Built target cw1_solution_node
+[19.637s] Invoked command in '/home/charvi/comp0250_s26_labs/build/cw1_team_30' returned '0': CMAKE_PREFIX_PATH=/home/charvi/comp0250_s26_labs/install/cw1_world_spawner:/home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs:/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin:/home/charvi/comp0250_s26_labs/install/panda_moveit_config:/home/charvi/comp0250_s26_labs/install/panda_description:/home/charvi/comp0250_s26_labs/install/cw1_team_x:/home/charvi/comp0250_s26_labs/install/cw1_team_30:/opt/ros/humble LD_LIBRARY_PATH=/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib:/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/lib:/home/charvi/comp0250_s26_labs/install/cw1_team_x/lib:/home/charvi/comp0250_s26_labs/install/cw1_team_30/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --build /home/charvi/comp0250_s26_labs/build/cw1_team_30 -- -j12 -l12
+[19.638s] Invoking command in '/home/charvi/comp0250_s26_labs/build/cw1_team_30': CMAKE_PREFIX_PATH=/home/charvi/comp0250_s26_labs/install/cw1_world_spawner:/home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs:/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin:/home/charvi/comp0250_s26_labs/install/panda_moveit_config:/home/charvi/comp0250_s26_labs/install/panda_description:/home/charvi/comp0250_s26_labs/install/cw1_team_x:/home/charvi/comp0250_s26_labs/install/cw1_team_30:/opt/ros/humble LD_LIBRARY_PATH=/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib:/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/lib:/home/charvi/comp0250_s26_labs/install/cw1_team_x/lib:/home/charvi/comp0250_s26_labs/install/cw1_team_30/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --install /home/charvi/comp0250_s26_labs/build/cw1_team_30
+[19.647s] -- Install configuration: "Release"
+[19.647s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/ament_index/resource_index/rosidl_interfaces/cw1_team_30
+[19.647s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30
+[19.647s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv
+[19.647s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/example.h
+[19.648s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/detail
+[19.648s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/detail/example__struct.h
+[19.648s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/detail/example__functions.h
+[19.648s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/detail/example__type_support.h
+[19.648s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/detail/example__functions.c
+[19.648s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/msg
+[19.648s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/msg/rosidl_generator_c__visibility_control.h
+[19.648s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/environment/library_path.sh
+[19.648s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/environment/library_path.dsv
+[19.648s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/lib/libcw1_team_30__rosidl_generator_c.so
+[19.648s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30
+[19.648s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv
+[19.648s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/detail
+[19.648s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/detail/example__rosidl_typesupport_fastrtps_c.h
+[19.649s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/msg
+[19.649s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[19.649s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/lib/libcw1_team_30__rosidl_typesupport_fastrtps_c.so
+[19.649s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30
+[19.649s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv
+[19.649s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/detail
+[19.649s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/detail/example__type_support.c
+[19.649s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/detail/example__rosidl_typesupport_introspection_c.h
+[19.649s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/msg
+[19.649s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[19.649s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/lib/libcw1_team_30__rosidl_typesupport_introspection_c.so
+[19.649s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/lib/libcw1_team_30__rosidl_typesupport_c.so
+[19.649s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30
+[19.649s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv
+[19.650s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/example.hpp
+[19.650s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/detail
+[19.650s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/detail/example__type_support.hpp
+[19.650s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/detail/example__struct.hpp
+[19.650s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/detail/example__traits.hpp
+[19.650s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/detail/example__builder.hpp
+[19.650s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/msg
+[19.650s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/msg/rosidl_generator_cpp__visibility_control.hpp
+[19.650s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30
+[19.650s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv
+[19.650s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/detail
+[19.651s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/detail/example__rosidl_typesupport_fastrtps_cpp.hpp
+[19.651s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/detail/dds_fastrtps
+[19.651s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/msg
+[19.651s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[19.651s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/lib/libcw1_team_30__rosidl_typesupport_fastrtps_cpp.so
+[19.651s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30
+[19.651s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv
+[19.651s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/detail
+[19.651s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/detail/example__type_support.cpp
+[19.651s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/detail/example__rosidl_typesupport_introspection_cpp.hpp
+[19.651s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/lib/libcw1_team_30__rosidl_typesupport_introspection_cpp.so
+[19.651s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/lib/libcw1_team_30__rosidl_typesupport_cpp.so
+[19.651s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/environment/pythonpath.sh
+[19.652s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/environment/pythonpath.dsv
+[19.652s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30-0.1.0-py3.10.egg-info
+[19.652s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30-0.1.0-py3.10.egg-info/SOURCES.txt
+[19.652s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30-0.1.0-py3.10.egg-info/PKG-INFO
+[19.652s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30-0.1.0-py3.10.egg-info/top_level.txt
+[19.652s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30-0.1.0-py3.10.egg-info/dependency_links.txt
+[19.652s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30
+[19.652s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30/cw1_team_30_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[19.652s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30/srv
+[19.652s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30/srv/_example.py
+[19.652s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30/srv/__init__.py
+[19.652s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30/srv/_example_s.c
+[19.652s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30/_cw1_team_30_s.ep.rosidl_typesupport_fastrtps_c.c
+[19.653s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30/__init__.py
+[19.653s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30/cw1_team_30_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[19.653s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30/_cw1_team_30_s.ep.rosidl_typesupport_introspection_c.c
+[19.653s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30/libcw1_team_30__rosidl_generator_py.so
+[19.653s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30/cw1_team_30_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[19.653s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30/_cw1_team_30_s.ep.rosidl_typesupport_c.c
+[19.699s] Listing '/home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30'...
+[19.699s] Listing '/home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30/srv'...
+[19.709s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30/cw1_team_30_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[19.710s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30/cw1_team_30_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[19.710s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30/cw1_team_30_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[19.711s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/lib/libcw1_team_30__rosidl_generator_py.so
+[19.712s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/srv/Example.idl
+[19.712s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/srv/Example.srv
+[19.713s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/srv/Example_Request.msg
+[19.713s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/srv/Example_Response.msg
+[19.713s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_team_30/lib/libcw1_team_30_cw1_class_lib.so
+[19.720s] -- Set runtime path of "/home/charvi/comp0250_s26_labs/install/cw1_team_30/lib/libcw1_team_30_cw1_class_lib.so" to ""
+[19.721s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_team_30/lib/cw1_team_30/cw1_solution_node
+[19.724s] -- Set runtime path of "/home/charvi/comp0250_s26_labs/install/cw1_team_30/lib/cw1_team_30/cw1_solution_node" to ""
+[19.725s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/launch
+[19.725s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/launch/run_solution.launch.py
+[19.726s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/ament_index/resource_index/package_run_dependencies/cw1_team_30
+[19.727s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/ament_index/resource_index/parent_prefix_path/cw1_team_30
+[19.727s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/environment/ament_prefix_path.sh
+[19.728s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/environment/ament_prefix_path.dsv
+[19.728s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/environment/path.sh
+[19.729s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/environment/path.dsv
+[19.730s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/local_setup.bash
+[19.730s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/local_setup.sh
+[19.731s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/local_setup.zsh
+[19.732s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/local_setup.dsv
+[19.732s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/package.dsv
+[19.733s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/ament_index/resource_index/packages/cw1_team_30
+[19.734s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/export_cw1_team_30__rosidl_generator_cExport.cmake
+[19.735s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/export_cw1_team_30__rosidl_generator_cExport-release.cmake
+[19.735s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/export_cw1_team_30__rosidl_typesupport_fastrtps_cExport.cmake
+[19.736s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/export_cw1_team_30__rosidl_typesupport_fastrtps_cExport-release.cmake
+[19.736s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/cw1_team_30__rosidl_typesupport_introspection_cExport.cmake
+[19.737s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/cw1_team_30__rosidl_typesupport_introspection_cExport-release.cmake
+[19.737s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/cw1_team_30__rosidl_typesupport_cExport.cmake
+[19.738s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/cw1_team_30__rosidl_typesupport_cExport-release.cmake
+[19.738s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/export_cw1_team_30__rosidl_generator_cppExport.cmake
+[19.739s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/export_cw1_team_30__rosidl_typesupport_fastrtps_cppExport.cmake
+[19.739s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/export_cw1_team_30__rosidl_typesupport_fastrtps_cppExport-release.cmake
+[19.739s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/cw1_team_30__rosidl_typesupport_introspection_cppExport.cmake
+[19.740s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/cw1_team_30__rosidl_typesupport_introspection_cppExport-release.cmake
+[19.740s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/cw1_team_30__rosidl_typesupport_cppExport.cmake
+[19.740s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/cw1_team_30__rosidl_typesupport_cppExport-release.cmake
+[19.741s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/export_cw1_team_30__rosidl_generator_pyExport.cmake
+[19.742s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/export_cw1_team_30__rosidl_generator_pyExport-release.cmake
+[19.743s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/rosidl_cmake-extras.cmake
+[19.745s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/ament_cmake_export_dependencies-extras.cmake
+[19.748s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/ament_cmake_export_include_directories-extras.cmake
+[19.749s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/ament_cmake_export_libraries-extras.cmake
+[19.750s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/ament_cmake_export_targets-extras.cmake
+[19.750s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[19.752s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[19.753s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/cw1_team_30Config.cmake
+[19.753s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/cw1_team_30Config-version.cmake
+[19.754s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/package.xml
+[19.755s] Invoked command in '/home/charvi/comp0250_s26_labs/build/cw1_team_30' returned '0': CMAKE_PREFIX_PATH=/home/charvi/comp0250_s26_labs/install/cw1_world_spawner:/home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs:/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin:/home/charvi/comp0250_s26_labs/install/panda_moveit_config:/home/charvi/comp0250_s26_labs/install/panda_description:/home/charvi/comp0250_s26_labs/install/cw1_team_x:/home/charvi/comp0250_s26_labs/install/cw1_team_30:/opt/ros/humble LD_LIBRARY_PATH=/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib:/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/lib:/home/charvi/comp0250_s26_labs/install/cw1_team_x/lib:/home/charvi/comp0250_s26_labs/install/cw1_team_30/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --install /home/charvi/comp0250_s26_labs/build/cw1_team_30

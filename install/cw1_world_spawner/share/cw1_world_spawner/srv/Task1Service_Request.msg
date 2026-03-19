@@ -1,0 +1,2 @@
+geometry_msgs/PoseStamped object_loc
+geometry_msgs/PointStamped goal_loc

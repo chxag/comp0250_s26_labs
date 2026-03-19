@@ -1,0 +1,34 @@
+[0.045s] Invoking command in '/home/charvi/comp0250_s26_labs/build/cw1_team_30': CMAKE_PREFIX_PATH=/home/charvi/comp0250_s26_labs/install/cw1_world_spawner:/home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs:/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin:/home/charvi/comp0250_s26_labs/install/panda_moveit_config:/home/charvi/comp0250_s26_labs/install/panda_description:/home/charvi/comp0250_s26_labs/install/cw1_team_x:/home/charvi/comp0250_s26_labs/install/cw1_team_30:/opt/ros/humble LD_LIBRARY_PATH=/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib:/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/lib:/home/charvi/comp0250_s26_labs/install/cw1_team_x/lib:/home/charvi/comp0250_s26_labs/install/cw1_team_30/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --build /home/charvi/comp0250_s26_labs/build/cw1_team_30 -- -j12 -l12
+[0.275s] [  2%] Built target cw1_team_30__cpp
+[0.280s] [ 11%] Built target cw1_team_30__rosidl_generator_c
+[0.315s] [ 11%] Built target ament_cmake_python_copy_cw1_team_30
+[0.372s] [ 20%] Built target cw1_team_30__rosidl_typesupport_cpp
+[0.375s] [ 28%] Built target cw1_team_30__rosidl_typesupport_introspection_c
+[0.379s] [ 37%] Built target cw1_team_30__rosidl_typesupport_fastrtps_cpp
+[0.385s] [ 45%] Built target cw1_team_30__rosidl_typesupport_introspection_cpp
+[0.394s] [ 54%] Built target cw1_team_30__rosidl_typesupport_c
+[0.400s] [ 62%] Built target cw1_team_30__rosidl_typesupport_fastrtps_c
+[0.459s] [35m[1mConsolidate compiler generated dependencies of target cw1_team_30_cw1_class_lib[0m
+[0.486s] [ 62%] Built target cw1_team_30
+[0.555s] [ 65%] Built target cw1_team_30__py
+[0.574s] [ 68%] [32mBuilding CXX object CMakeFiles/cw1_team_30_cw1_class_lib.dir/src/cw1_class.cpp.o[0m
+[0.588s] [ 74%] Built target cw1_team_30__rosidl_generator_py
+[0.613s] [ 85%] Built target cw1_team_30__rosidl_typesupport_fastrtps_c__pyext
+[0.613s] [ 85%] Built target cw1_team_30__rosidl_typesupport_introspection_c__pyext
+[0.617s] [ 91%] Built target cw1_team_30__rosidl_typesupport_c__pyext
+[0.798s] running egg_info
+[0.821s] writing cw1_team_30.egg-info/PKG-INFO
+[0.821s] writing dependency_links to cw1_team_30.egg-info/dependency_links.txt
+[0.821s] writing top-level names to cw1_team_30.egg-info/top_level.txt
+[0.888s] reading manifest file 'cw1_team_30.egg-info/SOURCES.txt'
+[0.889s] writing manifest file 'cw1_team_30.egg-info/SOURCES.txt'
+[0.912s] [ 91%] Built target ament_cmake_python_build_cw1_team_30_egg
+[8.231s] [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:[m[K In member function ‘[01m[Kpcl::PointCloud<pcl::PointXYZRGB>::Ptr cw1::cropAroundBasket(const ConstSharedPtr&, const PointStamped&)[m[K’:
+[8.231s] [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:336:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kstamped_basket[m[K’ was not declared in this scope; did you mean ‘[01m[Kstamped_basket_loc[m[K’?
+[8.232s]   336 |   [01;31m[Kstamped_basket[m[K.header.stamp = cloud->header.stamp;
+[8.232s]       |   [01;31m[K^~~~~~~~~~~~~~[m[K
+[8.232s]       |   [32m[Kstamped_basket_loc[m[K
+[13.378s] gmake[2]: *** [CMakeFiles/cw1_team_30_cw1_class_lib.dir/build.make:76: CMakeFiles/cw1_team_30_cw1_class_lib.dir/src/cw1_class.cpp.o] Error 1
+[13.378s] gmake[1]: *** [CMakeFiles/Makefile2:595: CMakeFiles/cw1_team_30_cw1_class_lib.dir/all] Error 2
+[13.378s] gmake: *** [Makefile:146: all] Error 2
+[13.381s] Invoked command in '/home/charvi/comp0250_s26_labs/build/cw1_team_30' returned '2': CMAKE_PREFIX_PATH=/home/charvi/comp0250_s26_labs/install/cw1_world_spawner:/home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs:/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin:/home/charvi/comp0250_s26_labs/install/panda_moveit_config:/home/charvi/comp0250_s26_labs/install/panda_description:/home/charvi/comp0250_s26_labs/install/cw1_team_x:/home/charvi/comp0250_s26_labs/install/cw1_team_30:/opt/ros/humble LD_LIBRARY_PATH=/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib:/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/lib:/home/charvi/comp0250_s26_labs/install/cw1_team_x/lib:/home/charvi/comp0250_s26_labs/install/cw1_team_30/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --build /home/charvi/comp0250_s26_labs/build/cw1_team_30 -- -j12 -l12

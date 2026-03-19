@@ -1,0 +1,15 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from cw1_world_spawner/srv/Task3Service.srv
+// generated code does not contain a copyright notice
+
+
+module cw1_world_spawner {
+  module srv {
+    struct Task3Service_Request {
+      uint8 structure_needs_at_least_one_member;
+    };
+    struct Task3Service_Response {
+      uint8 structure_needs_at_least_one_member;
+    };
+  };
+};

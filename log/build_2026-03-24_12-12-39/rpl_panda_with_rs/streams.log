@@ -1,0 +1,42 @@
+[0.014s] Invoking command in '/home/charvi/comp0250_s26_labs/build/rpl_panda_with_rs': AMENT_PREFIX_PATH=/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin:/home/charvi/comp0250_s26_labs/install/panda_moveit_config:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin:/home/charvi/comp0250_s26_labs/install/panda_moveit_config:/opt/ros/humble LD_LIBRARY_PATH=/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/lib:${LD_LIBRARY_PATH} /usr/bin/cmake --build /home/charvi/comp0250_s26_labs/build/rpl_panda_with_rs -- -j12 -l12
+[0.056s] Invoked command in '/home/charvi/comp0250_s26_labs/build/rpl_panda_with_rs' returned '0': AMENT_PREFIX_PATH=/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin:/home/charvi/comp0250_s26_labs/install/panda_moveit_config:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin:/home/charvi/comp0250_s26_labs/install/panda_moveit_config:/opt/ros/humble LD_LIBRARY_PATH=/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/lib:${LD_LIBRARY_PATH} /usr/bin/cmake --build /home/charvi/comp0250_s26_labs/build/rpl_panda_with_rs -- -j12 -l12
+[0.058s] Invoking command in '/home/charvi/comp0250_s26_labs/build/rpl_panda_with_rs': AMENT_PREFIX_PATH=/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin:/home/charvi/comp0250_s26_labs/install/panda_moveit_config:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin:/home/charvi/comp0250_s26_labs/install/panda_moveit_config:/opt/ros/humble LD_LIBRARY_PATH=/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/lib:${LD_LIBRARY_PATH} /usr/bin/cmake --install /home/charvi/comp0250_s26_labs/build/rpl_panda_with_rs
+[0.066s] -- Install configuration: "Release"
+[0.066s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/config
+[0.066s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/config/ros2_controllers_hybrid.yaml
+[0.066s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/config/ros2_controllers_effort.yaml
+[0.066s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/config/ros2_controllers.yaml
+[0.066s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/config/moveit_controllers.yaml
+[0.066s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/launch
+[0.067s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/launch/camera_proc.launch.py
+[0.067s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/launch/camera_proc.launch
+[0.067s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/launch/display_real.launch.py
+[0.067s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/launch/display.launch
+[0.067s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/launch/display.launch.py
+[0.067s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/launch/display_real.launch
+[0.067s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/rviz
+[0.067s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/rviz/real_rviz.rviz
+[0.067s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/rviz/urdf.rviz
+[0.068s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/srdf
+[0.068s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/srdf/panda_with_rs.srdf.xacro
+[0.068s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/urdf
+[0.068s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/urdf/panda_with_rs.urdf
+[0.068s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/urdf/panda_with_rs_PYBULLET.urdf
+[0.068s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/urdf/panda_with_rs.xacro
+[0.068s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/lib/rpl_panda_with_rs/init_panda_pose.py
+[0.068s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/ament_index/resource_index/package_run_dependencies/rpl_panda_with_rs
+[0.068s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/ament_index/resource_index/parent_prefix_path/rpl_panda_with_rs
+[0.068s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/environment/ament_prefix_path.sh
+[0.069s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/environment/ament_prefix_path.dsv
+[0.069s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/environment/path.sh
+[0.069s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/environment/path.dsv
+[0.069s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/local_setup.bash
+[0.069s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/local_setup.sh
+[0.069s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/local_setup.zsh
+[0.069s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/local_setup.dsv
+[0.069s] -- Installing: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/package.dsv
+[0.070s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/ament_index/resource_index/packages/rpl_panda_with_rs
+[0.070s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/cmake/rpl_panda_with_rsConfig.cmake
+[0.070s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/cmake/rpl_panda_with_rsConfig-version.cmake
+[0.070s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/package.xml
+[0.071s] Invoked command in '/home/charvi/comp0250_s26_labs/build/rpl_panda_with_rs' returned '0': AMENT_PREFIX_PATH=/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin:/home/charvi/comp0250_s26_labs/install/panda_moveit_config:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin:/home/charvi/comp0250_s26_labs/install/panda_moveit_config:/opt/ros/humble LD_LIBRARY_PATH=/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/lib:${LD_LIBRARY_PATH} /usr/bin/cmake --install /home/charvi/comp0250_s26_labs/build/rpl_panda_with_rs

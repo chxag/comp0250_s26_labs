@@ -1,0 +1,11 @@
+setup.py
+cw1_world_spawner/__init__.py
+cw1_world_spawner.egg-info/PKG-INFO
+cw1_world_spawner.egg-info/SOURCES.txt
+cw1_world_spawner.egg-info/dependency_links.txt
+cw1_world_spawner.egg-info/top_level.txt
+cw1_world_spawner/srv/__init__.py
+cw1_world_spawner/srv/_task1_service.py
+cw1_world_spawner/srv/_task2_service.py
+cw1_world_spawner/srv/_task3_service.py
+cw1_world_spawner/srv/_task_setup.py

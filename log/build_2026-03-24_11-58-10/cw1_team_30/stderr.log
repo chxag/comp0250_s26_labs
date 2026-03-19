@@ -1,0 +1,108 @@
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:622:6:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kbool cw1::moveToScanPose()[m[K’
+  622 | bool [01;31m[Kcw1[m[K::moveToScanPose(){
+      |      [01;31m[K^~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:622:6:[m[K [01;36m[Knote: [m[Kno functions named ‘[01m[Kbool cw1::moveToScanPose()[m[K’
+In file included from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:6[m[K:
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/include/cw1_class.h:40:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass cw1[m[K’ defined here
+   40 | class [01;36m[Kcw1[m[K
+      |       [01;36m[K^~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:636:40:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kpcl::PointCloud<pcl::PointXYZRGB>::Ptr cw1::applyVoxelFiltering(const Ptr&)[m[K’
+  636 | pcl::PointCloud<pcl::PointXYZRGB>::Ptr [01;31m[Kcw1[m[K::applyVoxelFiltering(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr &cloud)
+      |                                        [01;31m[K^~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:636:40:[m[K [01;36m[Knote: [m[Kno functions named ‘[01m[Kpcl::PointCloud<pcl::PointXYZRGB>::Ptr cw1::applyVoxelFiltering(const Ptr&)[m[K’
+In file included from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:6[m[K:
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/include/cw1_class.h:40:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass cw1[m[K’ defined here
+   40 | class [01;36m[Kcw1[m[K
+      |       [01;36m[K^~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:649:40:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kpcl::PointCloud<pcl::PointXYZRGB>::Ptr cw1::applyStatisticalOutlierRemoval(const Ptr&)[m[K’
+  649 | pcl::PointCloud<pcl::PointXYZRGB>::Ptr [01;31m[Kcw1[m[K::applyStatisticalOutlierRemoval(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr &cloud)
+      |                                        [01;31m[K^~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:649:40:[m[K [01;36m[Knote: [m[Kno functions named ‘[01m[Kpcl::PointCloud<pcl::PointXYZRGB>::Ptr cw1::applyStatisticalOutlierRemoval(const Ptr&)[m[K’
+In file included from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:6[m[K:
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/include/cw1_class.h:40:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass cw1[m[K’ defined here
+   40 | class [01;36m[Kcw1[m[K
+      |       [01;36m[K^~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:662:40:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kpcl::PointCloud<pcl::PointXYZRGB>::Ptr cw1::removeFloorWithRANSAC(const Ptr&)[m[K’
+  662 | pcl::PointCloud<pcl::PointXYZRGB>::Ptr [01;31m[Kcw1[m[K::removeFloorWithRANSAC(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr &sor_cloud)
+      |                                        [01;31m[K^~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:662:40:[m[K [01;36m[Knote: [m[Kno functions named ‘[01m[Kpcl::PointCloud<pcl::PointXYZRGB>::Ptr cw1::removeFloorWithRANSAC(const Ptr&)[m[K’
+In file included from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:6[m[K:
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/include/cw1_class.h:40:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass cw1[m[K’ defined here
+   40 | class [01;36m[Kcw1[m[K
+      |       [01;36m[K^~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:702:53:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kstd::vector<std::shared_ptr<pcl::PointCloud<pcl::PointXYZRGB> > > cw1::clusterWithEuclidean(const Ptr&)[m[K’
+  702 | std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> [01;31m[Kcw1[m[K::clusterWithEuclidean(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr &cloud)
+      |                                                     [01;31m[K^~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:702:53:[m[K [01;36m[Knote: [m[Kno functions named ‘[01m[Kstd::vector<std::shared_ptr<pcl::PointCloud<pcl::PointXYZRGB> > > cw1::clusterWithEuclidean(const Ptr&)[m[K’
+In file included from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:6[m[K:
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/include/cw1_class.h:40:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass cw1[m[K’ defined here
+   40 | class [01;36m[Kcw1[m[K
+      |       [01;36m[K^~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:731:34:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kgeometry_msgs::msg::PointStamped cw1::calculateCentroidInWorldFrame(const Ptr&, std::string&, const rclcpp::Time&)[m[K’
+  731 | geometry_msgs::msg::PointStamped [01;31m[Kcw1[m[K::calculateCentroidInWorldFrame(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr &cluster, std::string & cloud_frame, const rclcpp::Time & cloud_timestamp)
+      |                                  [01;31m[K^~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:731:34:[m[K [01;36m[Knote: [m[Kno functions named ‘[01m[Kgeometry_msgs::msg::PointStamped cw1::calculateCentroidInWorldFrame(const Ptr&, std::string&, const rclcpp::Time&)[m[K’
+In file included from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:6[m[K:
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/include/cw1_class.h:40:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass cw1[m[K’ defined here
+   40 | class [01;36m[Kcw1[m[K
+      |       [01;36m[K^~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:755:13:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kstd::string cw1::classifyColour(const Ptr&)[m[K’
+  755 | std::string [01;31m[Kcw1[m[K::classifyColour(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr &cluster)
+      |             [01;31m[K^~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:755:13:[m[K [01;36m[Knote: [m[Kno functions named ‘[01m[Kstd::string cw1::classifyColour(const Ptr&)[m[K’
+In file included from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:6[m[K:
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/include/cw1_class.h:40:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass cw1[m[K’ defined here
+   40 | class [01;36m[Kcw1[m[K
+      |       [01;36m[K^~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:808:13:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kstd::string cw1::classifyCubeOrBasket(const Ptr&, float&, float&, float&)[m[K’
+  808 | std::string [01;31m[Kcw1[m[K::classifyCubeOrBasket(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr &cluster, float & size_x, float & size_y, float & size_z)
+      |             [01;31m[K^~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:808:13:[m[K [01;36m[Knote: [m[Kno functions named ‘[01m[Kstd::string cw1::classifyCubeOrBasket(const Ptr&, float&, float&, float&)[m[K’
+In file included from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:6[m[K:
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/include/cw1_class.h:40:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass cw1[m[K’ defined here
+   40 | class [01;36m[Kcw1[m[K
+      |       [01;36m[K^~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:[m[K In member function ‘[01m[Kvoid cw1::t3_callback(std::shared_ptr<cw1_world_spawner::srv::Task3Service_Request_<std::allocator<void> > >, std::shared_ptr<cw1_world_spawner::srv::Task3Service_Response_<std::allocator<void> > >)[m[K’:
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:860:8:[m[K [01;31m[Kerror: [m[K‘[01m[KmoveToScanPose[m[K’ was not declared in this scope; did you mean ‘[01m[KmoveToPose[m[K’?
+  860 |   if (![01;31m[KmoveToScanPose[m[K()) {
+      |        [01;31m[K^~~~~~~~~~~~~~[m[K
+      |        [32m[KmoveToPose[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:877:25:[m[K [01;31m[Kerror: [m[K‘[01m[KapplyVoxelFiltering[m[K’ was not declared in this scope
+  877 |   auto voxel_filtered = [01;31m[KapplyVoxelFiltering[m[K(pcl_cloud);
+      |                         [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:878:24:[m[K [01;31m[Kerror: [m[K‘[01m[KapplyStatisticalOutlierRemoval[m[K’ was not declared in this scope
+  878 |   auto cleaned_cloud = [01;31m[KapplyStatisticalOutlierRemoval[m[K(voxel_filtered);
+      |                        [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:881:30:[m[K [01;31m[Kerror: [m[K‘[01m[KremoveFloorWithRANSAC[m[K’ was not declared in this scope
+  881 |   auto cloud_without_floor = [01;31m[KremoveFloorWithRANSAC[m[K(cleaned_cloud);
+      |                              [01;31m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:884:19:[m[K [01;31m[Kerror: [m[K‘[01m[KclusterWithEuclidean[m[K’ was not declared in this scope
+  884 |   auto clusters = [01;31m[KclusterWithEuclidean[m[K(cloud_without_floor);
+      |                   [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:890:26:[m[K [01;31m[Kerror: [m[K‘[01m[KcalculateCentroidInWorldFrame[m[K’ was not declared in this scope
+  890 |     obj.location_world = [01;31m[KcalculateCentroidInWorldFrame[m[K(cluster, fresh_cloud->header.frame_id, fresh_cloud->header.stamp);
+      |                          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:891:18:[m[K [01;31m[Kerror: [m[K‘[01m[KclassifyColour[m[K’ was not declared in this scope
+  891 |     obj.colour = [01;31m[KclassifyColour[m[K(cluster);
+      |                  [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:892:24:[m[K [01;31m[Kerror: [m[K‘[01m[KclassifyCubeOrBasket[m[K’ was not declared in this scope
+  892 |     obj.typeOfObject = [01;31m[KclassifyCubeOrBasket[m[K(cluster, obj.size_of_object_x, obj.size_of_object_y, obj.size_of_object_z);
+      |                        [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+                 from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/include/cw1_class.h:16[m[K,
+                 from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:6[m[K:
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:933:5:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ before ‘[01m[Kdo[m[K’
+  933 |     [01;31m[KRCLCPP_INFO[m[K(node_->get_logger(), " Open gripper");
+      |     [01;31m[K^~~~~~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/cw1_team_30_cw1_class_lib.dir/build.make:76: CMakeFiles/cw1_team_30_cw1_class_lib.dir/src/cw1_class.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:595: CMakeFiles/cw1_team_30_cw1_class_lib.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

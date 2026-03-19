@@ -1,0 +1,251 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Release-9462d3d8d8197fe64fb5.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18,
+						19
+					]
+				},
+				{
+					"build" : "cw1_team_30__py",
+					"jsonFile" : "directory-cw1_team_30__py-Release-492903c496f343c690e7.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "/home/charvi/comp0250_s26_labs/build/cw1_team_30/cw1_team_30__py",
+					"targetIndexes" : 
+					[
+						5
+					]
+				}
+			],
+			"name" : "Release",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "cw1_team_30",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18,
+						19
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_build_cw1_team_30_egg::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_build_cw1_team_30_egg-Release-a33ac9d1395bdc50210f.json",
+					"name" : "ament_cmake_python_build_cw1_team_30_egg",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_copy_cw1_team_30::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_copy_cw1_team_30-Release-3dab3b23aae744a9998f.json",
+					"name" : "ament_cmake_python_copy_cw1_team_30",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cw1_solution_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cw1_solution_node-Release-f7cfd5be665c288c4158.json",
+					"name" : "cw1_solution_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cw1_team_30::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cw1_team_30-Release-36877db0815e44953b2e.json",
+					"name" : "cw1_team_30",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cw1_team_30__cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cw1_team_30__cpp-Release-7fc012af084006e573fe.json",
+					"name" : "cw1_team_30__cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "cw1_team_30__py::@f70c7ba3fe4a4ea991bf",
+					"jsonFile" : "target-cw1_team_30__py-Release-ee6487febe89bebc292a.json",
+					"name" : "cw1_team_30__py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cw1_team_30__rosidl_generator_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cw1_team_30__rosidl_generator_c-Release-1e35dbdad4e72ce7a04e.json",
+					"name" : "cw1_team_30__rosidl_generator_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cw1_team_30__rosidl_generator_py::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cw1_team_30__rosidl_generator_py-Release-018a44292289f7e4c148.json",
+					"name" : "cw1_team_30__rosidl_generator_py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cw1_team_30__rosidl_typesupport_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cw1_team_30__rosidl_typesupport_c-Release-8f0ce7db07efb15ce426.json",
+					"name" : "cw1_team_30__rosidl_typesupport_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cw1_team_30__rosidl_typesupport_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cw1_team_30__rosidl_typesupport_c__pyext-Release-b14fabb5e56fcaadf98a.json",
+					"name" : "cw1_team_30__rosidl_typesupport_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cw1_team_30__rosidl_typesupport_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cw1_team_30__rosidl_typesupport_cpp-Release-b5b56d8f171d3f5934ff.json",
+					"name" : "cw1_team_30__rosidl_typesupport_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cw1_team_30__rosidl_typesupport_fastrtps_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cw1_team_30__rosidl_typesupport_fastrtps_c-Release-97ecde56000c4b83079e.json",
+					"name" : "cw1_team_30__rosidl_typesupport_fastrtps_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cw1_team_30__rosidl_typesupport_fastrtps_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cw1_team_30__rosidl_typesupport_fastrtps_c__pyext-Release-29038883f4d523aa428f.json",
+					"name" : "cw1_team_30__rosidl_typesupport_fastrtps_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cw1_team_30__rosidl_typesupport_fastrtps_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cw1_team_30__rosidl_typesupport_fastrtps_cpp-Release-142c2281988b4fc26a0a.json",
+					"name" : "cw1_team_30__rosidl_typesupport_fastrtps_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cw1_team_30__rosidl_typesupport_introspection_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cw1_team_30__rosidl_typesupport_introspection_c-Release-28d4bf8cbfe09683367d.json",
+					"name" : "cw1_team_30__rosidl_typesupport_introspection_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cw1_team_30__rosidl_typesupport_introspection_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cw1_team_30__rosidl_typesupport_introspection_c__pyext-Release-ee9eb934c0ab9511dbf7.json",
+					"name" : "cw1_team_30__rosidl_typesupport_introspection_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cw1_team_30__rosidl_typesupport_introspection_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cw1_team_30__rosidl_typesupport_introspection_cpp-Release-0039dfd6278745c27ef9.json",
+					"name" : "cw1_team_30__rosidl_typesupport_introspection_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cw1_team_30_cw1_class_lib::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cw1_team_30_cw1_class_lib-Release-e91737fb2e92c7e7baac.json",
+					"name" : "cw1_team_30_cw1_class_lib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cw1_team_30_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cw1_team_30_uninstall-Release-8355796153b4d737d7ac.json",
+					"name" : "cw1_team_30_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-Release-47530e78a15226574b54.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/charvi/comp0250_s26_labs/build/cw1_team_30",
+		"source" : "/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

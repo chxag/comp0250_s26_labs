@@ -1,0 +1,55 @@
+-- The C compiler identification is GNU 11.4.0
+-- The CXX compiler identification is GNU 11.4.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/charvi/comp0250_s26_labs/build/rpl_panda_with_rs
+-- Install configuration: "Release"
+-- Installing: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/config
+-- Installing: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/config/ros2_controllers_hybrid.yaml
+-- Installing: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/config/ros2_controllers_effort.yaml
+-- Installing: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/config/ros2_controllers.yaml
+-- Installing: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/config/moveit_controllers.yaml
+-- Installing: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/launch
+-- Installing: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/launch/camera_proc.launch.py
+-- Installing: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/launch/camera_proc.launch
+-- Installing: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/launch/display_real.launch.py
+-- Installing: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/launch/display.launch
+-- Installing: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/launch/display.launch.py
+-- Installing: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/launch/display_real.launch
+-- Installing: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/rviz
+-- Installing: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/rviz/real_rviz.rviz
+-- Installing: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/rviz/urdf.rviz
+-- Installing: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/srdf
+-- Installing: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/srdf/panda_with_rs.srdf.xacro
+-- Installing: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/urdf
+-- Installing: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/urdf/panda_with_rs.urdf
+-- Installing: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/urdf/panda_with_rs_PYBULLET.urdf
+-- Installing: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/urdf/panda_with_rs.xacro
+-- Installing: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/lib/rpl_panda_with_rs/init_panda_pose.py
+-- Installing: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/ament_index/resource_index/package_run_dependencies/rpl_panda_with_rs
+-- Installing: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/ament_index/resource_index/parent_prefix_path/rpl_panda_with_rs
+-- Installing: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/environment/ament_prefix_path.sh
+-- Installing: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/environment/ament_prefix_path.dsv
+-- Installing: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/environment/path.sh
+-- Installing: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/environment/path.dsv
+-- Installing: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/local_setup.bash
+-- Installing: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/local_setup.sh
+-- Installing: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/local_setup.zsh
+-- Installing: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/local_setup.dsv
+-- Installing: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/package.dsv
+-- Installing: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/ament_index/resource_index/packages/rpl_panda_with_rs
+-- Installing: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/cmake/rpl_panda_with_rsConfig.cmake
+-- Installing: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/cmake/rpl_panda_with_rsConfig-version.cmake
+-- Installing: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/package.xml

@@ -1,0 +1,67 @@
+[0.050s] Invoking command in '/home/charvi/comp0250_s26_labs/build/cw1_team_30': AMENT_PREFIX_PATH=/home/charvi/comp0250_s26_labs/install/cw1_world_spawner:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/charvi/comp0250_s26_labs/install/cw1_world_spawner:/opt/ros/humble LD_LIBRARY_PATH=/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /home/charvi/comp0250_s26_labs/build/cw1_team_30 -- -j12 -l12
+[0.166s] [  2%] Built target cw1_team_30__cpp
+[0.168s] [ 11%] Built target cw1_team_30__rosidl_generator_c
+[0.176s] [ 11%] Built target ament_cmake_python_copy_cw1_team_30
+[0.188s] [ 28%] Built target cw1_team_30__rosidl_typesupport_cpp
+[0.188s] [ 28%] Built target cw1_team_30__rosidl_typesupport_introspection_cpp
+[0.190s] [ 37%] Built target cw1_team_30__rosidl_typesupport_introspection_c
+[0.191s] [ 54%] Built target cw1_team_30__rosidl_typesupport_c
+[0.191s] [ 54%] Built target cw1_team_30__rosidl_typesupport_fastrtps_c
+[0.196s] [ 62%] Built target cw1_team_30__rosidl_typesupport_fastrtps_cpp
+[0.207s] [35m[1mConsolidate compiler generated dependencies of target cw1_team_30_cw1_class_lib[0m
+[0.217s] [ 62%] Built target cw1_team_30
+[0.239s] [ 65%] Built target cw1_team_30__py
+[0.243s] [ 68%] [32mBuilding CXX object CMakeFiles/cw1_team_30_cw1_class_lib.dir/src/cw1_class.cpp.o[0m
+[0.261s] [ 74%] Built target cw1_team_30__rosidl_generator_py
+[0.284s] [ 91%] Built target cw1_team_30__rosidl_typesupport_introspection_c__pyext
+[0.285s] [ 91%] Built target cw1_team_30__rosidl_typesupport_fastrtps_c__pyext
+[0.285s] [ 91%] Built target cw1_team_30__rosidl_typesupport_c__pyext
+[0.429s] running egg_info
+[0.450s] writing cw1_team_30.egg-info/PKG-INFO
+[0.451s] writing dependency_links to cw1_team_30.egg-info/dependency_links.txt
+[0.451s] writing top-level names to cw1_team_30.egg-info/top_level.txt
+[0.521s] reading manifest file 'cw1_team_30.egg-info/SOURCES.txt'
+[0.522s] writing manifest file 'cw1_team_30.egg-info/SOURCES.txt'
+[0.552s] [ 91%] Built target ament_cmake_python_build_cw1_team_30_egg
+[7.902s] [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:[m[K In member function ‘[01m[Kstd::string cw1::classifyCubeOrBasket(const Ptr&, float&, float&, float&)[m[K’:
+[7.902s] [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:820:19:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KgetMinMax3D(std::__shared_ptr_access<pcl::PointCloud<pcl::PointXYZRGB>, __gnu_cxx::_S_atomic, false, false>::element_type&, pcl::PointXYZRGB&, pcl::PointXYZRGB&)[m[K’
+[7.902s]   820 |   [01;31m[Kpcl::getMinMax3D(*cluster, min_pt, max_pt)[m[K;
+[7.902s]       |   [01;31m[K~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[7.902s] In file included from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:32[m[K:
+[7.902s] [01m[K/usr/include/pcl-1.12/pcl/filters/voxel_grid.h:141:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class PointT> void pcl::getMinMax3D(const typename pcl::PointCloud<PointT>::ConstPtr&, const string&, float, float, Eigen::Vector4f&, Eigen::Vector4f&, bool)[m[K’
+[7.902s]   141 |   [01;36m[KgetMinMax3D[m[K (const typename pcl::PointCloud<PointT>::ConstPtr &cloud,
+[7.902s]       |   [01;36m[K^~~~~~~~~~~[m[K
+[7.902s] [01m[K/usr/include/pcl-1.12/pcl/filters/voxel_grid.h:141:3:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[7.902s] [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:820:19:[m[K [01;36m[Knote: [m[K  candidate expects 7 arguments, 3 provided
+[7.902s]   820 |   [01;36m[Kpcl::getMinMax3D(*cluster, min_pt, max_pt)[m[K;
+[7.902s]       |   [01;36m[K~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[7.902s] In file included from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:32[m[K:
+[7.902s] [01m[K/usr/include/pcl-1.12/pcl/filters/voxel_grid.h:158:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class PointT> void pcl::getMinMax3D(const typename pcl::PointCloud<PointT>::ConstPtr&, const Indices&, const string&, float, float, Eigen::Vector4f&, Eigen::Vector4f&, bool)[m[K’
+[7.902s]   158 |   [01;36m[KgetMinMax3D[m[K (const typename pcl::PointCloud<PointT>::ConstPtr &cloud,
+[7.902s]       |   [01;36m[K^~~~~~~~~~~[m[K
+[7.902s] [01m[K/usr/include/pcl-1.12/pcl/filters/voxel_grid.h:158:3:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[7.902s] [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:820:19:[m[K [01;36m[Knote: [m[K  candidate expects 8 arguments, 3 provided
+[7.903s]   820 |   [01;36m[Kpcl::getMinMax3D(*cluster, min_pt, max_pt)[m[K;
+[7.903s]       |   [01;36m[K~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[7.903s] In file included from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:32[m[K:
+[7.903s] [01m[K/usr/include/pcl-1.12/pcl/filters/voxel_grid.h:56:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kvoid pcl::getMinMax3D(const PCLPointCloud2ConstPtr&, int, int, int, Eigen::Vector4f&, Eigen::Vector4f&)[m[K’
+[7.903s]    56 |   [01;36m[KgetMinMax3D[m[K (const pcl::PCLPointCloud2ConstPtr &cloud, int x_idx, int y_idx, int z_idx,
+[7.903s]       |   [01;36m[K^~~~~~~~~~~[m[K
+[7.903s] [01m[K/usr/include/pcl-1.12/pcl/filters/voxel_grid.h:56:3:[m[K [01;36m[Knote: [m[K  candidate expects 6 arguments, 3 provided
+[7.903s] [01m[K/usr/include/pcl-1.12/pcl/filters/voxel_grid.h:74:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kvoid pcl::getMinMax3D(const PCLPointCloud2ConstPtr&, int, int, int, const string&, float, float, Eigen::Vector4f&, Eigen::Vector4f&, bool)[m[K’
+[7.903s]    74 |   [01;36m[KgetMinMax3D[m[K (const pcl::PCLPointCloud2ConstPtr &cloud, int x_idx, int y_idx, int z_idx,
+[7.903s]       |   [01;36m[K^~~~~~~~~~~[m[K
+[7.903s] [01m[K/usr/include/pcl-1.12/pcl/filters/voxel_grid.h:74:3:[m[K [01;36m[Knote: [m[K  candidate expects 10 arguments, 3 provided
+[7.910s] [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:[m[K In member function ‘[01m[Kvoid cw1::t3_callback(std::shared_ptr<cw1_world_spawner::srv::Task3Service_Request_<std::allocator<void> > >, std::shared_ptr<cw1_world_spawner::srv::Task3Service_Response_<std::allocator<void> > >)[m[K’:
+[7.910s] [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:896:85:[m[K [01;31m[Kerror: [m[Kbinding reference of type ‘[01m[Kstd::string&[m[K’ {aka ‘[01m[Kstd::__cxx11::basic_string<char>&[m[K’} to ‘[01m[Kconst _frame_id_type[m[K’ {aka ‘[01m[Kconst std::__cxx11::basic_string<char>[m[K’} discards qualifiers
+[7.910s]   896 | InWorldFrame(cluster, [01;31m[Kfresh_cloud->header.frame_id[m[K, fresh_cloud->header.stamp);
+[7.910s]       |                       [01;31m[K~~~~~~~~~~~~~~~~~~~~^~~~~~~~[m[K
+[7.910s] 
+[7.911s] [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:731:138:[m[K [01;36m[Knote: [m[K  initializing argument 2 of ‘[01m[Kgeometry_msgs::msg::PointStamped cw1::calculateCentroidInWorldFrame(const Ptr&, std::string&, const rclcpp::Time&)[m[K’
+[7.911s]   731 | PointXYZRGB>::Ptr &cluster, [01;36m[Kstd::string & cloud_frame[m[K, const rclcpp::Time & cloud_timestamp)
+[7.911s]       |                             [01;36m[K~~~~~~~~~~~~~~^~~~~~~~~~~[m[K
+[7.911s] 
+[12.991s] gmake[2]: *** [CMakeFiles/cw1_team_30_cw1_class_lib.dir/build.make:76: CMakeFiles/cw1_team_30_cw1_class_lib.dir/src/cw1_class.cpp.o] Error 1
+[12.991s] gmake[1]: *** [CMakeFiles/Makefile2:595: CMakeFiles/cw1_team_30_cw1_class_lib.dir/all] Error 2
+[12.992s] gmake: *** [Makefile:146: all] Error 2
+[12.994s] Invoked command in '/home/charvi/comp0250_s26_labs/build/cw1_team_30' returned '2': AMENT_PREFIX_PATH=/home/charvi/comp0250_s26_labs/install/cw1_world_spawner:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/charvi/comp0250_s26_labs/install/cw1_world_spawner:/opt/ros/humble LD_LIBRARY_PATH=/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /home/charvi/comp0250_s26_labs/build/cw1_team_30 -- -j12 -l12

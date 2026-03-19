@@ -1,0 +1,7 @@
+setup.py
+coursework_world_spawner_lib/__init__.py
+coursework_world_spawner_lib/coursework_world_spawner.py
+coursework_world_spawner_lib.egg-info/PKG-INFO
+coursework_world_spawner_lib.egg-info/SOURCES.txt
+coursework_world_spawner_lib.egg-info/dependency_links.txt
+coursework_world_spawner_lib.egg-info/top_level.txt

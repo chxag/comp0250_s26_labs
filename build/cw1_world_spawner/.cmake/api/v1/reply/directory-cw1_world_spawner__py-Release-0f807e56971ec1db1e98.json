@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "cw1_world_spawner__py",
+		"source" : "/home/charvi/comp0250_s26_labs/build/cw1_world_spawner/cw1_world_spawner__py"
+	}
+}

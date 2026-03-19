@@ -1,0 +1,1042 @@
+[0.000000] (-) TimerEvent: {}
+[0.000394] (cw1_world_spawner) JobQueued: {'identifier': 'cw1_world_spawner', 'dependencies': OrderedDict()}
+[0.000510] (panda_description) JobQueued: {'identifier': 'panda_description', 'dependencies': OrderedDict()}
+[0.000547] (panda_moveit_config) JobQueued: {'identifier': 'panda_moveit_config', 'dependencies': OrderedDict()}
+[0.000562] (realsense_gazebo_plugin) JobQueued: {'identifier': 'realsense_gazebo_plugin', 'dependencies': OrderedDict()}
+[0.000684] (cw1_team_30) JobQueued: {'identifier': 'cw1_team_30', 'dependencies': OrderedDict([('cw1_world_spawner', '/home/charvi/comp0250_s26_labs/install/cw1_world_spawner')])}
+[0.000716] (rpl_panda_with_rs) JobQueued: {'identifier': 'rpl_panda_with_rs', 'dependencies': OrderedDict([('panda_moveit_config', '/home/charvi/comp0250_s26_labs/install/panda_moveit_config'), ('realsense_gazebo_plugin', '/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin')])}
+[0.000772] (cw1_world_spawner) JobStarted: {'identifier': 'cw1_world_spawner'}
+[0.014153] (panda_moveit_config) JobStarted: {'identifier': 'panda_moveit_config'}
+[0.017954] (realsense_gazebo_plugin) JobStarted: {'identifier': 'realsense_gazebo_plugin'}
+[0.021825] (panda_description) JobStarted: {'identifier': 'panda_description'}
+[0.027235] (cw1_world_spawner) JobProgress: {'identifier': 'cw1_world_spawner', 'progress': 'cmake'}
+[0.028081] (cw1_world_spawner) JobProgress: {'identifier': 'cw1_world_spawner', 'progress': 'build'}
+[0.028719] (cw1_world_spawner) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/charvi/comp0250_s26_labs/build/cw1_world_spawner', '--', '-j12', '-l12'], 'cwd': '/home/charvi/comp0250_s26_labs/build/cw1_world_spawner', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_GB:en'), ('USER', 'charvi'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/lib:/home/charvi/comp0250_s26_labs/install/cw1_team_x/lib:/home/charvi/comp0250_s26_labs/install/cw1_team_30/lib:/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/charvi'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('SYSTEMD_EXEC_PID', '75601'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('COLCON_PREFIX_PATH', '/home/charvi/comp0250_s26_labs/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'charvi'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'charvi'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', '/opt/ros/humble/share:'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/home/charvi/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/charvinggton:@/tmp/.ICE-unix/2101,unix/charvinggton:/tmp/.ICE-unix/2101'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/1c7b3968_b9f4_47f9_b703_50b5792a5b0f'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.240'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs:/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin:/home/charvi/comp0250_s26_labs/install/panda_moveit_config:/home/charvi/comp0250_s26_labs/install/panda_description:/home/charvi/comp0250_s26_labs/install/cw1_team_x:/home/charvi/comp0250_s26_labs/install/cw1_team_30:/home/charvi/comp0250_s26_labs/install/cw1_world_spawner:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/charvi/comp0250_s26_labs/build/cw1_world_spawner'), ('TURTLEBOT3_MODEL', 'waffle'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('GAZEBO_PLUGIN_PATH', '/opt/ros/humble/lib:'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/charvi/comp0250_s26_labs/install/cw1_team_x/local/lib/python3.10/dist-packages:/home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages:/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs:/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin:/home/charvi/comp0250_s26_labs/install/panda_moveit_config:/home/charvi/comp0250_s26_labs/install/panda_description:/home/charvi/comp0250_s26_labs/install/cw1_team_x:/home/charvi/comp0250_s26_labs/install/cw1_team_30:/home/charvi/comp0250_s26_labs/install/cw1_world_spawner:/opt/ros/humble')]), 'shell': False}
+[0.031005] (panda_moveit_config) JobProgress: {'identifier': 'panda_moveit_config', 'progress': 'cmake'}
+[0.031511] (panda_moveit_config) JobProgress: {'identifier': 'panda_moveit_config', 'progress': 'build'}
+[0.031785] (panda_moveit_config) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/charvi/comp0250_s26_labs/build/panda_moveit_config', '--', '-j12', '-l12'], 'cwd': '/home/charvi/comp0250_s26_labs/build/panda_moveit_config', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_GB:en'), ('USER', 'charvi'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/lib:/home/charvi/comp0250_s26_labs/install/cw1_team_x/lib:/home/charvi/comp0250_s26_labs/install/cw1_team_30/lib:/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/charvi'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('SYSTEMD_EXEC_PID', '75601'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('COLCON_PREFIX_PATH', '/home/charvi/comp0250_s26_labs/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'charvi'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'charvi'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', '/opt/ros/humble/share:'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/home/charvi/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/charvinggton:@/tmp/.ICE-unix/2101,unix/charvinggton:/tmp/.ICE-unix/2101'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/1c7b3968_b9f4_47f9_b703_50b5792a5b0f'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.240'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs:/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin:/home/charvi/comp0250_s26_labs/install/panda_moveit_config:/home/charvi/comp0250_s26_labs/install/panda_description:/home/charvi/comp0250_s26_labs/install/cw1_team_x:/home/charvi/comp0250_s26_labs/install/cw1_team_30:/home/charvi/comp0250_s26_labs/install/cw1_world_spawner:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/charvi/comp0250_s26_labs/build/panda_moveit_config'), ('TURTLEBOT3_MODEL', 'waffle'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('GAZEBO_PLUGIN_PATH', '/opt/ros/humble/lib:'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/charvi/comp0250_s26_labs/install/cw1_team_x/local/lib/python3.10/dist-packages:/home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages:/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs:/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin:/home/charvi/comp0250_s26_labs/install/panda_moveit_config:/home/charvi/comp0250_s26_labs/install/panda_description:/home/charvi/comp0250_s26_labs/install/cw1_team_x:/home/charvi/comp0250_s26_labs/install/cw1_team_30:/home/charvi/comp0250_s26_labs/install/cw1_world_spawner:/opt/ros/humble')]), 'shell': False}
+[0.033320] (realsense_gazebo_plugin) JobProgress: {'identifier': 'realsense_gazebo_plugin', 'progress': 'cmake'}
+[0.033680] (realsense_gazebo_plugin) JobProgress: {'identifier': 'realsense_gazebo_plugin', 'progress': 'build'}
+[0.034070] (realsense_gazebo_plugin) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/charvi/comp0250_s26_labs/build/realsense_gazebo_plugin', '--', '-j12', '-l12'], 'cwd': '/home/charvi/comp0250_s26_labs/build/realsense_gazebo_plugin', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_GB:en'), ('USER', 'charvi'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/lib:/home/charvi/comp0250_s26_labs/install/cw1_team_x/lib:/home/charvi/comp0250_s26_labs/install/cw1_team_30/lib:/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/charvi'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('SYSTEMD_EXEC_PID', '75601'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('COLCON_PREFIX_PATH', '/home/charvi/comp0250_s26_labs/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'charvi'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'charvi'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', '/opt/ros/humble/share:'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/home/charvi/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/charvinggton:@/tmp/.ICE-unix/2101,unix/charvinggton:/tmp/.ICE-unix/2101'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/1c7b3968_b9f4_47f9_b703_50b5792a5b0f'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.240'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs:/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin:/home/charvi/comp0250_s26_labs/install/panda_moveit_config:/home/charvi/comp0250_s26_labs/install/panda_description:/home/charvi/comp0250_s26_labs/install/cw1_team_x:/home/charvi/comp0250_s26_labs/install/cw1_team_30:/home/charvi/comp0250_s26_labs/install/cw1_world_spawner:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/charvi/comp0250_s26_labs/build/realsense_gazebo_plugin'), ('TURTLEBOT3_MODEL', 'waffle'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('GAZEBO_PLUGIN_PATH', '/opt/ros/humble/lib:'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/charvi/comp0250_s26_labs/install/cw1_team_x/local/lib/python3.10/dist-packages:/home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages:/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs:/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin:/home/charvi/comp0250_s26_labs/install/panda_moveit_config:/home/charvi/comp0250_s26_labs/install/panda_description:/home/charvi/comp0250_s26_labs/install/cw1_team_x:/home/charvi/comp0250_s26_labs/install/cw1_team_30:/home/charvi/comp0250_s26_labs/install/cw1_world_spawner:/opt/ros/humble')]), 'shell': False}
+[0.037462] (panda_description) JobProgress: {'identifier': 'panda_description', 'progress': 'cmake'}
+[0.038044] (panda_description) JobProgress: {'identifier': 'panda_description', 'progress': 'build'}
+[0.038469] (panda_description) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/charvi/comp0250_s26_labs/build/panda_description', '--', '-j12', '-l12'], 'cwd': '/home/charvi/comp0250_s26_labs/build/panda_description', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_GB:en'), ('USER', 'charvi'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/lib:/home/charvi/comp0250_s26_labs/install/cw1_team_x/lib:/home/charvi/comp0250_s26_labs/install/cw1_team_30/lib:/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/charvi'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('SYSTEMD_EXEC_PID', '75601'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('COLCON_PREFIX_PATH', '/home/charvi/comp0250_s26_labs/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'charvi'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'charvi'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', '/opt/ros/humble/share:'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/home/charvi/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/charvinggton:@/tmp/.ICE-unix/2101,unix/charvinggton:/tmp/.ICE-unix/2101'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/1c7b3968_b9f4_47f9_b703_50b5792a5b0f'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.240'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs:/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin:/home/charvi/comp0250_s26_labs/install/panda_moveit_config:/home/charvi/comp0250_s26_labs/install/panda_description:/home/charvi/comp0250_s26_labs/install/cw1_team_x:/home/charvi/comp0250_s26_labs/install/cw1_team_30:/home/charvi/comp0250_s26_labs/install/cw1_world_spawner:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/charvi/comp0250_s26_labs/build/panda_description'), ('TURTLEBOT3_MODEL', 'waffle'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('GAZEBO_PLUGIN_PATH', '/opt/ros/humble/lib:'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/charvi/comp0250_s26_labs/install/cw1_team_x/local/lib/python3.10/dist-packages:/home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages:/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs:/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin:/home/charvi/comp0250_s26_labs/install/panda_moveit_config:/home/charvi/comp0250_s26_labs/install/panda_description:/home/charvi/comp0250_s26_labs/install/cw1_team_x:/home/charvi/comp0250_s26_labs/install/cw1_team_30:/home/charvi/comp0250_s26_labs/install/cw1_world_spawner:/opt/ros/humble')]), 'shell': False}
+[0.070088] (panda_moveit_config) CommandEnded: {'returncode': 0}
+[0.070975] (panda_moveit_config) JobProgress: {'identifier': 'panda_moveit_config', 'progress': 'install'}
+[0.081186] (panda_moveit_config) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/charvi/comp0250_s26_labs/build/panda_moveit_config'], 'cwd': '/home/charvi/comp0250_s26_labs/build/panda_moveit_config', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_GB:en'), ('USER', 'charvi'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/lib:/home/charvi/comp0250_s26_labs/install/cw1_team_x/lib:/home/charvi/comp0250_s26_labs/install/cw1_team_30/lib:/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/charvi'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('SYSTEMD_EXEC_PID', '75601'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('COLCON_PREFIX_PATH', '/home/charvi/comp0250_s26_labs/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'charvi'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'charvi'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', '/opt/ros/humble/share:'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/home/charvi/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/charvinggton:@/tmp/.ICE-unix/2101,unix/charvinggton:/tmp/.ICE-unix/2101'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/1c7b3968_b9f4_47f9_b703_50b5792a5b0f'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.240'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs:/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin:/home/charvi/comp0250_s26_labs/install/panda_moveit_config:/home/charvi/comp0250_s26_labs/install/panda_description:/home/charvi/comp0250_s26_labs/install/cw1_team_x:/home/charvi/comp0250_s26_labs/install/cw1_team_30:/home/charvi/comp0250_s26_labs/install/cw1_world_spawner:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/charvi/comp0250_s26_labs/build/panda_moveit_config'), ('TURTLEBOT3_MODEL', 'waffle'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('GAZEBO_PLUGIN_PATH', '/opt/ros/humble/lib:'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/charvi/comp0250_s26_labs/install/cw1_team_x/local/lib/python3.10/dist-packages:/home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages:/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs:/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin:/home/charvi/comp0250_s26_labs/install/panda_moveit_config:/home/charvi/comp0250_s26_labs/install/panda_description:/home/charvi/comp0250_s26_labs/install/cw1_team_x:/home/charvi/comp0250_s26_labs/install/cw1_team_30:/home/charvi/comp0250_s26_labs/install/cw1_world_spawner:/opt/ros/humble')]), 'shell': False}
+[0.083616] (panda_description) CommandEnded: {'returncode': 0}
+[0.084078] (cw1_world_spawner) StdoutLine: {'line': b'[  1%] Built target cw1_world_spawner__cpp\n'}
+[0.084558] (panda_description) JobProgress: {'identifier': 'panda_description', 'progress': 'install'}
+[0.084798] (panda_description) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/charvi/comp0250_s26_labs/build/panda_description'], 'cwd': '/home/charvi/comp0250_s26_labs/build/panda_description', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_GB:en'), ('USER', 'charvi'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/lib:/home/charvi/comp0250_s26_labs/install/cw1_team_x/lib:/home/charvi/comp0250_s26_labs/install/cw1_team_30/lib:/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/charvi'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('SYSTEMD_EXEC_PID', '75601'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('COLCON_PREFIX_PATH', '/home/charvi/comp0250_s26_labs/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'charvi'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'charvi'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', '/opt/ros/humble/share:'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/home/charvi/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/charvinggton:@/tmp/.ICE-unix/2101,unix/charvinggton:/tmp/.ICE-unix/2101'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/1c7b3968_b9f4_47f9_b703_50b5792a5b0f'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.240'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs:/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin:/home/charvi/comp0250_s26_labs/install/panda_moveit_config:/home/charvi/comp0250_s26_labs/install/panda_description:/home/charvi/comp0250_s26_labs/install/cw1_team_x:/home/charvi/comp0250_s26_labs/install/cw1_team_30:/home/charvi/comp0250_s26_labs/install/cw1_world_spawner:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/charvi/comp0250_s26_labs/build/panda_description'), ('TURTLEBOT3_MODEL', 'waffle'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('GAZEBO_PLUGIN_PATH', '/opt/ros/humble/lib:'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/charvi/comp0250_s26_labs/install/cw1_team_x/local/lib/python3.10/dist-packages:/home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages:/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs:/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin:/home/charvi/comp0250_s26_labs/install/panda_moveit_config:/home/charvi/comp0250_s26_labs/install/panda_description:/home/charvi/comp0250_s26_labs/install/cw1_team_x:/home/charvi/comp0250_s26_labs/install/cw1_team_30:/home/charvi/comp0250_s26_labs/install/cw1_world_spawner:/opt/ros/humble')]), 'shell': False}
+[0.087195] (cw1_world_spawner) StdoutLine: {'line': b'[ 12%] Built target cw1_world_spawner__rosidl_generator_c\n'}
+[0.092294] (panda_moveit_config) StdoutLine: {'line': b'-- Install configuration: "Release"\n'}
+[0.092597] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/launch\n'}
+[0.092795] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/launch/move_group.launch\n'}
+[0.093624] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/launch/planning_context.launch\n'}
+[0.093784] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/launch/run_benchmark_ompl.launch\n'}
+[0.093921] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/launch/fake_moveit_controller_manager.launch.xml\n'}
+[0.094059] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/launch/panda_moveit.launch\n'}
+[0.094192] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/launch/panda_moveit_controller_manager.launch.xml\n'}
+[0.094539] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/launch/demo_chomp.launch\n'}
+[0.094709] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/launch/moveit_rviz_simulation.launch\n'}
+[0.094934] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/launch/warehouse.launch\n'}
+[0.095182] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/launch/planning_pipeline.launch.xml\n'}
+[0.095427] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/launch/panda_gripper_moveit_controller_manager_simulation.launch.xml\n'}
+[0.095599] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/launch/trajectory_execution.launch.xml\n'}
+[0.095765] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/launch/demo.launch\n'}
+[0.095907] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/launch/joystick_control.launch\n'}
+[0.096044] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/launch/panda_moveit_controller_manager_simulation.launch.xml\n'}
+[0.096175] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/launch/default_warehouse_db.launch\n'}
+[0.096323] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/launch/chomp_planning_pipeline.launch.xml\n'}
+[0.096551] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/launch/sensor_manager.launch.xml\n'}
+[0.096759] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/launch/warehouse_settings.launch.xml\n'}
+[0.096897] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/launch/moveit_empty.rviz\n'}
+[0.097018] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/launch/project.rviz\n'}
+[0.097145] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/launch/panda_moveit_sensor_manager.launch.xml\n'}
+[0.097286] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/launch/panda_gripper_moveit_controller_manager.launch.xml\n'}
+[0.097408] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/launch/ompl_planning_pipeline.launch.xml\n'}
+[0.097510] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/launch/demo-project.launch\n'}
+[0.097612] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/launch/moveit_simulation.rviz\n'}
+[0.097797] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/launch/stomp_planning_pipeline.launch.xml\n'}
+[0.098541] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/launch/panda_control_moveit_rviz.launch\n'}
+[0.099909] (-) TimerEvent: {}
+[0.100235] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/launch/moveit_rviz.launch\n'}
+[0.100509] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/launch/moveit.rviz\n'}
+[0.100770] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/config\n'}
+[0.100898] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/config/panda_arm_hand.srdf.xacro\n'}
+[0.101009] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/config/panda_gripper_controllers (modified).yaml\n'}
+[0.101125] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/config/stomp_planning.yaml\n'}
+[0.102833] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/config/kinematics.yaml\n'}
+[0.103273] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/config/panda_controllers_simulation.yaml\n'}
+[0.103411] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/config/hand.xacro\n'}
+[0.103517] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/config/panda_arm.xacro\n'}
+[0.103639] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/config/fake_controllers.yaml\n'}
+[0.103901] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/config/sensors_kinect_pointcloud.yaml\n'}
+[0.104024] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/config/pilz_cartesian_limits.yaml\n'}
+[0.104154] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/config/ompl_planning.yaml\n'}
+[0.104640] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/config/joint_limits.yaml\n'}
+[0.105055] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/config/panda_controllers.yaml\n'}
+[0.105212] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/config/panda_gripper_controllers.yaml\n'}
+[0.105348] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/config/sensors_kinect_depthmap.yaml\n'}
+[0.105482] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/config/panda_gripper_controllers_simulation.yaml\n'}
+[0.105596] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/config/panda_arm.srdf.xacro\n'}
+[0.105727] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/config/chomp_planning.yaml\n'}
+[0.105849] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/ament_index/resource_index/package_run_dependencies/panda_moveit_config\n'}
+[0.105968] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/ament_index/resource_index/parent_prefix_path/panda_moveit_config\n'}
+[0.106100] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/environment/ament_prefix_path.sh\n'}
+[0.106252] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/environment/ament_prefix_path.dsv\n'}
+[0.106553] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/environment/path.sh\n'}
+[0.106707] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/environment/path.dsv\n'}
+[0.106959] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/local_setup.bash\n'}
+[0.107151] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/local_setup.sh\n'}
+[0.107604] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/local_setup.zsh\n'}
+[0.107703] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/local_setup.dsv\n'}
+[0.107771] (panda_moveit_config) StdoutLine: {'line': b'-- Installing: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/package.dsv\n'}
+[0.107836] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/ament_index/resource_index/packages/panda_moveit_config\n'}
+[0.107958] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/cmake/panda_moveit_configConfig.cmake\n'}
+[0.108024] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/cmake/panda_moveit_configConfig-version.cmake\n'}
+[0.108089] (panda_moveit_config) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_moveit_config/share/panda_moveit_config/package.xml\n'}
+[0.108152] (cw1_world_spawner) StdoutLine: {'line': b'[ 12%] Built target ament_cmake_python_copy_coursework_world_spawner_lib\n'}
+[0.108428] (cw1_world_spawner) StdoutLine: {'line': b'[ 12%] Built target ament_cmake_python_copy_cw1_world_spawner\n'}
+[0.108710] (panda_description) StdoutLine: {'line': b'-- Install configuration: "Release"\n'}
+[0.109238] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/config\n'}
+[0.109523] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/config/panda_control.yaml\n'}
+[0.109725] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/meshes\n'}
+[0.109896] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/meshes/collision\n'}
+[0.110680] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/meshes/collision/link4.stl\n'}
+[0.114371] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/meshes/collision/hand.stl\n'}
+[0.114641] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/meshes/collision/link5.stl\n'}
+[0.114778] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/meshes/collision/link3.stl\n'}
+[0.114908] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/meshes/collision/link0.stl\n'}
+[0.115035] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/meshes/collision/finger.stl\n'}
+[0.115162] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/meshes/collision/link2.stl\n'}
+[0.115313] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/meshes/collision/link1.stl\n'}
+[0.115440] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/meshes/collision/link6.stl\n'}
+[0.115557] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/meshes/collision/link7.stl\n'}
+[0.115677] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/meshes/visual\n'}
+[0.115799] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/meshes/visual/link1.dae\n'}
+[0.116173] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/meshes/visual/hand.dae\n'}
+[0.116483] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/meshes/visual/link5.dae\n'}
+[0.116612] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/meshes/visual/link0.dae\n'}
+[0.116728] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/meshes/visual/link4.dae\n'}
+[0.116843] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/meshes/visual/link2.dae\n'}
+[0.116962] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/meshes/visual/link3.dae\n'}
+[0.117089] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/meshes/visual/finger.dae\n'}
+[0.117203] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/meshes/visual/link7.dae\n'}
+[0.117351] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/meshes/visual/link6.dae\n'}
+[0.120685] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/rviz\n'}
+[0.120821] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/rviz/urdf.rviz\n'}
+[0.120942] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/sdf\n'}
+[0.121045] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/sdf/empty_panda.world\n'}
+[0.121147] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/sdf/empty_panda_noShadow.world\n'}
+[0.121254] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/srdf\n'}
+[0.121367] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/srdf/panda_with_rs.srdf.xacro\n'}
+[0.121468] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/urdf\n'}
+[0.121568] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/urdf/panda_arm_hand.urdf.xacro\n'}
+[0.121668] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/urdf/panda_with_rs.urdf.xacro\n'}
+[0.121785] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/xacro\n'}
+[0.121886] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/xacro/panda.transmission.xacro\n'}
+[0.121985] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/xacro/hand.xacro\n'}
+[0.122086] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/xacro/panda_arm.xacro\n'}
+[0.122186] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/xacro/panda.gazebo.xacro\n'}
+[0.122304] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/xacro/panda.control.xacro\n'}
+[0.122410] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/launch\n'}
+[0.122532] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/launch/description.launch.py\n'}
+[0.122634] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/ament_index/resource_index/package_run_dependencies/panda_description\n'}
+[0.122738] (panda_moveit_config) CommandEnded: {'returncode': 0}
+[0.123372] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/ament_index/resource_index/parent_prefix_path/panda_description\n'}
+[0.124642] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/environment/ament_prefix_path.sh\n'}
+[0.125046] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/environment/ament_prefix_path.dsv\n'}
+[0.125246] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/environment/path.sh\n'}
+[0.126120] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/environment/path.dsv\n'}
+[0.126247] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/local_setup.bash\n'}
+[0.126630] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/local_setup.sh\n'}
+[0.126706] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/local_setup.zsh\n'}
+[0.126775] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/local_setup.dsv\n'}
+[0.126841] (panda_description) StdoutLine: {'line': b'-- Installing: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/package.dsv\n'}
+[0.126907] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/ament_index/resource_index/packages/panda_description\n'}
+[0.126972] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/cmake/panda_descriptionConfig.cmake\n'}
+[0.127037] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/cmake/panda_descriptionConfig-version.cmake\n'}
+[0.127102] (panda_description) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/panda_description/share/panda_description/package.xml\n'}
+[0.127166] (cw1_world_spawner) StdoutLine: {'line': b'[ 34%] Built target cw1_world_spawner__rosidl_typesupport_cpp\n'}
+[0.127397] (cw1_world_spawner) StdoutLine: {'line': b'[ 34%] Built target cw1_world_spawner__rosidl_typesupport_fastrtps_cpp\n'}
+[0.127503] (cw1_world_spawner) StdoutLine: {'line': b'[ 45%] Built target cw1_world_spawner__rosidl_typesupport_introspection_cpp\n'}
+[0.127572] (cw1_world_spawner) StdoutLine: {'line': b'[ 56%] Built target cw1_world_spawner__rosidl_typesupport_c\n'}
+[0.128672] (cw1_world_spawner) StdoutLine: {'line': b'[ 67%] Built target cw1_world_spawner__rosidl_typesupport_fastrtps_c\n'}
+[0.129077] (cw1_world_spawner) StdoutLine: {'line': b'[ 78%] Built target cw1_world_spawner__rosidl_typesupport_introspection_c\n'}
+[0.140478] (realsense_gazebo_plugin) StdoutLine: {'line': b'[100%] Built target realsense_gazebo_plugin\n'}
+[0.142378] (panda_moveit_config) JobEnded: {'identifier': 'panda_moveit_config', 'rc': 0}
+[0.144530] (panda_description) CommandEnded: {'returncode': 0}
+[0.152710] (cw1_world_spawner) StdoutLine: {'line': b'[ 78%] Built target cw1_world_spawner\n'}
+[0.164201] (panda_description) JobEnded: {'identifier': 'panda_description', 'rc': 0}
+[0.165398] (realsense_gazebo_plugin) CommandEnded: {'returncode': 0}
+[0.166052] (realsense_gazebo_plugin) JobProgress: {'identifier': 'realsense_gazebo_plugin', 'progress': 'install'}
+[0.167465] (realsense_gazebo_plugin) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/charvi/comp0250_s26_labs/build/realsense_gazebo_plugin'], 'cwd': '/home/charvi/comp0250_s26_labs/build/realsense_gazebo_plugin', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_GB:en'), ('USER', 'charvi'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/lib:/home/charvi/comp0250_s26_labs/install/cw1_team_x/lib:/home/charvi/comp0250_s26_labs/install/cw1_team_30/lib:/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/charvi'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('SYSTEMD_EXEC_PID', '75601'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('COLCON_PREFIX_PATH', '/home/charvi/comp0250_s26_labs/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'charvi'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'charvi'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', '/opt/ros/humble/share:'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/home/charvi/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/charvinggton:@/tmp/.ICE-unix/2101,unix/charvinggton:/tmp/.ICE-unix/2101'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/1c7b3968_b9f4_47f9_b703_50b5792a5b0f'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.240'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs:/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin:/home/charvi/comp0250_s26_labs/install/panda_moveit_config:/home/charvi/comp0250_s26_labs/install/panda_description:/home/charvi/comp0250_s26_labs/install/cw1_team_x:/home/charvi/comp0250_s26_labs/install/cw1_team_30:/home/charvi/comp0250_s26_labs/install/cw1_world_spawner:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/charvi/comp0250_s26_labs/build/realsense_gazebo_plugin'), ('TURTLEBOT3_MODEL', 'waffle'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('GAZEBO_PLUGIN_PATH', '/opt/ros/humble/lib:'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/charvi/comp0250_s26_labs/install/cw1_team_x/local/lib/python3.10/dist-packages:/home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages:/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs:/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin:/home/charvi/comp0250_s26_labs/install/panda_moveit_config:/home/charvi/comp0250_s26_labs/install/panda_description:/home/charvi/comp0250_s26_labs/install/cw1_team_x:/home/charvi/comp0250_s26_labs/install/cw1_team_30:/home/charvi/comp0250_s26_labs/install/cw1_world_spawner:/opt/ros/humble')]), 'shell': False}
+[0.175518] (cw1_world_spawner) StdoutLine: {'line': b'[ 80%] Built target cw1_world_spawner__py\n'}
+[0.176293] (realsense_gazebo_plugin) StdoutLine: {'line': b'-- Install configuration: "Release"\n'}
+[0.176668] (realsense_gazebo_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/lib/librealsense_gazebo_plugin.so\n'}
+[0.177024] (realsense_gazebo_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/include/\n'}
+[0.177231] (realsense_gazebo_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/include//realsense_gazebo_plugin\n'}
+[0.177529] (realsense_gazebo_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/include//realsense_gazebo_plugin/gazebo_ros_realsense.hpp\n'}
+[0.177732] (realsense_gazebo_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/include//realsense_gazebo_plugin/RealSensePlugin.hpp\n'}
+[0.177879] (realsense_gazebo_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/share/realsense_gazebo_plugin/models\n'}
+[0.178095] (realsense_gazebo_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/share/realsense_gazebo_plugin/models/realsense_camera\n'}
+[0.178305] (realsense_gazebo_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/share/realsense_gazebo_plugin/models/realsense_camera/model.sdf\n'}
+[0.178522] (realsense_gazebo_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/share/realsense_gazebo_plugin/models/realsense_camera/materials\n'}
+[0.178713] (realsense_gazebo_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/share/realsense_gazebo_plugin/models/realsense_camera/materials/textures\n'}
+[0.178894] (realsense_gazebo_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/share/realsense_gazebo_plugin/models/realsense_camera/materials/textures/realsense_diffuse.png\n'}
+[0.179034] (realsense_gazebo_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/share/realsense_gazebo_plugin/models/realsense_camera/meshes\n'}
+[0.179218] (realsense_gazebo_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/share/realsense_gazebo_plugin/models/realsense_camera/meshes/realsense.dae\n'}
+[0.179433] (realsense_gazebo_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/share/realsense_gazebo_plugin/models/realsense_camera/model.config\n'}
+[0.179601] (realsense_gazebo_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/share/realsense_gazebo_plugin/urdf\n'}
+[0.179718] (realsense_gazebo_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/share/realsense_gazebo_plugin/urdf/realsense-D435.macro.xacro\n'}
+[0.179838] (realsense_gazebo_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/share/realsense_gazebo_plugin/urdf/d435_simulation.xacro\n'}
+[0.179955] (realsense_gazebo_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/share/realsense_gazebo_plugin/urdf/multi_d435_simulation.xacro\n'}
+[0.180090] (realsense_gazebo_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/share/realsense_gazebo_plugin/worlds\n'}
+[0.180230] (realsense_gazebo_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/share/realsense_gazebo_plugin/worlds/realsense.world\n'}
+[0.180373] (realsense_gazebo_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/share/realsense_gazebo_plugin/environment/library_path.sh\n'}
+[0.180508] (realsense_gazebo_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/share/realsense_gazebo_plugin/environment/library_path.dsv\n'}
+[0.180641] (realsense_gazebo_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/share/ament_index/resource_index/package_run_dependencies/realsense_gazebo_plugin\n'}
+[0.180791] (realsense_gazebo_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/share/ament_index/resource_index/parent_prefix_path/realsense_gazebo_plugin\n'}
+[0.180936] (realsense_gazebo_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/share/realsense_gazebo_plugin/environment/ament_prefix_path.sh\n'}
+[0.181072] (realsense_gazebo_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/share/realsense_gazebo_plugin/environment/ament_prefix_path.dsv\n'}
+[0.181222] (realsense_gazebo_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/share/realsense_gazebo_plugin/environment/path.sh\n'}
+[0.181654] (realsense_gazebo_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/share/realsense_gazebo_plugin/environment/path.dsv\n'}
+[0.181766] (realsense_gazebo_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/share/realsense_gazebo_plugin/local_setup.bash\n'}
+[0.181883] (realsense_gazebo_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/share/realsense_gazebo_plugin/local_setup.sh\n'}
+[0.182158] (realsense_gazebo_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/share/realsense_gazebo_plugin/local_setup.zsh\n'}
+[0.182351] (realsense_gazebo_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/share/realsense_gazebo_plugin/local_setup.dsv\n'}
+[0.182463] (realsense_gazebo_plugin) StdoutLine: {'line': b'-- Installing: /home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/share/realsense_gazebo_plugin/package.dsv\n'}
+[0.182570] (realsense_gazebo_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/share/ament_index/resource_index/packages/realsense_gazebo_plugin\n'}
+[0.182676] (realsense_gazebo_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/share/realsense_gazebo_plugin/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[0.182795] (realsense_gazebo_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/share/realsense_gazebo_plugin/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[0.182901] (realsense_gazebo_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/share/realsense_gazebo_plugin/cmake/realsense_gazebo_pluginConfig.cmake\n'}
+[0.183007] (realsense_gazebo_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/share/realsense_gazebo_plugin/cmake/realsense_gazebo_pluginConfig-version.cmake\n'}
+[0.183113] (realsense_gazebo_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/share/realsense_gazebo_plugin/package.xml\n'}
+[0.183460] (realsense_gazebo_plugin) CommandEnded: {'returncode': 0}
+[0.200077] (-) TimerEvent: {}
+[0.205412] (cw1_world_spawner) StdoutLine: {'line': b'[ 89%] Built target cw1_world_spawner__rosidl_generator_py\n'}
+[0.209174] (realsense_gazebo_plugin) JobEnded: {'identifier': 'realsense_gazebo_plugin', 'rc': 0}
+[0.210594] (rpl_panda_with_rs) JobStarted: {'identifier': 'rpl_panda_with_rs'}
+[0.223914] (rpl_panda_with_rs) JobProgress: {'identifier': 'rpl_panda_with_rs', 'progress': 'cmake'}
+[0.224710] (rpl_panda_with_rs) JobProgress: {'identifier': 'rpl_panda_with_rs', 'progress': 'build'}
+[0.225235] (rpl_panda_with_rs) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/charvi/comp0250_s26_labs/build/rpl_panda_with_rs', '--', '-j12', '-l12'], 'cwd': '/home/charvi/comp0250_s26_labs/build/rpl_panda_with_rs', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_GB:en'), ('USER', 'charvi'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/lib:/home/charvi/comp0250_s26_labs/install/cw1_team_x/lib:/home/charvi/comp0250_s26_labs/install/cw1_team_30/lib:/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/charvi'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('SYSTEMD_EXEC_PID', '75601'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('COLCON_PREFIX_PATH', '/home/charvi/comp0250_s26_labs/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'charvi'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'charvi'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', '/opt/ros/humble/share:'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/home/charvi/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/charvinggton:@/tmp/.ICE-unix/2101,unix/charvinggton:/tmp/.ICE-unix/2101'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/1c7b3968_b9f4_47f9_b703_50b5792a5b0f'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.240'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs:/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin:/home/charvi/comp0250_s26_labs/install/panda_moveit_config:/home/charvi/comp0250_s26_labs/install/panda_description:/home/charvi/comp0250_s26_labs/install/cw1_team_x:/home/charvi/comp0250_s26_labs/install/cw1_team_30:/home/charvi/comp0250_s26_labs/install/cw1_world_spawner:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/charvi/comp0250_s26_labs/build/rpl_panda_with_rs'), ('TURTLEBOT3_MODEL', 'waffle'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('GAZEBO_PLUGIN_PATH', '/opt/ros/humble/lib:'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/charvi/comp0250_s26_labs/install/cw1_team_x/local/lib/python3.10/dist-packages:/home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages:/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin:/home/charvi/comp0250_s26_labs/install/panda_moveit_config:/home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs:/home/charvi/comp0250_s26_labs/install/panda_description:/home/charvi/comp0250_s26_labs/install/cw1_team_x:/home/charvi/comp0250_s26_labs/install/cw1_team_30:/home/charvi/comp0250_s26_labs/install/cw1_world_spawner:/opt/ros/humble')]), 'shell': False}
+[0.236576] (cw1_world_spawner) StdoutLine: {'line': b'[ 92%] Built target cw1_world_spawner__rosidl_typesupport_fastrtps_c__pyext\n'}
+[0.237153] (cw1_world_spawner) StdoutLine: {'line': b'[ 96%] Built target cw1_world_spawner__rosidl_typesupport_c__pyext\n'}
+[0.241561] (cw1_world_spawner) StdoutLine: {'line': b'[100%] Built target cw1_world_spawner__rosidl_typesupport_introspection_c__pyext\n'}
+[0.274348] (rpl_panda_with_rs) CommandEnded: {'returncode': 0}
+[0.275044] (rpl_panda_with_rs) JobProgress: {'identifier': 'rpl_panda_with_rs', 'progress': 'install'}
+[0.275220] (rpl_panda_with_rs) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/charvi/comp0250_s26_labs/build/rpl_panda_with_rs'], 'cwd': '/home/charvi/comp0250_s26_labs/build/rpl_panda_with_rs', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_GB:en'), ('USER', 'charvi'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/lib:/home/charvi/comp0250_s26_labs/install/cw1_team_x/lib:/home/charvi/comp0250_s26_labs/install/cw1_team_30/lib:/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/charvi'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('SYSTEMD_EXEC_PID', '75601'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('COLCON_PREFIX_PATH', '/home/charvi/comp0250_s26_labs/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'charvi'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'charvi'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', '/opt/ros/humble/share:'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/home/charvi/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/charvinggton:@/tmp/.ICE-unix/2101,unix/charvinggton:/tmp/.ICE-unix/2101'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/1c7b3968_b9f4_47f9_b703_50b5792a5b0f'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.240'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs:/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin:/home/charvi/comp0250_s26_labs/install/panda_moveit_config:/home/charvi/comp0250_s26_labs/install/panda_description:/home/charvi/comp0250_s26_labs/install/cw1_team_x:/home/charvi/comp0250_s26_labs/install/cw1_team_30:/home/charvi/comp0250_s26_labs/install/cw1_world_spawner:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/charvi/comp0250_s26_labs/build/rpl_panda_with_rs'), ('TURTLEBOT3_MODEL', 'waffle'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('GAZEBO_PLUGIN_PATH', '/opt/ros/humble/lib:'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/charvi/comp0250_s26_labs/install/cw1_team_x/local/lib/python3.10/dist-packages:/home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages:/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin:/home/charvi/comp0250_s26_labs/install/panda_moveit_config:/home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs:/home/charvi/comp0250_s26_labs/install/panda_description:/home/charvi/comp0250_s26_labs/install/cw1_team_x:/home/charvi/comp0250_s26_labs/install/cw1_team_30:/home/charvi/comp0250_s26_labs/install/cw1_world_spawner:/opt/ros/humble')]), 'shell': False}
+[0.283111] (rpl_panda_with_rs) StdoutLine: {'line': b'-- Install configuration: "Release"\n'}
+[0.283364] (rpl_panda_with_rs) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/config\n'}
+[0.283582] (rpl_panda_with_rs) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/config/ros2_controllers_hybrid.yaml\n'}
+[0.283743] (rpl_panda_with_rs) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/config/ros2_controllers_effort.yaml\n'}
+[0.283860] (rpl_panda_with_rs) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/config/ros2_controllers.yaml\n'}
+[0.283970] (rpl_panda_with_rs) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/config/moveit_controllers.yaml\n'}
+[0.284172] (rpl_panda_with_rs) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/launch\n'}
+[0.284300] (rpl_panda_with_rs) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/launch/camera_proc.launch.py\n'}
+[0.284505] (rpl_panda_with_rs) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/launch/camera_proc.launch\n'}
+[0.284620] (rpl_panda_with_rs) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/launch/display_real.launch.py\n'}
+[0.284728] (rpl_panda_with_rs) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/launch/display.launch\n'}
+[0.284851] (rpl_panda_with_rs) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/launch/display.launch.py\n'}
+[0.284953] (rpl_panda_with_rs) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/launch/display_real.launch\n'}
+[0.285054] (rpl_panda_with_rs) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/rviz\n'}
+[0.285153] (rpl_panda_with_rs) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/rviz/real_rviz.rviz\n'}
+[0.285266] (rpl_panda_with_rs) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/rviz/urdf.rviz\n'}
+[0.285376] (rpl_panda_with_rs) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/srdf\n'}
+[0.285476] (rpl_panda_with_rs) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/srdf/panda_with_rs.srdf.xacro\n'}
+[0.285584] (rpl_panda_with_rs) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/urdf\n'}
+[0.285711] (rpl_panda_with_rs) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/urdf/panda_with_rs.urdf\n'}
+[0.285899] (rpl_panda_with_rs) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/urdf/panda_with_rs_PYBULLET.urdf\n'}
+[0.286003] (rpl_panda_with_rs) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/urdf/panda_with_rs.xacro\n'}
+[0.286281] (rpl_panda_with_rs) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/lib/rpl_panda_with_rs/init_panda_pose.py\n'}
+[0.286587] (rpl_panda_with_rs) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/ament_index/resource_index/package_run_dependencies/rpl_panda_with_rs\n'}
+[0.287334] (rpl_panda_with_rs) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/ament_index/resource_index/parent_prefix_path/rpl_panda_with_rs\n'}
+[0.287499] (rpl_panda_with_rs) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/environment/ament_prefix_path.sh\n'}
+[0.287731] (rpl_panda_with_rs) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/environment/ament_prefix_path.dsv\n'}
+[0.287939] (rpl_panda_with_rs) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/environment/path.sh\n'}
+[0.288053] (rpl_panda_with_rs) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/environment/path.dsv\n'}
+[0.288262] (rpl_panda_with_rs) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/local_setup.bash\n'}
+[0.288403] (rpl_panda_with_rs) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/local_setup.sh\n'}
+[0.288562] (rpl_panda_with_rs) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/local_setup.zsh\n'}
+[0.288713] (rpl_panda_with_rs) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/local_setup.dsv\n'}
+[0.289297] (rpl_panda_with_rs) StdoutLine: {'line': b'-- Installing: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/package.dsv\n'}
+[0.289655] (rpl_panda_with_rs) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/ament_index/resource_index/packages/rpl_panda_with_rs\n'}
+[0.289894] (rpl_panda_with_rs) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/cmake/rpl_panda_with_rsConfig.cmake\n'}
+[0.290023] (rpl_panda_with_rs) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/cmake/rpl_panda_with_rsConfig-version.cmake\n'}
+[0.290222] (rpl_panda_with_rs) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs/share/rpl_panda_with_rs/package.xml\n'}
+[0.290338] (rpl_panda_with_rs) CommandEnded: {'returncode': 0}
+[0.299246] (rpl_panda_with_rs) JobEnded: {'identifier': 'rpl_panda_with_rs', 'rc': 0}
+[0.300166] (-) TimerEvent: {}
+[0.391758] (cw1_world_spawner) StdoutLine: {'line': b'running egg_info\n'}
+[0.400276] (-) TimerEvent: {}
+[0.409672] (cw1_world_spawner) StdoutLine: {'line': b'running egg_info\n'}
+[0.413094] (cw1_world_spawner) StdoutLine: {'line': b'writing cw1_world_spawner.egg-info/PKG-INFO\n'}
+[0.413574] (cw1_world_spawner) StdoutLine: {'line': b'writing dependency_links to cw1_world_spawner.egg-info/dependency_links.txt\n'}
+[0.414029] (cw1_world_spawner) StdoutLine: {'line': b'writing top-level names to cw1_world_spawner.egg-info/top_level.txt\n'}
+[0.435423] (cw1_world_spawner) StdoutLine: {'line': b'writing coursework_world_spawner_lib.egg-info/PKG-INFO\n'}
+[0.435924] (cw1_world_spawner) StdoutLine: {'line': b'writing dependency_links to coursework_world_spawner_lib.egg-info/dependency_links.txt\n'}
+[0.436369] (cw1_world_spawner) StdoutLine: {'line': b'writing top-level names to coursework_world_spawner_lib.egg-info/top_level.txt\n'}
+[0.485193] (cw1_world_spawner) StdoutLine: {'line': b"reading manifest file 'cw1_world_spawner.egg-info/SOURCES.txt'\n"}
+[0.486214] (cw1_world_spawner) StdoutLine: {'line': b"writing manifest file 'cw1_world_spawner.egg-info/SOURCES.txt'\n"}
+[0.500320] (-) TimerEvent: {}
+[0.509780] (cw1_world_spawner) StdoutLine: {'line': b'[100%] Built target ament_cmake_python_build_cw1_world_spawner_egg\n'}
+[0.511655] (cw1_world_spawner) StdoutLine: {'line': b"reading manifest file 'coursework_world_spawner_lib.egg-info/SOURCES.txt'\n"}
+[0.512849] (cw1_world_spawner) StdoutLine: {'line': b"writing manifest file 'coursework_world_spawner_lib.egg-info/SOURCES.txt'\n"}
+[0.537669] (cw1_world_spawner) StdoutLine: {'line': b'[100%] Built target ament_cmake_python_build_coursework_world_spawner_lib_egg\n'}
+[0.548214] (cw1_world_spawner) CommandEnded: {'returncode': 0}
+[0.548798] (cw1_world_spawner) JobProgress: {'identifier': 'cw1_world_spawner', 'progress': 'install'}
+[0.549137] (cw1_world_spawner) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/charvi/comp0250_s26_labs/build/cw1_world_spawner'], 'cwd': '/home/charvi/comp0250_s26_labs/build/cw1_world_spawner', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_GB:en'), ('USER', 'charvi'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/lib:/home/charvi/comp0250_s26_labs/install/cw1_team_x/lib:/home/charvi/comp0250_s26_labs/install/cw1_team_30/lib:/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/charvi'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('SYSTEMD_EXEC_PID', '75601'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('COLCON_PREFIX_PATH', '/home/charvi/comp0250_s26_labs/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'charvi'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'charvi'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', '/opt/ros/humble/share:'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/home/charvi/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/charvinggton:@/tmp/.ICE-unix/2101,unix/charvinggton:/tmp/.ICE-unix/2101'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/1c7b3968_b9f4_47f9_b703_50b5792a5b0f'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.240'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs:/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin:/home/charvi/comp0250_s26_labs/install/panda_moveit_config:/home/charvi/comp0250_s26_labs/install/panda_description:/home/charvi/comp0250_s26_labs/install/cw1_team_x:/home/charvi/comp0250_s26_labs/install/cw1_team_30:/home/charvi/comp0250_s26_labs/install/cw1_world_spawner:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/charvi/comp0250_s26_labs/build/cw1_world_spawner'), ('TURTLEBOT3_MODEL', 'waffle'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('GAZEBO_PLUGIN_PATH', '/opt/ros/humble/lib:'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/charvi/comp0250_s26_labs/install/cw1_team_x/local/lib/python3.10/dist-packages:/home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages:/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs:/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin:/home/charvi/comp0250_s26_labs/install/panda_moveit_config:/home/charvi/comp0250_s26_labs/install/panda_description:/home/charvi/comp0250_s26_labs/install/cw1_team_x:/home/charvi/comp0250_s26_labs/install/cw1_team_30:/home/charvi/comp0250_s26_labs/install/cw1_world_spawner:/opt/ros/humble')]), 'shell': False}
+[0.557093] (cw1_world_spawner) StdoutLine: {'line': b'-- Install configuration: "Release"\n'}
+[0.557281] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/ament_index/resource_index/rosidl_interfaces/cw1_world_spawner\n'}
+[0.557471] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner\n'}
+[0.557565] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv\n'}
+[0.557676] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/task1_service.h\n'}
+[0.557754] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail\n'}
+[0.557828] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task3_service__struct.h\n'}
+[0.557902] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task1_service__functions.h\n'}
+[0.557956] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task2_service__functions.c\n'}
+[0.558010] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task1_service__struct.h\n'}
+[0.558084] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task1_service__functions.c\n'}
+[0.558138] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task2_service__struct.h\n'}
+[0.558191] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task3_service__functions.c\n'}
+[0.558270] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task_setup__type_support.h\n'}
+[0.558349] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task_setup__functions.c\n'}
+[0.558410] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task_setup__functions.h\n'}
+[0.558515] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task2_service__type_support.h\n'}
+[0.558581] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task_setup__struct.h\n'}
+[0.558635] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task3_service__functions.h\n'}
+[0.558690] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task2_service__functions.h\n'}
+[0.558762] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task3_service__type_support.h\n'}
+[0.558816] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task1_service__type_support.h\n'}
+[0.558870] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/task_setup.h\n'}
+[0.558940] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/task3_service.h\n'}
+[0.559019] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/task2_service.h\n'}
+[0.559078] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/msg\n'}
+[0.559196] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/msg/rosidl_generator_c__visibility_control.h\n'}
+[0.559283] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/environment/library_path.sh\n'}
+[0.559339] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/environment/library_path.dsv\n'}
+[0.559393] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib/libcw1_world_spawner__rosidl_generator_c.so\n'}
+[0.559451] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner\n'}
+[0.559509] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv\n'}
+[0.559580] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail\n'}
+[0.559634] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task3_service__rosidl_typesupport_fastrtps_c.h\n'}
+[0.559688] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task_setup__rosidl_typesupport_fastrtps_c.h\n'}
+[0.559744] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task2_service__rosidl_typesupport_fastrtps_c.h\n'}
+[0.559818] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task1_service__rosidl_typesupport_fastrtps_c.h\n'}
+[0.559874] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/msg\n'}
+[0.559928] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[0.560004] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib/libcw1_world_spawner__rosidl_typesupport_fastrtps_c.so\n'}
+[0.560086] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner\n'}
+[0.560146] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv\n'}
+[0.560206] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail\n'}
+[0.560330] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task2_service__type_support.c\n'}
+[0.560428] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task_setup__rosidl_typesupport_introspection_c.h\n'}
+[0.560532] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task1_service__type_support.c\n'}
+[0.560619] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task3_service__type_support.c\n'}
+[0.560731] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task1_service__rosidl_typesupport_introspection_c.h\n'}
+[0.560817] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task2_service__rosidl_typesupport_introspection_c.h\n'}
+[0.560891] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task3_service__rosidl_typesupport_introspection_c.h\n'}
+[0.560945] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task_setup__type_support.c\n'}
+[0.560998] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/msg\n'}
+[0.561070] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[0.561124] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib/libcw1_world_spawner__rosidl_typesupport_introspection_c.so\n'}
+[0.561177] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib/libcw1_world_spawner__rosidl_typesupport_c.so\n'}
+[0.561250] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner\n'}
+[0.561329] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv\n'}
+[0.561389] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/task2_service.hpp\n'}
+[0.561448] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/task3_service.hpp\n'}
+[0.561508] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail\n'}
+[0.561596] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task_setup__traits.hpp\n'}
+[0.561649] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task1_service__traits.hpp\n'}
+[0.561702] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task1_service__builder.hpp\n'}
+[0.561774] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task2_service__traits.hpp\n'}
+[0.561829] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task3_service__type_support.hpp\n'}
+[0.561882] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task3_service__traits.hpp\n'}
+[0.561940] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task2_service__builder.hpp\n'}
+[0.561993] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task2_service__type_support.hpp\n'}
+[0.562046] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task1_service__type_support.hpp\n'}
+[0.562105] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task3_service__struct.hpp\n'}
+[0.562162] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task_setup__type_support.hpp\n'}
+[0.562244] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task2_service__struct.hpp\n'}
+[0.562321] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task_setup__struct.hpp\n'}
+[0.562388] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task_setup__builder.hpp\n'}
+[0.562448] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task3_service__builder.hpp\n'}
+[0.562506] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task1_service__struct.hpp\n'}
+[0.562592] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/task1_service.hpp\n'}
+[0.562691] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/task_setup.hpp\n'}
+[0.562747] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/msg\n'}
+[0.562818] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/msg/rosidl_generator_cpp__visibility_control.hpp\n'}
+[0.562873] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner\n'}
+[0.562942] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv\n'}
+[0.563041] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail\n'}
+[0.563195] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task2_service__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[0.563368] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task3_service__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[0.563553] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task_setup__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[0.563632] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task1_service__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[0.563692] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/dds_fastrtps\n'}
+[0.563754] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/msg\n'}
+[0.563809] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[0.563862] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib/libcw1_world_spawner__rosidl_typesupport_fastrtps_cpp.so\n'}
+[0.563921] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner\n'}
+[0.563992] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv\n'}
+[0.564048] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail\n'}
+[0.564140] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task2_service__type_support.cpp\n'}
+[0.564242] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task3_service__type_support.cpp\n'}
+[0.564310] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task1_service__rosidl_typesupport_introspection_cpp.hpp\n'}
+[0.564367] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task1_service__type_support.cpp\n'}
+[0.564421] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task_setup__type_support.cpp\n'}
+[0.564475] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task2_service__rosidl_typesupport_introspection_cpp.hpp\n'}
+[0.564540] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task_setup__rosidl_typesupport_introspection_cpp.hpp\n'}
+[0.564594] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task3_service__rosidl_typesupport_introspection_cpp.hpp\n'}
+[0.564647] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib/libcw1_world_spawner__rosidl_typesupport_introspection_cpp.so\n'}
+[0.564700] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib/libcw1_world_spawner__rosidl_typesupport_cpp.so\n'}
+[0.564753] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/environment/pythonpath.sh\n'}
+[0.564806] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/environment/pythonpath.dsv\n'}
+[0.564868] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner-0.1.0-py3.10.egg-info\n'}
+[0.564934] (cw1_world_spawner) StdoutLine: {'line': b'-- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner-0.1.0-py3.10.egg-info/SOURCES.txt\n'}
+[0.564989] (cw1_world_spawner) StdoutLine: {'line': b'-- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner-0.1.0-py3.10.egg-info/PKG-INFO\n'}
+[0.565064] (cw1_world_spawner) StdoutLine: {'line': b'-- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner-0.1.0-py3.10.egg-info/top_level.txt\n'}
+[0.565127] (cw1_world_spawner) StdoutLine: {'line': b'-- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner-0.1.0-py3.10.egg-info/dependency_links.txt\n'}
+[0.565182] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner\n'}
+[0.565271] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/_cw1_world_spawner_s.ep.rosidl_typesupport_c.c\n'}
+[0.565342] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/_cw1_world_spawner_s.ep.rosidl_typesupport_fastrtps_c.c\n'}
+[0.565406] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/srv\n'}
+[0.565461] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/srv/_task2_service_s.c\n'}
+[0.565516] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/srv/_task3_service_s.c\n'}
+[0.565574] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/srv/_task_setup.py\n'}
+[0.565643] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/srv/_task1_service_s.c\n'}
+[0.565718] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/srv/_task1_service.py\n'}
+[0.565787] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/srv/__init__.py\n'}
+[0.565851] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/srv/_task3_service.py\n'}
+[0.565917] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/srv/_task2_service.py\n'}
+[0.566000] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/srv/_task_setup_s.c\n'}
+[0.566065] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/cw1_world_spawner_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so\n'}
+[0.566134] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/__init__.py\n'}
+[0.566190] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/_cw1_world_spawner_s.ep.rosidl_typesupport_introspection_c.c\n'}
+[0.566270] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/libcw1_world_spawner__rosidl_generator_py.so\n'}
+[0.566337] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/cw1_world_spawner_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so\n'}
+[0.566392] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/cw1_world_spawner_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so\n'}
+[0.600417] (-) TimerEvent: {}
+[0.601145] (cw1_world_spawner) StdoutLine: {'line': b"Listing '/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner'...\n"}
+[0.601342] (cw1_world_spawner) StdoutLine: {'line': b"Listing '/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/srv'...\n"}
+[0.607666] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/cw1_world_spawner_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so\n'}
+[0.608132] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/cw1_world_spawner_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so\n'}
+[0.608712] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/cw1_world_spawner_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so\n'}
+[0.609277] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib/libcw1_world_spawner__rosidl_generator_py.so\n'}
+[0.609670] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/srv/TaskSetup.idl\n'}
+[0.609996] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/srv/Task1Service.idl\n'}
+[0.610273] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/srv/Task2Service.idl\n'}
+[0.610542] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/srv/Task3Service.idl\n'}
+[0.610786] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/srv/TaskSetup.srv\n'}
+[0.610987] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/srv/TaskSetup_Request.msg\n'}
+[0.611178] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/srv/TaskSetup_Response.msg\n'}
+[0.611386] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/srv/Task1Service.srv\n'}
+[0.611553] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/srv/Task1Service_Request.msg\n'}
+[0.611758] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/srv/Task1Service_Response.msg\n'}
+[0.611953] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/srv/Task2Service.srv\n'}
+[0.612111] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/srv/Task2Service_Request.msg\n'}
+[0.612284] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/srv/Task2Service_Response.msg\n'}
+[0.612454] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/srv/Task3Service.srv\n'}
+[0.612620] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/srv/Task3Service_Request.msg\n'}
+[0.612780] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/srv/Task3Service_Response.msg\n'}
+[0.612936] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/coursework_world_spawner_lib-0.1.0-py3.10.egg-info\n'}
+[0.613116] (cw1_world_spawner) StdoutLine: {'line': b'-- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/coursework_world_spawner_lib-0.1.0-py3.10.egg-info/SOURCES.txt\n'}
+[0.613284] (cw1_world_spawner) StdoutLine: {'line': b'-- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/coursework_world_spawner_lib-0.1.0-py3.10.egg-info/PKG-INFO\n'}
+[0.613395] (cw1_world_spawner) StdoutLine: {'line': b'-- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/coursework_world_spawner_lib-0.1.0-py3.10.egg-info/top_level.txt\n'}
+[0.613511] (cw1_world_spawner) StdoutLine: {'line': b'-- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/coursework_world_spawner_lib-0.1.0-py3.10.egg-info/dependency_links.txt\n'}
+[0.613607] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/coursework_world_spawner_lib\n'}
+[0.613701] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/coursework_world_spawner_lib/__init__.py\n'}
+[0.613794] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/coursework_world_spawner_lib/coursework_world_spawner.py\n'}
+[0.700573] (-) TimerEvent: {}
+[0.715694] (cw1_world_spawner) StdoutLine: {'line': b"Listing '/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/coursework_world_spawner_lib'...\n"}
+[0.733497] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib/cw1_world_spawner/world_spawner.py\n'}
+[0.734261] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib/cw1_world_spawner/test_coursework.py\n'}
+[0.735110] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models\n'}
+[0.735683] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/basket_blue\n'}
+[0.736062] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/basket_blue/model.sdf\n'}
+[0.736589] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/basket_blue/model.sdf.xmacro\n'}
+[0.737121] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/basket_blue/model.config\n'}
+[0.737827] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/basket_purple\n'}
+[0.738264] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/basket_purple/model.sdf\n'}
+[0.739115] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/basket_purple/model.sdf.xmacro\n'}
+[0.739698] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/basket_purple/model.config\n'}
+[0.740409] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/basket\n'}
+[0.741164] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/basket/model.sdf\n'}
+[0.741606] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/basket/model.sdf.xmacro\n'}
+[0.741872] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/basket/model.config\n'}
+[0.742176] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/box\n'}
+[0.742571] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/box/model.sdf\n'}
+[0.742808] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/box/model.config\n'}
+[0.743124] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/all_tiles\n'}
+[0.743414] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/all_tiles/model.sdf\n'}
+[0.743760] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/all_tiles/model.sdf.xmacro\n'}
+[0.744263] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/all_tiles/model.config\n'}
+[0.744708] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/basket_red\n'}
+[0.745015] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/basket_red/model.sdf\n'}
+[0.745343] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/basket_red/model.sdf.xmacro\n'}
+[0.745585] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/basket_red/model.config\n'}
+[0.745930] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/box_purple\n'}
+[0.746638] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/box_purple/model.sdf\n'}
+[0.747029] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/box_purple/model.config\n'}
+[0.747469] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/box_blue\n'}
+[0.748126] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/box_blue/model.sdf\n'}
+[0.748624] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/box_blue/model.config\n'}
+[0.748864] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/box_red\n'}
+[0.749181] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/box_red/model.sdf\n'}
+[0.749613] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/box_red/model.config\n'}
+[0.749845] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/object-golf-tile\n'}
+[0.750142] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/object-golf-tile/model.sdf\n'}
+[0.750577] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/object-golf-tile/model.config\n'}
+[0.750991] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/launch\n'}
+[0.751329] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/launch/world_spawner.launch.py\n'}
+[0.751701] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/launch/test_coursework.launch.py\n'}
+[0.751945] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/ament_index/resource_index/package_run_dependencies/cw1_world_spawner\n'}
+[0.752188] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/ament_index/resource_index/parent_prefix_path/cw1_world_spawner\n'}
+[0.752712] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/environment/ament_prefix_path.sh\n'}
+[0.753294] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/environment/ament_prefix_path.dsv\n'}
+[0.753782] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/environment/path.sh\n'}
+[0.754133] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/environment/path.dsv\n'}
+[0.754527] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/local_setup.bash\n'}
+[0.754882] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/local_setup.sh\n'}
+[0.755247] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/local_setup.zsh\n'}
+[0.755554] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/local_setup.dsv\n'}
+[0.755845] (cw1_world_spawner) StdoutLine: {'line': b'-- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/package.dsv\n'}
+[0.756111] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/ament_index/resource_index/packages/cw1_world_spawner\n'}
+[0.756628] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/export_cw1_world_spawner__rosidl_generator_cExport.cmake\n'}
+[0.757082] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/export_cw1_world_spawner__rosidl_generator_cExport-release.cmake\n'}
+[0.757370] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/export_cw1_world_spawner__rosidl_typesupport_fastrtps_cExport.cmake\n'}
+[0.757603] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/export_cw1_world_spawner__rosidl_typesupport_fastrtps_cExport-release.cmake\n'}
+[0.757810] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/cw1_world_spawner__rosidl_typesupport_introspection_cExport.cmake\n'}
+[0.758061] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/cw1_world_spawner__rosidl_typesupport_introspection_cExport-release.cmake\n'}
+[0.758299] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/cw1_world_spawner__rosidl_typesupport_cExport.cmake\n'}
+[0.758682] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/cw1_world_spawner__rosidl_typesupport_cExport-release.cmake\n'}
+[0.759105] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/export_cw1_world_spawner__rosidl_generator_cppExport.cmake\n'}
+[0.759867] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/export_cw1_world_spawner__rosidl_typesupport_fastrtps_cppExport.cmake\n'}
+[0.760276] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/export_cw1_world_spawner__rosidl_typesupport_fastrtps_cppExport-release.cmake\n'}
+[0.760717] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/cw1_world_spawner__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[0.761514] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/cw1_world_spawner__rosidl_typesupport_introspection_cppExport-release.cmake\n'}
+[0.763209] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/cw1_world_spawner__rosidl_typesupport_cppExport.cmake\n'}
+[0.765551] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/cw1_world_spawner__rosidl_typesupport_cppExport-release.cmake\n'}
+[0.766152] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/export_cw1_world_spawner__rosidl_generator_pyExport.cmake\n'}
+[0.766695] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/export_cw1_world_spawner__rosidl_generator_pyExport-release.cmake\n'}
+[0.766981] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/rosidl_cmake-extras.cmake\n'}
+[0.767363] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[0.768408] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[0.768838] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[0.769128] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[0.769683] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[0.770083] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[0.770635] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/cw1_world_spawnerConfig.cmake\n'}
+[0.771517] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/cw1_world_spawnerConfig-version.cmake\n'}
+[0.772002] (cw1_world_spawner) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/package.xml\n'}
+[0.772492] (cw1_world_spawner) CommandEnded: {'returncode': 0}
+[0.802312] (-) TimerEvent: {}
+[0.830257] (cw1_world_spawner) JobEnded: {'identifier': 'cw1_world_spawner', 'rc': 0}
+[0.834021] (cw1_team_30) JobStarted: {'identifier': 'cw1_team_30'}
+[0.863677] (cw1_team_30) JobProgress: {'identifier': 'cw1_team_30', 'progress': 'cmake'}
+[0.868750] (cw1_team_30) JobProgress: {'identifier': 'cw1_team_30', 'progress': 'build'}
+[0.870930] (cw1_team_30) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/charvi/comp0250_s26_labs/build/cw1_team_30', '--', '-j12', '-l12'], 'cwd': '/home/charvi/comp0250_s26_labs/build/cw1_team_30', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_GB:en'), ('USER', 'charvi'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib:/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/lib:/home/charvi/comp0250_s26_labs/install/cw1_team_x/lib:/home/charvi/comp0250_s26_labs/install/cw1_team_30/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/charvi'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('SYSTEMD_EXEC_PID', '75601'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('COLCON_PREFIX_PATH', '/home/charvi/comp0250_s26_labs/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'charvi'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'charvi'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', '/opt/ros/humble/share:'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/home/charvi/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/charvinggton:@/tmp/.ICE-unix/2101,unix/charvinggton:/tmp/.ICE-unix/2101'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/1c7b3968_b9f4_47f9_b703_50b5792a5b0f'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.240'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs:/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin:/home/charvi/comp0250_s26_labs/install/panda_moveit_config:/home/charvi/comp0250_s26_labs/install/panda_description:/home/charvi/comp0250_s26_labs/install/cw1_team_x:/home/charvi/comp0250_s26_labs/install/cw1_team_30:/home/charvi/comp0250_s26_labs/install/cw1_world_spawner:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/charvi/comp0250_s26_labs/build/cw1_team_30'), ('TURTLEBOT3_MODEL', 'waffle'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('GAZEBO_PLUGIN_PATH', '/opt/ros/humble/lib:'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/charvi/comp0250_s26_labs/install/cw1_team_x/local/lib/python3.10/dist-packages:/home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages:/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/charvi/comp0250_s26_labs/install/cw1_world_spawner:/home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs:/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin:/home/charvi/comp0250_s26_labs/install/panda_moveit_config:/home/charvi/comp0250_s26_labs/install/panda_description:/home/charvi/comp0250_s26_labs/install/cw1_team_x:/home/charvi/comp0250_s26_labs/install/cw1_team_30:/opt/ros/humble')]), 'shell': False}
+[0.902462] (-) TimerEvent: {}
+[1.003055] (-) TimerEvent: {}
+[1.103662] (-) TimerEvent: {}
+[1.124335] (cw1_team_30) StdoutLine: {'line': b'[  2%] Built target cw1_team_30__cpp\n'}
+[1.136426] (cw1_team_30) StdoutLine: {'line': b'[ 11%] Built target cw1_team_30__rosidl_generator_c\n'}
+[1.166655] (cw1_team_30) StdoutLine: {'line': b'[ 11%] Built target ament_cmake_python_copy_cw1_team_30\n'}
+[1.203865] (-) TimerEvent: {}
+[1.228308] (cw1_team_30) StdoutLine: {'line': b'[ 20%] Built target cw1_team_30__rosidl_typesupport_introspection_cpp\n'}
+[1.234056] (cw1_team_30) StdoutLine: {'line': b'[ 28%] Built target cw1_team_30__rosidl_typesupport_cpp\n'}
+[1.240444] (cw1_team_30) StdoutLine: {'line': b'[ 37%] Built target cw1_team_30__rosidl_typesupport_fastrtps_c\n'}
+[1.242183] (cw1_team_30) StdoutLine: {'line': b'[ 45%] Built target cw1_team_30__rosidl_typesupport_introspection_c\n'}
+[1.243132] (cw1_team_30) StdoutLine: {'line': b'[ 54%] Built target cw1_team_30__rosidl_typesupport_c\n'}
+[1.250979] (cw1_team_30) StdoutLine: {'line': b'[ 62%] Built target cw1_team_30__rosidl_typesupport_fastrtps_cpp\n'}
+[1.304026] (-) TimerEvent: {}
+[1.319706] (cw1_team_30) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target cw1_team_30_cw1_class_lib\x1b[0m\n'}
+[1.322276] (cw1_team_30) StdoutLine: {'line': b'[ 62%] Built target cw1_team_30\n'}
+[1.370302] (cw1_team_30) StdoutLine: {'line': b'[ 65%] Built target cw1_team_30__py\n'}
+[1.390127] (cw1_team_30) StdoutLine: {'line': b'[ 68%] \x1b[32mBuilding CXX object CMakeFiles/cw1_team_30_cw1_class_lib.dir/src/cw1_class.cpp.o\x1b[0m\n'}
+[1.400512] (cw1_team_30) StdoutLine: {'line': b'[ 74%] Built target cw1_team_30__rosidl_generator_py\n'}
+[1.404100] (-) TimerEvent: {}
+[1.425450] (cw1_team_30) StdoutLine: {'line': b'[ 80%] Built target cw1_team_30__rosidl_typesupport_introspection_c__pyext\n'}
+[1.425692] (cw1_team_30) StdoutLine: {'line': b'[ 85%] Built target cw1_team_30__rosidl_typesupport_c__pyext\n'}
+[1.430470] (cw1_team_30) StdoutLine: {'line': b'[ 91%] Built target cw1_team_30__rosidl_typesupport_fastrtps_c__pyext\n'}
+[1.504216] (-) TimerEvent: {}
+[1.575032] (cw1_team_30) StdoutLine: {'line': b'running egg_info\n'}
+[1.595701] (cw1_team_30) StdoutLine: {'line': b'writing cw1_team_30.egg-info/PKG-INFO\n'}
+[1.596003] (cw1_team_30) StdoutLine: {'line': b'writing dependency_links to cw1_team_30.egg-info/dependency_links.txt\n'}
+[1.596193] (cw1_team_30) StdoutLine: {'line': b'writing top-level names to cw1_team_30.egg-info/top_level.txt\n'}
+[1.604292] (-) TimerEvent: {}
+[1.657137] (cw1_team_30) StdoutLine: {'line': b"reading manifest file 'cw1_team_30.egg-info/SOURCES.txt'\n"}
+[1.658122] (cw1_team_30) StdoutLine: {'line': b"writing manifest file 'cw1_team_30.egg-info/SOURCES.txt'\n"}
+[1.683493] (cw1_team_30) StdoutLine: {'line': b'[ 91%] Built target ament_cmake_python_build_cw1_team_30_egg\n'}
+[1.704365] (-) TimerEvent: {}
+[1.804591] (-) TimerEvent: {}
+[1.904873] (-) TimerEvent: {}
+[2.005132] (-) TimerEvent: {}
+[2.105403] (-) TimerEvent: {}
+[2.205659] (-) TimerEvent: {}
+[2.305907] (-) TimerEvent: {}
+[2.406123] (-) TimerEvent: {}
+[2.506389] (-) TimerEvent: {}
+[2.606607] (-) TimerEvent: {}
+[2.706866] (-) TimerEvent: {}
+[2.807133] (-) TimerEvent: {}
+[2.907416] (-) TimerEvent: {}
+[3.007673] (-) TimerEvent: {}
+[3.107923] (-) TimerEvent: {}
+[3.208170] (-) TimerEvent: {}
+[3.308422] (-) TimerEvent: {}
+[3.408673] (-) TimerEvent: {}
+[3.508919] (-) TimerEvent: {}
+[3.609174] (-) TimerEvent: {}
+[3.709403] (-) TimerEvent: {}
+[3.809655] (-) TimerEvent: {}
+[3.909905] (-) TimerEvent: {}
+[4.010160] (-) TimerEvent: {}
+[4.110393] (-) TimerEvent: {}
+[4.210642] (-) TimerEvent: {}
+[4.310897] (-) TimerEvent: {}
+[4.411157] (-) TimerEvent: {}
+[4.511397] (-) TimerEvent: {}
+[4.611647] (-) TimerEvent: {}
+[4.711908] (-) TimerEvent: {}
+[4.812164] (-) TimerEvent: {}
+[4.912477] (-) TimerEvent: {}
+[5.012708] (-) TimerEvent: {}
+[5.113037] (-) TimerEvent: {}
+[5.213438] (-) TimerEvent: {}
+[5.313707] (-) TimerEvent: {}
+[5.414071] (-) TimerEvent: {}
+[5.514599] (-) TimerEvent: {}
+[5.615014] (-) TimerEvent: {}
+[5.715357] (-) TimerEvent: {}
+[5.815771] (-) TimerEvent: {}
+[5.916068] (-) TimerEvent: {}
+[6.016306] (-) TimerEvent: {}
+[6.116576] (-) TimerEvent: {}
+[6.216848] (-) TimerEvent: {}
+[6.317121] (-) TimerEvent: {}
+[6.417419] (-) TimerEvent: {}
+[6.517696] (-) TimerEvent: {}
+[6.617971] (-) TimerEvent: {}
+[6.718255] (-) TimerEvent: {}
+[6.818520] (-) TimerEvent: {}
+[6.918794] (-) TimerEvent: {}
+[7.019090] (-) TimerEvent: {}
+[7.119304] (-) TimerEvent: {}
+[7.219581] (-) TimerEvent: {}
+[7.319858] (-) TimerEvent: {}
+[7.420140] (-) TimerEvent: {}
+[7.520460] (-) TimerEvent: {}
+[7.620733] (-) TimerEvent: {}
+[7.721008] (-) TimerEvent: {}
+[7.821282] (-) TimerEvent: {}
+[7.921556] (-) TimerEvent: {}
+[8.021837] (-) TimerEvent: {}
+[8.122148] (-) TimerEvent: {}
+[8.222533] (-) TimerEvent: {}
+[8.322827] (-) TimerEvent: {}
+[8.423122] (-) TimerEvent: {}
+[8.523470] (-) TimerEvent: {}
+[8.623767] (-) TimerEvent: {}
+[8.724043] (-) TimerEvent: {}
+[8.824310] (-) TimerEvent: {}
+[8.924584] (-) TimerEvent: {}
+[9.024860] (-) TimerEvent: {}
+[9.125137] (-) TimerEvent: {}
+[9.225443] (-) TimerEvent: {}
+[9.325721] (-) TimerEvent: {}
+[9.425998] (-) TimerEvent: {}
+[9.526271] (-) TimerEvent: {}
+[9.626547] (-) TimerEvent: {}
+[9.726823] (-) TimerEvent: {}
+[9.827105] (-) TimerEvent: {}
+[9.927384] (-) TimerEvent: {}
+[10.027662] (-) TimerEvent: {}
+[10.127946] (-) TimerEvent: {}
+[10.228231] (-) TimerEvent: {}
+[10.328473] (-) TimerEvent: {}
+[10.428749] (-) TimerEvent: {}
+[10.529063] (-) TimerEvent: {}
+[10.629345] (-) TimerEvent: {}
+[10.729611] (-) TimerEvent: {}
+[10.829888] (-) TimerEvent: {}
+[10.930204] (-) TimerEvent: {}
+[11.030495] (-) TimerEvent: {}
+[11.130772] (-) TimerEvent: {}
+[11.231052] (-) TimerEvent: {}
+[11.331395] (-) TimerEvent: {}
+[11.431669] (-) TimerEvent: {}
+[11.531955] (-) TimerEvent: {}
+[11.632250] (-) TimerEvent: {}
+[11.732529] (-) TimerEvent: {}
+[11.832804] (-) TimerEvent: {}
+[11.933083] (-) TimerEvent: {}
+[12.033367] (-) TimerEvent: {}
+[12.133684] (-) TimerEvent: {}
+[12.233974] (-) TimerEvent: {}
+[12.334266] (-) TimerEvent: {}
+[12.434546] (-) TimerEvent: {}
+[12.534850] (-) TimerEvent: {}
+[12.635127] (-) TimerEvent: {}
+[12.735467] (-) TimerEvent: {}
+[12.835744] (-) TimerEvent: {}
+[12.936031] (-) TimerEvent: {}
+[13.036307] (-) TimerEvent: {}
+[13.136578] (-) TimerEvent: {}
+[13.236832] (-) TimerEvent: {}
+[13.337084] (-) TimerEvent: {}
+[13.437388] (-) TimerEvent: {}
+[13.537662] (-) TimerEvent: {}
+[13.637945] (-) TimerEvent: {}
+[13.738320] (-) TimerEvent: {}
+[13.838674] (-) TimerEvent: {}
+[13.938974] (-) TimerEvent: {}
+[14.039341] (-) TimerEvent: {}
+[14.139616] (-) TimerEvent: {}
+[14.239909] (-) TimerEvent: {}
+[14.340184] (-) TimerEvent: {}
+[14.440524] (-) TimerEvent: {}
+[14.540819] (-) TimerEvent: {}
+[14.641110] (-) TimerEvent: {}
+[14.741372] (-) TimerEvent: {}
+[14.841638] (-) TimerEvent: {}
+[14.941911] (-) TimerEvent: {}
+[15.042184] (-) TimerEvent: {}
+[15.142468] (-) TimerEvent: {}
+[15.242738] (-) TimerEvent: {}
+[15.343007] (-) TimerEvent: {}
+[15.443284] (-) TimerEvent: {}
+[15.543544] (-) TimerEvent: {}
+[15.643803] (-) TimerEvent: {}
+[15.744080] (-) TimerEvent: {}
+[15.844350] (-) TimerEvent: {}
+[15.944605] (-) TimerEvent: {}
+[16.044860] (-) TimerEvent: {}
+[16.145113] (-) TimerEvent: {}
+[16.245314] (-) TimerEvent: {}
+[16.345565] (-) TimerEvent: {}
+[16.445819] (-) TimerEvent: {}
+[16.546083] (-) TimerEvent: {}
+[16.646316] (-) TimerEvent: {}
+[16.746597] (-) TimerEvent: {}
+[16.846887] (-) TimerEvent: {}
+[16.947146] (-) TimerEvent: {}
+[17.047465] (-) TimerEvent: {}
+[17.147764] (-) TimerEvent: {}
+[17.248050] (-) TimerEvent: {}
+[17.348315] (-) TimerEvent: {}
+[17.448569] (-) TimerEvent: {}
+[17.548818] (-) TimerEvent: {}
+[17.649088] (-) TimerEvent: {}
+[17.749344] (-) TimerEvent: {}
+[17.849673] (-) TimerEvent: {}
+[17.949941] (-) TimerEvent: {}
+[18.050190] (-) TimerEvent: {}
+[18.150551] (-) TimerEvent: {}
+[18.250802] (-) TimerEvent: {}
+[18.351053] (-) TimerEvent: {}
+[18.451324] (-) TimerEvent: {}
+[18.551573] (-) TimerEvent: {}
+[18.651832] (-) TimerEvent: {}
+[18.752115] (-) TimerEvent: {}
+[18.852375] (-) TimerEvent: {}
+[18.952623] (-) TimerEvent: {}
+[19.052874] (-) TimerEvent: {}
+[19.153125] (-) TimerEvent: {}
+[19.253382] (-) TimerEvent: {}
+[19.353648] (-) TimerEvent: {}
+[19.453889] (-) TimerEvent: {}
+[19.554207] (-) TimerEvent: {}
+[19.654592] (-) TimerEvent: {}
+[19.754874] (-) TimerEvent: {}
+[19.855213] (-) TimerEvent: {}
+[19.955534] (-) TimerEvent: {}
+[20.055788] (-) TimerEvent: {}
+[20.156040] (-) TimerEvent: {}
+[20.256319] (-) TimerEvent: {}
+[20.356572] (-) TimerEvent: {}
+[20.456823] (-) TimerEvent: {}
+[20.557092] (-) TimerEvent: {}
+[20.657326] (-) TimerEvent: {}
+[20.757566] (-) TimerEvent: {}
+[20.857815] (-) TimerEvent: {}
+[20.958066] (-) TimerEvent: {}
+[21.058304] (-) TimerEvent: {}
+[21.158544] (-) TimerEvent: {}
+[21.258795] (-) TimerEvent: {}
+[21.359077] (-) TimerEvent: {}
+[21.459307] (-) TimerEvent: {}
+[21.559550] (-) TimerEvent: {}
+[21.659801] (-) TimerEvent: {}
+[21.760050] (-) TimerEvent: {}
+[21.860301] (-) TimerEvent: {}
+[21.960547] (-) TimerEvent: {}
+[22.060798] (-) TimerEvent: {}
+[22.161048] (-) TimerEvent: {}
+[22.261296] (-) TimerEvent: {}
+[22.361540] (-) TimerEvent: {}
+[22.461813] (-) TimerEvent: {}
+[22.562065] (-) TimerEvent: {}
+[22.662320] (-) TimerEvent: {}
+[22.762576] (-) TimerEvent: {}
+[22.862827] (-) TimerEvent: {}
+[22.963078] (-) TimerEvent: {}
+[23.063330] (-) TimerEvent: {}
+[23.163592] (-) TimerEvent: {}
+[23.263837] (-) TimerEvent: {}
+[23.364092] (-) TimerEvent: {}
+[23.464366] (-) TimerEvent: {}
+[23.564677] (-) TimerEvent: {}
+[23.665074] (-) TimerEvent: {}
+[23.765527] (-) TimerEvent: {}
+[23.802655] (cw1_team_30) StdoutLine: {'line': b'[ 94%] \x1b[32m\x1b[1mLinking CXX shared library libcw1_team_30_cw1_class_lib.so\x1b[0m\n'}
+[23.865741] (-) TimerEvent: {}
+[23.966455] (-) TimerEvent: {}
+[24.067160] (-) TimerEvent: {}
+[24.167781] (-) TimerEvent: {}
+[24.268060] (-) TimerEvent: {}
+[24.368317] (-) TimerEvent: {}
+[24.468602] (-) TimerEvent: {}
+[24.568882] (-) TimerEvent: {}
+[24.669193] (-) TimerEvent: {}
+[24.769543] (-) TimerEvent: {}
+[24.869855] (-) TimerEvent: {}
+[24.970153] (-) TimerEvent: {}
+[25.070399] (-) TimerEvent: {}
+[25.082934] (cw1_team_30) StdoutLine: {'line': b'[ 94%] Built target cw1_team_30_cw1_class_lib\n'}
+[25.120898] (cw1_team_30) StdoutLine: {'line': b'[ 97%] \x1b[32mBuilding CXX object CMakeFiles/cw1_solution_node.dir/src/cw1_node.cpp.o\x1b[0m\n'}
+[25.170567] (-) TimerEvent: {}
+[25.271036] (-) TimerEvent: {}
+[25.371417] (-) TimerEvent: {}
+[25.471698] (-) TimerEvent: {}
+[25.571943] (-) TimerEvent: {}
+[25.672239] (-) TimerEvent: {}
+[25.772528] (-) TimerEvent: {}
+[25.872813] (-) TimerEvent: {}
+[25.973105] (-) TimerEvent: {}
+[26.073399] (-) TimerEvent: {}
+[26.173694] (-) TimerEvent: {}
+[26.273982] (-) TimerEvent: {}
+[26.374248] (-) TimerEvent: {}
+[26.474508] (-) TimerEvent: {}
+[26.574767] (-) TimerEvent: {}
+[26.675029] (-) TimerEvent: {}
+[26.775289] (-) TimerEvent: {}
+[26.875547] (-) TimerEvent: {}
+[26.975836] (-) TimerEvent: {}
+[27.076087] (-) TimerEvent: {}
+[27.176369] (-) TimerEvent: {}
+[27.276652] (-) TimerEvent: {}
+[27.376963] (-) TimerEvent: {}
+[27.477259] (-) TimerEvent: {}
+[27.577530] (-) TimerEvent: {}
+[27.677821] (-) TimerEvent: {}
+[27.778114] (-) TimerEvent: {}
+[27.878437] (-) TimerEvent: {}
+[27.978726] (-) TimerEvent: {}
+[28.078996] (-) TimerEvent: {}
+[28.179269] (-) TimerEvent: {}
+[28.279558] (-) TimerEvent: {}
+[28.379858] (-) TimerEvent: {}
+[28.480129] (-) TimerEvent: {}
+[28.580449] (-) TimerEvent: {}
+[28.680761] (-) TimerEvent: {}
+[28.781056] (-) TimerEvent: {}
+[28.881392] (-) TimerEvent: {}
+[28.981664] (-) TimerEvent: {}
+[29.081955] (-) TimerEvent: {}
+[29.182253] (-) TimerEvent: {}
+[29.282523] (-) TimerEvent: {}
+[29.382813] (-) TimerEvent: {}
+[29.483139] (-) TimerEvent: {}
+[29.583379] (-) TimerEvent: {}
+[29.683636] (-) TimerEvent: {}
+[29.783885] (-) TimerEvent: {}
+[29.884143] (-) TimerEvent: {}
+[29.984432] (-) TimerEvent: {}
+[30.084690] (-) TimerEvent: {}
+[30.184984] (-) TimerEvent: {}
+[30.285271] (-) TimerEvent: {}
+[30.385526] (-) TimerEvent: {}
+[30.485828] (-) TimerEvent: {}
+[30.586118] (-) TimerEvent: {}
+[30.686422] (-) TimerEvent: {}
+[30.786737] (-) TimerEvent: {}
+[30.887029] (-) TimerEvent: {}
+[30.987412] (-) TimerEvent: {}
+[31.087751] (-) TimerEvent: {}
+[31.188051] (-) TimerEvent: {}
+[31.288339] (-) TimerEvent: {}
+[31.388654] (-) TimerEvent: {}
+[31.488940] (-) TimerEvent: {}
+[31.589216] (-) TimerEvent: {}
+[31.689566] (-) TimerEvent: {}
+[31.789879] (-) TimerEvent: {}
+[31.890189] (-) TimerEvent: {}
+[31.990456] (-) TimerEvent: {}
+[32.090728] (-) TimerEvent: {}
+[32.191029] (-) TimerEvent: {}
+[32.291301] (-) TimerEvent: {}
+[32.391591] (-) TimerEvent: {}
+[32.491880] (-) TimerEvent: {}
+[32.592172] (-) TimerEvent: {}
+[32.692401] (-) TimerEvent: {}
+[32.792689] (-) TimerEvent: {}
+[32.892953] (-) TimerEvent: {}
+[32.993210] (-) TimerEvent: {}
+[33.093508] (-) TimerEvent: {}
+[33.193801] (-) TimerEvent: {}
+[33.294084] (-) TimerEvent: {}
+[33.394362] (-) TimerEvent: {}
+[33.494652] (-) TimerEvent: {}
+[33.594921] (-) TimerEvent: {}
+[33.631598] (cw1_team_30) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable cw1_solution_node\x1b[0m\n'}
+[33.695043] (-) TimerEvent: {}
+[33.795295] (-) TimerEvent: {}
+[33.895549] (-) TimerEvent: {}
+[33.995807] (-) TimerEvent: {}
+[34.096086] (-) TimerEvent: {}
+[34.196388] (-) TimerEvent: {}
+[34.296809] (-) TimerEvent: {}
+[34.397105] (-) TimerEvent: {}
+[34.404753] (cw1_team_30) StdoutLine: {'line': b'[100%] Built target cw1_solution_node\n'}
+[34.419090] (cw1_team_30) CommandEnded: {'returncode': 0}
+[34.419964] (cw1_team_30) JobProgress: {'identifier': 'cw1_team_30', 'progress': 'install'}
+[34.420959] (cw1_team_30) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/charvi/comp0250_s26_labs/build/cw1_team_30'], 'cwd': '/home/charvi/comp0250_s26_labs/build/cw1_team_30', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_GB:en'), ('USER', 'charvi'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib:/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin/lib:/home/charvi/comp0250_s26_labs/install/cw1_team_x/lib:/home/charvi/comp0250_s26_labs/install/cw1_team_30/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/charvi'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('SYSTEMD_EXEC_PID', '75601'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('COLCON_PREFIX_PATH', '/home/charvi/comp0250_s26_labs/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'charvi'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'charvi'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', '/opt/ros/humble/share:'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/home/charvi/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/charvinggton:@/tmp/.ICE-unix/2101,unix/charvinggton:/tmp/.ICE-unix/2101'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/1c7b3968_b9f4_47f9_b703_50b5792a5b0f'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.240'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs:/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin:/home/charvi/comp0250_s26_labs/install/panda_moveit_config:/home/charvi/comp0250_s26_labs/install/panda_description:/home/charvi/comp0250_s26_labs/install/cw1_team_x:/home/charvi/comp0250_s26_labs/install/cw1_team_30:/home/charvi/comp0250_s26_labs/install/cw1_world_spawner:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/charvi/comp0250_s26_labs/build/cw1_team_30'), ('TURTLEBOT3_MODEL', 'waffle'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('GAZEBO_PLUGIN_PATH', '/opt/ros/humble/lib:'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/charvi/comp0250_s26_labs/install/cw1_team_x/local/lib/python3.10/dist-packages:/home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages:/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/charvi/comp0250_s26_labs/install/cw1_world_spawner:/home/charvi/comp0250_s26_labs/install/rpl_panda_with_rs:/home/charvi/comp0250_s26_labs/install/realsense_gazebo_plugin:/home/charvi/comp0250_s26_labs/install/panda_moveit_config:/home/charvi/comp0250_s26_labs/install/panda_description:/home/charvi/comp0250_s26_labs/install/cw1_team_x:/home/charvi/comp0250_s26_labs/install/cw1_team_30:/opt/ros/humble')]), 'shell': False}
+[34.431003] (cw1_team_30) StdoutLine: {'line': b'-- Install configuration: "Release"\n'}
+[34.431313] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/ament_index/resource_index/rosidl_interfaces/cw1_team_30\n'}
+[34.431506] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30\n'}
+[34.431661] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv\n'}
+[34.431782] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/example.h\n'}
+[34.431936] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/detail\n'}
+[34.432060] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/detail/example__struct.h\n'}
+[34.432282] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/detail/example__functions.h\n'}
+[34.432408] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/detail/example__type_support.h\n'}
+[34.432545] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/detail/example__functions.c\n'}
+[34.432662] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/msg\n'}
+[34.432805] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/msg/rosidl_generator_c__visibility_control.h\n'}
+[34.432926] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/environment/library_path.sh\n'}
+[34.433094] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/environment/library_path.dsv\n'}
+[34.433243] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/lib/libcw1_team_30__rosidl_generator_c.so\n'}
+[34.433370] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30\n'}
+[34.433485] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv\n'}
+[34.433617] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/detail\n'}
+[34.433734] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/detail/example__rosidl_typesupport_fastrtps_c.h\n'}
+[34.433854] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/msg\n'}
+[34.434004] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[34.434204] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/lib/libcw1_team_30__rosidl_typesupport_fastrtps_c.so\n'}
+[34.434400] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30\n'}
+[34.434517] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv\n'}
+[34.434646] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/detail\n'}
+[34.434760] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/detail/example__type_support.c\n'}
+[34.434882] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/detail/example__rosidl_typesupport_introspection_c.h\n'}
+[34.435097] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/msg\n'}
+[34.435283] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[34.435437] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/lib/libcw1_team_30__rosidl_typesupport_introspection_c.so\n'}
+[34.435568] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/lib/libcw1_team_30__rosidl_typesupport_c.so\n'}
+[34.435765] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30\n'}
+[34.435990] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv\n'}
+[34.436157] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/example.hpp\n'}
+[34.436346] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/detail\n'}
+[34.436488] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/detail/example__type_support.hpp\n'}
+[34.436606] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/detail/example__struct.hpp\n'}
+[34.436772] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/detail/example__traits.hpp\n'}
+[34.436972] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/detail/example__builder.hpp\n'}
+[34.437154] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/msg\n'}
+[34.437342] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/msg/rosidl_generator_cpp__visibility_control.hpp\n'}
+[34.437498] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30\n'}
+[34.437616] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv\n'}
+[34.437731] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/detail\n'}
+[34.437844] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/detail/example__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[34.437960] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/detail/dds_fastrtps\n'}
+[34.438074] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/msg\n'}
+[34.438185] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[34.438322] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/lib/libcw1_team_30__rosidl_typesupport_fastrtps_cpp.so\n'}
+[34.438439] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30\n'}
+[34.438549] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv\n'}
+[34.438661] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/detail\n'}
+[34.438794] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/detail/example__type_support.cpp\n'}
+[34.438913] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/include/cw1_team_30/cw1_team_30/srv/detail/example__rosidl_typesupport_introspection_cpp.hpp\n'}
+[34.439025] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/lib/libcw1_team_30__rosidl_typesupport_introspection_cpp.so\n'}
+[34.439166] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/lib/libcw1_team_30__rosidl_typesupport_cpp.so\n'}
+[34.439293] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/environment/pythonpath.sh\n'}
+[34.439410] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/environment/pythonpath.dsv\n'}
+[34.439530] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30-0.1.0-py3.10.egg-info\n'}
+[34.439643] (cw1_team_30) StdoutLine: {'line': b'-- Installing: /home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30-0.1.0-py3.10.egg-info/SOURCES.txt\n'}
+[34.439770] (cw1_team_30) StdoutLine: {'line': b'-- Installing: /home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30-0.1.0-py3.10.egg-info/PKG-INFO\n'}
+[34.439893] (cw1_team_30) StdoutLine: {'line': b'-- Installing: /home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30-0.1.0-py3.10.egg-info/top_level.txt\n'}
+[34.440015] (cw1_team_30) StdoutLine: {'line': b'-- Installing: /home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30-0.1.0-py3.10.egg-info/dependency_links.txt\n'}
+[34.440138] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30\n'}
+[34.440272] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30/cw1_team_30_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so\n'}
+[34.440402] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30/srv\n'}
+[34.440526] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30/srv/_example.py\n'}
+[34.440650] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30/srv/__init__.py\n'}
+[34.440772] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30/srv/_example_s.c\n'}
+[34.440894] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30/_cw1_team_30_s.ep.rosidl_typesupport_fastrtps_c.c\n'}
+[34.441016] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30/__init__.py\n'}
+[34.441135] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30/cw1_team_30_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so\n'}
+[34.441267] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30/_cw1_team_30_s.ep.rosidl_typesupport_introspection_c.c\n'}
+[34.441402] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30/libcw1_team_30__rosidl_generator_py.so\n'}
+[34.441522] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30/cw1_team_30_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so\n'}
+[34.441644] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30/_cw1_team_30_s.ep.rosidl_typesupport_c.c\n'}
+[34.497309] (-) TimerEvent: {}
+[34.512433] (cw1_team_30) StdoutLine: {'line': b"Listing '/home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30'...\n"}
+[34.512916] (cw1_team_30) StdoutLine: {'line': b"Listing '/home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30/srv'...\n"}
+[34.531893] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30/cw1_team_30_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so\n'}
+[34.533816] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30/cw1_team_30_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so\n'}
+[34.535737] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/local/lib/python3.10/dist-packages/cw1_team_30/cw1_team_30_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so\n'}
+[34.537315] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/lib/libcw1_team_30__rosidl_generator_py.so\n'}
+[34.538221] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/srv/Example.idl\n'}
+[34.539140] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/srv/Example.srv\n'}
+[34.539821] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/srv/Example_Request.msg\n'}
+[34.540499] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/srv/Example_Response.msg\n'}
+[34.541028] (cw1_team_30) StdoutLine: {'line': b'-- Installing: /home/charvi/comp0250_s26_labs/install/cw1_team_30/lib/libcw1_team_30_cw1_class_lib.so\n'}
+[34.551984] (cw1_team_30) StdoutLine: {'line': b'-- Set runtime path of "/home/charvi/comp0250_s26_labs/install/cw1_team_30/lib/libcw1_team_30_cw1_class_lib.so" to ""\n'}
+[34.553052] (cw1_team_30) StdoutLine: {'line': b'-- Installing: /home/charvi/comp0250_s26_labs/install/cw1_team_30/lib/cw1_team_30/cw1_solution_node\n'}
+[34.555774] (cw1_team_30) StdoutLine: {'line': b'-- Set runtime path of "/home/charvi/comp0250_s26_labs/install/cw1_team_30/lib/cw1_team_30/cw1_solution_node" to ""\n'}
+[34.556502] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/launch\n'}
+[34.557269] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/launch/run_solution.launch.py\n'}
+[34.558282] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/ament_index/resource_index/package_run_dependencies/cw1_team_30\n'}
+[34.558630] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/ament_index/resource_index/parent_prefix_path/cw1_team_30\n'}
+[34.558953] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/environment/ament_prefix_path.sh\n'}
+[34.559575] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/environment/ament_prefix_path.dsv\n'}
+[34.560263] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/environment/path.sh\n'}
+[34.560988] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/environment/path.dsv\n'}
+[34.561679] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/local_setup.bash\n'}
+[34.562299] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/local_setup.sh\n'}
+[34.562747] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/local_setup.zsh\n'}
+[34.563191] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/local_setup.dsv\n'}
+[34.563936] (cw1_team_30) StdoutLine: {'line': b'-- Installing: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/package.dsv\n'}
+[34.564890] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/ament_index/resource_index/packages/cw1_team_30\n'}
+[34.565892] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/export_cw1_team_30__rosidl_generator_cExport.cmake\n'}
+[34.566459] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/export_cw1_team_30__rosidl_generator_cExport-release.cmake\n'}
+[34.566873] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/export_cw1_team_30__rosidl_typesupport_fastrtps_cExport.cmake\n'}
+[34.567286] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/export_cw1_team_30__rosidl_typesupport_fastrtps_cExport-release.cmake\n'}
+[34.567699] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/cw1_team_30__rosidl_typesupport_introspection_cExport.cmake\n'}
+[34.568083] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/cw1_team_30__rosidl_typesupport_introspection_cExport-release.cmake\n'}
+[34.568432] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/cw1_team_30__rosidl_typesupport_cExport.cmake\n'}
+[34.568674] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/cw1_team_30__rosidl_typesupport_cExport-release.cmake\n'}
+[34.568900] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/export_cw1_team_30__rosidl_generator_cppExport.cmake\n'}
+[34.569252] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/export_cw1_team_30__rosidl_typesupport_fastrtps_cppExport.cmake\n'}
+[34.569535] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/export_cw1_team_30__rosidl_typesupport_fastrtps_cppExport-release.cmake\n'}
+[34.569791] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/cw1_team_30__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[34.570029] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/cw1_team_30__rosidl_typesupport_introspection_cppExport-release.cmake\n'}
+[34.570379] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/cw1_team_30__rosidl_typesupport_cppExport.cmake\n'}
+[34.570637] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/cw1_team_30__rosidl_typesupport_cppExport-release.cmake\n'}
+[34.570898] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/export_cw1_team_30__rosidl_generator_pyExport.cmake\n'}
+[34.571192] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/export_cw1_team_30__rosidl_generator_pyExport-release.cmake\n'}
+[34.571478] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/rosidl_cmake-extras.cmake\n'}
+[34.571907] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[34.572492] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[34.573143] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[34.573915] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[34.575899] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[34.578331] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[34.578676] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/cw1_team_30Config.cmake\n'}
+[34.579203] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/cmake/cw1_team_30Config-version.cmake\n'}
+[34.579934] (cw1_team_30) StdoutLine: {'line': b'-- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_team_30/share/cw1_team_30/package.xml\n'}
+[34.580878] (cw1_team_30) CommandEnded: {'returncode': 0}
+[34.600710] (-) TimerEvent: {}
+[34.643100] (cw1_team_30) JobEnded: {'identifier': 'cw1_team_30', 'rc': 0}
+[34.645777] (-) EventReactorShutdown: {}

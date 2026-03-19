@@ -1,0 +1,53 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <model name="box">
+    <link name="link">
+      <pose>0 0 0.01 0 0 0</pose>
+      <inertial>
+        <mass>0.010</mass>
+        <inertia>
+          <ixx>1e-3</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1e-3</iyy>
+          <iyz>0</iyz>
+          <izz>1e-3</izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.04 0.04 0.04</size>
+          </box>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>5.0</mu>
+              <mu2>5.0</mu2>
+            </ode>
+          </friction>
+          <contact>
+          	<ode>
+          		<min_depth>0.01</min_depth>
+          		<max_vel>0.0</max_vel>
+          	</ode>
+          </contact>
+        </surface>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size>0.04 0.04 0.04</size>
+          </box>
+        </geometry>
+        <material> <!-- Wheel material -->
+          <ambient>0.1 0.1 0.8 1</ambient>
+          <diffuse>0.1 0.1 0.8 1</diffuse>
+          <specular>0 0 0 0</specular>
+          <emissive>0 0 0 1</emissive>
+        </material> <!-- End wheel material -->
+      </visual>
+    </link>
+  </model>
+</sdf>

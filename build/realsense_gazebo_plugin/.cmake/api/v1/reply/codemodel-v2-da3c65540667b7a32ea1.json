@@ -1,0 +1,79 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Release-72200fbffc4fd00babd7.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10.2"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Release",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "realsense_gazebo_plugin",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "realsense_gazebo_plugin::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-realsense_gazebo_plugin-Release-b832327d57cf68050672.json",
+					"name" : "realsense_gazebo_plugin",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "realsense_gazebo_plugin_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-realsense_gazebo_plugin_uninstall-Release-c8b1368d644a2551b911.json",
+					"name" : "realsense_gazebo_plugin_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-Release-a687a9c012f95eb4e3a9.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/charvi/comp0250_s26_labs/build/realsense_gazebo_plugin",
+		"source" : "/home/charvi/comp0250_s26_labs/courseworks/realsense_gazebo_plugin"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

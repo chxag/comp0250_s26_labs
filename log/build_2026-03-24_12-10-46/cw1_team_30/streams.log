@@ -1,0 +1,104 @@
+[0.030s] Invoking command in '/home/charvi/comp0250_s26_labs/build/cw1_team_30': AMENT_PREFIX_PATH=/home/charvi/comp0250_s26_labs/install/cw1_world_spawner:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/charvi/comp0250_s26_labs/install/cw1_world_spawner:/opt/ros/humble LD_LIBRARY_PATH=/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /home/charvi/comp0250_s26_labs/build/cw1_team_30 -- -j12 -l12
+[0.267s] [  2%] Built target cw1_team_30__cpp
+[0.294s] [ 11%] Built target cw1_team_30__rosidl_generator_c
+[0.314s] [ 11%] Built target ament_cmake_python_copy_cw1_team_30
+[0.360s] [ 20%] Built target cw1_team_30__rosidl_typesupport_introspection_cpp
+[0.364s] [ 28%] Built target cw1_team_30__rosidl_typesupport_fastrtps_cpp
+[0.372s] [ 37%] Built target cw1_team_30__rosidl_typesupport_cpp
+[0.387s] [ 45%] Built target cw1_team_30__rosidl_typesupport_introspection_c
+[0.398s] [ 57%] Built target cw1_team_30__rosidl_typesupport_c
+[0.399s] [ 62%] Built target cw1_team_30__rosidl_typesupport_fastrtps_c
+[0.456s] [35m[1mConsolidate compiler generated dependencies of target cw1_team_30_cw1_class_lib[0m
+[0.481s] [ 62%] Built target cw1_team_30
+[0.519s] [ 65%] Built target cw1_team_30__py
+[0.530s] [ 68%] [32mBuilding CXX object CMakeFiles/cw1_team_30_cw1_class_lib.dir/src/cw1_class.cpp.o[0m
+[0.546s] [ 74%] Built target cw1_team_30__rosidl_generator_py
+[0.568s] [ 80%] Built target cw1_team_30__rosidl_typesupport_introspection_c__pyext
+[0.570s] [ 85%] Built target cw1_team_30__rosidl_typesupport_c__pyext
+[0.576s] [ 91%] Built target cw1_team_30__rosidl_typesupport_fastrtps_c__pyext
+[0.731s] running egg_info
+[0.753s] writing cw1_team_30.egg-info/PKG-INFO
+[0.753s] writing dependency_links to cw1_team_30.egg-info/dependency_links.txt
+[0.754s] writing top-level names to cw1_team_30.egg-info/top_level.txt
+[0.816s] reading manifest file 'cw1_team_30.egg-info/SOURCES.txt'
+[0.817s] writing manifest file 'cw1_team_30.egg-info/SOURCES.txt'
+[0.843s] [ 91%] Built target ament_cmake_python_build_cw1_team_30_egg
+[8.075s] [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:622:6:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kbool cw1::moveToScanPose()[m[K’
+[8.075s]   622 | bool [01;31m[Kcw1[m[K::moveToScanPose(){
+[8.075s]       |      [01;31m[K^~~[m[K
+[8.075s] [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:622:6:[m[K [01;36m[Knote: [m[Kno functions named ‘[01m[Kbool cw1::moveToScanPose()[m[K’
+[8.075s] In file included from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:6[m[K:
+[8.075s] [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/include/cw1_class.h:40:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass cw1[m[K’ defined here
+[8.075s]    40 | class [01;36m[Kcw1[m[K
+[8.075s]       |       [01;36m[K^~~[m[K
+[8.075s] [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:636:40:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kpcl::PointCloud<pcl::PointXYZRGB>::Ptr cw1::applyVoxelFiltering(const Ptr&)[m[K’
+[8.075s]   636 | pcl::PointCloud<pcl::PointXYZRGB>::Ptr [01;31m[Kcw1[m[K::applyVoxelFiltering(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr &cloud)
+[8.075s]       |                                        [01;31m[K^~~[m[K
+[8.075s] [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:636:40:[m[K [01;36m[Knote: [m[Kno functions named ‘[01m[Kpcl::PointCloud<pcl::PointXYZRGB>::Ptr cw1::applyVoxelFiltering(const Ptr&)[m[K’
+[8.075s] In file included from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:6[m[K:
+[8.075s] [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/include/cw1_class.h:40:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass cw1[m[K’ defined here
+[8.075s]    40 | class [01;36m[Kcw1[m[K
+[8.075s]       |       [01;36m[K^~~[m[K
+[8.075s] [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:649:40:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kpcl::PointCloud<pcl::PointXYZRGB>::Ptr cw1::applyStatisticalOutlierRemoval(const Ptr&)[m[K’
+[8.075s]   649 | pcl::PointCloud<pcl::PointXYZRGB>::Ptr [01;31m[Kcw1[m[K::applyStatisticalOutlierRemoval(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr &cloud)
+[8.075s]       |                                        [01;31m[K^~~[m[K
+[8.076s] [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:649:40:[m[K [01;36m[Knote: [m[Kno functions named ‘[01m[Kpcl::PointCloud<pcl::PointXYZRGB>::Ptr cw1::applyStatisticalOutlierRemoval(const Ptr&)[m[K’
+[8.076s] In file included from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:6[m[K:
+[8.076s] [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/include/cw1_class.h:40:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass cw1[m[K’ defined here
+[8.076s]    40 | class [01;36m[Kcw1[m[K
+[8.076s]       |       [01;36m[K^~~[m[K
+[8.076s] [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:662:40:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kpcl::PointCloud<pcl::PointXYZRGB>::Ptr cw1::removeFloorWithRANSAC(const Ptr&)[m[K’
+[8.076s]   662 | pcl::PointCloud<pcl::PointXYZRGB>::Ptr [01;31m[Kcw1[m[K::removeFloorWithRANSAC(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr &sor_cloud)
+[8.076s]       |                                        [01;31m[K^~~[m[K
+[8.076s] [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:662:40:[m[K [01;36m[Knote: [m[Kno functions named ‘[01m[Kpcl::PointCloud<pcl::PointXYZRGB>::Ptr cw1::removeFloorWithRANSAC(const Ptr&)[m[K’
+[8.076s] In file included from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:6[m[K:
+[8.076s] [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/include/cw1_class.h:40:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass cw1[m[K’ defined here
+[8.076s]    40 | class [01;36m[Kcw1[m[K
+[8.076s]       |       [01;36m[K^~~[m[K
+[8.076s] [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:702:53:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kstd::vector<std::shared_ptr<pcl::PointCloud<pcl::PointXYZRGB> > > cw1::clusterWithEuclidean(const Ptr&)[m[K’
+[8.076s]   702 | r<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> [01;31m[Kcw1[m[K::clusterWithEuclidean(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr &cloud)
+[8.076s]       |                                           [01;31m[K^~~[m[K
+[8.076s] 
+[8.076s] [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:702:53:[m[K [01;36m[Knote: [m[Kno functions named ‘[01m[Kstd::vector<std::shared_ptr<pcl::PointCloud<pcl::PointXYZRGB> > > cw1::clusterWithEuclidean(const Ptr&)[m[K’
+[8.076s] In file included from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:6[m[K:
+[8.076s] [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/include/cw1_class.h:40:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass cw1[m[K’ defined here
+[8.077s]    40 | class [01;36m[Kcw1[m[K
+[8.077s]       |       [01;36m[K^~~[m[K
+[8.077s] [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:731:34:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kgeometry_msgs::msg::PointStamped cw1::calculateCentroidInWorldFrame(const Ptr&, std::string&, const rclcpp::Time&)[m[K’
+[8.077s]   731 | geometry_msgs::msg::PointStamped [01;31m[Kcw1[m[K::calculateCentroidInWorldFrame(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr &cluster, std::string & cloud_frame, const rclcpp::Time & cloud_timestamp)
+[8.077s]       |                                  [01;31m[K^~~[m[K
+[8.077s] [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:731:34:[m[K [01;36m[Knote: [m[Kno functions named ‘[01m[Kgeometry_msgs::msg::PointStamped cw1::calculateCentroidInWorldFrame(const Ptr&, std::string&, const rclcpp::Time&)[m[K’
+[8.077s] In file included from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:6[m[K:
+[8.077s] [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/include/cw1_class.h:40:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass cw1[m[K’ defined here
+[8.077s]    40 | class [01;36m[Kcw1[m[K
+[8.077s]       |       [01;36m[K^~~[m[K
+[8.077s] [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:755:13:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kstd::string cw1::classifyColour(const Ptr&)[m[K’
+[8.077s]   755 | std::string [01;31m[Kcw1[m[K::classifyColour(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr &cluster)
+[8.077s]       |             [01;31m[K^~~[m[K
+[8.077s] [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:755:13:[m[K [01;36m[Knote: [m[Kno functions named ‘[01m[Kstd::string cw1::classifyColour(const Ptr&)[m[K’
+[8.077s] In file included from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:6[m[K:
+[8.077s] [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/include/cw1_class.h:40:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass cw1[m[K’ defined here
+[8.077s]    40 | class [01;36m[Kcw1[m[K
+[8.077s]       |       [01;36m[K^~~[m[K
+[8.077s] [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:814:13:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kstd::string cw1::classifyCubeOrBasket(const Ptr&, float&, float&, float&)[m[K’
+[8.077s]   814 | std::string [01;31m[Kcw1[m[K::classifyCubeOrBasket(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr &cluster, float & size_x, float & size_y, float & size_z)
+[8.077s]       |             [01;31m[K^~~[m[K
+[8.078s] [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:814:13:[m[K [01;36m[Knote: [m[Kno functions named ‘[01m[Kstd::string cw1::classifyCubeOrBasket(const Ptr&, float&, float&, float&)[m[K’
+[8.078s] In file included from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:6[m[K:
+[8.078s] [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/include/cw1_class.h:40:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass cw1[m[K’ defined here
+[8.078s]    40 | class [01;36m[Kcw1[m[K
+[8.078s]       |       [01;36m[K^~~[m[K
+[8.084s] [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:[m[K In member function ‘[01m[Kvoid cw1::t3_callback(std::shared_ptr<cw1_world_spawner::srv::Task3Service_Request_<std::allocator<void> > >, std::shared_ptr<cw1_world_spawner::srv::Task3Service_Response_<std::allocator<void> > >)[m[K’:
+[8.084s] [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:896:85:[m[K [01;31m[Kerror: [m[Kbinding reference of type ‘[01m[Kstd::string&[m[K’ {aka ‘[01m[Kstd::__cxx11::basic_string<char>&[m[K’} to ‘[01m[Kconst _frame_id_type[m[K’ {aka ‘[01m[Kconst std::__cxx11::basic_string<char>[m[K’} discards qualifiers
+[8.084s]   896 | InWorldFrame(cluster, [01;31m[Kfresh_cloud->header.frame_id[m[K, fresh_cloud->header.stamp);
+[8.084s]       |                       [01;31m[K~~~~~~~~~~~~~~~~~~~~^~~~~~~~[m[K
+[8.084s] 
+[8.085s] In file included from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:6[m[K:
+[8.085s] [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/include/cw1_class.h:137:133:[m[K [01;36m[Knote: [m[K  initializing argument 2 of ‘[01m[Kgeometry_msgs::msg::PointStamped calculateCentroidInWorldFrame(const Ptr&, std::string&, const rclcpp::Time&)[m[K’
+[8.085s]   137 | PointXYZRGB>::Ptr &cluster, [01;36m[Kstd::string & cloud_frame[m[K, const rclcpp::Time & cloud_timestamp);
+[8.085s]       |                             [01;36m[K~~~~~~~~~~~~~~^~~~~~~~~~~[m[K
+[8.085s] 
+[13.109s] gmake[2]: *** [CMakeFiles/cw1_team_30_cw1_class_lib.dir/build.make:76: CMakeFiles/cw1_team_30_cw1_class_lib.dir/src/cw1_class.cpp.o] Error 1
+[13.109s] gmake[1]: *** [CMakeFiles/Makefile2:595: CMakeFiles/cw1_team_30_cw1_class_lib.dir/all] Error 2
+[13.109s] gmake: *** [Makefile:146: all] Error 2
+[13.111s] Invoked command in '/home/charvi/comp0250_s26_labs/build/cw1_team_30' returned '2': AMENT_PREFIX_PATH=/home/charvi/comp0250_s26_labs/install/cw1_world_spawner:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/charvi/comp0250_s26_labs/install/cw1_world_spawner:/opt/ros/humble LD_LIBRARY_PATH=/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /home/charvi/comp0250_s26_labs/build/cw1_team_30 -- -j12 -l12

@@ -1,0 +1,38 @@
+[  2%] Built target cw1_team_30__cpp
+[ 11%] Built target cw1_team_30__rosidl_generator_c
+[ 11%] Built target ament_cmake_python_copy_cw1_team_30
+[ 20%] Built target cw1_team_30__rosidl_typesupport_introspection_cpp
+[ 28%] Built target cw1_team_30__rosidl_typesupport_fastrtps_cpp
+[ 37%] Built target cw1_team_30__rosidl_typesupport_cpp
+[ 45%] Built target cw1_team_30__rosidl_typesupport_c
+[ 54%] Built target cw1_team_30__rosidl_typesupport_introspection_c
+[ 62%] Built target cw1_team_30__rosidl_typesupport_fastrtps_c
+[35m[1mConsolidate compiler generated dependencies of target cw1_team_30_cw1_class_lib[0m
+[ 62%] Built target cw1_team_30
+[ 65%] [32mBuilding CXX object CMakeFiles/cw1_team_30_cw1_class_lib.dir/src/cw1_class.cpp.o[0m
+[ 68%] Built target cw1_team_30__py
+[ 74%] Built target cw1_team_30__rosidl_generator_py
+[ 80%] Built target cw1_team_30__rosidl_typesupport_c__pyext
+[ 85%] Built target cw1_team_30__rosidl_typesupport_fastrtps_c__pyext
+[ 91%] Built target cw1_team_30__rosidl_typesupport_introspection_c__pyext
+running egg_info
+writing cw1_team_30.egg-info/PKG-INFO
+writing dependency_links to cw1_team_30.egg-info/dependency_links.txt
+writing top-level names to cw1_team_30.egg-info/top_level.txt
+reading manifest file 'cw1_team_30.egg-info/SOURCES.txt'
+writing manifest file 'cw1_team_30.egg-info/SOURCES.txt'
+[ 91%] Built target ament_cmake_python_build_cw1_team_30_egg
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:[m[K In member function ‘[01m[Kvoid cw1::t1_callback(std::shared_ptr<cw1_world_spawner::srv::Task1Service_Request_<std::allocator<void> > >, std::shared_ptr<cw1_world_spawner::srv::Task1Service_Response_<std::allocator<void> > >)[m[K’:
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:165:4:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[Kvoid[m[K’
+  165 |   ([01;31m[Kvoid[m[K)response;
+      |    [01;31m[K^~~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:167:3:[m[K [01;31m[Kerror: [m[K‘[01m[Krclpp[m[K’ has not been declared
+  167 |   [01;31m[Krclpp[m[K::sleep_for(std::chrono::seconds(1));
+      |   [01;31m[K^~~~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:160:67:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kresponse[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  160 | [01;35m[Kr<cw1_world_spawner::srv::Task1Service::Response> response[m[K)
+      | [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~[m[K
+
+gmake[2]: *** [CMakeFiles/cw1_team_30_cw1_class_lib.dir/build.make:76: CMakeFiles/cw1_team_30_cw1_class_lib.dir/src/cw1_class.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:595: CMakeFiles/cw1_team_30_cw1_class_lib.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

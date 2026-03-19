@@ -1,0 +1,27 @@
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:759:40:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kpcl::PointCloud<pcl::PointXYZRGB>::Ptr cw1::accumulateColouredPointClouds(const std::vector<std::pair<double, double> >&)[m[K’
+  759 | pcl::PointCloud<pcl::PointXYZRGB>::Ptr [01;31m[Kcw1[m[K::accumulateColouredPointClouds(const std::vector<std::pair<double,double>> & scan_positions)
+      |                                        [01;31m[K^~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:759:40:[m[K [01;36m[Knote: [m[Kno functions named ‘[01m[Kpcl::PointCloud<pcl::PointXYZRGB>::Ptr cw1::accumulateColouredPointClouds(const std::vector<std::pair<double, double> >&)[m[K’
+In file included from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:6[m[K:
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/include/cw1_class.h:43:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass cw1[m[K’ defined here
+   43 | class [01;36m[Kcw1[m[K
+      |       [01;36m[K^~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:853:37:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kstd::vector<cw1::AllObjectsInScene> cw1::detectObjectsInCloud(const Ptr&)[m[K’
+  853 | std::vector<cw1::AllObjectsInScene> [01;31m[Kcw1[m[K::detectObjectsInCloud(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr & input_cloud)
+      |                                     [01;31m[K^~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:853:37:[m[K [01;36m[Knote: [m[Kno functions named ‘[01m[Kstd::vector<cw1::AllObjectsInScene> cw1::detectObjectsInCloud(const Ptr&)[m[K’
+In file included from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:6[m[K:
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/include/cw1_class.h:43:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass cw1[m[K’ defined here
+   43 | class [01;36m[Kcw1[m[K
+      |       [01;36m[K^~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:[m[K In member function ‘[01m[Kvoid cw1::t3_callback(std::shared_ptr<cw1_world_spawner::srv::Task3Service_Request_<std::allocator<void> > >, std::shared_ptr<cw1_world_spawner::srv::Task3Service_Response_<std::allocator<void> > >)[m[K’:
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:899:25:[m[K [01;31m[Kerror: [m[K‘[01m[KaccumulateColouredPointClouds[m[K’ was not declared in this scope
+  899 |   auto complete_cloud = [01;31m[KaccumulateColouredPointClouds[m[K(scan_positions);
+      |                         [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:900:27:[m[K [01;31m[Kerror: [m[K‘[01m[KdetectObjectsInCloud[m[K’ was not declared in this scope; did you mean ‘[01m[KdetectObjectsInOneScan[m[K’?
+  900 |   auto objects_in_scene = [01;31m[KdetectObjectsInCloud[m[K(complete_cloud);
+      |                           [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+      |                           [32m[KdetectObjectsInOneScan[m[K
+gmake[2]: *** [CMakeFiles/cw1_team_30_cw1_class_lib.dir/build.make:76: CMakeFiles/cw1_team_30_cw1_class_lib.dir/src/cw1_class.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:595: CMakeFiles/cw1_team_30_cw1_class_lib.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

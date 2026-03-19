@@ -1,0 +1,392 @@
+[0.025s] Invoking command in '/home/charvi/comp0250_s26_labs/build/cw1_world_spawner': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/charvi/comp0250_s26_labs/courseworks/cw1_world_spawner -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/home/charvi/comp0250_s26_labs/install/cw1_world_spawner
+[0.112s] -- The C compiler identification is GNU 11.4.0
+[0.325s] -- The CXX compiler identification is GNU 11.4.0
+[0.354s] -- Detecting C compiler ABI info
+[0.619s] -- Detecting C compiler ABI info - done
+[0.655s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.656s] -- Detecting C compile features
+[0.659s] -- Detecting C compile features - done
+[0.672s] -- Detecting CXX compiler ABI info
+[0.811s] -- Detecting CXX compiler ABI info - done
+[0.819s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.820s] -- Detecting CXX compile features
+[0.820s] -- Detecting CXX compile features - done
+[0.823s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[1.200s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[1.287s] -- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+[1.291s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.299s] -- Found rosidl_adapter: 3.1.8 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[1.347s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.386s] -- Found geometry_msgs: 4.9.0 (/opt/ros/humble/share/geometry_msgs/cmake)
+[1.996s] -- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)
+[3.041s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[3.806s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[3.850s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.12", minimum required is "3.6") 
+[3.857s] -- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)
+[3.964s] -- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found suitable version "3.10.12", minimum required is "3.5") 
+[3.964s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[3.965s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+[3.966s] -- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+[4.049s] -- Found PythonExtra: .so  
+[4.305s] -- Found ament_lint_auto: 0.12.14 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[4.398s] -- Added test 'flake8' to check Python code syntax and style conventions
+[4.402s] -- Added test 'lint_cmake' to check CMake code style
+[4.406s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[4.420s] -- Added test 'xmllint' to check XML markup files
+[4.431s] -- Configuring done
+[4.537s] -- Generating done
+[4.552s] -- Build files have been written to: /home/charvi/comp0250_s26_labs/build/cw1_world_spawner
+[4.560s] Invoked command in '/home/charvi/comp0250_s26_labs/build/cw1_world_spawner' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/charvi/comp0250_s26_labs/courseworks/cw1_world_spawner -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/home/charvi/comp0250_s26_labs/install/cw1_world_spawner
+[4.561s] Invoking command in '/home/charvi/comp0250_s26_labs/build/cw1_world_spawner': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/charvi/comp0250_s26_labs/build/cw1_world_spawner -- -j12 -l12
+[4.596s] [  1%] [34m[1mGenerating C code for ROS interfaces[0m
+[4.606s] [  3%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[4.613s] [  3%] Built target ament_cmake_python_copy_coursework_world_spawner_lib
+[4.613s] [  3%] Built target ament_cmake_python_copy_cw1_world_spawner
+[4.858s] running egg_info
+[4.859s] running egg_info
+[4.882s] creating cw1_world_spawner.egg-info
+[4.882s] writing cw1_world_spawner.egg-info/PKG-INFO
+[4.883s] writing dependency_links to cw1_world_spawner.egg-info/dependency_links.txt
+[4.883s] writing top-level names to cw1_world_spawner.egg-info/top_level.txt
+[4.883s] writing manifest file 'cw1_world_spawner.egg-info/SOURCES.txt'
+[4.886s] creating coursework_world_spawner_lib.egg-info
+[4.886s] writing coursework_world_spawner_lib.egg-info/PKG-INFO
+[4.886s] writing dependency_links to coursework_world_spawner_lib.egg-info/dependency_links.txt
+[4.886s] writing top-level names to coursework_world_spawner_lib.egg-info/top_level.txt
+[4.887s] writing manifest file 'coursework_world_spawner_lib.egg-info/SOURCES.txt'
+[4.950s] reading manifest file 'cw1_world_spawner.egg-info/SOURCES.txt'
+[4.951s] writing manifest file 'cw1_world_spawner.egg-info/SOURCES.txt'
+[4.957s] reading manifest file 'coursework_world_spawner_lib.egg-info/SOURCES.txt'
+[4.958s] writing manifest file 'coursework_world_spawner_lib.egg-info/SOURCES.txt'
+[4.980s] [  3%] Built target ament_cmake_python_build_cw1_world_spawner_egg
+[4.986s] [  3%] Built target ament_cmake_python_build_coursework_world_spawner_lib_egg
+[5.104s] [  3%] Built target cw1_world_spawner__cpp
+[5.114s] [  5%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[5.114s] [  7%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[5.115s] [  9%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[5.174s] [ 12%] [32mBuilding C object CMakeFiles/cw1_world_spawner__rosidl_generator_c.dir/rosidl_generator_c/cw1_world_spawner/srv/detail/task1_service__functions.c.o[0m
+[5.175s] [ 12%] [32mBuilding C object CMakeFiles/cw1_world_spawner__rosidl_generator_c.dir/rosidl_generator_c/cw1_world_spawner/srv/detail/task_setup__functions.c.o[0m
+[5.175s] [ 14%] [32mBuilding C object CMakeFiles/cw1_world_spawner__rosidl_generator_c.dir/rosidl_generator_c/cw1_world_spawner/srv/detail/task2_service__functions.c.o[0m
+[5.175s] [ 16%] [32mBuilding C object CMakeFiles/cw1_world_spawner__rosidl_generator_c.dir/rosidl_generator_c/cw1_world_spawner/srv/detail/task3_service__functions.c.o[0m
+[5.384s] [ 18%] [32m[1mLinking C shared library libcw1_world_spawner__rosidl_generator_c.so[0m
+[5.423s] [ 18%] Built target cw1_world_spawner__rosidl_generator_c
+[5.438s] [ 20%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[5.438s] [ 21%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[5.438s] [ 23%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[5.559s] [ 25%] [32mBuilding CXX object CMakeFiles/cw1_world_spawner__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/cw1_world_spawner/srv/task_setup__type_support.cpp.o[0m
+[5.569s] [ 27%] [32mBuilding CXX object CMakeFiles/cw1_world_spawner__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/cw1_world_spawner/srv/task1_service__type_support.cpp.o[0m
+[5.572s] [ 29%] [32mBuilding CXX object CMakeFiles/cw1_world_spawner__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/cw1_world_spawner/srv/task2_service__type_support.cpp.o[0m
+[5.573s] [ 30%] [32mBuilding CXX object CMakeFiles/cw1_world_spawner__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/cw1_world_spawner/srv/task3_service__type_support.cpp.o[0m
+[5.593s] [ 32%] [32mBuilding CXX object CMakeFiles/cw1_world_spawner__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/cw1_world_spawner/srv/detail/task_setup__type_support.cpp.o[0m
+[5.593s] [ 34%] [32mBuilding CXX object CMakeFiles/cw1_world_spawner__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/cw1_world_spawner/srv/detail/task2_service__type_support.cpp.o[0m
+[5.600s] [ 36%] [32mBuilding CXX object CMakeFiles/cw1_world_spawner__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/cw1_world_spawner/srv/detail/task3_service__type_support.cpp.o[0m
+[5.604s] [ 38%] [32mBuilding CXX object CMakeFiles/cw1_world_spawner__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/cw1_world_spawner/srv/detail/task1_service__type_support.cpp.o[0m
+[5.825s] [ 40%] [32mBuilding CXX object CMakeFiles/cw1_world_spawner__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/cw1_world_spawner/srv/detail/dds_fastrtps/task_setup__type_support.cpp.o[0m
+[6.101s] [ 41%] [32mBuilding CXX object CMakeFiles/cw1_world_spawner__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/cw1_world_spawner/srv/detail/dds_fastrtps/task1_service__type_support.cpp.o[0m
+[6.101s] [ 43%] [32mBuilding CXX object CMakeFiles/cw1_world_spawner__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/cw1_world_spawner/srv/detail/dds_fastrtps/task2_service__type_support.cpp.o[0m
+[6.136s] [ 45%] [32mBuilding CXX object CMakeFiles/cw1_world_spawner__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/cw1_world_spawner/srv/detail/dds_fastrtps/task3_service__type_support.cpp.o[0m
+[6.203s] [ 47%] [32mBuilding CXX object CMakeFiles/cw1_world_spawner__rosidl_typesupport_c.dir/rosidl_typesupport_c/cw1_world_spawner/srv/task_setup__type_support.cpp.o[0m
+[6.230s] [ 49%] [32m[1mLinking CXX shared library libcw1_world_spawner__rosidl_typesupport_cpp.so[0m
+[6.300s] [ 50%] [32mBuilding CXX object CMakeFiles/cw1_world_spawner__rosidl_typesupport_c.dir/rosidl_typesupport_c/cw1_world_spawner/srv/task2_service__type_support.cpp.o[0m
+[6.307s] [ 52%] [32mBuilding CXX object CMakeFiles/cw1_world_spawner__rosidl_typesupport_c.dir/rosidl_typesupport_c/cw1_world_spawner/srv/task1_service__type_support.cpp.o[0m
+[6.351s] [ 52%] Built target cw1_world_spawner__rosidl_typesupport_cpp
+[6.362s] [ 54%] [32mBuilding CXX object CMakeFiles/cw1_world_spawner__rosidl_typesupport_c.dir/rosidl_typesupport_c/cw1_world_spawner/srv/task3_service__type_support.cpp.o[0m
+[6.424s] [ 56%] [32m[1mLinking CXX shared library libcw1_world_spawner__rosidl_typesupport_c.so[0m
+[6.476s] [ 58%] [32mBuilding CXX object CMakeFiles/cw1_world_spawner__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/cw1_world_spawner/srv/detail/task2_service__type_support_c.cpp.o[0m
+[6.476s] [ 60%] [32mBuilding CXX object CMakeFiles/cw1_world_spawner__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/cw1_world_spawner/srv/detail/task_setup__type_support_c.cpp.o[0m
+[6.476s] [ 61%] [32mBuilding CXX object CMakeFiles/cw1_world_spawner__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/cw1_world_spawner/srv/detail/task3_service__type_support_c.cpp.o[0m
+[6.476s] [ 63%] [32mBuilding CXX object CMakeFiles/cw1_world_spawner__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/cw1_world_spawner/srv/detail/task1_service__type_support_c.cpp.o[0m
+[6.512s] [ 63%] Built target cw1_world_spawner__rosidl_typesupport_c
+[6.529s] [ 67%] [32mBuilding C object CMakeFiles/cw1_world_spawner__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/cw1_world_spawner/srv/detail/task2_service__type_support.c.o[0m
+[6.529s] [ 67%] [32mBuilding C object CMakeFiles/cw1_world_spawner__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/cw1_world_spawner/srv/detail/task_setup__type_support.c.o[0m
+[6.530s] [ 69%] [32mBuilding C object CMakeFiles/cw1_world_spawner__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/cw1_world_spawner/srv/detail/task1_service__type_support.c.o[0m
+[6.571s] [ 70%] [32m[1mLinking CXX shared library libcw1_world_spawner__rosidl_typesupport_introspection_cpp.so[0m
+[6.642s] [ 72%] [32mBuilding C object CMakeFiles/cw1_world_spawner__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/cw1_world_spawner/srv/detail/task3_service__type_support.c.o[0m
+[6.687s] [ 72%] Built target cw1_world_spawner__rosidl_typesupport_introspection_cpp
+[6.729s] [ 74%] [32m[1mLinking C shared library libcw1_world_spawner__rosidl_typesupport_introspection_c.so[0m
+[6.783s] [ 74%] Built target cw1_world_spawner__rosidl_typesupport_introspection_c
+[7.064s] [ 76%] [32m[1mLinking CXX shared library libcw1_world_spawner__rosidl_typesupport_fastrtps_c.so[0m
+[7.070s] [ 78%] [32m[1mLinking CXX shared library libcw1_world_spawner__rosidl_typesupport_fastrtps_cpp.so[0m
+[7.142s] [ 78%] Built target cw1_world_spawner__rosidl_typesupport_fastrtps_c
+[7.149s] [ 78%] Built target cw1_world_spawner__rosidl_typesupport_fastrtps_cpp
+[7.167s] [ 78%] Built target cw1_world_spawner
+[7.186s] [ 80%] [34m[1mGenerating Python code for ROS interfaces[0m
+[7.929s] [ 80%] Built target cw1_world_spawner__py
+[7.947s] [ 85%] [32mBuilding C object CMakeFiles/cw1_world_spawner__rosidl_generator_py.dir/rosidl_generator_py/cw1_world_spawner/srv/_task2_service_s.c.o[0m
+[7.947s] [ 85%] [32mBuilding C object CMakeFiles/cw1_world_spawner__rosidl_generator_py.dir/rosidl_generator_py/cw1_world_spawner/srv/_task_setup_s.c.o[0m
+[7.947s] [ 85%] [32mBuilding C object CMakeFiles/cw1_world_spawner__rosidl_generator_py.dir/rosidl_generator_py/cw1_world_spawner/srv/_task1_service_s.c.o[0m
+[7.948s] [ 87%] [32mBuilding C object CMakeFiles/cw1_world_spawner__rosidl_generator_py.dir/rosidl_generator_py/cw1_world_spawner/srv/_task3_service_s.c.o[0m
+[8.126s] [ 89%] [32m[1mLinking C shared library rosidl_generator_py/cw1_world_spawner/libcw1_world_spawner__rosidl_generator_py.so[0m
+[8.167s] [ 89%] Built target cw1_world_spawner__rosidl_generator_py
+[8.186s] [ 94%] [32mBuilding C object CMakeFiles/cw1_world_spawner__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/cw1_world_spawner/_cw1_world_spawner_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[8.186s] [ 94%] [32mBuilding C object CMakeFiles/cw1_world_spawner__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/cw1_world_spawner/_cw1_world_spawner_s.ep.rosidl_typesupport_c.c.o[0m
+[8.186s] [ 94%] [32mBuilding C object CMakeFiles/cw1_world_spawner__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/cw1_world_spawner/_cw1_world_spawner_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[8.394s] [ 96%] [32m[1mLinking C shared library rosidl_generator_py/cw1_world_spawner/cw1_world_spawner_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so[0m
+[8.402s] [ 98%] [32m[1mLinking C shared library rosidl_generator_py/cw1_world_spawner/cw1_world_spawner_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so[0m
+[8.409s] [100%] [32m[1mLinking C shared library rosidl_generator_py/cw1_world_spawner/cw1_world_spawner_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so[0m
+[8.436s] [100%] Built target cw1_world_spawner__rosidl_typesupport_fastrtps_c__pyext
+[8.444s] [100%] Built target cw1_world_spawner__rosidl_typesupport_introspection_c__pyext
+[8.450s] [100%] Built target cw1_world_spawner__rosidl_typesupport_c__pyext
+[8.461s] Invoked command in '/home/charvi/comp0250_s26_labs/build/cw1_world_spawner' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/charvi/comp0250_s26_labs/build/cw1_world_spawner -- -j12 -l12
+[8.463s] Invoking command in '/home/charvi/comp0250_s26_labs/build/cw1_world_spawner': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/charvi/comp0250_s26_labs/build/cw1_world_spawner
+[8.470s] -- Install configuration: "Release"
+[8.470s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/ament_index/resource_index/rosidl_interfaces/cw1_world_spawner
+[8.470s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner
+[8.471s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv
+[8.471s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/task1_service.h
+[8.471s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail
+[8.471s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task3_service__struct.h
+[8.471s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task1_service__functions.h
+[8.471s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task2_service__functions.c
+[8.471s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task1_service__struct.h
+[8.471s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task1_service__functions.c
+[8.471s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task2_service__struct.h
+[8.471s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task3_service__functions.c
+[8.471s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task_setup__type_support.h
+[8.472s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task_setup__functions.c
+[8.472s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task_setup__functions.h
+[8.472s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task2_service__type_support.h
+[8.472s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task_setup__struct.h
+[8.472s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task3_service__functions.h
+[8.472s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task2_service__functions.h
+[8.472s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task3_service__type_support.h
+[8.472s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task1_service__type_support.h
+[8.472s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/task_setup.h
+[8.472s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/task3_service.h
+[8.473s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/task2_service.h
+[8.473s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/msg
+[8.473s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/msg/rosidl_generator_c__visibility_control.h
+[8.473s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/environment/library_path.sh
+[8.473s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/environment/library_path.dsv
+[8.473s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib/libcw1_world_spawner__rosidl_generator_c.so
+[8.474s] -- Set runtime path of "/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib/libcw1_world_spawner__rosidl_generator_c.so" to ""
+[8.474s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner
+[8.474s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv
+[8.474s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail
+[8.474s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task3_service__rosidl_typesupport_fastrtps_c.h
+[8.474s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task_setup__rosidl_typesupport_fastrtps_c.h
+[8.474s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task2_service__rosidl_typesupport_fastrtps_c.h
+[8.474s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task1_service__rosidl_typesupport_fastrtps_c.h
+[8.474s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/msg
+[8.475s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[8.475s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib/libcw1_world_spawner__rosidl_typesupport_fastrtps_c.so
+[8.475s] -- Set runtime path of "/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib/libcw1_world_spawner__rosidl_typesupport_fastrtps_c.so" to ""
+[8.475s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner
+[8.475s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv
+[8.475s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail
+[8.475s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task2_service__type_support.c
+[8.476s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task_setup__rosidl_typesupport_introspection_c.h
+[8.476s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task1_service__type_support.c
+[8.476s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task3_service__type_support.c
+[8.476s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task1_service__rosidl_typesupport_introspection_c.h
+[8.476s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task2_service__rosidl_typesupport_introspection_c.h
+[8.476s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task3_service__rosidl_typesupport_introspection_c.h
+[8.476s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task_setup__type_support.c
+[8.476s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/msg
+[8.476s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[8.476s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib/libcw1_world_spawner__rosidl_typesupport_introspection_c.so
+[8.477s] -- Set runtime path of "/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib/libcw1_world_spawner__rosidl_typesupport_introspection_c.so" to ""
+[8.477s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib/libcw1_world_spawner__rosidl_typesupport_c.so
+[8.477s] -- Set runtime path of "/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib/libcw1_world_spawner__rosidl_typesupport_c.so" to ""
+[8.477s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner
+[8.477s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv
+[8.478s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/task2_service.hpp
+[8.478s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/task3_service.hpp
+[8.478s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail
+[8.478s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task_setup__traits.hpp
+[8.478s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task1_service__traits.hpp
+[8.478s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task1_service__builder.hpp
+[8.478s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task2_service__traits.hpp
+[8.478s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task3_service__type_support.hpp
+[8.478s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task3_service__traits.hpp
+[8.478s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task2_service__builder.hpp
+[8.479s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task2_service__type_support.hpp
+[8.479s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task1_service__type_support.hpp
+[8.479s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task3_service__struct.hpp
+[8.479s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task_setup__type_support.hpp
+[8.479s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task2_service__struct.hpp
+[8.479s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task_setup__struct.hpp
+[8.479s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task_setup__builder.hpp
+[8.479s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task3_service__builder.hpp
+[8.479s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task1_service__struct.hpp
+[8.479s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/task1_service.hpp
+[8.479s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/task_setup.hpp
+[8.479s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/msg
+[8.479s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/msg/rosidl_generator_cpp__visibility_control.hpp
+[8.480s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner
+[8.480s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv
+[8.480s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail
+[8.480s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task2_service__rosidl_typesupport_fastrtps_cpp.hpp
+[8.480s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task3_service__rosidl_typesupport_fastrtps_cpp.hpp
+[8.480s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task_setup__rosidl_typesupport_fastrtps_cpp.hpp
+[8.480s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task1_service__rosidl_typesupport_fastrtps_cpp.hpp
+[8.480s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/dds_fastrtps
+[8.480s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/msg
+[8.480s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[8.480s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib/libcw1_world_spawner__rosidl_typesupport_fastrtps_cpp.so
+[8.481s] -- Set runtime path of "/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib/libcw1_world_spawner__rosidl_typesupport_fastrtps_cpp.so" to ""
+[8.481s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner
+[8.481s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv
+[8.481s] -- Up-to-date: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail
+[8.481s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task2_service__type_support.cpp
+[8.481s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task3_service__type_support.cpp
+[8.482s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task1_service__rosidl_typesupport_introspection_cpp.hpp
+[8.482s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task1_service__type_support.cpp
+[8.482s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task_setup__type_support.cpp
+[8.482s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task2_service__rosidl_typesupport_introspection_cpp.hpp
+[8.482s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task_setup__rosidl_typesupport_introspection_cpp.hpp
+[8.482s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/include/cw1_world_spawner/cw1_world_spawner/srv/detail/task3_service__rosidl_typesupport_introspection_cpp.hpp
+[8.482s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib/libcw1_world_spawner__rosidl_typesupport_introspection_cpp.so
+[8.482s] -- Set runtime path of "/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib/libcw1_world_spawner__rosidl_typesupport_introspection_cpp.so" to ""
+[8.483s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib/libcw1_world_spawner__rosidl_typesupport_cpp.so
+[8.483s] -- Set runtime path of "/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib/libcw1_world_spawner__rosidl_typesupport_cpp.so" to ""
+[8.483s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/environment/pythonpath.sh
+[8.483s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/environment/pythonpath.dsv
+[8.483s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner-0.1.0-py3.10.egg-info
+[8.483s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner-0.1.0-py3.10.egg-info/SOURCES.txt
+[8.483s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner-0.1.0-py3.10.egg-info/PKG-INFO
+[8.484s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner-0.1.0-py3.10.egg-info/top_level.txt
+[8.484s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner-0.1.0-py3.10.egg-info/dependency_links.txt
+[8.484s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner
+[8.484s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/_cw1_world_spawner_s.ep.rosidl_typesupport_c.c
+[8.484s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/_cw1_world_spawner_s.ep.rosidl_typesupport_fastrtps_c.c
+[8.484s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/srv
+[8.484s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/srv/_task2_service_s.c
+[8.484s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/srv/_task3_service_s.c
+[8.484s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/srv/_task_setup.py
+[8.485s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/srv/_task1_service_s.c
+[8.485s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/srv/_task1_service.py
+[8.485s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/srv/__init__.py
+[8.485s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/srv/_task3_service.py
+[8.485s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/srv/_task2_service.py
+[8.485s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/srv/_task_setup_s.c
+[8.485s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/cw1_world_spawner_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[8.485s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/__init__.py
+[8.485s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/_cw1_world_spawner_s.ep.rosidl_typesupport_introspection_c.c
+[8.486s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/libcw1_world_spawner__rosidl_generator_py.so
+[8.486s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/cw1_world_spawner_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[8.486s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/cw1_world_spawner_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[8.522s] Listing '/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner'...
+[8.522s] Compiling '/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/__init__.py'...
+[8.522s] Listing '/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/srv'...
+[8.522s] Compiling '/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/srv/__init__.py'...
+[8.522s] Compiling '/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/srv/_task1_service.py'...
+[8.522s] Compiling '/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/srv/_task2_service.py'...
+[8.522s] Compiling '/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/srv/_task3_service.py'...
+[8.522s] Compiling '/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/srv/_task_setup.py'...
+[8.527s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/cw1_world_spawner_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[8.528s] -- Set runtime path of "/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/cw1_world_spawner_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so" to ""
+[8.528s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/cw1_world_spawner_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[8.528s] -- Set runtime path of "/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/cw1_world_spawner_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so" to ""
+[8.528s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/cw1_world_spawner_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[8.529s] -- Set runtime path of "/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/cw1_world_spawner/cw1_world_spawner_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so" to ""
+[8.529s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib/libcw1_world_spawner__rosidl_generator_py.so
+[8.529s] -- Set runtime path of "/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib/libcw1_world_spawner__rosidl_generator_py.so" to ""
+[8.529s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/srv/TaskSetup.idl
+[8.529s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/srv/Task1Service.idl
+[8.530s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/srv/Task2Service.idl
+[8.530s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/srv/Task3Service.idl
+[8.530s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/srv/TaskSetup.srv
+[8.530s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/srv/TaskSetup_Request.msg
+[8.530s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/srv/TaskSetup_Response.msg
+[8.530s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/srv/Task1Service.srv
+[8.530s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/srv/Task1Service_Request.msg
+[8.530s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/srv/Task1Service_Response.msg
+[8.530s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/srv/Task2Service.srv
+[8.531s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/srv/Task2Service_Request.msg
+[8.531s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/srv/Task2Service_Response.msg
+[8.531s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/srv/Task3Service.srv
+[8.531s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/srv/Task3Service_Request.msg
+[8.531s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/srv/Task3Service_Response.msg
+[8.531s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/coursework_world_spawner_lib-0.1.0-py3.10.egg-info
+[8.531s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/coursework_world_spawner_lib-0.1.0-py3.10.egg-info/SOURCES.txt
+[8.531s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/coursework_world_spawner_lib-0.1.0-py3.10.egg-info/PKG-INFO
+[8.531s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/coursework_world_spawner_lib-0.1.0-py3.10.egg-info/top_level.txt
+[8.532s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/coursework_world_spawner_lib-0.1.0-py3.10.egg-info/dependency_links.txt
+[8.532s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/coursework_world_spawner_lib
+[8.532s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/coursework_world_spawner_lib/__init__.py
+[8.532s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/coursework_world_spawner_lib/coursework_world_spawner.py
+[8.565s] Listing '/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/coursework_world_spawner_lib'...
+[8.565s] Compiling '/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/coursework_world_spawner_lib/__init__.py'...
+[8.565s] Compiling '/home/charvi/comp0250_s26_labs/install/cw1_world_spawner/local/lib/python3.10/dist-packages/coursework_world_spawner_lib/coursework_world_spawner.py'...
+[8.569s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib/cw1_world_spawner/world_spawner.py
+[8.569s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/lib/cw1_world_spawner/test_coursework.py
+[8.570s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models
+[8.570s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/basket_blue
+[8.570s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/basket_blue/model.sdf
+[8.570s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/basket_blue/model.sdf.xmacro
+[8.570s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/basket_blue/model.config
+[8.570s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/basket_purple
+[8.570s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/basket_purple/model.sdf
+[8.570s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/basket_purple/model.sdf.xmacro
+[8.570s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/basket_purple/model.config
+[8.570s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/basket
+[8.571s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/basket/model.sdf
+[8.571s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/basket/model.sdf.xmacro
+[8.571s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/basket/model.config
+[8.571s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/box
+[8.571s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/box/model.sdf
+[8.571s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/box/model.config
+[8.571s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/all_tiles
+[8.571s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/all_tiles/model.sdf
+[8.571s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/all_tiles/model.sdf.xmacro
+[8.571s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/all_tiles/model.config
+[8.571s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/basket_red
+[8.571s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/basket_red/model.sdf
+[8.571s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/basket_red/model.sdf.xmacro
+[8.572s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/basket_red/model.config
+[8.572s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/box_purple
+[8.572s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/box_purple/model.sdf
+[8.572s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/box_purple/model.config
+[8.572s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/box_blue
+[8.572s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/box_blue/model.sdf
+[8.572s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/box_blue/model.config
+[8.572s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/box_red
+[8.572s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/box_red/model.sdf
+[8.572s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/box_red/model.config
+[8.572s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/object-golf-tile
+[8.572s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/object-golf-tile/model.sdf
+[8.573s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/models/object-golf-tile/model.config
+[8.573s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/launch
+[8.573s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/launch/world_spawner.launch.py
+[8.573s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/launch/test_coursework.launch.py
+[8.573s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/ament_index/resource_index/package_run_dependencies/cw1_world_spawner
+[8.573s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/ament_index/resource_index/parent_prefix_path/cw1_world_spawner
+[8.573s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/environment/ament_prefix_path.sh
+[8.573s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/environment/ament_prefix_path.dsv
+[8.574s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/environment/path.sh
+[8.574s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/environment/path.dsv
+[8.574s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/local_setup.bash
+[8.574s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/local_setup.sh
+[8.574s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/local_setup.zsh
+[8.574s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/local_setup.dsv
+[8.574s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/package.dsv
+[8.575s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/ament_index/resource_index/packages/cw1_world_spawner
+[8.575s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/export_cw1_world_spawner__rosidl_generator_cExport.cmake
+[8.575s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/export_cw1_world_spawner__rosidl_generator_cExport-release.cmake
+[8.575s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/export_cw1_world_spawner__rosidl_typesupport_fastrtps_cExport.cmake
+[8.575s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/export_cw1_world_spawner__rosidl_typesupport_fastrtps_cExport-release.cmake
+[8.575s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/cw1_world_spawner__rosidl_typesupport_introspection_cExport.cmake
+[8.575s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/cw1_world_spawner__rosidl_typesupport_introspection_cExport-release.cmake
+[8.576s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/cw1_world_spawner__rosidl_typesupport_cExport.cmake
+[8.576s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/cw1_world_spawner__rosidl_typesupport_cExport-release.cmake
+[8.576s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/export_cw1_world_spawner__rosidl_generator_cppExport.cmake
+[8.576s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/export_cw1_world_spawner__rosidl_typesupport_fastrtps_cppExport.cmake
+[8.576s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/export_cw1_world_spawner__rosidl_typesupport_fastrtps_cppExport-release.cmake
+[8.576s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/cw1_world_spawner__rosidl_typesupport_introspection_cppExport.cmake
+[8.576s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/cw1_world_spawner__rosidl_typesupport_introspection_cppExport-release.cmake
+[8.577s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/cw1_world_spawner__rosidl_typesupport_cppExport.cmake
+[8.577s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/cw1_world_spawner__rosidl_typesupport_cppExport-release.cmake
+[8.577s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/export_cw1_world_spawner__rosidl_generator_pyExport.cmake
+[8.577s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/export_cw1_world_spawner__rosidl_generator_pyExport-release.cmake
+[8.577s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/rosidl_cmake-extras.cmake
+[8.577s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/ament_cmake_export_dependencies-extras.cmake
+[8.578s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/ament_cmake_export_include_directories-extras.cmake
+[8.578s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/ament_cmake_export_libraries-extras.cmake
+[8.578s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/ament_cmake_export_targets-extras.cmake
+[8.578s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[8.578s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[8.578s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/cw1_world_spawnerConfig.cmake
+[8.578s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/cmake/cw1_world_spawnerConfig-version.cmake
+[8.578s] -- Installing: /home/charvi/comp0250_s26_labs/install/cw1_world_spawner/share/cw1_world_spawner/package.xml
+[8.582s] Invoked command in '/home/charvi/comp0250_s26_labs/build/cw1_world_spawner' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/charvi/comp0250_s26_labs/build/cw1_world_spawner

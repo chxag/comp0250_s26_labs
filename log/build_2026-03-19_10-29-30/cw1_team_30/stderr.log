@@ -1,0 +1,61 @@
+In file included from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:6[m[K:
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/include/cw1_class.h:93:51:[m[K [01;31m[Kerror: [m[K‘[01m[KSharedPtr[m[K’ in ‘[01m[Kclass moveit::planning_interface::MoveGroupInterface[m[K’ does not name a type
+   93 |   moveit::planning_interface::MoveGroupInterface::[01;31m[KSharedPtr[m[K arm_group;
+      |                                                   [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/include/cw1_class.h:94:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kmove_it[m[K’ does not name a type; did you mean ‘[01m[Kmode_t[m[K’?
+   94 |   [01;31m[Kmove_it[m[K::planning_interface::MoveGroupInterface::SharedPtr hand_group;
+      |   [01;31m[K^~~~~~~[m[K
+      |   [32m[Kmode_t[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/include/cw1_class.h:95:55:[m[K [01;31m[Kerror: [m[K‘[01m[KSharedPtr[m[K’ in ‘[01m[Kclass moveit::planning_interface::PlanningSceneInterface[m[K’ does not name a type
+   95 |   moveit::planning_interface::PlanningSceneInterface::[01;31m[KSharedPtr[m[K planning_scene_interface_;
+      |                                                       [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:[m[K In constructor ‘[01m[Kcw1::cw1(const SharedPtr&)[m[K’:
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:121:3:[m[K [01;31m[Kerror: [m[K‘[01m[Karm_group[m[K’ was not declared in this scope
+  121 |   [01;31m[Karm_group[m[K = std::make_shared<moveit::planning_interface::MoveGroupInterface>(node_, "panda_arm");
+      |   [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:122:3:[m[K [01;31m[Kerror: [m[K‘[01m[Khand_group[m[K’ was not declared in this scope
+  122 |   [01;31m[Khand_group[m[K = std::make_shared<moveit::planning_interface::MoveGroupInterface>(node_, "hand");
+      |   [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:[m[K In member function ‘[01m[Kbool cw1::moveToPose(geometry_msgs::msg::Pose)[m[K’:
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:131:3:[m[K [01;31m[Kerror: [m[K‘[01m[Karm_group[m[K’ was not declared in this scope
+  131 |   [01;31m[Karm_group[m[K->setPoseTarget(target_pose);
+      |   [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:134:89:[m[K [01;35m[Kwarning: [m[K‘[01m[Kusing MoveItErrorCode = class moveit::core::MoveItErrorCode[m[K’ is deprecated: Use moveit::core::MoveItErrorCode [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+  134 |   bool success = (arm_group->plan(plan) == moveit::planning_interface::MoveItErrorCode::[01;35m[KSUCCESS[m[K);
+      |                                                                                         [01;35m[K^~~~~~~[m[K
+In file included from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/include/cw1_class.h:25[m[K,
+                 from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:6[m[K:
+[01m[K/opt/ros/humble/include/moveit/move_group_interface/move_group_interface.h:71:7:[m[K [01;36m[Knote: [m[Kdeclared here
+   71 | using [01;36m[KMoveItErrorCode[m[K [[deprecated("Use moveit::core::MoveItErrorCode")]] = moveit::core::MoveItErrorCode;
+      |       [01;36m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:136:89:[m[K [01;35m[Kwarning: [m[K‘[01m[Kusing MoveItErrorCode = class moveit::core::MoveItErrorCode[m[K’ is deprecated: Use moveit::core::MoveItErrorCode [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+  136 |     success = (arm_group->execute(plan) == moveit::planning_interface::MoveItErrorCode::[01;35m[KSUCCESS[m[K);
+      |                                                                                         [01;35m[K^~~~~~~[m[K
+In file included from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/include/cw1_class.h:25[m[K,
+                 from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:6[m[K:
+[01m[K/opt/ros/humble/include/moveit/move_group_interface/move_group_interface.h:71:7:[m[K [01;36m[Knote: [m[Kdeclared here
+   71 | using [01;36m[KMoveItErrorCode[m[K [[deprecated("Use moveit::core::MoveItErrorCode")]] = moveit::core::MoveItErrorCode;
+      |       [01;36m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:[m[K In member function ‘[01m[Kbool cw1::setGripper(double)[m[K’:
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:143:3:[m[K [01;31m[Kerror: [m[K‘[01m[Khand_group[m[K’ was not declared in this scope
+  143 |   [01;31m[Khand_group[m[K->setJointValueTarget("panda_finger_joint1", width);
+      |   [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:146:90:[m[K [01;35m[Kwarning: [m[K‘[01m[Kusing MoveItErrorCode = class moveit::core::MoveItErrorCode[m[K’ is deprecated: Use moveit::core::MoveItErrorCode [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+  146 |   bool success = (hand_group->plan(plan) == moveit::planning_interface::MoveItErrorCode::[01;35m[KSUCCESS[m[K);
+      |                                                                                          [01;35m[K^~~~~~~[m[K
+In file included from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/include/cw1_class.h:25[m[K,
+                 from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:6[m[K:
+[01m[K/opt/ros/humble/include/moveit/move_group_interface/move_group_interface.h:71:7:[m[K [01;36m[Knote: [m[Kdeclared here
+   71 | using [01;36m[KMoveItErrorCode[m[K [[deprecated("Use moveit::core::MoveItErrorCode")]] = moveit::core::MoveItErrorCode;
+      |       [01;36m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:148:90:[m[K [01;35m[Kwarning: [m[K‘[01m[Kusing MoveItErrorCode = class moveit::core::MoveItErrorCode[m[K’ is deprecated: Use moveit::core::MoveItErrorCode [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+  148 |     success = (hand_group->execute(plan) == moveit::planning_interface::MoveItErrorCode::[01;35m[KSUCCESS[m[K);
+      |                                                                                          [01;35m[K^~~~~~~[m[K
+In file included from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/include/cw1_class.h:25[m[K,
+                 from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:6[m[K:
+[01m[K/opt/ros/humble/include/moveit/move_group_interface/move_group_interface.h:71:7:[m[K [01;36m[Knote: [m[Kdeclared here
+   71 | using [01;36m[KMoveItErrorCode[m[K [[deprecated("Use moveit::core::MoveItErrorCode")]] = moveit::core::MoveItErrorCode;
+      |       [01;36m[K^~~~~~~~~~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/cw1_team_30_cw1_class_lib.dir/build.make:76: CMakeFiles/cw1_team_30_cw1_class_lib.dir/src/cw1_class.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:595: CMakeFiles/cw1_team_30_cw1_class_lib.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

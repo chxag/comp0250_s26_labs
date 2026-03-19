@@ -1,0 +1,7 @@
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:[m[K In constructor ‘[01m[Kcw1::cw1(const SharedPtr&)[m[K’:
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:124:13:[m[K [01;31m[Kerror: [m[K‘[01m[KsetPoseReferenceFrame[m[K’ was not declared in this scope
+  124 |   arm_group>[01;31m[KsetPoseReferenceFrame[m[K("world");
+      |             [01;31m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/cw1_team_30_cw1_class_lib.dir/build.make:76: CMakeFiles/cw1_team_30_cw1_class_lib.dir/src/cw1_class.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:595: CMakeFiles/cw1_team_30_cw1_class_lib.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

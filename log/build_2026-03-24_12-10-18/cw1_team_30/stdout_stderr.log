@@ -1,0 +1,228 @@
+[  2%] Built target cw1_team_30__cpp
+[ 11%] Built target cw1_team_30__rosidl_generator_c
+[ 11%] Built target ament_cmake_python_copy_cw1_team_30
+[ 28%] Built target cw1_team_30__rosidl_typesupport_introspection_c
+[ 28%] Built target cw1_team_30__rosidl_typesupport_cpp
+[ 40%] Built target cw1_team_30__rosidl_typesupport_fastrtps_c
+[ 45%] Built target cw1_team_30__rosidl_typesupport_c
+[ 54%] Built target cw1_team_30__rosidl_typesupport_introspection_cpp
+[ 62%] Built target cw1_team_30__rosidl_typesupport_fastrtps_cpp
+[ 62%] Built target cw1_team_30
+[35m[1mConsolidate compiler generated dependencies of target cw1_team_30_cw1_class_lib[0m
+[ 65%] Built target cw1_team_30__py
+[ 68%] [32mBuilding CXX object CMakeFiles/cw1_team_30_cw1_class_lib.dir/src/cw1_class.cpp.o[0m
+[ 74%] Built target cw1_team_30__rosidl_generator_py
+[ 85%] Built target cw1_team_30__rosidl_typesupport_fastrtps_c__pyext
+[ 85%] Built target cw1_team_30__rosidl_typesupport_introspection_c__pyext
+[ 91%] Built target cw1_team_30__rosidl_typesupport_c__pyext
+running egg_info
+writing cw1_team_30.egg-info/PKG-INFO
+writing dependency_links to cw1_team_30.egg-info/dependency_links.txt
+writing top-level names to cw1_team_30.egg-info/top_level.txt
+reading manifest file 'cw1_team_30.egg-info/SOURCES.txt'
+writing manifest file 'cw1_team_30.egg-info/SOURCES.txt'
+[ 91%] Built target ament_cmake_python_build_cw1_team_30_egg
+In file included from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:6[m[K:
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/include/cw1_class.h:137:1:[m[K [01;31m[Kerror: [m[Kexpected initializer before ‘[01m[Kgeometry_msgs[m[K’
+  137 | [01;31m[Kgeometry_msgs[m[K::msg::PointStamped calculateCentroidInWorldFrame(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr &cluster, std::string & cloud_frame, const rclcpp::Time & cloud_timestamp)
+      | [01;31m[K^~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/c++/11/deque:69[m[K,
+                 from [01m[K/usr/include/c++/11/queue:60[m[K,
+                 from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:14[m[K:
+[01m[K/usr/include/c++/11/bits/deque.tcc:69:10:[m[K [01;31m[Kerror: [m[Kexpected initializer before ‘[01m[K<[m[K’ token
+   69 |     deque[01;31m[K<[m[K_Tp, _Alloc>::
+      |          [01;31m[K^[m[K
+[01m[K/usr/include/c++/11/bits/deque.tcc:94:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kdeque[m[K’ does not name a type
+   94 |     [01;31m[Kdeque[m[K<_Tp, _Alloc>&
+      |     [01;31m[K^~~~~[m[K
+[01m[K/usr/include/c++/11/bits/deque.tcc:136:16:[m[K [01;31m[Kerror: [m[Kexpected nested-name-specifier before ‘[01m[Kdeque[m[K’
+  136 |       typename [01;31m[Kdeque[m[K<_Tp, _Alloc>::reference
+      |                [01;31m[K^~~~~[m[K
+[01m[K/usr/include/c++/11/bits/deque.tcc:136:16:[m[K [01;31m[Kerror: [m[Ktoo many template-parameter-lists
+[01m[K/usr/include/c++/11/bits/deque.tcc:160:16:[m[K [01;31m[Kerror: [m[Kexpected nested-name-specifier before ‘[01m[Kdeque[m[K’
+  160 |       typename [01;31m[Kdeque[m[K<_Tp, _Alloc>::reference
+      |                [01;31m[K^~~~~[m[K
+[01m[K/usr/include/c++/11/bits/deque.tcc:160:16:[m[K [01;31m[Kerror: [m[Ktoo many template-parameter-lists
+[01m[K/usr/include/c++/11/bits/deque.tcc:186:16:[m[K [01;31m[Kerror: [m[Kexpected nested-name-specifier before ‘[01m[Kdeque[m[K’
+  186 |       typename [01;31m[Kdeque[m[K<_Tp, _Alloc>::iterator
+      |                [01;31m[K^~~~~[m[K
+[01m[K/usr/include/c++/11/bits/deque.tcc:186:16:[m[K [01;31m[Kerror: [m[Ktoo many template-parameter-lists
+[01m[K/usr/include/c++/11/bits/deque.tcc:209:14:[m[K [01;31m[Kerror: [m[Kexpected nested-name-specifier before ‘[01m[Kdeque[m[K’
+  209 |     typename [01;31m[Kdeque[m[K<_Tp, _Alloc>::iterator
+      |              [01;31m[K^~~~~[m[K
+[01m[K/usr/include/c++/11/bits/deque.tcc:209:19:[m[K [01;31m[Kerror: [m[Kexpected initializer before ‘[01m[K<[m[K’ token
+  209 |     typename deque[01;31m[K<[m[K_Tp, _Alloc>::iterator
+      |                   [01;31m[K^[m[K
+[01m[K/usr/include/c++/11/bits/deque.tcc:234:14:[m[K [01;31m[Kerror: [m[Kexpected nested-name-specifier before ‘[01m[Kdeque[m[K’
+  234 |     typename [01;31m[Kdeque[m[K<_Tp, _Alloc>::iterator
+      |              [01;31m[K^~~~~[m[K
+[01m[K/usr/include/c++/11/bits/deque.tcc:234:19:[m[K [01;31m[Kerror: [m[Kexpected initializer before ‘[01m[K<[m[K’ token
+  234 |     typename deque[01;31m[K<[m[K_Tp, _Alloc>::iterator
+      |                   [01;31m[K^[m[K
+[01m[K/usr/include/c++/11/bits/deque.tcc:257:14:[m[K [01;31m[Kerror: [m[Kexpected nested-name-specifier before ‘[01m[Kdeque[m[K’
+  257 |     typename [01;31m[Kdeque[m[K<_Tp, _Alloc>::iterator
+      |              [01;31m[K^~~~~[m[K
+[01m[K/usr/include/c++/11/bits/deque.tcc:257:19:[m[K [01;31m[Kerror: [m[Kexpected initializer before ‘[01m[K<[m[K’ token
+  257 |     typename deque[01;31m[K<[m[K_Tp, _Alloc>::iterator
+      |                   [01;31m[K^[m[K
+[01m[K/usr/include/c++/11/bits/deque.tcc:291:7:[m[K [01;31m[Kerror: [m[Ktoo many template-parameter-lists
+  291 |       [01;31m[Kdeque[m[K<_Tp, _Alloc>::
+      |       [01;31m[K^~~~~[m[K
+[01m[K/usr/include/c++/11/bits/deque.tcc:307:10:[m[K [01;31m[Kerror: [m[Kexpected initializer before ‘[01m[K<[m[K’ token
+  307 |     deque[01;31m[K<[m[K_Tp, _Alloc>::
+      |          [01;31m[K^[m[K
+[01m[K/usr/include/c++/11/bits/deque.tcc:350:10:[m[K [01;31m[Kerror: [m[Kexpected initializer before ‘[01m[K<[m[K’ token
+  350 |     deque[01;31m[K<[m[K_Tp, _Alloc>::
+      |          [01;31m[K^[m[K
+[01m[K/usr/include/c++/11/bits/deque.tcc:374:10:[m[K [01;31m[Kerror: [m[Kexpected initializer before ‘[01m[K<[m[K’ token
+  374 |     deque[01;31m[K<[m[K_Tp, _Alloc>::
+      |          [01;31m[K^[m[K
+[01m[K/usr/include/c++/11/bits/deque.tcc:393:10:[m[K [01;31m[Kerror: [m[Kexpected initializer before ‘[01m[K<[m[K’ token
+  393 |     deque[01;31m[K<[m[K_Tp, _Alloc>::
+      |          [01;31m[K^[m[K
+[01m[K/usr/include/c++/11/bits/deque.tcc:419:7:[m[K [01;31m[Kerror: [m[Ktoo many template-parameter-lists
+  419 |       [01;31m[Kdeque[m[K<_Tp, _Alloc>::
+      |       [01;31m[K^~~~~[m[K
+[01m[K/usr/include/c++/11/bits/deque.tcc:443:7:[m[K [01;31m[Kerror: [m[Ktoo many template-parameter-lists
+  443 |       [01;31m[Kdeque[m[K<_Tp, _Alloc>::
+      |       [01;31m[K^~~~~[m[K
+[01m[K/usr/include/c++/11/bits/deque.tcc:484:7:[m[K [01;31m[Kerror: [m[Ktoo many template-parameter-lists
+  484 |       [01;31m[Kdeque[m[K<_Tp, _Alloc>::
+      |       [01;31m[K^~~~~[m[K
+[01m[K/usr/include/c++/11/bits/deque.tcc:523:7:[m[K [01;31m[Kerror: [m[Ktoo many template-parameter-lists
+  523 |       [01;31m[Kdeque[m[K<_Tp, _Alloc>::
+      |       [01;31m[K^~~~~[m[K
+[01m[K/usr/include/c++/11/bits/deque.tcc:560:15:[m[K [01;31m[Kerror: [m[Kexpected initializer before ‘[01m[K<[m[K’ token
+  560 |     void deque[01;31m[K<[m[K_Tp, _Alloc>::
+      |               [01;31m[K^[m[K
+[01m[K/usr/include/c++/11/bits/deque.tcc:576:15:[m[K [01;31m[Kerror: [m[Kexpected initializer before ‘[01m[K<[m[K’ token
+  576 |     void deque[01;31m[K<[m[K_Tp, _Alloc>::
+      |               [01;31m[K^[m[K
+[01m[K/usr/include/c++/11/bits/deque.tcc:589:7:[m[K [01;31m[Kerror: [m[Ktoo many template-parameter-lists
+  589 |       [01;31m[Kdeque[m[K<_Tp, _Alloc>::
+      |       [01;31m[K^~~~~[m[K
+[01m[K/usr/include/c++/11/bits/deque.tcc:598:7:[m[K [01;31m[Kerror: [m[Ktoo many template-parameter-lists
+  598 |       [01;31m[Kdeque[m[K<_Tp, _Alloc>::
+      |       [01;31m[K^~~~~[m[K
+[01m[K/usr/include/c++/11/bits/deque.tcc:644:16:[m[K [01;31m[Kerror: [m[Kexpected nested-name-specifier before ‘[01m[Kdeque[m[K’
+  644 |       typename [01;31m[Kdeque[m[K<_Tp, _Alloc>::iterator
+      |                [01;31m[K^~~~~[m[K
+[01m[K/usr/include/c++/11/bits/deque.tcc:644:16:[m[K [01;31m[Kerror: [m[Ktoo many template-parameter-lists
+[01m[K/usr/include/c++/11/bits/deque.tcc:685:10:[m[K [01;31m[Kerror: [m[Kexpected initializer before ‘[01m[K<[m[K’ token
+  685 |     deque[01;31m[K<[m[K_Tp, _Alloc>::
+      |          [01;31m[K^[m[K
+[01m[K/usr/include/c++/11/bits/deque.tcc:771:7:[m[K [01;31m[Kerror: [m[Ktoo many template-parameter-lists
+  771 |       [01;31m[Kdeque[m[K<_Tp, _Alloc>::
+      |       [01;31m[K^~~~~[m[K
+[01m[K/usr/include/c++/11/bits/deque.tcc:859:11:[m[K [01;31m[Kerror: [m[Kexpected initializer before ‘[01m[K<[m[K’ token
+  859 |      deque[01;31m[K<[m[K_Tp, _Alloc>::
+      |           [01;31m[K^[m[K
+[01m[K/usr/include/c++/11/bits/deque.tcc:881:10:[m[K [01;31m[Kerror: [m[Kexpected initializer before ‘[01m[K<[m[K’ token
+  881 |     deque[01;31m[K<[m[K_Tp, _Alloc>::
+      |          [01;31m[K^[m[K
+[01m[K/usr/include/c++/11/bits/deque.tcc:906:10:[m[K [01;31m[Kerror: [m[Kexpected initializer before ‘[01m[K<[m[K’ token
+  906 |     deque[01;31m[K<[m[K_Tp, _Alloc>::
+      |          [01;31m[K^[m[K
+[01m[K/usr/include/c++/11/bits/deque.tcc:931:10:[m[K [01;31m[Kerror: [m[Kexpected initializer before ‘[01m[K<[m[K’ token
+  931 |     deque[01;31m[K<[m[K_Tp, _Alloc>::
+      |          [01;31m[K^[m[K
+In file included from [01m[K/usr/include/c++/11/queue:60[m[K,
+                 from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:14[m[K:
+[01m[K/usr/include/c++/11/deque:83:26:[m[K [01;31m[Kerror: [m[K‘[01m[Kdeque[m[K’ in namespace ‘[01m[Kstd[m[K’ does not name a template type
+   83 |       using deque = std::[01;31m[Kdeque[m[K<_Tp, polymorphic_allocator<_Tp>>;
+      |                          [01;31m[K^~~~~[m[K
+[01m[K/usr/include/c++/11/deque:70:1:[m[K [01;36m[Knote: [m[K‘[01m[Kstd::deque[m[K’ is defined in header ‘[01m[K<deque>[m[K’; did you forget to ‘[01m[K#include <deque>[m[K’?
+   69 | #include <bits/deque.tcc>
+  +++ |+[32m[K#include <deque>[m[K
+   70 | 
+In file included from [01m[K/usr/include/c++/11/queue:64[m[K,
+                 from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:14[m[K:
+[01m[K/usr/include/c++/11/bits/stl_queue.h:95:47:[m[K [01;31m[Kerror: [m[K‘[01m[Kdeque[m[K’ does not name a type
+   95 | mplate<typename _Tp, typename _Sequence = [01;31m[Kdeque[m[K<_Tp> >
+      |                                           [01;31m[K^~~~~[m[K
+
+[01m[K/usr/include/c++/11/bits/stl_queue.h:95:52:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K>[m[K’ before ‘[01m[K<[m[K’ token
+   95 | plate<typename _Tp, typename _Sequence = deque[01;31m[K<[m[K_Tp> >
+      |                                               [01;31m[K^[m[K
+
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:622:6:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kbool cw1::moveToScanPose()[m[K’
+  622 | bool [01;31m[Kcw1[m[K::moveToScanPose(){
+      |      [01;31m[K^~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:622:6:[m[K [01;36m[Knote: [m[Kno functions named ‘[01m[Kbool cw1::moveToScanPose()[m[K’
+In file included from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:6[m[K:
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/include/cw1_class.h:40:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass cw1[m[K’ defined here
+   40 | class [01;36m[Kcw1[m[K
+      |       [01;36m[K^~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:636:40:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kpcl::PointCloud<pcl::PointXYZRGB>::Ptr cw1::applyVoxelFiltering(const Ptr&)[m[K’
+  636 | pcl::PointCloud<pcl::PointXYZRGB>::Ptr [01;31m[Kcw1[m[K::applyVoxelFiltering(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr &cloud)
+      |                                        [01;31m[K^~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:636:40:[m[K [01;36m[Knote: [m[Kno functions named ‘[01m[Kpcl::PointCloud<pcl::PointXYZRGB>::Ptr cw1::applyVoxelFiltering(const Ptr&)[m[K’
+In file included from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:6[m[K:
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/include/cw1_class.h:40:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass cw1[m[K’ defined here
+   40 | class [01;36m[Kcw1[m[K
+      |       [01;36m[K^~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:649:40:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kpcl::PointCloud<pcl::PointXYZRGB>::Ptr cw1::applyStatisticalOutlierRemoval(const Ptr&)[m[K’
+  649 | pcl::PointCloud<pcl::PointXYZRGB>::Ptr [01;31m[Kcw1[m[K::applyStatisticalOutlierRemoval(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr &cloud)
+      |                                        [01;31m[K^~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:649:40:[m[K [01;36m[Knote: [m[Kno functions named ‘[01m[Kpcl::PointCloud<pcl::PointXYZRGB>::Ptr cw1::applyStatisticalOutlierRemoval(const Ptr&)[m[K’
+In file included from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:6[m[K:
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/include/cw1_class.h:40:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass cw1[m[K’ defined here
+   40 | class [01;36m[Kcw1[m[K
+      |       [01;36m[K^~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:662:40:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kpcl::PointCloud<pcl::PointXYZRGB>::Ptr cw1::removeFloorWithRANSAC(const Ptr&)[m[K’
+  662 | pcl::PointCloud<pcl::PointXYZRGB>::Ptr [01;31m[Kcw1[m[K::removeFloorWithRANSAC(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr &sor_cloud)
+      |                                        [01;31m[K^~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:662:40:[m[K [01;36m[Knote: [m[Kno functions named ‘[01m[Kpcl::PointCloud<pcl::PointXYZRGB>::Ptr cw1::removeFloorWithRANSAC(const Ptr&)[m[K’
+In file included from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:6[m[K:
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/include/cw1_class.h:40:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass cw1[m[K’ defined here
+   40 | class [01;36m[Kcw1[m[K
+      |       [01;36m[K^~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:702:53:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kstd::vector<std::shared_ptr<pcl::PointCloud<pcl::PointXYZRGB> > > cw1::clusterWithEuclidean(const Ptr&)[m[K’
+  702 | r<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> [01;31m[Kcw1[m[K::clusterWithEuclidean(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr &cloud)
+      |                                           [01;31m[K^~~[m[K
+
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:702:53:[m[K [01;36m[Knote: [m[Kno functions named ‘[01m[Kstd::vector<std::shared_ptr<pcl::PointCloud<pcl::PointXYZRGB> > > cw1::clusterWithEuclidean(const Ptr&)[m[K’
+In file included from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:6[m[K:
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/include/cw1_class.h:40:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass cw1[m[K’ defined here
+   40 | class [01;36m[Kcw1[m[K
+      |       [01;36m[K^~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:731:34:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kgeometry_msgs::msg::PointStamped cw1::calculateCentroidInWorldFrame(const Ptr&, std::string&, const rclcpp::Time&)[m[K’
+  731 | geometry_msgs::msg::PointStamped [01;31m[Kcw1[m[K::calculateCentroidInWorldFrame(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr &cluster, std::string & cloud_frame, const rclcpp::Time & cloud_timestamp)
+      |                                  [01;31m[K^~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:731:34:[m[K [01;36m[Knote: [m[Kno functions named ‘[01m[Kgeometry_msgs::msg::PointStamped cw1::calculateCentroidInWorldFrame(const Ptr&, std::string&, const rclcpp::Time&)[m[K’
+In file included from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:6[m[K:
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/include/cw1_class.h:40:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass cw1[m[K’ defined here
+   40 | class [01;36m[Kcw1[m[K
+      |       [01;36m[K^~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:755:13:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kstd::string cw1::classifyColour(const Ptr&)[m[K’
+  755 | std::string [01;31m[Kcw1[m[K::classifyColour(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr &cluster)
+      |             [01;31m[K^~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:755:13:[m[K [01;36m[Knote: [m[Kno functions named ‘[01m[Kstd::string cw1::classifyColour(const Ptr&)[m[K’
+In file included from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:6[m[K:
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/include/cw1_class.h:40:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass cw1[m[K’ defined here
+   40 | class [01;36m[Kcw1[m[K
+      |       [01;36m[K^~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:808:13:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kstd::string cw1::classifyCubeOrBasket(const Ptr&, float&, float&, float&)[m[K’
+  808 | std::string [01;31m[Kcw1[m[K::classifyCubeOrBasket(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr &cluster, float & size_x, float & size_y, float & size_z)
+      |             [01;31m[K^~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:808:13:[m[K [01;36m[Knote: [m[Kno functions named ‘[01m[Kstd::string cw1::classifyCubeOrBasket(const Ptr&, float&, float&, float&)[m[K’
+In file included from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:6[m[K:
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/include/cw1_class.h:40:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass cw1[m[K’ defined here
+   40 | class [01;36m[Kcw1[m[K
+      |       [01;36m[K^~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:[m[K In member function ‘[01m[Kvoid cw1::t3_callback(std::shared_ptr<cw1_world_spawner::srv::Task3Service_Request_<std::allocator<void> > >, std::shared_ptr<cw1_world_spawner::srv::Task3Service_Response_<std::allocator<void> > >)[m[K’:
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:884:19:[m[K [01;31m[Kerror: [m[K‘[01m[KclusterWithEuclidean[m[K’ was not declared in this scope
+  884 |   auto clusters = [01;31m[KclusterWithEuclidean[m[K(cloud_without_floor);
+      |                   [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:890:26:[m[K [01;31m[Kerror: [m[K‘[01m[KcalculateCentroidInWorldFrame[m[K’ was not declared in this scope
+  890 |     obj.location_world = [01;31m[KcalculateCentroidInWorldFrame[m[K(cluster, fresh_cloud->header.frame_id, fresh_cloud->header.stamp);
+      |                          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:891:18:[m[K [01;31m[Kerror: [m[K‘[01m[KclassifyColour[m[K’ was not declared in this scope
+  891 |     obj.colour = [01;31m[KclassifyColour[m[K(cluster);
+      |                  [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:892:24:[m[K [01;31m[Kerror: [m[K‘[01m[KclassifyCubeOrBasket[m[K’ was not declared in this scope
+  892 |     obj.typeOfObject = [01;31m[KclassifyCubeOrBasket[m[K(cluster, obj.size_of_object_x, obj.size_of_object_y, obj.size_of_object_z);
+      |                        [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/cw1_team_30_cw1_class_lib.dir/build.make:76: CMakeFiles/cw1_team_30_cw1_class_lib.dir/src/cw1_class.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:595: CMakeFiles/cw1_team_30_cw1_class_lib.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

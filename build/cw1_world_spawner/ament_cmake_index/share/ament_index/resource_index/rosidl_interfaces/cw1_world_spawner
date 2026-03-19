@@ -1,0 +1,16 @@
+srv/Task1Service.idl
+srv/Task1Service.srv
+srv/Task1Service_Request.msg
+srv/Task1Service_Response.msg
+srv/Task2Service.idl
+srv/Task2Service.srv
+srv/Task2Service_Request.msg
+srv/Task2Service_Response.msg
+srv/Task3Service.idl
+srv/Task3Service.srv
+srv/Task3Service_Request.msg
+srv/Task3Service_Response.msg
+srv/TaskSetup.idl
+srv/TaskSetup.srv
+srv/TaskSetup_Request.msg
+srv/TaskSetup_Response.msg

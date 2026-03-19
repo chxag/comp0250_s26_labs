@@ -1,0 +1,31 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from cw1_team_x/srv/Example.srv
+// generated code does not contain a copyright notice
+
+#include "geometry_msgs/msg/Point.idl"
+#include "geometry_msgs/msg/Pose.idl"
+
+module cw1_team_x {
+  module srv {
+    @verbatim (language="comment", text=
+      "this is the request message")
+    struct Example_Request {
+      double example_float;
+
+      int32 example_int;
+
+      string example_string;
+
+      geometry_msgs::msg::Pose example_pose;
+
+      sequence<geometry_msgs::msg::Pose> example_std_vector_of_poses;
+    };
+    @verbatim (language="comment", text=
+      "this is the return message")
+    struct Example_Response {
+      boolean success;
+
+      sequence<geometry_msgs::msg::Point> example_std_vector_of_points;
+    };
+  };
+};

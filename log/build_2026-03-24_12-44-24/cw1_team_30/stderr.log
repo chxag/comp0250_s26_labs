@@ -1,0 +1,42 @@
+In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+                 from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/include/cw1_class.h:16[m[K,
+                 from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:6[m[K:
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:[m[K In member function ‘[01m[Kvoid cw1::t3_callback(std::shared_ptr<cw1_world_spawner::srv::Task3Service_Request_<std::allocator<void> > >, std::shared_ptr<cw1_world_spawner::srv::Task3Service_Response_<std::allocator<void> > >)[m[K’:
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:912:47:[m[K [01;31m[Kerror: [m[K‘[01m[Ksize_x[m[K’ was not declared in this scope; did you mean ‘[01m[Ksize_t[m[K’?
+  912 | luster size: x=%.3f y=%.3f z=%.3f -> %s", [01;31m[Ksize_x[m[K, size_y, size_z, type.c_str());
+      |                                           [01;31m[K^~~~~~[m[K
+
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:912:55:[m[K [01;31m[Kerror: [m[K‘[01m[Ksize_y[m[K’ was not declared in this scope; did you mean ‘[01m[Ksize_t[m[K’?
+  912 | ize: x=%.3f y=%.3f z=%.3f -> %s", size_x, [01;31m[Ksize_y[m[K, size_z, type.c_str());
+      |                                           [01;31m[K^~~~~~[m[K
+
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:912:63:[m[K [01;31m[Kerror: [m[K‘[01m[Ksize_z[m[K’ was not declared in this scope; did you mean ‘[01m[Ksize_t[m[K’?
+  912 | .3f y=%.3f z=%.3f -> %s", size_x, size_y, [01;31m[Ksize_z[m[K, type.c_str());
+      |                                           [01;31m[K^~~~~~[m[K
+
+[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:912:71:[m[K [01;31m[Kerror: [m[K‘[01m[Ktype[m[K’ was not declared in this scope; did you mean ‘[01m[Kboost::type[m[K’?
+  912 | 3f z=%.3f -> %s", size_x, size_y, size_z, [01;31m[Ktype[m[K.c_str());
+      |                                           [01;31m[K^~~~[m[K
+
+In file included from [01m[K/usr/include/boost/numeric/conversion/cast.hpp:32[m[K,
+                 from [01m[K/usr/include/pcl-1.12/pcl/io/file_io.h:46[m[K,
+                 from [01m[K/usr/include/pcl-1.12/pcl/io/pcd_io.h:45[m[K,
+                 from [01m[K/opt/ros/humble/include/pcl_conversions/pcl_conversions/pcl_conversions.h:73[m[K,
+                 from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/include/cw1_class.h:38[m[K,
+                 from [01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:6[m[K:
+[01m[K/usr/include/boost/type.hpp:14:10:[m[K [01;36m[Knote: [m[K‘[01m[Kboost::type[m[K’ declared here
+   14 |   struct [01;36m[Ktype[m[K {};
+      |          [01;36m[K^~~~[m[K
+gmake[2]: *** [CMakeFiles/cw1_team_30_cw1_class_lib.dir/build.make:76: CMakeFiles/cw1_team_30_cw1_class_lib.dir/src/cw1_class.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:595: CMakeFiles/cw1_team_30_cw1_class_lib.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2
