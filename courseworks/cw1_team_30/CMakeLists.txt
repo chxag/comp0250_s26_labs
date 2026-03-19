@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(cw1_team_x)
+project(cw1_team_30)
 
 if(POLICY CMP0074)
   cmake_policy(SET CMP0074 NEW)
