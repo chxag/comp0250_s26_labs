@@ -21,6 +21,12 @@ solution is contained within the cw1_team_<your_team_number> package */
 #include "cw1_world_spawner/srv/task2_service.hpp"
 #include "cw1_world_spawner/srv/task3_service.hpp"
 
+/* MoveIt! includes */
+#include <moveit/move_group_interface/move_group_interface.h>
+#include <moveit/planning_scene_interface/planning_scene_interface.h>
+#include <geometry_msgs/msg/pose_stamped.hpp>
+#include <geometry_msgs/msg/point_stamped.hpp>
+
 class cw1
 {
 public:
@@ -82,6 +88,18 @@ public:
   double joint_state_wait_timeout_sec_ = 2.0;
 
   std::string task2_capture_dir_ = "/tmp/cw1_task2_capture";
+
+  /* MoveIt! interfaces */
+  std::shared_ptr<moveit::planning_interface::MoveGroupInterface> arm_group;
+  std::shared_ptr<moveit::planning_interface::MoveGroupInterface> hand_group;
+  moveit::planning_interface::PlanningSceneInterface planning_scene_interface_;
+
+  // Helper Methods
+  bool moveToPose(const geometry_msgs::msg::Pose target_pose);
+  bool setGripper(double width);
+  bool pickUpObject(const geometry_msgs::msg::PoseStamped &object_loc);
+  bool placeObject(const geometry_msgs::msg::PoseStamped &goal_loc);
+
 };
 
 #endif // end of include guard for CW1_CLASS_H_
