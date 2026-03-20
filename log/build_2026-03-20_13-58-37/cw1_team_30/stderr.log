@@ -1,4 +1,0 @@
-[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:[m[K In member function ‘[01m[Kvoid cw1::t1_callback(std::shared_ptr<cw1_world_spawner::srv::Task1Service_Request_<std::allocator<void> > >, std::shared_ptr<cw1_world_spawner::srv::Task1Service_Response_<std::allocator<void> > >)[m[K’:
-[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:181:10:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kfinger_offset[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
-  181 |   double [01;35m[Kfinger_offset[m[K = 0.058; // distance from gripper center to finger tip when fully open
-      |          [01;35m[K^~~~~~~~~~~~~[m[K

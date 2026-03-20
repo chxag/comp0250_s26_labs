@@ -1,8 +1,0 @@
-[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:[m[K In member function ‘[01m[Kpcl::PointCloud<pcl::PointXYZRGB>::Ptr cw1::cropAroundBasket(const ConstSharedPtr&, const PointStamped&)[m[K’:
-[01m[K/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp:336:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kstamped_basket[m[K’ was not declared in this scope; did you mean ‘[01m[Kstamped_basket_loc[m[K’?
-  336 |   [01;31m[Kstamped_basket[m[K.header.stamp = cloud->header.stamp;
-      |   [01;31m[K^~~~~~~~~~~~~~[m[K
-      |   [32m[Kstamped_basket_loc[m[K
-gmake[2]: *** [CMakeFiles/cw1_team_30_cw1_class_lib.dir/build.make:76: CMakeFiles/cw1_team_30_cw1_class_lib.dir/src/cw1_class.cpp.o] Error 1
-gmake[1]: *** [CMakeFiles/Makefile2:595: CMakeFiles/cw1_team_30_cw1_class_lib.dir/all] Error 2
-gmake: *** [Makefile:146: all] Error 2

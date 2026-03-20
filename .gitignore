@@ -1,3 +1,6 @@
 build/*
 install/*
-log/*
+log/*log/
+*.zip
+build/
+install/
