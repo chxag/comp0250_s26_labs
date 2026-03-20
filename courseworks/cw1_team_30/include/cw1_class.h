@@ -3,7 +3,6 @@ you can do whatever you want with this template code, including deleting it all
 and starting from scratch. The only requirment is to make sure your entire 
 solution is contained within the cw1_team_<your_team_number> package */
 
-// include guards, prevent .h file being defined multiple times (linker error)
 #ifndef CW1_CLASS_H_
 #define CW1_CLASS_H_
 
@@ -12,6 +11,7 @@ solution is contained within the cw1_team_<your_team_number> package */
 #include <cstdint>
 #include <memory>
 #include <string>
+#include <mutex>
 
 #include <rclcpp/rclcpp.hpp>
 #include <sensor_msgs/msg/joint_state.hpp>
@@ -27,16 +27,24 @@ solution is contained within the cw1_team_<your_team_number> package */
 #include <geometry_msgs/msg/pose_stamped.hpp>
 #include <geometry_msgs/msg/point_stamped.hpp>
 
+/* TF2 */
+#include <tf2_ros/buffer.h>
+#include <tf2_ros/transform_listener.h>
+#include <tf2_geometry_msgs/tf2_geometry_msgs.hpp>
+
+/* PCL */
+#include <pcl/point_cloud.h>
+#include <pcl/point_types.h>
+#include <pcl_conversions/pcl_conversions.h>
+
 class cw1
 {
 public:
 
   /* ----- class member functions ----- */
 
-  // constructor
   explicit cw1(const rclcpp::Node::SharedPtr &node);
 
-  // service callbacks for tasks 1, 2, and 3
   void t1_callback(
     const std::shared_ptr<cw1_world_spawner::srv::Task1Service::Request> request,
     std::shared_ptr<cw1_world_spawner::srv::Task1Service::Response> response);
@@ -58,13 +66,11 @@ public:
   rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr joint_state_sub_;
   rclcpp::Subscription<sensor_msgs::msg::PointCloud2>::SharedPtr cloud_sub_;
 
-  // Sensor callback state bookkeeping for template diagnostics.
   std::atomic<int64_t> latest_joint_state_stamp_ns_{0};
   std::atomic<uint64_t> joint_state_msg_count_{0};
   std::atomic<int64_t> latest_cloud_stamp_ns_{0};
   std::atomic<uint64_t> cloud_msg_count_{0};
 
-  // Runtime parameters (compatibility scaffold with cw1_team_0).
   bool enable_cloud_viewer_ = false;
   bool move_home_on_start_ = false;
   bool use_path_constraints_ = false;
@@ -94,12 +100,27 @@ public:
   std::shared_ptr<moveit::planning_interface::MoveGroupInterface> hand_group;
   moveit::planning_interface::PlanningSceneInterface planning_scene_interface_;
 
-  // Helper Methods
+  /* TF2 */
+  std::shared_ptr<tf2_ros::Buffer> tf_buffer_;
+  std::shared_ptr<tf2_ros::TransformListener> tf_listener_;
+
+  /* Latest point cloud protected by mutex */
+  sensor_msgs::msg::PointCloud2::ConstSharedPtr latest_cloud_;
+  std::mutex cloud_mutex_;
+
+  /* ----- helper methods ----- */
   bool moveToPose(const geometry_msgs::msg::Pose target_pose);
   bool setGripper(double width);
   bool pickUpObject(const geometry_msgs::msg::PoseStamped &object_loc);
   bool placeObject(const geometry_msgs::msg::PoseStamped &goal_loc);
 
+  /* Task 2 helpers */
+  bool moveToScanPose();
+  sensor_msgs::msg::PointCloud2::ConstSharedPtr waitForCloud(double timeout_sec = 5.0);
+  std::string classifyBasketColour(
+    const sensor_msgs::msg::PointCloud2::ConstSharedPtr & cloud,
+    const geometry_msgs::msg::PointStamped & basket_world_loc,
+    double crop_radius = 0.08);
 };
 
-#endif // end of include guard for CW1_CLASS_H_
+#endif // CW1_CLASS_H_
