@@ -169,11 +169,18 @@ bool cw1::moveToGraspZ(double x, double y, double z)
 {
   arm_group->setStartStateToCurrentState();
 
+  // Apply a small forward offset (2cm) along the approach direction so
+  // the gripper centre lands on the cube face rather than the near edge.
+  const double r       = std::sqrt(x*x + y*y);
+  const double offset  = 0.023; // altering offset
+  const double gx      = x + offset * (x / r);
+  const double gy      = y + offset * (y / r);
+
   // Read current TCP orientation — preserves finger direction from moveToLiftXY
   geometry_msgs::msg::PoseStamped current_stamped = arm_group->getCurrentPose();
   geometry_msgs::msg::Pose target;
-  target.position.x    = x;
-  target.position.y    = y;
+  target.position.x    = gx;
+  target.position.y    = gy;
   target.position.z    = z;
   target.orientation   = current_stamped.pose.orientation; // keep fingers parallel
 
@@ -265,10 +272,10 @@ void cw1::t1_callback(
   moveToLiftXY(obj_x, obj_y);
 
   // 3. Descend to cube grasp height
-  moveToGraspZ(obj_x, obj_y, 0.1634);  // fingertips at cube top+tile (0.06m)
+  moveToGraspZ(obj_x, obj_y, 0.1434);  // fingertips at cube centre (0.04m)
 
   // 4. Close gripper
-  setGripper(0.014);
+  setGripper(0.006);
 
   // 5. Lift straight back up (reverse of step 3)
   moveToLiftXY(obj_x, obj_y);
@@ -847,11 +854,11 @@ void cw1::t3_callback(
 
     // ── [3] Joint-space: descend to grasp height ─────────────────────────────
     RCLCPP_INFO(node_->get_logger(), "  [3] Descend to grasp");
-    moveToGraspZ(cube.x, cube.y, 0.1634);  // fingertips at cube top+tile (0.06m)
+    moveToGraspZ(cube.x, cube.y, 0.1434);  // fingertips at cube centre (0.04m)
 
     // ── [4] Close gripper ────────────────────────────────────────────────────
     RCLCPP_INFO(node_->get_logger(), "  [4] Close gripper, wait 500ms");
-    setGripper(0.014);
+    setGripper(0.006);
     std::this_thread::sleep_for(std::chrono::milliseconds(500));
 
     // ── [5] Joint-space: lift back up ────────────────────────────────────────
