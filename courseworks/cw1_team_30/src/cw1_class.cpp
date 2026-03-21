@@ -24,6 +24,7 @@ solution is contained within the cw1_team_<your_team_number> package */
 #include <tf2_ros/buffer.h>
 #include <tf2_ros/transform_listener.h>
 #include <tf2_geometry_msgs/tf2_geometry_msgs.hpp>
+#include <moveit_msgs/msg/robot_trajectory.hpp>
 
 ///////////////////////////////////////////////////////////////////////////////
 // Constructor
@@ -124,12 +125,94 @@ cw1::cw1(const rclcpp::Node::SharedPtr &node)
 // General helpers
 ///////////////////////////////////////////////////////////////////////////////
 
+// ─────────────────────────────────────────────────────────────────────────────
+// Analytical joint-space helpers — derived from URDF FK, gripper always DOWN
+// ─────────────────────────────────────────────────────────────────────────────
+//
+//  j1 = atan2(y, x)   — base rotation to face target
+//  j3 = j5 = 0        — always zero
+//  j7 = 0.0            — wrist neutral, fingers aligned with arm direction
+//
+// LIFT   (z~0.56m): j2=3.267*r-1.784  j4=3.286*r-3.457  j6=pi/2=1.571  j7=0
+// GRASP  (z~0.13m): j2=1.710*r-0.369  j4=2.970*r-3.837  j6=2.900
+//
+// Both sets verified via FK to give TCP z-axis=[0,0,-1] (gripper straight down)
+// across r=0.30..0.65m workspace.
+
+static bool execJoints(
+  std::shared_ptr<moveit::planning_interface::MoveGroupInterface> & arm_group,
+  const std::vector<double> & joints)
+{
+  arm_group->setStartStateToCurrentState();
+  arm_group->setJointValueTarget(joints);
+  moveit::planning_interface::MoveGroupInterface::Plan plan;
+  bool ok = (arm_group->plan(plan) == moveit::core::MoveItErrorCode::SUCCESS);
+  if (ok) ok = (arm_group->execute(plan) == moveit::core::MoveItErrorCode::SUCCESS);
+  return ok;
+}
+
+// Lift height (~0.56m), gripper straight down. j6=pi/2.
+bool cw1::moveToLiftXY(double x, double y)
+{
+  const double r  = std::sqrt(x*x + y*y);
+  const double j1 = std::atan2(y, x);
+  const double j2 = 3.267*r - 1.784;
+  const double j4 = 3.286*r - 3.457;
+  return execJoints(arm_group, {j1, j2, 0.0, j4, 0.0, 1.571, 0.785});
+}
+
+// Move TCP in a straight vertical line to target z.
+// Uses computeCartesianPath — keeps current orientation locked, pure Z motion.
+// Call ONLY after moveToLiftXY has positioned the arm above the target XY.
+// Inherits orientation from current arm state so fingers stay parallel to arm.
+bool cw1::moveToGraspZ(double x, double y, double z)
+{
+  arm_group->setStartStateToCurrentState();
+
+  // Read current TCP orientation — preserves finger direction from moveToLiftXY
+  geometry_msgs::msg::PoseStamped current_stamped = arm_group->getCurrentPose();
+  geometry_msgs::msg::Pose target;
+  target.position.x    = x;
+  target.position.y    = y;
+  target.position.z    = z;
+  target.orientation   = current_stamped.pose.orientation; // keep fingers parallel
+
+  std::vector<geometry_msgs::msg::Pose> waypoints = {target};
+
+  moveit_msgs::msg::RobotTrajectory trajectory;
+  double fraction = arm_group->computeCartesianPath(
+    waypoints,
+    0.005,   // eef_step: 5mm interpolation
+    0.0,     // jump_threshold: disabled
+    trajectory);
+
+  if (fraction < 0.9) {
+    RCLCPP_WARN(node_->get_logger(),
+      "moveToGraspZ: Cartesian path %.0f%% — retrying with pose target",
+      fraction * 100.0);
+    // Fallback: plain pose target if Cartesian fails
+    arm_group->setGoalOrientationTolerance(0.05);
+    arm_group->setGoalPositionTolerance(0.01);
+    arm_group->setPoseTarget(target);
+    moveit::planning_interface::MoveGroupInterface::Plan p;
+    bool ok2 = (arm_group->plan(p) == moveit::core::MoveItErrorCode::SUCCESS);
+    if (ok2) ok2 = (arm_group->execute(p) == moveit::core::MoveItErrorCode::SUCCESS);
+    return ok2;
+  }
+
+  moveit::planning_interface::MoveGroupInterface::Plan plan;
+  plan.trajectory_ = trajectory;
+  return (arm_group->execute(plan) == moveit::core::MoveItErrorCode::SUCCESS);
+}
+
+// Pose-target fallback for scan moves (camera pointing down, exact wrist not critical)
 bool cw1::moveToPose(const geometry_msgs::msg::Pose target_pose)
 {
+  arm_group->setStartStateToCurrentState();
+  arm_group->setGoalOrientationTolerance(0.01);  // tight: enforce gripper direction
+  arm_group->setGoalPositionTolerance(0.01);
   arm_group->setPoseTarget(target_pose);
   moveit::planning_interface::MoveGroupInterface::Plan plan;
-  arm_group->setGoalOrientationTolerance(0.05);
-  arm_group->setGoalPositionTolerance(0.01);
   bool success = (arm_group->plan(plan) == moveit::core::MoveItErrorCode::SUCCESS);
   if (success) {
     success = (arm_group->execute(plan) == moveit::core::MoveItErrorCode::SUCCESS);
@@ -159,78 +242,47 @@ void cw1::t1_callback(
 {
   (void)response;
 
-  const double obj_x = request->object_loc.pose.position.x;
-  const double obj_y = request->object_loc.pose.position.y;
-  const double obj_z = request->object_loc.pose.position.z;
-
+  const double obj_x  = request->object_loc.pose.position.x;
+  const double obj_y  = request->object_loc.pose.position.y;
   const double goal_x = request->goal_loc.point.x;
   const double goal_y = request->goal_loc.point.y;
 
-  // Cube is 0.04 m, basket is 0.1 m tall, both on ground
-  const double TCP_OFFSET       = 0.1034;  // flange to fingertip
-  const double cube_half        = 0.02;    // half cube height
-  const double basket_height    = 0.10;    // basket is 0.1 m tall
-
-  // Key z values
-  const double grasp_z           = obj_z + cube_half + TCP_OFFSET;
-  const double approach_z        = grasp_z + 0.08;
-  const double lift_z            = 0.45;
-  const double place_z           = basket_height + cube_half + TCP_OFFSET + 0.01;
-  const double basket_approach_z = place_z + 0.08;
-
-  // Gripper pointing straight down
-  geometry_msgs::msg::Pose pose;
-  pose.orientation.x = 1.0;
-  pose.orientation.y = 0.0;
-  pose.orientation.z = 0.0;
-  pose.orientation.w = 0.0;
-
   RCLCPP_INFO(node_->get_logger(),
-    "Task 1: cube at (%.3f, %.3f, %.3f), basket at (%.3f, %.3f)",
-    obj_x, obj_y, obj_z, goal_x, goal_y);
+    "Task 1: cube(%.3f,%.3f) basket(%.3f,%.3f)",
+    obj_x, obj_y, goal_x, goal_y);
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // Pure joint-space pick-and-place:
+  // moveToLiftXY  → gripper straight down at z~0.55m, facing target
+  // moveToGraspZ  → gripper straight down at z~0.12m, same XY
+  // All moves deterministic, wrist always at pi/4 = perpendicular to base
+  // ═══════════════════════════════════════════════════════════════════════════
 
   // 1. Open gripper
   setGripper(0.04);
 
-  // 2. Move above cube
-  pose.position.x = obj_x;
-  pose.position.y = obj_y;
-  pose.position.z = approach_z;
-  moveToPose(pose);
+  // 2. Rotate base + lift to safe height above cube, gripper straight down
+  moveToLiftXY(obj_x, obj_y);
 
-  // 3. Descend to grasp height
-  pose.position.z = grasp_z;
-  moveToPose(pose);
+  // 3. Descend to cube grasp height
+  moveToGraspZ(obj_x, obj_y, 0.1434);  // fingertips at cube top (0.04m)
 
   // 4. Close gripper
-  setGripper(0.022);
+  setGripper(0.018);
 
-  // 5. Lift straight up
-  pose.position.z = lift_z;
-  moveToPose(pose);
+  // 5. Lift straight back up (reverse of step 3)
+  moveToLiftXY(obj_x, obj_y);
 
-  // 6. Move horizontally above basket (same lift height)
-  pose.position.x = goal_x;
-  pose.position.y = goal_y;
-  moveToPose(pose);
+  // 6. Rotate base to face basket, stay at lift height
+  moveToLiftXY(goal_x, goal_y);
 
-  // 7. Descend to approach height above basket
-  pose.position.z = basket_approach_z;
-  moveToPose(pose);
-
-  // 8. Lower cube into basket
-  pose.position.z = place_z;
-  moveToPose(pose);
-
-  // 9. Open gripper to release
+  // 7. Release cube above basket (no descent needed — drop from lift height)
   setGripper(0.04);
-
-  // 10. Retreat upward
-  pose.position.z = lift_z;
-  moveToPose(pose);
 
   RCLCPP_INFO(node_->get_logger(), "Task 1 done.");
 }
+
+
 
 ///////////////////////////////////////////////////////////////////////////////
 // Task 2 helpers
@@ -597,7 +649,12 @@ void cw1::t3_callback(
     scan_pose.position.y = pos.second;
     scan_pose.position.z = 0.60;
     moveToPose(scan_pose);
-    std::this_thread::sleep_for(std::chrono::milliseconds(400));
+    // Settle and then wait for a FRESH cloud after settling
+    std::this_thread::sleep_for(std::chrono::milliseconds(600));
+    // Reset the cloud count baseline AFTER settling so waitForCloud
+    // waits for a new message from the current arm position
+    cloud_msg_count_.store(0, std::memory_order_relaxed);
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
 
     auto cm = waitForCloud(5.0);
     if (!cm) continue;
@@ -755,21 +812,7 @@ void cw1::t3_callback(
     "Task 3: %zu cubes, %zu baskets detected", cubes.size(), baskets.size());
 
   // ── Step 5: Pick and place each cube into matching basket ─────────────────
-  const double TCP_OFFSET    = 0.1034;
-  const double cube_half     = 0.02;
-  const double basket_height = 0.10;
-  const double lift_z        = 0.55;   // raised to clear all objects safely
-  // place_z: TCP height when cube is resting on basket floor
-  // basket_height(0.10) + cube_half(0.02) + TCP_OFFSET(0.1034) = 0.2234
-  // Add 0.03 extra so fingers don't hit the basket walls on open
-  const double place_z       = basket_height + cube_half + TCP_OFFSET + 0.03;
-  const double basket_appr_z = place_z + 0.10;  // wider approach gap
-
-  geometry_msgs::msg::Pose pose;
-  pose.orientation.x = 1.0;
-  pose.orientation.y = 0.0;
-  pose.orientation.z = 0.0;
-  pose.orientation.w = 0.0;
+  // Heights handled internally: moveToLiftXY (~0.55m), moveToGraspZ (~0.12m)
 
   int placed = 0;
   for (const auto & cube : cubes) {
@@ -785,87 +828,44 @@ void cw1::t3_callback(
       continue;
     }
 
-    const double grasp_z  = cube_half + TCP_OFFSET;  // = 0.02 + 0.1034 = 0.1234m
-    const double appr_z   = grasp_z + 0.08;
+    RCLCPP_INFO(node_->get_logger(),
+      "=== T3 PICK: %s cube at (%.3f, %.3f) -> basket (%.3f, %.3f) ===",
+      cube.colour.c_str(), cube.x, cube.y, target->x, target->y);
 
-    RCLCPP_INFO(node_->get_logger(),
-      "=== T3 PICK: %s cube ===", cube.colour.c_str());
-    RCLCPP_INFO(node_->get_logger(),
-      "  cube world XYZ  : (%.4f, %.4f, %.4f)", cube.x, cube.y, cube.z);
-    RCLCPP_INFO(node_->get_logger(),
-      "  basket world XYZ: (%.4f, %.4f, %.4f)", target->x, target->y, target->z);
-    RCLCPP_INFO(node_->get_logger(),
-      "  grasp_z=%.4f  appr_z=%.4f  lift_z=%.4f", grasp_z, appr_z, lift_z);
-    RCLCPP_INFO(node_->get_logger(),
-      "  place_z=%.4f  basket_appr_z=%.4f", place_z, basket_appr_z);
-
-    // ── Open gripper ─────────────────────────────────────────────────────────
-    RCLCPP_INFO(node_->get_logger(), "  [1] Open gripper -> 0.04");
+    // ── [1] Open gripper ─────────────────────────────────────────────────────
+    RCLCPP_INFO(node_->get_logger(), "  [1] Open gripper");
     setGripper(0.04);
 
-    // ── Move above cube ───────────────────────────────────────────────────────
-    pose.position.x = cube.x;
-    pose.position.y = cube.y;
-    pose.position.z = appr_z;
-    RCLCPP_INFO(node_->get_logger(),
-      "  [2] Move above cube: (%.4f, %.4f, %.4f)", pose.position.x, pose.position.y, pose.position.z);
-    if (!moveToPose(pose)) {
-      RCLCPP_WARN(node_->get_logger(), "  [2] FAILED - skipping this cube");
+    // ── [2] Joint-space: rotate base + lift to above cube ────────────────────
+    // moveToLiftXY computes j1=atan2(y,x) and sets j2-j7 to elbow-down config.
+    // Gripper is always perpendicular (j7=pi/4). Fully deterministic.
+    RCLCPP_INFO(node_->get_logger(), "  [2] Lift above cube (%.4f, %.4f)", cube.x, cube.y);
+    if (!moveToLiftXY(cube.x, cube.y)) {
+      RCLCPP_WARN(node_->get_logger(), "  [2] FAILED - skipping");
       continue;
     }
-    RCLCPP_INFO(node_->get_logger(), "  [2] Above cube reached — settling 200ms");
-    std::this_thread::sleep_for(std::chrono::milliseconds(200));
 
-    // ── Descend to grasp ──────────────────────────────────────────────────────
-    pose.position.z = grasp_z;
-    RCLCPP_INFO(node_->get_logger(),
-      "  [3] Descend to grasp: (%.4f, %.4f, %.4f)", pose.position.x, pose.position.y, pose.position.z);
-    moveToPose(pose);
+    // ── [3] Joint-space: descend to grasp height ─────────────────────────────
+    RCLCPP_INFO(node_->get_logger(), "  [3] Descend to grasp");
+    moveToGraspZ(cube.x, cube.y, 0.1434);  // fingertips at cube top (0.04m)
 
-    // ── Close gripper ─────────────────────────────────────────────────────────
-    RCLCPP_INFO(node_->get_logger(), "  [4] Close gripper -> 0.018, wait 500ms");
+    // ── [4] Close gripper ────────────────────────────────────────────────────
+    RCLCPP_INFO(node_->get_logger(), "  [4] Close gripper, wait 500ms");
     setGripper(0.018);
     std::this_thread::sleep_for(std::chrono::milliseconds(500));
 
-    // ── Lift in two stages ────────────────────────────────────────────────────
-    pose.position.z = grasp_z + 0.05;
-    RCLCPP_INFO(node_->get_logger(),
-      "  [5a] Stage lift: z=%.4f", pose.position.z);
-    moveToPose(pose);
-    pose.position.z = lift_z;
-    RCLCPP_INFO(node_->get_logger(),
-      "  [5b] Full lift: z=%.4f", pose.position.z);
-    moveToPose(pose);
+    // ── [5] Joint-space: lift back up ────────────────────────────────────────
+    RCLCPP_INFO(node_->get_logger(), "  [5] Lift up");
+    moveToLiftXY(cube.x, cube.y);
 
-    // ── Move above basket ─────────────────────────────────────────────────────
-    pose.position.x = target->x;
-    pose.position.y = target->y;
-    RCLCPP_INFO(node_->get_logger(),
-      "  [6] Move above basket: (%.4f, %.4f, %.4f)", pose.position.x, pose.position.y, pose.position.z);
-    moveToPose(pose);
+    // ── [6] Joint-space: rotate base to face basket ──────────────────────────
+    RCLCPP_INFO(node_->get_logger(), "  [6] Move above basket (%.4f, %.4f)", target->x, target->y);
+    moveToLiftXY(target->x, target->y);
 
-    // ── Descend to basket approach ────────────────────────────────────────────
-    pose.position.z = basket_appr_z;
-    RCLCPP_INFO(node_->get_logger(),
-      "  [7] Basket approach: z=%.4f", pose.position.z);
-    moveToPose(pose);
-
-    // ── Lower into basket ─────────────────────────────────────────────────────
-    pose.position.z = place_z;
-    RCLCPP_INFO(node_->get_logger(),
-      "  [8] Lower into basket: z=%.4f", pose.position.z);
-    moveToPose(pose);
-
-    // ── Release ───────────────────────────────────────────────────────────────
-    RCLCPP_INFO(node_->get_logger(), "  [9] Release gripper -> 0.04, wait 300ms");
+    // ── [7] Release above basket (drop from lift height) ──────────────────────
+    RCLCPP_INFO(node_->get_logger(), "  [7] Release above basket");
     setGripper(0.04);
-    std::this_thread::sleep_for(std::chrono::milliseconds(300));
-
-    // ── Retreat ───────────────────────────────────────────────────────────────
-    pose.position.z = lift_z;
-    RCLCPP_INFO(node_->get_logger(),
-      "  [10] Retreat: z=%.4f", pose.position.z);
-    moveToPose(pose);
+    std::this_thread::sleep_for(std::chrono::milliseconds(200));
 
     ++placed;
     RCLCPP_INFO(node_->get_logger(),

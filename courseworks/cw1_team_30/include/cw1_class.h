@@ -110,6 +110,8 @@ public:
 
   /* ----- helper methods ----- */
   bool moveToPose(const geometry_msgs::msg::Pose target_pose);
+  bool moveToLiftXY(double x, double y);
+  bool moveToGraspZ(double x, double y, double z);
   bool setGripper(double width);
   bool pickUpObject(const geometry_msgs::msg::PoseStamped &object_loc);
   bool placeObject(const geometry_msgs::msg::PoseStamped &goal_loc);
