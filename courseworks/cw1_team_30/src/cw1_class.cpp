@@ -265,10 +265,10 @@ void cw1::t1_callback(
   moveToLiftXY(obj_x, obj_y);
 
   // 3. Descend to cube grasp height
-  moveToGraspZ(obj_x, obj_y, 0.1434);  // fingertips at cube top (0.04m)
+  moveToGraspZ(obj_x, obj_y, 0.1634);  // fingertips at cube top+tile (0.06m)
 
   // 4. Close gripper
-  setGripper(0.018);
+  setGripper(0.014);
 
   // 5. Lift straight back up (reverse of step 3)
   moveToLiftXY(obj_x, obj_y);
@@ -847,11 +847,11 @@ void cw1::t3_callback(
 
     // ── [3] Joint-space: descend to grasp height ─────────────────────────────
     RCLCPP_INFO(node_->get_logger(), "  [3] Descend to grasp");
-    moveToGraspZ(cube.x, cube.y, 0.1434);  // fingertips at cube top (0.04m)
+    moveToGraspZ(cube.x, cube.y, 0.1634);  // fingertips at cube top+tile (0.06m)
 
     // ── [4] Close gripper ────────────────────────────────────────────────────
     RCLCPP_INFO(node_->get_logger(), "  [4] Close gripper, wait 500ms");
-    setGripper(0.018);
+    setGripper(0.014);
     std::this_thread::sleep_for(std::chrono::milliseconds(500));
 
     // ── [5] Joint-space: lift back up ────────────────────────────────────────
