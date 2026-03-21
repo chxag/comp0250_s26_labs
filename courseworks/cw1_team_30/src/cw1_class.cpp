@@ -169,10 +169,10 @@ bool cw1::moveToGraspZ(double x, double y, double z)
 {
   arm_group->setStartStateToCurrentState();
 
-  // Apply a small forward offset (2cm) along the approach direction so
+  // Apply a small forward offset (3cm) along the approach direction so
   // the gripper centre lands on the cube face rather than the near edge.
   const double r       = std::sqrt(x*x + y*y);
-  const double offset  = 0.023; // altering offset
+  const double offset  = 0.03;
   const double gx      = x + offset * (x / r);
   const double gy      = y + offset * (y / r);
 
@@ -275,7 +275,7 @@ void cw1::t1_callback(
   moveToGraspZ(obj_x, obj_y, 0.1434);  // fingertips at cube centre (0.04m)
 
   // 4. Close gripper
-  setGripper(0.006);
+  setGripper(0.010);
 
   // 5. Lift straight back up (reverse of step 3)
   moveToLiftXY(obj_x, obj_y);
@@ -769,41 +769,27 @@ void cw1::t3_callback(
   std::vector<DetectedObject> cubes, baskets;
   const std::string colours[] = {"red", "blue", "purple"};
 
+  // Baskets are large hollow cylinders — they accumulate far more points than
+  // solid cubes.  Empirically: baskets > 8000 pts, cubes < 7000 pts.
+  // Using a fixed threshold is more robust than "largest = basket" because
+  // it handles cases where only one cluster of a colour is visible.
+  const int BASKET_PT_THRESHOLD = 8000;
+
   for (const auto & col : colours) {
-    // Find all candidates of this colour
     std::vector<Candidate*> same_colour;
     for (auto & c : candidates) {
       if (c.colour == col) same_colour.push_back(&c);
     }
     if (same_colour.empty()) continue;
 
-    // Sort by point count descending
-    std::sort(same_colour.begin(), same_colour.end(),
-      [](const Candidate* a, const Candidate* b){ return a->pts > b->pts; });
-
-    // Largest = basket (if it has significantly more points than others,
-    // or if there is only one cluster of this colour treat it as basket
-    // only if world z > 0.04 m, otherwise it's a cube on the ground)
-    // Strategy: largest cluster is basket, all others are cubes.
-    // But if there's only one cluster and it looks like a cube (z < 0.04),
-    // treat it as a cube with no basket.
-    bool has_basket = false;
-    for (size_t i = 0; i < same_colour.size(); ++i) {
-      const auto * c = same_colour[i];
+    for (const auto * c : same_colour) {
       DetectedObject obj;
       obj.colour = col;
       obj.x = c->x; obj.y = c->y; obj.z = c->z;
 
-      if (i == 0 && same_colour.size() > 1) {
-        // Largest cluster when multiple exist = basket
+      if (c->pts >= BASKET_PT_THRESHOLD) {
         obj.type = "basket";
         baskets.push_back(obj);
-        has_basket = true;
-      } else if (i == 0 && c->z > 0.04) {
-        // Only cluster but world z > 4cm = likely basket
-        obj.type = "basket";
-        baskets.push_back(obj);
-        has_basket = true;
       } else {
         obj.type = "cube";
         cubes.push_back(obj);
@@ -812,7 +798,6 @@ void cw1::t3_callback(
         "  detected %s %s at world (%.3f, %.3f, %.3f) [%d pts]",
         obj.colour.c_str(), obj.type.c_str(), obj.x, obj.y, obj.z, c->pts);
     }
-    (void)has_basket;
   }
 
   RCLCPP_INFO(node_->get_logger(),
@@ -858,7 +843,7 @@ void cw1::t3_callback(
 
     // ── [4] Close gripper ────────────────────────────────────────────────────
     RCLCPP_INFO(node_->get_logger(), "  [4] Close gripper, wait 500ms");
-    setGripper(0.006);
+    setGripper(0.010);
     std::this_thread::sleep_for(std::chrono::milliseconds(500));
 
     // ── [5] Joint-space: lift back up ────────────────────────────────────────
@@ -881,4 +866,8 @@ void cw1::t3_callback(
 
   RCLCPP_INFO(node_->get_logger(),
     "Task 3 done: placed %d/%zu cubes", placed, cubes.size());
+
+  // Return arm to a neutral forward-facing pose so it doesn't freeze in an
+  // awkward configuration after the last cube is placed.
+  moveToLiftXY(0.45, 0.0);
 }
