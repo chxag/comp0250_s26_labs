@@ -37,9 +37,6 @@ solution is contained within the cw1_team_<your_team_number> package */
 #include <pcl/sample_consensus/model_types.h>
 #include <pcl/segmentation/sac_segmentation.h>
 
-///////////////////////////////////////////////////////////////////////////////
-// Constructor
-///////////////////////////////////////////////////////////////////////////////
 
 cw1::cw1(const rclcpp::Node::SharedPtr &node)
 {
@@ -132,23 +129,37 @@ cw1::cw1(const rclcpp::Node::SharedPtr &node)
   arm_group->setMaxVelocityScalingFactor(0.3);
 }
 
-///////////////////////////////////////////////////////////////////////////////
-// Motion helpers (shared by all tasks)
-///////////////////////////////////////////////////////////////////////////////
+/* ------------------------ Motion helpers (shared by all tasks) ------------------------ */
 
+// Helper to execute a joint-space plan to a given joint target.
 static bool execJoints(
   std::shared_ptr<moveit::planning_interface::MoveGroupInterface> & arm_group,
   const std::vector<double> & joints)
 {
-  arm_group->setStartStateToCurrentState();
-  arm_group->setJointValueTarget(joints);
+  arm_group->setStartStateToCurrentState(); // Set current state as start to avoid issues with non-determinism of MoveIt!'s internal state
+  arm_group->setJointValueTarget(joints); // Set the joint target
   moveit::planning_interface::MoveGroupInterface::Plan plan;
-  bool ok = (arm_group->plan(plan) == moveit::core::MoveItErrorCode::SUCCESS);
-  if (ok) ok = (arm_group->execute(plan) == moveit::core::MoveItErrorCode::SUCCESS);
-  return ok;
+  bool ok = (arm_group->plan(plan) == moveit::core::MoveItErrorCode::SUCCESS); // Plan a trajectory to the target
+  if (ok) ok = (arm_group->execute(plan) == moveit::core::MoveItErrorCode::SUCCESS); // Execute the planned trajectory
+  return ok; // Return whether the execution was successful
 }
 
-// Move to ~0.56m lift height above XY, gripper pointing straight down.
+/** 
+* Helper to move arm to a "lifted" pose above a given (x,y) location.
+* Rather than using MoveIt! IK (which was causing the robot to "dance"), joint angles are computed analytically.
+* 
+*   j1 = atan2(y, x)      — rotate base to face the target (exact trig)
+*   j2 = 3.267·r − 1.784  — extend shoulder outward; fitted linear in r
+*   j4 = 3.286·r − 3.457  — bend elbow to match; fitted linear in r
+
+* j2 and j4 are empirically fitted: the arm was posed at several radial distances and the joint angles recorded. 
+* Both scale almost identically with r because shoulder and elbow must extend together to hold the wrist at a fixed height.
+* 
+* j3 and j5 are locked at 0, j6 = pi/2 points the tool down, j7 = pi/4 sets a 45 degree gripper approach angle which helps with grasping.
+*
+* The result is always the same arm shape, just reaching further or closer depending on r.
+*
+*/ 
 bool cw1::moveToLiftXY(double x, double y)
 {
   const double r  = std::sqrt(x*x + y*y);
@@ -158,26 +169,32 @@ bool cw1::moveToLiftXY(double x, double y)
   return execJoints(arm_group, {j1, j2, 0.0, j4, 0.0, 1.571, 0.785});
 }
 
-// Descend in a straight vertical line to grasp height.
-// Applies a 3cm forward offset so fingers centre on the cube face.
+// Helper to move arm to grasp height z above a given (x,y).
 bool cw1::moveToGraspZ(double x, double y, double z)
 {
   arm_group->setStartStateToCurrentState();
+
+  // Adds a small outward offset (3cm along the radial direction) to prevent the gripper from colliding with the object when descending straight down.
+  // Helps grab it at object centre.
   const double r  = std::sqrt(x*x + y*y);
   const double gx = x + 0.03 * (x / r);
   const double gy = y + 0.03 * (y / r);
 
+  // Keep current end-effector orientation and just move the position to the target. 
   geometry_msgs::msg::PoseStamped current_stamped = arm_group->getCurrentPose();
   geometry_msgs::msg::Pose target;
   target.position.x  = gx;
   target.position.y  = gy;
   target.position.z  = z;
-  target.orientation = current_stamped.pose.orientation;
+  target.orientation = current_stamped.pose.orientation; // keep current orientation
 
   std::vector<geometry_msgs::msg::Pose> waypoints = {target};
   moveit_msgs::msg::RobotTrajectory trajectory;
+  // Uses Cartesian path planning (straight-line interpolation with 5 mm resolution) to ensure a clean vertical descent.
   double fraction = arm_group->computeCartesianPath(waypoints, 0.005, 0.0, trajectory);
 
+  // Falls back to a standard pose-goal plan if the Cartesian path covers less than 90% of the 
+  // requested trajectory (e.g. if a singularity or joint limit is nearby).
   if (fraction < 0.9) {
     RCLCPP_WARN(node_->get_logger(),
       "moveToGraspZ: Cartesian path %.0f%% — retrying with pose target", fraction * 100.0);
@@ -194,7 +211,7 @@ bool cw1::moveToGraspZ(double x, double y, double z)
   return (arm_group->execute(plan) == moveit::core::MoveItErrorCode::SUCCESS);
 }
 
-// Pose-target move — used for scan positions where exact orientation matters.
+// Move to an arbitrary 6-DOF target pose using IK-based planning.
 bool cw1::moveToPose(const geometry_msgs::msg::Pose target_pose)
 {
   arm_group->setStartStateToCurrentState();
@@ -207,6 +224,7 @@ bool cw1::moveToPose(const geometry_msgs::msg::Pose target_pose)
   return ok;
 }
 
+// Helper to set the gripper width for grasping or releasing objects.
 bool cw1::setGripper(double width)
 {
   hand_group->setJointValueTarget("panda_finger_joint1", width);
@@ -217,20 +235,17 @@ bool cw1::setGripper(double width)
   return ok;
 }
 
-// Move above a basket drop position, applying a small outward radial offset
-// to compensate for PCL centroid bias toward the near rim.
-// Used by both Task 1 and Task 3 — single definition, no duplication.
+// Helper to position arm above centre of basket. 
 bool cw1::moveAboveBasketDrop(double basket_x, double basket_y)
 {
   const double r = std::sqrt(basket_x * basket_x + basket_y * basket_y);
-  const double drop_outward = 0.02;  // push 2cm outward from centroid into basket centre
+  const double drop_outward = 0.02;  // push 2cm outward from centroid into basket centre to avoid collisions with basket rim and improve grasp success.
   return moveToLiftXY(basket_x + drop_outward * (basket_x / r),
                       basket_y + drop_outward * (basket_y / r));
 }
 
-///////////////////////////////////////////////////////////////////////////////
-// Task 1
-///////////////////////////////////////////////////////////////////////////////
+
+/* ------------------------ Task 1 ------------------------ */
 
 void cw1::t1_callback(
   const std::shared_ptr<cw1_world_spawner::srv::Task1Service::Request> request,
@@ -246,38 +261,37 @@ void cw1::t1_callback(
   RCLCPP_INFO(node_->get_logger(),
     "Task 1: cube(%.3f,%.3f) basket(%.3f,%.3f)", obj_x, obj_y, goal_x, goal_y);
 
-  setGripper(0.04);                         // 1. open
-  moveToLiftXY(obj_x, obj_y);              // 2. lift above cube
-  moveToGraspZ(obj_x, obj_y, 0.1434);     // 3. descend
-  setGripper(0.010);                        // 4. grasp
-  moveToLiftXY(obj_x, obj_y);              // 5. lift back up
-  moveAboveBasketDrop(goal_x, goal_y);     // 6. move above basket (shared helper)
-  setGripper(0.04);                         // 7. release
+  setGripper(0.04); // 1. open gripper
+  moveToLiftXY(obj_x, obj_y); // 2. lift above cube
+  moveToGraspZ(obj_x, obj_y, 0.1434); // 3. descend
+  setGripper(0.010); // 4. grasp
+  moveToLiftXY(obj_x, obj_y); // 5. lift back up
+  moveAboveBasketDrop(goal_x, goal_y); // 6. move above basket
+  setGripper(0.04); // 7. release
 
   RCLCPP_INFO(node_->get_logger(), "Task 1 done.");
 }
 
-///////////////////////////////////////////////////////////////////////////////
-// Task 2 helpers
-///////////////////////////////////////////////////////////////////////////////
+/* ------------------------ Task 2 helpers ------------------------ */
 
-// Waits for a new cloud message after the arm has moved.
+// Blocks until a new point cloud arrives (after moving robot) or timeout occurs.
 sensor_msgs::msg::PointCloud2::ConstSharedPtr cw1::waitForCloud(double timeout_sec)
 {
   const auto start_time  = node_->now();
-  const uint64_t start_count = cloud_msg_count_.load(std::memory_order_relaxed);
-  while (rclcpp::ok()) {
+  const uint64_t start_count = cloud_msg_count_.load(std::memory_order_relaxed); // how many cloud have been received so far, to detect new ones
+  while (rclcpp::ok()) { // check for new cloud or timeout
     if (cloud_msg_count_.load(std::memory_order_relaxed) > start_count) {
       std::lock_guard<std::mutex> lock(cloud_mutex_);
-      return latest_cloud_;
+      return latest_cloud_; // if a new cloud has arrived, return it
     }
-    if ((node_->now() - start_time).seconds() > timeout_sec) return nullptr;
+    if ((node_->now() - start_time).seconds() > timeout_sec) return nullptr; // timeout
     std::this_thread::sleep_for(std::chrono::milliseconds(100));
   }
-  return nullptr;
+  return nullptr; // node shutdown
 }
 
-// Transform a world-frame point into the camera frame using TF2.
+// Transforms a point from world frame to the target frame (e.g. camera frame) using TF2. 
+// Used to transform the basket location into the camera frame for cropping and colour detection.
 geometry_msgs::msg::PointStamped cw1::transformToCameraFrame(
   const geometry_msgs::msg::PointStamped & point_in_world,
   const std::string & target_frame)
@@ -292,8 +306,8 @@ geometry_msgs::msg::PointStamped cw1::transformToCameraFrame(
   return result;
 }
 
-// Crop the cloud to an 8cm radius around the basket in camera XY,
-// with a depth band [bz-0.15, bz+0.06] to exclude the table.
+// Crop cloud to a ~16cm radius around the basket ---> reduces noise and speeds up processing for colour detection.
+// Also applies rudementary depth filtering to remove points that are too far below or above the basket (based on expected cube size and table height).
 pcl::PointCloud<pcl::PointXYZRGB>::Ptr cw1::cropAroundBasket(
   const sensor_msgs::msg::PointCloud2::ConstSharedPtr & cloud,
   const geometry_msgs::msg::PointStamped & basket_world_loc)
@@ -303,27 +317,45 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr cw1::cropAroundBasket(
 
   auto stamped = basket_world_loc;
   stamped.header.stamp = cloud->header.stamp;
+
+  // Transform the basket location from world frame to camera frame so we can crop the cloud around it. 
+  // This is necessary because the cloud points are in the camera frame.
   auto basket_cam = transformToCameraFrame(stamped, cloud->header.frame_id);
   if (basket_cam.header.frame_id.empty()) return out;
 
+  // Extract the basket location in camera frame as floats for easier processing.
   const float bx = static_cast<float>(basket_cam.point.x);
   const float by = static_cast<float>(basket_cam.point.y);
-  const float bz = static_cast<float>(basket_cam.point.z);
+  const float bz = static_cast<float>(basket_cam.point.z); // Distance from camera to basket centre (if robot above basket) — used for rudimentary depth filtering
 
   RCLCPP_INFO(node_->get_logger(),
     "cropAroundBasket: basket_cam=(%.3f, %.3f, %.3f)", bx, by, bz);
 
+  // Convert ROS PointCloud2 to PCL format for easier processing.
   pcl::PointCloud<pcl::PointXYZRGB>::Ptr pcl_cloud(new pcl::PointCloud<pcl::PointXYZRGB>());
   pcl::fromROSMsg(*cloud, *pcl_cloud);
 
-  constexpr float R2 = 0.08f * 0.08f;
-  const float zmin = bz - 0.15f, zmax = bz + 0.06f;
+  constexpr float R2 = 0.08f * 0.08f; // Crop radius of 8cm around the basket (16cm diameter)
 
+  /*
+  ChatGPT was used to help implement the below depth filtering mechansim as just cropping and plane segmentation was not sufficient to remove all the noise from the table and surrounding area, 
+  which was causing significant issues for colour detection accuracy. 
+  The depth filtering is a simple way to remove points that are too far below or above the basket based on the expected cube size and table height.
+  This significantly improved the colour detection accuracy by only keeping points that are likely to be on the basket and cube.
+  */
+
+  // Depth filtering: only consider points within a certain vertical range around the basket. 
+  // Keeps points that are up to 15cm closer than the basket (to include cube points below basket centre, and account for some depth noise)
+  // Keeps points that are up to 6cm further than the basket (to include points on the basket walls above the cube, but not points from the table)
+  const float zmin = bz - 0.15f, zmax = bz + 0.06f; 
+
+  // For every point in the cloud...
   for (const auto & pt : pcl_cloud->points) {
-    if (!std::isfinite(pt.x) || !std::isfinite(pt.y) || !std::isfinite(pt.z)) continue;
-    if (pt.z < zmin || pt.z > zmax) continue;
+    if (!std::isfinite(pt.x) || !std::isfinite(pt.y) || !std::isfinite(pt.z)) continue; // skip invalid points (sensor noise, missing depth, etc)
+    if (pt.z < zmin || pt.z > zmax) continue; // keep points within depth range around the basket
+    // calculate distance from basket in camera XY plane 
     float dx = pt.x - bx, dy = pt.y - by;
-    if (dx*dx + dy*dy > R2) continue;
+    if (dx*dx + dy*dy > R2) continue; // keep points within crop radius of basket centre in XY plane
     out->points.push_back(pt);
   }
   out->width = static_cast<uint32_t>(out->points.size());
@@ -332,14 +364,16 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr cw1::cropAroundBasket(
   return out;
 }
 
-
+// Removes noise and floor points from the cropped cloud using a statistical outlier removal filter followed by RANSAC plane segmentation. 
+// This helps to improve colour detection accuracy by only keeping points on the basket and cube, and removing points from the table and any remaining sensor noise.
+// This follows the rudimentary filtering in cropAroundBasket with a more robust statistical outlier removal and explicit plane segmentation to remove the floor.
 pcl::PointCloud<pcl::PointXYZRGB>::Ptr cw1::removeNoiseAndFloor(
   const pcl::PointCloud<pcl::PointXYZRGB>::Ptr & cloud)
 {
   auto out = std::make_shared<pcl::PointCloud<pcl::PointXYZRGB>>();
   if (!cloud || cloud->points.empty()) return out;
 
-  // Statistical outlier removal
+  // Follows Lab 5 filtering steps for plane segmentation, but applied to the cropped cloud around the basket rather than the whole scene.
   pcl::PointCloud<pcl::PointXYZRGB>::Ptr sor_out(new pcl::PointCloud<pcl::PointXYZRGB>());
   pcl::StatisticalOutlierRemoval<pcl::PointXYZRGB> sor;
   sor.setInputCloud(cloud);
@@ -348,7 +382,7 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr cw1::removeNoiseAndFloor(
   sor.filter(*sor_out);
   if (sor_out->points.empty()) return out;
 
-  // RANSAC plane segmentation to remove table
+
   pcl::SACSegmentation<pcl::PointXYZRGB> seg;
   pcl::PointIndices::Ptr inliers(new pcl::PointIndices());
   pcl::ModelCoefficients::Ptr coeff(new pcl::ModelCoefficients());
@@ -360,54 +394,67 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr cw1::removeNoiseAndFloor(
   seg.setInputCloud(sor_out);
   seg.segment(*inliers, *coeff);
 
+  // If no plane was found...
   if (inliers->indices.empty()) {
     RCLCPP_WARN(node_->get_logger(), "removeNoiseAndFloor: no plane found — returning SOR cloud");
-    return sor_out;
+    return sor_out; // return noise-filtered cloud without floor removal
   }
 
+  // Extract points that are NOT part of the floor plane (inliers) to get the cleaned cloud with noise and floor removed.
   pcl::ExtractIndices<pcl::PointXYZRGB> extract;
   extract.setInputCloud(sor_out);
   extract.setIndices(inliers);
-  extract.setNegative(true);  // keep non-plane points
-  extract.filter(*out);
+  extract.setNegative(true); // remove floor points
+  extract.filter(*out); 
   return out;
 }
 
-// Classify basket colour: crop → denoise → mean RGB → nearest known colour.
+// Detects the colour of the basket by analysing the average RGB values of the points in the cropped and cleaned cloud around the basket.
 std::string cw1::detectBasketColour(
   const sensor_msgs::msg::PointCloud2::ConstSharedPtr & cloud,
   const geometry_msgs::msg::PointStamped & basket_world_loc)
 {
   if (!cloud) return "none";
 
-  auto cropped = cropAroundBasket(cloud, basket_world_loc);
+  auto cropped = cropAroundBasket(cloud, basket_world_loc); // crop to points around basket
+
+  // If no points are found around the basket, return "none" as the colour. 
+  // This can happen if the basket location is inaccurate, if the basket is not visible in the camera, or if there is too much noise in the cloud.
   if (cropped->points.empty()) {
     RCLCPP_WARN(node_->get_logger(), "detectBasketColour: no points after crop");
     return "none";
   }
 
-  auto cleaned = removeNoiseAndFloor(cropped);
+  auto cleaned = removeNoiseAndFloor(cropped); // remove noise and floor points to improve colour detection accuracy
+  // If no points are left after noise and floor removal, return "none" as the colour.
   if (cleaned->points.empty()) {
     RCLCPP_WARN(node_->get_logger(), "detectBasketColour: no points after denoising");
     return "none";
   }
 
+  // Initialise sums for RGB values and a count of valid points. We will calculate the average colour of the points in the basket cloud to determine the basket colour.
   double rs = 0, gs = 0, bs = 0;
-  int count = 0;
+  int count = 0; // count of valid points considered for colour detection (used to calculate average and filter out very dark points)
+
+  // For each point in the basket cloud...
   for (const auto & pt : cleaned->points) {
+    // Get RGB values as doubles in the range [0,1] by normalising the uint8 RGB values from the point cloud.
     double r = pt.r / 255.0, g = pt.g / 255.0, b = pt.b / 255.0;
     if (std::max({r, g, b}) < 0.25) continue;
-    rs += r; gs += g; bs += b; ++count;
+    rs += r; gs += g; bs += b; ++count; // Accumulate RGB values for valid points to calculate average colour later. 
   }
+  // If we have too few valid points (e.g. due to noise, inaccurate basket location, or occlusion), return "none" as the colour.
   if (count < 20) {
     RCLCPP_WARN(node_->get_logger(), "detectBasketColour: only %d valid points", count);
     return "none";
   }
 
+  // Find average RGB values of the points in the basket cloud to determine the overall colour of the basket. 
   const double mr = rs/count, mg = gs/count, mb = bs/count;
   RCLCPP_INFO(node_->get_logger(),
     "detectBasketColour: mean RGB=(%.3f, %.3f, %.3f) from %d pts", mr, mg, mb, count);
 
+  // Structure to hold the known colours and their RBG values (as defined in the spec)
   struct KnownColour { const char* name; double r, g, b; };
   const KnownColour palette[] = {
     {"red",    0.8, 0.1, 0.1},
@@ -417,11 +464,15 @@ std::string cw1::detectBasketColour(
 
   double best = 1e9;
   std::string result = "none";
+  // For each known colour...
   for (const auto & kc : palette) {
+    // Calculate the Euclidean distance in RGB space between the average colour of the basket cloud and the known colour.
     double d = std::sqrt((mr-kc.r)*(mr-kc.r) + (mg-kc.g)*(mg-kc.g) + (mb-kc.b)*(mb-kc.b));
-    if (d < best) { best = d; result = kc.name; }
+    if (d < best) { best = d; result = kc.name; } // Keep track of the known colour with the smallest distance to the average colour of the basket cloud. This will be our detected colour for the basket.
   }
 
+  // If the best distance to a known colour is above a certain threshold, we consider the detected colour to be unreliable and return "none". 
+  // This can happen if the basket has a lot of noise in the cloud.
   if (best > 0.4) {
     RCLCPP_WARN(node_->get_logger(),
       "detectBasketColour: dist %.3f > 0.4 — returning 'none'", best);
@@ -431,9 +482,7 @@ std::string cw1::detectBasketColour(
   return result;
 }
 
-///////////////////////////////////////////////////////////////////////////////
-// Task 2 callback
-///////////////////////////////////////////////////////////////////////////////
+/* ------------------------ Task 2 ------------------------ */
 
 void cw1::t2_callback(
   const std::shared_ptr<cw1_world_spawner::srv::Task2Service::Request> request,
@@ -443,20 +492,25 @@ void cw1::t2_callback(
 
   std::vector<std::string> basket_colours;
 
+  // For each basket location provided in the request...
   for (size_t i = 0; i < request->basket_locs.size(); ++i) {
     auto loc = request->basket_locs[i];
-    if (loc.header.frame_id.empty()) loc.header.frame_id = "world";
+    if (loc.header.frame_id.empty()) loc.header.frame_id = "world"; // assume world frame if not specified
 
     RCLCPP_INFO(node_->get_logger(),
       "  basket %zu at (%.3f, %.3f)", i+1, loc.point.x, loc.point.y);
 
+    // Move the robot above the basket location to get a clear view for colour detection. 
+    // If the move fails (e.g. due to unreachable position), skip colour detection for this basket and return "none" as the colour.
     if (!moveToLiftXY(loc.point.x, loc.point.y)) {
       RCLCPP_ERROR(node_->get_logger(), "  basket %zu: move failed — returning 'none'", i+1);
       basket_colours.push_back("none");
       continue;
     }
 
-    std::this_thread::sleep_for(std::chrono::milliseconds(400));
+    std::this_thread::sleep_for(std::chrono::milliseconds(400)); // settle time
+
+    // Wait for a fresh cloud after moving above the basket to ensure we are processing the most up-to-date view of the basket for colour detection.
     auto cloud = waitForCloud(5.0);
     if (!cloud) {
       RCLCPP_ERROR(node_->get_logger(), "  basket %zu: no cloud — returning 'none'", i+1);
@@ -464,28 +518,38 @@ void cw1::t2_callback(
       continue;
     }
 
+    // Detect the colour of the basket using the fresh cloud and the basket location. 
+    // This involves cropping the cloud around the basket, removing noise and floor points, and analysing the average RGB values to determine the colour.
     std::string colour = detectBasketColour(cloud, loc);
     RCLCPP_INFO(node_->get_logger(), "  basket %zu: %s", i+1, colour.c_str());
     basket_colours.push_back(colour);
   }
 
-  response->basket_colours = basket_colours;
+  response->basket_colours = basket_colours; // return the detected colours for all baskets in the response in the same order as the request.
   RCLCPP_INFO(node_->get_logger(), "Task 2 done.");
 }
 
-///////////////////////////////////////////////////////////////////////////////
-// Task 3 — scan, cluster, classify, pick and place
-///////////////////////////////////////////////////////////////////////////////
+/* ------------------------ Task 3 ------------------------ */
 
+// Structure to hold detected object information (colour, type, and position) for Task 3.
 struct DetectedObject {
-  std::string colour, type;
-  double x, y, z;
+  std::string colour; // "red", "blue", "purple", or "none" 
+  std::string type;  // "cube" or "basket"
+  double x, y, z; // world frame coordinates of the detected object (e.g. cube centre or basket centre)
 };
 
+/** 
+ * ChatGPT was used to help point towards the below Euclidean Cluster Extraction method in order to segment individual objects from the cleaned cloud.
+ * The following tutorial was then used as reference for implementation: https://pcl.readthedocs.io/projects/tutorials/en/master/cluster_extraction.html
+*/
+
+// Segments the cleaned cloud into individual clusters (objects) using Euclidean Cluster Extraction based on the distance between points.
+// Rejects clusters that are too small (e.g. noise) or too large (e.g. table) based on the specified min and max cluster size.
 static std::vector<pcl::PointIndices> pclEuclideanClusters(
   const pcl::PointCloud<pcl::PointXYZRGB>::Ptr & cloud,
   float tolerance, int min_pts, int max_pts)
 {
+  // Builds a KD-tree for efficient nearest neighbour search to find clusters of points that are close to each other in space.
   pcl::search::KdTree<pcl::PointXYZRGB>::Ptr tree(new pcl::search::KdTree<pcl::PointXYZRGB>);
   tree->setInputCloud(cloud);
   std::vector<pcl::PointIndices> indices;
@@ -506,69 +570,84 @@ void cw1::t3_callback(
   (void)request; (void)response;
   RCLCPP_INFO(node_->get_logger(), "Task 3 started: scanning scene");
 
-  // ── Step 1: Multi-position scan ──────────────────────────────────────────
+  // Orientation for scanning; camera / gripper faces downwards.
   geometry_msgs::msg::Pose scan_pose;
   scan_pose.orientation.x = 1.0;
   scan_pose.orientation.y = 0.0;
   scan_pose.orientation.z = 0.0;
   scan_pose.orientation.w = 0.0;
 
+  // Predefined scan positions (x,y) in front of the robot to move to and capture point clouds.
+  // Gives overlapping coverage from the whole workspace.
   const std::vector<std::pair<double,double>> scan_positions = {
     {0.40,  0.30}, {0.40, -0.30},
     {0.55,  0.35}, {0.55, -0.35}, {0.55,  0.00},
   };
 
-  struct ColRef { float r, g, b; };
-  const ColRef col_refs[] = {
-    {0.8f, 0.1f, 0.1f}, {0.1f, 0.1f, 0.8f}, {0.8f, 0.1f, 0.8f},
+  
+  struct KnownColours { float r, g, b; };
+  const KnownColours palette[] = {
+    {0.8f, 0.1f, 0.1f}, {0.1f, 0.1f, 0.8f}, {0.8f, 0.1f, 0.8f}, // red, blue, purple
   };
+  // Maximum squared distance in RGB space to consider a point as matching one of the known colours.
   const float max_col_dist_sq = 0.25f * 0.25f * 3.0f;
 
   pcl::PointCloud<pcl::PointXYZRGB> combined;
 
+  // ------------------ 1. Scan the scene ------------------
   for (const auto & pos : scan_positions) {
     scan_pose.position.x = pos.first;
     scan_pose.position.y = pos.second;
     scan_pose.position.z = 0.60;
-    moveToPose(scan_pose);
+    moveToPose(scan_pose); // Move arm to each scan position at height 0.6 with camera facing down.
 
-    std::this_thread::sleep_for(std::chrono::milliseconds(600));
+    std::this_thread::sleep_for(std::chrono::milliseconds(600)); // Wait for robot to settle and motion blur to clear before capturing cloud.
     cloud_msg_count_.store(0, std::memory_order_relaxed);
-    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    std::this_thread::sleep_for(std::chrono::milliseconds(100)); // Delay to ensure next cloud captures is a fresh one after motion (not mid-motion).
 
-    auto cm = waitForCloud(5.0);
-    if (!cm) continue;
+    // Blocks until new cloud arrives 
+    auto cloud = waitForCloud(5.0);
+    if (!cloud) continue;
 
+    // Convert ROS PointCloud2 message to PCL format for easier processing.
     pcl::PointCloud<pcl::PointXYZRGB> raw;
-    pcl::fromROSMsg(*cm, raw);
+    pcl::fromROSMsg(*cloud, raw);
 
+    // ------------------2. Filter and combine clouds from all scan positions ------------------
+
+    // For each point in the raw point cloud (before filtering)...
     for (const auto & pt : raw.points) {
-      if (!std::isfinite(pt.x) || !std::isfinite(pt.y) || !std::isfinite(pt.z)) continue;
-      if (pt.z < 0.30f || pt.z > 0.58f) continue;
+      if (!std::isfinite(pt.x) || !std::isfinite(pt.y) || !std::isfinite(pt.z)) continue; // skip invalid points (sensor noise, missing depth, etc)
+      if (pt.z < 0.30f || pt.z > 0.58f) continue; // keep points within expected height range of objects on the table and drop table and anything too high
+
       float r = pt.r/255.f, g = pt.g/255.f, b = pt.b/255.f;
-      if (std::max({r,g,b}) < 0.20f) continue;
+      if (std::max({r,g,b}) < 0.20f) continue; // skip very dark points
+
+      // Check if point's colour is close enough to any of the three known colours
+      // If not, discard it.
       bool match = false;
-      for (const auto & ref : col_refs) {
-        float dr=r-ref.r, dg=g-ref.g, db=b-ref.b;
+      for (const auto & kc: palette) { 
+        float dr=r-kc.r, dg=g-kc.g, db=b-kc.b;
         if (dr*dr+dg*dg+db*db < max_col_dist_sq) { match=true; break; }
       }
       if (!match) continue;
 
+      // Transform the point from camera frame to world frame using TF2 so we can work with consistent world coordinates for clustering and object detection.
       geometry_msgs::msg::PointStamped cam_pt, world_pt;
-      cam_pt.header.frame_id = cm->header.frame_id;
-      cam_pt.header.stamp    = cm->header.stamp;
+      cam_pt.header.frame_id = cloud->header.frame_id;
+      cam_pt.header.stamp    = cloud->header.stamp;
       cam_pt.point.x = pt.x; cam_pt.point.y = pt.y; cam_pt.point.z = pt.z;
       try {
         world_pt = tf_buffer_->transform(cam_pt, "world", tf2::durationFromSec(0.5));
       } catch (...) { continue; }
 
-      pcl::PointXYZRGB wpt;
-      wpt.x = static_cast<float>(world_pt.point.x);
-      wpt.y = static_cast<float>(world_pt.point.y);
-      wpt.z = static_cast<float>(world_pt.point.z);
-      wpt.r = pt.r; wpt.g = pt.g; wpt.b = pt.b;
-      if (wpt.z < 0.03f) continue;
-      combined.push_back(wpt);
+      pcl::PointXYZRGB pcl_world_pt;
+      pcl_world_pt.x = static_cast<float>(world_pt.point.x);
+      pcl_world_pt.y = static_cast<float>(world_pt.point.y);
+      pcl_world_pt.z = static_cast<float>(world_pt.point.z);
+      pcl_world_pt.r = pt.r; pcl_world_pt.g = pt.g; pcl_world_pt.b = pt.b;
+      if (pcl_world_pt.z < 0.03f) continue; // drop anything at the floor level
+      combined.push_back(pcl_world_pt);
     }
     RCLCPP_INFO(node_->get_logger(),
       "Task 3: scan (%.2f,%.2f): %zu pts so far", pos.first, pos.second, combined.size());
@@ -579,52 +658,66 @@ void cw1::t3_callback(
   }
   RCLCPP_INFO(node_->get_logger(), "Task 3: %zu total pts", combined.size());
 
-  // ── Step 2: Cluster  ───────────────────────────────────────────────────────
-  pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_ptr(
-    new pcl::PointCloud<pcl::PointXYZRGB>(combined));
+  pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_ptr(new pcl::PointCloud<pcl::PointXYZRGB>(combined));
+  
+  // ------------------ 3. Cluster and detect objects ------------------
+
+  // Group combined cloud into clusters (objects).
   auto clusters = pclEuclideanClusters(cloud_ptr, 0.02f, 200, 100000);
   RCLCPP_INFO(node_->get_logger(), "Task 3: %zu clusters", clusters.size());
 
-  // ── Step 3: Classify colour + basket/cube ─────────────────────────────────
-  struct RefC { const char* name; float r,g,b; };
-  const RefC refs[] = {
+  struct KnownColoursDict { const char* name; float r,g,b; };
+  const KnownColoursDict dict[] = {
     {"blue",0.1f,0.1f,0.8f}, {"red",0.8f,0.1f,0.1f}, {"purple",0.8f,0.1f,0.8f},
   };
 
   struct Candidate { std::string colour; double x,y,z; int pts; };
   std::vector<Candidate> candidates;
 
-  for (const auto & cl : clusters) {
-    double sr=0,sg=0,sb=0, cx=0,cy=0,cz=0;
-    for (int idx : cl.indices) {
+  // For each cluster...
+  for (const auto & cluster : clusters) {
+    // Calculate the average RGB colour and centroid (x,y,z) of the points in the cluster to determine the cluster's overall colour and position.
+    double rs=0,gs=0,bs=0, cluster_x=0,cluster_y=0,cluster_z=0;
+    for (int idx : cluster.indices) {
       const auto & pt = cloud_ptr->points[idx];
-      sr+=pt.r/255.0; sg+=pt.g/255.0; sb+=pt.b/255.0;
-      cx+=pt.x; cy+=pt.y; cz+=pt.z;
+      rs+=pt.r/255.0; gs+=pt.g/255.0; bs+=pt.b/255.0;
+      cluster_x+=pt.x; cluster_y+=pt.y; cluster_z+=pt.z;
     }
-    int n = static_cast<int>(cl.indices.size());
-    double mr=sr/n, mg=sg/n, mb=sb/n;
-    cx/=n; cy/=n; cz/=n;
+    int n = static_cast<int>(cluster.indices.size());
+    double mr=rs/n, mg=gs/n, mb=bs/n;
+    cluster_x/=n; cluster_y/=n; cluster_z/=n;
 
-    double best=1e9; const char* col=nullptr;
-    for (const auto & ref : refs) {
-      double d=(mr-ref.r)*(mr-ref.r)+(mg-ref.g)*(mg-ref.g)+(mb-ref.b)*(mb-ref.b);
-      if (d<best) { best=d; col=ref.name; }
+    // Find the closest known colour in RGB space to the average colour of the cluster to determine the cluster's colour.
+    double best=1e9; const char* colour=nullptr;
+    for (const auto & kc : dict) {
+      double d=(mr-kc.r)*(mr-kc.r)+(mg-kc.g)*(mg-kc.g)+(mb-kc.b)*(mb-kc.b);
+      if (d<best) { best=d; colour=kc.name; }
     }
-    if (best>0.4 || !col) continue;
-    candidates.push_back({std::string(col), cx, cy, cz, n});
+    if (best>0.4 || !colour) continue;
+    candidates.push_back({std::string(colour), cluster_x, cluster_y, cluster_z, n});
     RCLCPP_INFO(node_->get_logger(),
-      "  cluster: %s at (%.3f,%.3f,%.3f) [%d pts]", col, cx, cy, cz, n);
+      "  cluster: %s at (%.3f,%.3f,%.3f) [%d pts]", colour, cluster_x, cluster_y, cluster_z, n);
   }
 
   std::vector<DetectedObject> cubes, baskets;
   const std::string colours[] = {"red","blue","purple"};
-  const int BASKET_PT_THRESHOLD = 8000;
 
+  // ------------------- 4. Classify clusters as cubes or baskets ------------------
+
+  // Threshold on the number of points in the cluster to classify it as a cube or a basket.
+  // This is a simple heuristic based on the expected size of the objects and the density of the point cloud.
+  // E.g. Baskets are larger and should have more points than cubes, so we can use a threshold to separate them.
+  const int BASKET_PT_THRESHOLD = 8000; 
+
+  // For each detected colour...
   for (const auto & col : colours) {
+    // For each candidate cluster of that colour...
     for (auto & c : candidates) {
-      if (c.colour != col) continue;
+      if (c.colour != col) continue; // only consider candidates of the current colour
       DetectedObject obj;
-      obj.colour=col; obj.x=c.x; obj.y=c.y; obj.z=c.z;
+      obj.colour=col; obj.x=c.x; obj.y=c.y; obj.z=c.z; // Object colour and position are taken from the candidate cluster information.
+
+      // Classify the object as a basket or cube based on the number of points in the cluster (c.pts) compared to the threshold.
       if (c.pts >= BASKET_PT_THRESHOLD) { obj.type="basket"; baskets.push_back(obj); }
       else                              { obj.type="cube";   cubes.push_back(obj);   }
       RCLCPP_INFO(node_->get_logger(),
@@ -635,12 +728,14 @@ void cw1::t3_callback(
   RCLCPP_INFO(node_->get_logger(),
     "Task 3: %zu cubes, %zu baskets", cubes.size(), baskets.size());
 
-  // ── Step 4: Pick and place ────────────────────────────────────────────────
+  // ------------------- 5. Matching cubes to baskets -------------------
   int placed = 0;
+  // For each detected cube...
   for (const auto & cube : cubes) {
     const DetectedObject * target = nullptr;
+    // For each detected basket..
     for (const auto & basket : baskets)
-      if (basket.colour == cube.colour) { target = &basket; break; }
+      if (basket.colour == cube.colour) { target = &basket; break; } // find the basket of the same colour as the cube to place it in
 
     if (!target) {
       RCLCPP_WARN(node_->get_logger(), "Task 3: no %s basket — skipping", cube.colour.c_str());
@@ -649,15 +744,17 @@ void cw1::t3_callback(
     RCLCPP_INFO(node_->get_logger(),
       "=== PICK %s (%.3f,%.3f) -> (%.3f,%.3f) ===",
       cube.colour.c_str(), cube.x, cube.y, target->x, target->y);
+    
+    // ------------------- 6. Pick and place the cube into the matched basket -------------------
 
-    setGripper(0.04);                               // [1] open
-    if (!moveToLiftXY(cube.x, cube.y)) continue;   // [2] lift above cube
-    moveToGraspZ(cube.x, cube.y, 0.1434);           // [3] descend
-    setGripper(0.010);                              // [4] grasp
+    setGripper(0.04); // 1. open gripper 
+    if (!moveToLiftXY(cube.x, cube.y)) continue;// 2. lift above cube
+    moveToGraspZ(cube.x, cube.y, 0.1434); // 3. descend
+    setGripper(0.010); // 4. grasp
     std::this_thread::sleep_for(std::chrono::milliseconds(500));
-    moveToLiftXY(cube.x, cube.y);                  // [5] lift up
-    moveAboveBasketDrop(target->x, target->y);     // [6] move above basket (shared helper)
-    setGripper(0.04);                               // [7] release
+    moveToLiftXY(cube.x, cube.y); // 5. lift up
+    moveAboveBasketDrop(target->x, target->y);// 6.move above basket
+    setGripper(0.04); // 7. release
     std::this_thread::sleep_for(std::chrono::milliseconds(200));
 
     RCLCPP_INFO(node_->get_logger(),
