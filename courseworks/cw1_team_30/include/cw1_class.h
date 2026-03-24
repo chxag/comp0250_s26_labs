@@ -113,16 +113,19 @@ public:
   bool moveToLiftXY(double x, double y);
   bool moveToGraspZ(double x, double y, double z);
   bool setGripper(double width);
-  bool pickUpObject(const geometry_msgs::msg::PoseStamped &object_loc);
-  bool placeObject(const geometry_msgs::msg::PoseStamped &goal_loc);
 
   /* Task 2 helpers */
-  bool moveToScanPose();
-  sensor_msgs::msg::PointCloud2::ConstSharedPtr waitForCloud(double timeout_sec = 5.0);
-  std::string classifyBasketColour(
-    const sensor_msgs::msg::PointCloud2::ConstSharedPtr & cloud,
-    const geometry_msgs::msg::PointStamped & basket_world_loc,
-    double crop_radius = 0.08);
+  sensor_msgs::msg::PointCloud2::ConstSharedPtr waitForCloud(double timeout_sec);
+  geometry_msgs::msg::PointStamped transformToCameraFrame(
+    const geometry_msgs::msg::PointStamped &input_pt, const std::string &target_frame);
+  std::string detectBasketColour(
+    const sensor_msgs::msg::PointCloud2::ConstSharedPtr &cloud,
+    const geometry_msgs::msg::PointStamped &basket_world_loc);
+  pcl::PointCloud<pcl::PointXYZRGB>::Ptr cropAroundBasket(
+    const sensor_msgs::msg::PointCloud2::ConstSharedPtr &cloud,
+    const geometry_msgs::msg::PointStamped &basket_world_loc);
+  pcl::PointCloud<pcl::PointXYZRGB>::Ptr removeNoiseAndFloor(
+    const pcl::PointCloud<pcl::PointXYZRGB>::Ptr &input_cloud);
 };
 
 #endif // CW1_CLASS_H_
