@@ -113,6 +113,7 @@ public:
   bool moveToLiftXY(double x, double y);
   bool moveToGraspZ(double x, double y, double z);
   bool setGripper(double width);
+  bool moveAboveBasketDrop(double basket_x, double basket_y);
   bool pickUpObject(const geometry_msgs::msg::PoseStamped &object_loc);
   bool placeObject(const geometry_msgs::msg::PoseStamped &goal_loc);
 
