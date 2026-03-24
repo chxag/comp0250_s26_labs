@@ -847,10 +847,9 @@ std::string cw1::classifyCubeOrBasket(const pcl::PointCloud<pcl::PointXYZRGB>::P
   const float max_xy = std::max(size_x, size_y);
   const float min_xy = std::min(size_x, size_y);
 
-  if (max_xy > 0.02 && max_xy < 0.065f && min_xy > 0.015f && size_z < 0.07f) return "cube"; // likely a cube if the largest dimension is less than 5cm
-  if (max_xy > 0.07f && max_xy < 0.16f && min_xy > 0.03f) return "basket"; // likely a basket if the largest dimension is greater than 12cm
-  return "none"; // size is ambiguous, could be either cube or basket
-}
+  if (max_xy > 0.02 && max_xy < 0.065f && min_xy > 0.015f && size_z < 0.07f) return "cube";
+  if (max_xy > 0.07f && max_xy < 0.16f && min_xy > 0.03f) return "basket";
+  return "none";
 
 std::vector<cw1::AllObjectsInScene> cw1::detectObjectsInCloud(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr & input_cloud)
 {
@@ -952,10 +951,6 @@ void cw1::t3_callback(
     }
 
     // Descend to grasp height.
-    // moveToGraspZ adds a 3cm outward radial offset internally (for Task 1
-    // where positions are exact). For Task 3 the centroid comes from point
-    // cloud data and is already approximate, so pre-shift inward by the same
-    // 3cm so the net grasp position stays on the detected centroid.
     {
       const double cx = cube.location_world.point.x;
       const double cy = cube.location_world.point.y;
