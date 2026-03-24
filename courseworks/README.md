@@ -1,5 +1,8 @@
 # CW1 Team 30 — ROS 2 / MoveIt Solution README
 
+## Acknowledgement:
+We acknowledge the use of Claude and ChatGPT for brainstorming and code debugging.
+
 ## 1) Project Summary
 This package contains Team 30's solution for COMP0250 CW1 in ROS 2 Humble.
 
