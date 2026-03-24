@@ -37,6 +37,9 @@ solution is contained within the cw1_team_<your_team_number> package */
 #include <pcl/point_types.h>
 #include <pcl_conversions/pcl_conversions.h>
 
+#include <vector>
+#include <string>
+
 class cw1
 {
 public:
@@ -126,6 +129,29 @@ public:
     const geometry_msgs::msg::PointStamped &basket_world_loc);
   pcl::PointCloud<pcl::PointXYZRGB>::Ptr removeNoiseAndFloor(
     const pcl::PointCloud<pcl::PointXYZRGB>::Ptr &input_cloud);
+  
+  /* Task 3 helpers */
+  struct AllObjectsInScene {
+    std::string typeOfObject;
+    std::string colour;
+    geometry_msgs::msg::PointStamped location_world;
+    pcl::PointCloud<pcl::PointXYZRGB>::Ptr pointCloud;
+    float size_of_object_x;
+    float size_of_object_y;
+    float size_of_object_z;
+  };
+  bool moveToScanPose();
+  pcl::PointCloud<pcl::PointXYZRGB>::Ptr applyVoxelFiltering(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr &cloud);
+  pcl::PointCloud<pcl::PointXYZRGB>::Ptr applyStatisticalOutlierRemoval(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr &cloud);
+  pcl::PointCloud<pcl::PointXYZRGB>::Ptr removeFloorWithRANSAC(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr &sor_cloud);
+  std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> clusterWithEuclidean(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr &cloud);
+  geometry_msgs::msg::PointStamped calculateCentroidInWorldFrame(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr &cluster, const std::string & cloud_frame, const rclcpp::Time & cloud_timestamp);
+  std::string classifyColour(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr &cluster);
+  std::string classifyCubeOrBasket(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr &cluster, float & size_x, float & size_y, float & size_z);
+  std::vector<cw1::AllObjectsInScene> detectObjectsInCloud(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr & input_cloud);
+  double calculateDistance( const geometry_msgs::msg::PointStamped &p1, const geometry_msgs::msg::PointStamped &p2);
+  pcl::PointCloud<pcl::PointXYZRGB>::Ptr accumulateColouredPointClouds(const std::vector<std::pair<double,double>> & scan_positions) ;
 };
+
 
 #endif // CW1_CLASS_H_
