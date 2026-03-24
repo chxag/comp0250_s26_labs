@@ -136,9 +136,11 @@ cw1::cw1(const rclcpp::Node::SharedPtr &node)
   arm_group->setMaxVelocityScalingFactor(0.3);
 }
 
-///////////////////////////////////////////////////////////////////////////////
-// General helpers
-///////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/* --------------------------------------------
+Helper functions for motion + Task 1:
+----------------------------------------------*/
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Analytical joint-space helpers — derived from URDF FK, gripper always DOWN
@@ -254,10 +256,7 @@ bool cw1::setGripper(double width)
   return success;
 }
 
-///////////////////////////////////////////////////////////////////////////////
-// Task 1
-///////////////////////////////////////////////////////////////////////////////
-
+// Main Task 1 service callback
 void cw1::t1_callback(
   const std::shared_ptr<cw1_world_spawner::srv::Task1Service::Request> request,
   std::shared_ptr<cw1_world_spawner::srv::Task1Service::Response> response)
@@ -489,6 +488,7 @@ std::string cw1::detectBasketColour(
     if (std::max({red, green, blue}) < 0.25) continue;  // skip very dark points
 
     // Accumulate RGB values for valid points to calculate average colour later. 
+    red_sum += red;
     green_sum += green;
     blue_sum += blue;
     count++;
@@ -601,33 +601,6 @@ void cw1::t2_callback(
 Task 3 helper functions:
 ----------------------------------------------*/
 
-// Internal struct to hold a detected object
-struct DetectedObject {
-  std::string colour;   // "red", "blue", "purple"
-  std::string type;     // "cube" or "basket"
-  double x, y, z;       // world-frame centroid
-};
-
-// PCL Euclidean cluster extraction using KdTree (efficient)
-
-static std::vector<pcl::PointIndices> pclEuclideanClusters(
-  const pcl::PointCloud<pcl::PointXYZRGB>::Ptr & cloud,
-  float tolerance, int min_pts, int max_pts)
-{
-  pcl::search::KdTree<pcl::PointXYZRGB>::Ptr tree(
-    new pcl::search::KdTree<pcl::PointXYZRGB>);
-  tree->setInputCloud(cloud);
-  std::vector<pcl::PointIndices> cluster_indices;
-  pcl::EuclideanClusterExtraction<pcl::PointXYZRGB> ec;
-  ec.setClusterTolerance(tolerance);
-  ec.setMinClusterSize(min_pts);
-  ec.setMaxClusterSize(max_pts);
-  ec.setSearchMethod(tree);
-  ec.setInputCloud(cloud);
-  ec.extract(cluster_indices);
-  return cluster_indices;
-}
-
 void cw1::t3_callback(
   const std::shared_ptr<cw1_world_spawner::srv::Task3Service::Request> request,
   std::shared_ptr<cw1_world_spawner::srv::Task3Service::Response> response)
@@ -637,250 +610,10 @@ void cw1::t3_callback(
 
   RCLCPP_INFO(node_->get_logger(), "Task 3 started: scanning scene");
 
-  // ── Step 1: Scan from multiple positions to see full workspace ───────────
-  geometry_msgs::msg::Pose scan_pose;
-  scan_pose.orientation.x = 1.0;
-  scan_pose.orientation.y = 0.0;
-  scan_pose.orientation.z = 0.0;
-  scan_pose.orientation.w = 0.0;
 
-  // 5-position scan grid covering the full reachable workspace.
-  // Baskets/cubes spawn within ~0.65m forward and ±0.40m sideways.
-  const std::vector<std::pair<double,double>> scan_positions = {
-    {0.40,  0.30},   // near-right
-    {0.40, -0.30},   // near-left
-    {0.55,  0.35},   // far-right
-    {0.55, -0.35},   // far-left
-    {0.55,  0.00},   // centre-far
-  };
 
-  // Accumulate all coloured points across all scans into one cloud
-  pcl::PointCloud<pcl::PointXYZRGB> combined_colour_cloud;
-
-  // Reference colours for filtering (defined early for reuse)
-  struct ColRef { float r, g, b; };
-  const ColRef col_refs[] = {
-    {0.8f, 0.1f, 0.1f},
-    {0.1f, 0.1f, 0.8f},
-    {0.8f, 0.1f, 0.8f},
-  };
-  const float max_col_dist_sq = 0.25f * 0.25f * 3.0f;
-
-  for (const auto & pos : scan_positions) {
-    scan_pose.position.x = pos.first;
-    scan_pose.position.y = pos.second;
-    scan_pose.position.z = 0.60;
-    moveToPose(scan_pose);
-    // Settle and then wait for a FRESH cloud after settling
-    std::this_thread::sleep_for(std::chrono::milliseconds(600));
-    // Reset the cloud count baseline AFTER settling so waitForCloud
-    // waits for a new message from the current arm position
-    cloud_msg_count_.store(0, std::memory_order_relaxed);
-    std::this_thread::sleep_for(std::chrono::milliseconds(100));
-
-    auto cm = waitForCloud(5.0);
-    if (!cm) continue;
-    pcl::PointCloud<pcl::PointXYZRGB> raw;
-    pcl::fromROSMsg(*cm, raw);
-
-    for (const auto & pt : raw.points) {
-      if (!std::isfinite(pt.x) || !std::isfinite(pt.y) || !std::isfinite(pt.z)) continue;
-      if (pt.z < 0.30f || pt.z > 0.58f) continue;
-      float r = pt.r/255.f, g = pt.g/255.f, b = pt.b/255.f;
-      if (std::max({r,g,b}) < 0.20f) continue;
-      bool match = false;
-      for (const auto & ref : col_refs) {
-        float dr=r-ref.r, dg=g-ref.g, db=b-ref.b;
-        if (dr*dr+dg*dg+db*db < max_col_dist_sq) { match=true; break; }
-      }
-      if (!match) continue;
-
-      // Transform point to world frame before accumulating
-      geometry_msgs::msg::PointStamped cam_pt, world_pt;
-      cam_pt.header.frame_id = cm->header.frame_id;
-      cam_pt.header.stamp = cm->header.stamp;
-      cam_pt.point.x = pt.x; cam_pt.point.y = pt.y; cam_pt.point.z = pt.z;
-      try {
-        world_pt = tf_buffer_->transform(cam_pt, "world", tf2::durationFromSec(0.5));
-      } catch (...) { continue; }
-
-      pcl::PointXYZRGB wpt;
-      wpt.x = static_cast<float>(world_pt.point.x);
-      wpt.y = static_cast<float>(world_pt.point.y);
-      wpt.z = static_cast<float>(world_pt.point.z);
-      wpt.r = pt.r; wpt.g = pt.g; wpt.b = pt.b;
-      // Only keep points that are above ground level (z > 0.01 m world)
-      if (wpt.z < 0.01f) continue;
-      combined_colour_cloud.push_back(wpt);
-    }
-    RCLCPP_INFO(node_->get_logger(),
-      "Task 3: scan at (%.2f,%.2f): %zu total coloured pts so far",
-      pos.first, pos.second, combined_colour_cloud.size());
-  }
-
-  if (combined_colour_cloud.empty()) {
-    RCLCPP_ERROR(node_->get_logger(), "Task 3: no coloured points found");
-    return;
-  }
-
-  RCLCPP_INFO(node_->get_logger(),
-    "Task 3: %zu total coloured points accumulated", combined_colour_cloud.size());
-
-  // ── Step 2: Cluster in world frame ────────────────────────────────────────
-  pcl::PointCloud<pcl::PointXYZRGB>::Ptr colour_cloud_ptr(
-    new pcl::PointCloud<pcl::PointXYZRGB>(combined_colour_cloud));
-  // tolerance=2cm, min 50 pts, max 100000 pts
-  auto clusters = pclEuclideanClusters(colour_cloud_ptr, 0.02f, 50, 100000);
-
-  RCLCPP_INFO(node_->get_logger(),
-    "Task 3: found %zu clusters", clusters.size());
-
-  // ── Step 4: Classify each cluster ────────────────────────────────────────
-  struct RefC { const char* name; float r,g,b; };
-  const RefC refs[] = {
-    {"blue",   0.1f, 0.1f, 0.8f},
-    {"red",    0.8f, 0.1f, 0.1f},
-    {"purple", 0.8f, 0.1f, 0.8f},
-  };
-
-  // First pass: collect all candidate objects with their point counts
-  struct Candidate {
-    std::string colour;
-    double x, y, z;
-    int pts;
-  };
-  std::vector<Candidate> candidates;
-
-  for (const auto & cluster : clusters) {
-    double sr=0,sg=0,sb=0, cx=0,cy=0,cz=0;
-    for (int idx : cluster.indices) {
-      const auto & pt = colour_cloud_ptr->points[idx];
-      sr += pt.r/255.0; sg += pt.g/255.0; sb += pt.b/255.0;
-      cx += pt.x; cy += pt.y; cz += pt.z;
-    }
-    int n = static_cast<int>(cluster.indices.size());
-    double mr = sr/n, mg = sg/n, mb = sb/n;
-    cx /= n; cy /= n; cz /= n;
-
-    // Classify colour
-    double best_dist = 1e9;
-    const char * colour = nullptr;
-    for (const auto & ref : refs) {
-      double d = (mr-ref.r)*(mr-ref.r)+(mg-ref.g)*(mg-ref.g)+(mb-ref.b)*(mb-ref.b);
-      if (d < best_dist) { best_dist = d; colour = ref.name; }
-    }
-    if (best_dist > 0.4 || !colour) continue;
-
-    // Points are already in world frame (transformed during accumulation)
-    candidates.push_back({std::string(colour), cx, cy, cz, n});
-
-    RCLCPP_INFO(node_->get_logger(),
-      "  cluster: %s at world (%.3f, %.3f, %.3f) [%d pts, dist=%.3f]",
-      colour, cx, cy, cz, n, best_dist);
-  }
-
-  // Second pass: for each colour, the LARGEST cluster = basket, rest = cubes.
-  // This avoids a fixed point-count threshold.
-  std::vector<DetectedObject> cubes, baskets;
-  const std::string colours[] = {"red", "blue", "purple"};
-
-  // Baskets are large hollow cylinders — they accumulate far more points than
-  // solid cubes.  Empirically: baskets > 8000 pts, cubes < 7000 pts.
-  // Using a fixed threshold is more robust than "largest = basket" because
-  // it handles cases where only one cluster of a colour is visible.
-  const int BASKET_PT_THRESHOLD = 8000;
-
-  for (const auto & col : colours) {
-    std::vector<Candidate*> same_colour;
-    for (auto & c : candidates) {
-      if (c.colour == col) same_colour.push_back(&c);
-    }
-    if (same_colour.empty()) continue;
-
-    for (const auto * c : same_colour) {
-      DetectedObject obj;
-      obj.colour = col;
-      obj.x = c->x; obj.y = c->y; obj.z = c->z;
-
-      if (c->pts >= BASKET_PT_THRESHOLD) {
-        obj.type = "basket";
-        baskets.push_back(obj);
-      } else {
-        obj.type = "cube";
-        cubes.push_back(obj);
-      }
-      RCLCPP_INFO(node_->get_logger(),
-        "  detected %s %s at world (%.3f, %.3f, %.3f) [%d pts]",
-        obj.colour.c_str(), obj.type.c_str(), obj.x, obj.y, obj.z, c->pts);
-    }
-  }
-
-  RCLCPP_INFO(node_->get_logger(),
-    "Task 3: %zu cubes, %zu baskets detected", cubes.size(), baskets.size());
-
-  // ── Step 5: Pick and place each cube into matching basket ─────────────────
-  // Heights handled internally: moveToLiftXY (~0.55m), moveToGraspZ (~0.12m)
-
-  int placed = 0;
-  for (const auto & cube : cubes) {
-    // Find matching basket
-    const DetectedObject * target = nullptr;
-    for (const auto & basket : baskets) {
-      if (basket.colour == cube.colour) { target = &basket; break; }
-    }
-    if (!target) {
-      RCLCPP_WARN(node_->get_logger(),
-        "Task 3: no %s basket found for %s cube — skipping",
-        cube.colour.c_str(), cube.colour.c_str());
-      continue;
-    }
-
-    RCLCPP_INFO(node_->get_logger(),
-      "=== T3 PICK: %s cube at (%.3f, %.3f) -> basket (%.3f, %.3f) ===",
-      cube.colour.c_str(), cube.x, cube.y, target->x, target->y);
-
-    // ── [1] Open gripper ─────────────────────────────────────────────────────
-    RCLCPP_INFO(node_->get_logger(), "  [1] Open gripper");
-    setGripper(0.04);
-
-    // ── [2] Joint-space: rotate base + lift to above cube ────────────────────
-    // moveToLiftXY computes j1=atan2(y,x) and sets j2-j7 to elbow-down config.
-    // Gripper is always perpendicular (j7=pi/4). Fully deterministic.
-    RCLCPP_INFO(node_->get_logger(), "  [2] Lift above cube (%.4f, %.4f)", cube.x, cube.y);
-    if (!moveToLiftXY(cube.x, cube.y)) {
-      RCLCPP_WARN(node_->get_logger(), "  [2] FAILED - skipping");
-      continue;
-    }
-
-    // ── [3] Joint-space: descend to grasp height ─────────────────────────────
-    RCLCPP_INFO(node_->get_logger(), "  [3] Descend to grasp");
-    moveToGraspZ(cube.x, cube.y, 0.1434);  // fingertips at cube centre (0.04m)
-
-    // ── [4] Close gripper ────────────────────────────────────────────────────
-    RCLCPP_INFO(node_->get_logger(), "  [4] Close gripper, wait 500ms");
-    setGripper(0.010);
-    std::this_thread::sleep_for(std::chrono::milliseconds(500));
-
-    // ── [5] Joint-space: lift back up ────────────────────────────────────────
-    RCLCPP_INFO(node_->get_logger(), "  [5] Lift up");
-    moveToLiftXY(cube.x, cube.y);
-
-    // ── [6] Joint-space: rotate base to face basket ──────────────────────────
-    RCLCPP_INFO(node_->get_logger(), "  [6] Move above basket (%.4f, %.4f)", target->x, target->y);
-    moveToLiftXY(target->x, target->y);
-
-    // ── [7] Release above basket (drop from lift height) ──────────────────────
-    RCLCPP_INFO(node_->get_logger(), "  [7] Release above basket");
-    setGripper(0.04);
-    std::this_thread::sleep_for(std::chrono::milliseconds(200));
-
-    ++placed;
-    RCLCPP_INFO(node_->get_logger(),
-      "=== T3 PLACED %s cube (%d/%zu) ===", cube.colour.c_str(), placed, cubes.size());
-  }
-
-  RCLCPP_INFO(node_->get_logger(),
-    "Task 3 done: placed %d/%zu cubes", placed, cubes.size());
+  // RCLCPP_INFO(node_->get_logger(),
+  //   "Task 3 done: placed %d/%zu cubes", placed, cubes.size());
 
   // Return arm to a neutral forward-facing pose so it doesn't freeze in an
   // awkward configuration after the last cube is placed.
