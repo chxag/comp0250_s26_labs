@@ -125,19 +125,19 @@ cw1::cw1(const rclcpp::Node::SharedPtr &node)
 // General helpers
 ///////////////////////////////////////////////////////////////////////////////
 
-// ─────────────────────────────────────────────────────────────────────────────
-// Analytical joint-space helpers — derived from URDF FK, gripper always DOWN
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
+// Analytical joint-space helpers (derived from URDF FK, gripper always DOWN)
+// -----------------------------------------------------------------------------
 //
-//  j1 = atan2(y, x)   — base rotation to face target
-//  j3 = j5 = 0        — always zero
-//  j7 = 0.0            — wrist neutral, fingers aligned with arm direction
+// j1 = atan2(y, x)   -> base rotation to face target
+// j3 = j5 = 0        -> fixed
+// j7 = 0.0           -> wrist neutral, fingers aligned with arm direction
 //
-// LIFT   (z~0.56m): j2=3.267*r-1.784  j4=3.286*r-3.457  j6=pi/2=1.571  j7=0
-// GRASP  (z~0.13m): j2=1.710*r-0.369  j4=2.970*r-3.837  j6=2.900
+// LIFT  (z~0.56m): j2=3.267*r-1.784  j4=3.286*r-3.457  j6=pi/2=1.571  j7=0
+// GRASP (z~0.13m): j2=1.710*r-0.369  j4=2.970*r-3.837  j6=2.900
 //
-// Both sets verified via FK to give TCP z-axis=[0,0,-1] (gripper straight down)
-// across r=0.30..0.65m workspace.
+// Verified via FK: TCP z-axis = [0, 0, -1] (gripper straight down)
+// across r = 0.30..0.65 m workspace.
 
 static bool execJoints(
   std::shared_ptr<moveit::planning_interface::MoveGroupInterface> & arm_group,
@@ -151,7 +151,7 @@ static bool execJoints(
   return ok;
 }
 
-// Lift height (~0.56m), gripper straight down. j6=pi/2.
+// Move to lift height (~0.56 m) above target XY, gripper straight down. j6=pi/2.
 bool cw1::moveToLiftXY(double x, double y)
 {
   const double r  = std::sqrt(x*x + y*y);
@@ -161,22 +161,20 @@ bool cw1::moveToLiftXY(double x, double y)
   return execJoints(arm_group, {j1, j2, 0.0, j4, 0.0, 1.571, 0.785});
 }
 
-// Move TCP in a straight vertical line to target z.
-// Uses computeCartesianPath — keeps current orientation locked, pure Z motion.
-// Call ONLY after moveToLiftXY has positioned the arm above the target XY.
-// Inherits orientation from current arm state so fingers stay parallel to arm.
+// Move TCP vertically to target z.
+// Uses computeCartesianPath to keep current orientation and enforce pure Z motion.
+// Call only after moveToLiftXY() has placed the arm above target XY.
 bool cw1::moveToGraspZ(double x, double y, double z)
 {
   arm_group->setStartStateToCurrentState();
 
-  // Apply a small forward offset (3cm) along the approach direction so
-  // the gripper centre lands on the cube face rather than the near edge.
+  // Small forward offset (3 cm) so gripper center targets cube face, not near edge.
   const double r       = std::sqrt(x*x + y*y);
   const double offset  = 0.03;
   const double gx      = x + offset * (x / r);
   const double gy      = y + offset * (y / r);
 
-  // Read current TCP orientation — preserves finger direction from moveToLiftXY
+  // Preserve current TCP orientation from moveToLiftXY().
   geometry_msgs::msg::PoseStamped current_stamped = arm_group->getCurrentPose();
   geometry_msgs::msg::Pose target;
   target.position.x    = gx;
@@ -212,7 +210,7 @@ bool cw1::moveToGraspZ(double x, double y, double z)
   return (arm_group->execute(plan) == moveit::core::MoveItErrorCode::SUCCESS);
 }
 
-// Pose-target fallback for scan moves (camera pointing down, exact wrist not critical)
+// Pose-target helper for scan moves (camera down, exact wrist roll not critical).
 bool cw1::moveToPose(const geometry_msgs::msg::Pose target_pose)
 {
   arm_group->setStartStateToCurrentState();
@@ -265,25 +263,25 @@ void cw1::t1_callback(
   // All moves deterministic, wrist always at pi/4 = perpendicular to base
   // ═══════════════════════════════════════════════════════════════════════════
 
-  // 1. Open gripper
+	// 1) Open gripper.
   setGripper(0.04);
 
-  // 2. Rotate base + lift to safe height above cube, gripper straight down
+	// 2) Move above cube at lift height.
   moveToLiftXY(obj_x, obj_y);
 
-  // 3. Descend to cube grasp height
+  // 3）Descend to cube grasp height
   moveToGraspZ(obj_x, obj_y, 0.1434);  // fingertips at cube centre (0.04m)
 
-  // 4. Close gripper
+	// 4) Close gripper.
   setGripper(0.010);
 
-  // 5. Lift straight back up (reverse of step 3)
+  // 5) Lift straight back up (reverse of step 3)
   moveToLiftXY(obj_x, obj_y);
 
-  // 6. Rotate base to face basket, stay at lift height
+  // 6) Rotate base to face basket, stay at lift height
   moveToLiftXY(goal_x, goal_y);
 
-  // 7. Release cube above basket (no descent needed — drop from lift height)
+  // 7) Release cube above basket (no descent needed — drop from lift height)
   setGripper(0.04);
 
   RCLCPP_INFO(node_->get_logger(), "Task 1 done.");
@@ -328,13 +326,19 @@ cw1::waitForCloud(double timeout_sec)
 }
 
 /**
- * Classify basket colour from a point cloud captured directly above the basket.
+ * Classifies basket colour from an overhead point cloud.
  *
- * Key improvements over v1:
- * - Uses bz (basket depth in camera frame) to set a tight Z band that excludes
- *   the ground plane behind the basket.
- * - Reduced distance threshold to 0.4 to avoid misclassifying floor returns.
+ * Method:
+ * 1) Transform basket centre from world frame to camera frame.
+ * 2) Keep only points within a local XY radius and a depth band around `bz`.
+ * 3) Reject dark/shadow points, then compute mean RGB of remaining points.
+ * 4) Match mean RGB to reference basket colours; return "none" if confidence is low.
+ *
+ * Tuned thresholds:
+ * - Depth band: [`bz - 0.15`, `bz + 0.06`] to suppress ground-plane points.
+ * - Colour distance cutoff: 0.4 for robust rejection of poor matches.
  */
+
 std::string cw1::classifyBasketColour(
   const sensor_msgs::msg::PointCloud2::ConstSharedPtr & cloud,
   const geometry_msgs::msg::PointStamped & basket_world_loc,
@@ -345,7 +349,7 @@ std::string cw1::classifyBasketColour(
     return "none";
   }
 
-  // ---- 1. Transform basket world position into camera frame ---------------
+  // 1) Transform basket centre from world frame to camera frame.
   geometry_msgs::msg::PointStamped basket_cam;
   try {
     basket_cam = tf_buffer_->transform(
@@ -362,14 +366,13 @@ std::string cw1::classifyBasketColour(
   RCLCPP_INFO(node_->get_logger(),
     "classifyBasketColour: basket in camera frame = (%.3f, %.3f, %.3f)", bx, by, bz);
 
-  // ---- 2. Convert cloud to PCL --------------------------------------------
+  // 2) Convert ROS cloud to PCL format.
   pcl::PointCloud<pcl::PointXYZRGB> pcl_cloud;
   pcl::fromROSMsg(*cloud, pcl_cloud);
 
-  // ---- 3. Crop: XY radius + Z band to exclude ground plane ----------------
-  // The basket top is ~0.05 m closer to the camera than the centroid.
-  // The ground plane is ~0.1 m further than the centroid.
-  // We keep points between (bz - 0.15) and (bz + 0.06) to stay on the basket.
+  // 3) Spatial filtering: keep points near basket centre in XY, and near `bz` in Z.
+  // The asymmetric Z band suppresses background/floor points behind the basket.
+  // Kept depth interval: [bz - 0.15, bz + 0.06].
   const float r2 = static_cast<float>(crop_radius * crop_radius);
   const float z_min = bz - 0.15f;
   const float z_max = bz + 0.06f;
@@ -389,7 +392,7 @@ std::string cw1::classifyBasketColour(
     if (dx * dx + dy * dy > r2) {
       continue;
     }
-    // Ignore very dark points (shadows, black plastic)
+    // Ignore dark points (shadows / low-signal surfaces).
     const float r_f = pt.r / 255.0f;
     const float g_f = pt.g / 255.0f;
     const float b_f = pt.b / 255.0f;
@@ -407,7 +410,7 @@ std::string cw1::classifyBasketColour(
     "classifyBasketColour: found %d points in radius %.3f around (%.3f, %.3f) in %s",
     count, crop_radius, bx, by, cloud->header.frame_id.c_str());
 
-  // ---- 4. Classify --------------------------------------------------------
+  // 4) Reject poor matches: if too few points, or mean colour is far from all refs, return "none".
   const int MIN_POINTS = 20;
   if (count < MIN_POINTS) {
     RCLCPP_INFO(node_->get_logger(),
@@ -468,8 +471,7 @@ void cw1::t2_callback(
   scan_pose.orientation.z = 0.0;
   scan_pose.orientation.w = 0.0;
 
-  // Height above ground. Basket is 0.1 m tall; 0.55 m puts the camera
-  // ~0.45 m above the basket top, well within the RealSense depth range.
+  // Basket height is ~0.1 m; this keeps camera comfortably above basket tops.
   const double SCAN_HEIGHT = 0.55;
 
   // Store per-basket info for the final summary
@@ -513,9 +515,12 @@ void cw1::t2_callback(
     if (stamped_loc.header.frame_id.empty()) {
       stamped_loc.header.frame_id = "world";
     }
-    stamped_loc.header.stamp = node_->now();
 
-    // --- classify and capture stats for summary ---
+    // Use cloud timestamp when available to align TF lookup with sampled frame.
+    // Fall back to node time only when no cloud was received.
+    stamped_loc.header.stamp = cloud ? cloud->header.stamp : node_->now();
+
+    // Per-basket output record:
     BasketResult res;
     res.x = loc.point.x;
     res.y = loc.point.y;
@@ -523,10 +528,12 @@ void cw1::t2_callback(
     res.mean_r = 0; res.mean_g = 0; res.mean_b = 0;
     res.point_count = 0; res.best_dist = -1.0;
 
-    // Run classification (logs suppressed here; summary printed below)
+    // Main classification result.
     res.colour = classifyBasketColour(cloud, stamped_loc, 0.08);
 
-    // Re-extract stats from cloud for the summary (lightweight re-scan)
+    // Recompute local colour statistics for reporting only.
+    // Keep the same crop/depth/brightness filters as `classifyBasketColour()`
+    // so the debug metrics are directly comparable to the classifier decision.
     if (cloud) {
       geometry_msgs::msg::PointStamped basket_cam;
       try {
@@ -541,7 +548,8 @@ void cw1::t2_callback(
         const float z_min = bz - 0.15f, z_max = bz + 0.06f;
         double sr = 0, sg = 0, sb = 0; int cnt = 0;
         for (const auto & pt : pcl_cloud.points) {
-          if (!std::isfinite(pt.x) || pt.z < z_min || pt.z > z_max) continue;
+          if (!std::isfinite(pt.x) || !std::isfinite(pt.y) || !std::isfinite(pt.z)) continue;
+          if (pt.z < z_min || pt.z > z_max) continue;
           const float dx = pt.x - bx, dy = pt.y - by;
           if (dx*dx + dy*dy > r2) continue;
           const float rf = pt.r/255.f, gf = pt.g/255.f, bf = pt.b/255.f;
@@ -551,7 +559,9 @@ void cw1::t2_callback(
         if (cnt > 0) {
           res.mean_r = sr/cnt; res.mean_g = sg/cnt; res.mean_b = sb/cnt;
           res.point_count = cnt;
-          // Compute distance to winning colour
+
+          // Distance from mean colour to the closest reference colour.
+          // Smaller value => higher confidence.
           struct RC { const char* n; double r,g,b; };
           const RC refs[] = {{"blue",0.1,0.1,0.8},{"red",0.8,0.1,0.1},{"purple",0.8,0.1,0.8}};
           double best = 1e9;
@@ -563,7 +573,11 @@ void cw1::t2_callback(
           }
           res.best_dist = best;
         }
-      } catch (...) {}
+      } catch (const tf2::TransformException & ex) {
+        RCLCPP_WARN(node_->get_logger(),
+          "Task 2 summary stats: TF2 failed for basket (%.3f, %.3f): %s",
+          res.x, res.y, ex.what());
+      }
     }
 
     results.push_back(res);
@@ -583,7 +597,7 @@ void cw1::t2_callback(
 
 
 ///////////////////////////////////////////////////////////////////////////////
-// Task 3 — scan scene, detect objects by colour, pick and place
+// Task 3 — multi-view scan, colour detection, then pick-and-place
 ///////////////////////////////////////////////////////////////////////////////
 
 // Internal struct to hold a detected object
@@ -593,8 +607,7 @@ struct DetectedObject {
   double x, y, z;       // world-frame centroid
 };
 
-// PCL Euclidean cluster extraction using KdTree (efficient)
-
+// Euclidean cluster extraction using KD-tree acceleration.
 static std::vector<pcl::PointIndices> pclEuclideanClusters(
   const pcl::PointCloud<pcl::PointXYZRGB>::Ptr & cloud,
   float tolerance, int min_pts, int max_pts)
@@ -622,7 +635,7 @@ void cw1::t3_callback(
 
   RCLCPP_INFO(node_->get_logger(), "Task 3 started: scanning scene");
 
-  // ── Step 1: Scan from multiple positions to see full workspace ───────────
+  // Step 1: scan the workspace from multiple camera poses. 
   geometry_msgs::msg::Pose scan_pose;
   scan_pose.orientation.x = 1.0;
   scan_pose.orientation.y = 0.0;
@@ -639,10 +652,10 @@ void cw1::t3_callback(
     {0.55,  0.00},   // centre-far
   };
 
-  // Accumulate all coloured points across all scans into one cloud
+  // Combined cloud of colour-matched points from all scans.
   pcl::PointCloud<pcl::PointXYZRGB> combined_colour_cloud;
 
-  // Reference colours for filtering (defined early for reuse)
+  // Reference colours for early filtering.
   struct ColRef { float r, g, b; };
   const ColRef col_refs[] = {
     {0.8f, 0.1f, 0.1f},
@@ -656,10 +669,9 @@ void cw1::t3_callback(
     scan_pose.position.y = pos.second;
     scan_pose.position.z = 0.60;
     moveToPose(scan_pose);
-    // Settle and then wait for a FRESH cloud after settling
+
+    // Wait for motion settling, then request a fresh cloud.
     std::this_thread::sleep_for(std::chrono::milliseconds(600));
-    // Reset the cloud count baseline AFTER settling so waitForCloud
-    // waits for a new message from the current arm position
     cloud_msg_count_.store(0, std::memory_order_relaxed);
     std::this_thread::sleep_for(std::chrono::milliseconds(100));
 
@@ -694,6 +706,7 @@ void cw1::t3_callback(
       wpt.y = static_cast<float>(world_pt.point.y);
       wpt.z = static_cast<float>(world_pt.point.z);
       wpt.r = pt.r; wpt.g = pt.g; wpt.b = pt.b;
+
       // Only keep points that are above ground level (z > 0.01 m world)
       if (wpt.z < 0.01f) continue;
       combined_colour_cloud.push_back(wpt);
@@ -711,16 +724,17 @@ void cw1::t3_callback(
   RCLCPP_INFO(node_->get_logger(),
     "Task 3: %zu total coloured points accumulated", combined_colour_cloud.size());
 
-  // ── Step 2: Cluster in world frame ────────────────────────────────────────
+  // Step 2: cluster the combined cloud in world frame.
   pcl::PointCloud<pcl::PointXYZRGB>::Ptr colour_cloud_ptr(
     new pcl::PointCloud<pcl::PointXYZRGB>(combined_colour_cloud));
+
   // tolerance=2cm, min 50 pts, max 100000 pts
   auto clusters = pclEuclideanClusters(colour_cloud_ptr, 0.02f, 50, 100000);
 
   RCLCPP_INFO(node_->get_logger(),
     "Task 3: found %zu clusters", clusters.size());
 
-  // ── Step 4: Classify each cluster ────────────────────────────────────────
+  // Step 3: classify cluster colour, then infer object type.
   struct RefC { const char* name; float r,g,b; };
   const RefC refs[] = {
     {"blue",   0.1f, 0.1f, 0.8f},
@@ -747,7 +761,7 @@ void cw1::t3_callback(
     double mr = sr/n, mg = sg/n, mb = sb/n;
     cx /= n; cy /= n; cz /= n;
 
-    // Classify colour
+    // Assign nearest reference colour in RGB space
     double best_dist = 1e9;
     const char * colour = nullptr;
     for (const auto & ref : refs) {
@@ -756,7 +770,7 @@ void cw1::t3_callback(
     }
     if (best_dist > 0.4 || !colour) continue;
 
-    // Points are already in world frame (transformed during accumulation)
+    // Points are already in world frame
     candidates.push_back({std::string(colour), cx, cy, cz, n});
 
     RCLCPP_INFO(node_->get_logger(),
@@ -769,10 +783,8 @@ void cw1::t3_callback(
   std::vector<DetectedObject> cubes, baskets;
   const std::string colours[] = {"red", "blue", "purple"};
 
-  // Baskets are large hollow cylinders — they accumulate far more points than
-  // solid cubes.  Empirically: baskets > 8000 pts, cubes < 7000 pts.
-  // Using a fixed threshold is more robust than "largest = basket" because
-  // it handles cases where only one cluster of a colour is visible.
+  // Baskets produce far more points than cubes in this setup.
+	// Empirical split: baskets > 8000, cubes < 7000.
   const int BASKET_PT_THRESHOLD = 8000;
 
   for (const auto & col : colours) {
@@ -803,9 +815,8 @@ void cw1::t3_callback(
   RCLCPP_INFO(node_->get_logger(),
     "Task 3: %zu cubes, %zu baskets detected", cubes.size(), baskets.size());
 
-  // ── Step 5: Pick and place each cube into matching basket ─────────────────
+  // Step 4: pick each cube and place into matching-colour basket.
   // Heights handled internally: moveToLiftXY (~0.55m), moveToGraspZ (~0.12m)
-
   int placed = 0;
   for (const auto & cube : cubes) {
     // Find matching basket
@@ -824,11 +835,11 @@ void cw1::t3_callback(
       "=== T3 PICK: %s cube at (%.3f, %.3f) -> basket (%.3f, %.3f) ===",
       cube.colour.c_str(), cube.x, cube.y, target->x, target->y);
 
-    // ── [1] Open gripper ─────────────────────────────────────────────────────
+    // 1) Open gripper.
     RCLCPP_INFO(node_->get_logger(), "  [1] Open gripper");
     setGripper(0.04);
 
-    // ── [2] Joint-space: rotate base + lift to above cube ────────────────────
+    // 2）Joint-space: rotate base + lift to above cube 
     // moveToLiftXY computes j1=atan2(y,x) and sets j2-j7 to elbow-down config.
     // Gripper is always perpendicular (j7=pi/4). Fully deterministic.
     RCLCPP_INFO(node_->get_logger(), "  [2] Lift above cube (%.4f, %.4f)", cube.x, cube.y);
@@ -837,24 +848,24 @@ void cw1::t3_callback(
       continue;
     }
 
-    // ── [3] Joint-space: descend to grasp height ─────────────────────────────
+    // 3) Joint-space: descend to grasp height
     RCLCPP_INFO(node_->get_logger(), "  [3] Descend to grasp");
     moveToGraspZ(cube.x, cube.y, 0.1434);  // fingertips at cube centre (0.04m)
 
-    // ── [4] Close gripper ────────────────────────────────────────────────────
+    // 4) Close gripper
     RCLCPP_INFO(node_->get_logger(), "  [4] Close gripper, wait 500ms");
     setGripper(0.010);
     std::this_thread::sleep_for(std::chrono::milliseconds(500));
 
-    // ── [5] Joint-space: lift back up ────────────────────────────────────────
+    // 5) Joint-space: Lift up.
     RCLCPP_INFO(node_->get_logger(), "  [5] Lift up");
     moveToLiftXY(cube.x, cube.y);
 
-    // ── [6] Joint-space: rotate base to face basket ──────────────────────────
+    // 6） Joint-space: Move above basket
     RCLCPP_INFO(node_->get_logger(), "  [6] Move above basket (%.4f, %.4f)", target->x, target->y);
     moveToLiftXY(target->x, target->y);
 
-    // ── [7] Release above basket (drop from lift height) ──────────────────────
+    // 7) Release above basket.
     RCLCPP_INFO(node_->get_logger(), "  [7] Release above basket");
     setGripper(0.04);
     std::this_thread::sleep_for(std::chrono::milliseconds(200));
@@ -867,7 +878,6 @@ void cw1::t3_callback(
   RCLCPP_INFO(node_->get_logger(),
     "Task 3 done: placed %d/%zu cubes", placed, cubes.size());
 
-  // Return arm to a neutral forward-facing pose so it doesn't freeze in an
-  // awkward configuration after the last cube is placed.
+  // Return to neutral forward-facing lift pose.
   moveToLiftXY(0.45, 0.0);
 }
