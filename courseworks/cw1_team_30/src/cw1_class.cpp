@@ -280,8 +280,14 @@ void cw1::t1_callback(
   // 5. Lift straight back up (reverse of step 3)
   moveToLiftXY(obj_x, obj_y);
 
-  // 6. Rotate base to face basket, stay at lift height
-  moveToLiftXY(goal_x, goal_y);
+  // 6. Rotate base to face basket, stay at lift height.
+  // Pull 2 cm inward to land in basket centre (PCL rim bias correction).
+  {
+    const double gr = std::sqrt(goal_x * goal_x + goal_y * goal_y);
+    const double drop_outward = 0.03;
+    moveToLiftXY(goal_x + drop_outward * (goal_x / gr),
+                 goal_y + drop_outward * (goal_y / gr));
+  }
 
   // 7. Release cube above basket (no descent needed — drop from lift height)
   setGripper(0.04);
@@ -852,8 +858,17 @@ void cw1::t3_callback(
     moveToLiftXY(cube.x, cube.y);
 
     // ── [6] Joint-space: rotate base to face basket ──────────────────────────
-    RCLCPP_INFO(node_->get_logger(), "  [6] Move above basket (%.4f, %.4f)", target->x, target->y);
-    moveToLiftXY(target->x, target->y);
+    // The PCL basket centroid is biased toward the camera-facing rim because the
+    // far side of the basket is partially occluded. Pull the drop position 2 cm
+    // inward (toward the arm base) to land in the true basket centre.
+    {
+      const double br   = std::sqrt(target->x * target->x + target->y * target->y);
+      const double drop_outward = 0.03;
+      const double bx = target->x + drop_outward * (target->x / br);
+      const double by = target->y + drop_outward * (target->y / br);
+      RCLCPP_INFO(node_->get_logger(), "  [6] Move above basket (%.4f, %.4f)", bx, by);
+      moveToLiftXY(bx, by);
+    }
 
     // ── [7] Release above basket (drop from lift height) ──────────────────────
     RCLCPP_INFO(node_->get_logger(), "  [7] Release above basket");
