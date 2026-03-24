@@ -579,7 +579,7 @@ void cw1::t3_callback(
   }
   RCLCPP_INFO(node_->get_logger(), "Task 3: %zu total pts", combined.size());
 
-  // ── Step 2: Cluster ───────────────────────────────────────────────────────
+  // ── Step 2: Cluster  ───────────────────────────────────────────────────────
   pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_ptr(
     new pcl::PointCloud<pcl::PointXYZRGB>(combined));
   auto clusters = pclEuclideanClusters(cloud_ptr, 0.02f, 200, 100000);
