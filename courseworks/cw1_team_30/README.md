@@ -1,7 +1,18 @@
 # CW1 Team 30 — ROS 2 / MoveIt Solution README
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](../LICENSE)
+
 ## Acknowledgement:
 We acknowledge the use of Claude and ChatGPT for brainstorming and code debugging.
+
+## Authors and Contribution
+
+| Task / Name | Charvi Agarwal | Yuanzhe Chang | Shelton Darvin | 
+|---|---:|---:|---:|
+| Task 1 | 3–4 hours | 3 hours | 3–4 hours |
+| Task 2 | 4–5 hours | 4 hours | 3-4 hours |
+| Task 3 | 3–4 hours | 4 hours | 5 hours |
+| Percentage| 34%    | 32%     | 34%     |
 
 ## 1) Project Summary
 This package contains Team 30's solution for COMP0250 CW1 in ROS 2 Humble.
@@ -145,9 +156,6 @@ ros2 launch cw1_team_30 run_solution.launch.py \
 # Task 1
 ros2 service call /task cw1_world_spawner/srv/TaskSetup "{task_index: 1}"
 
-# Task 1 scenario 2 only:
-ros2 service call /task cw1_world_spawner/srv/TaskSetup "{task_index: 111}"
-
 # Task 2
 ros2 service call /task cw1_world_spawner/srv/TaskSetup "{task_index: 2}"
 
@@ -186,7 +194,9 @@ These can be overridden at launch time for tuning grasp stability.
 3. Replace fixed basket/cube point threshold with adaptive model-based classification.
 4. Add grasp success checks and retry policy.
 
+## License
+
+This project is licensed under the MIT License — see the top-level `LICENSE` file for details.
+
 ---
 
-## 9) Team Notes
-This repository version reflects a deterministic engineering strategy optimized for reproducibility in the coursework simulation environment.
