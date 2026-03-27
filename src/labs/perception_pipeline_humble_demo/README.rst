@@ -277,10 +277,8 @@ Build once:
 
 .. code-block:: bash
 
-   conda deactivate || true
-   source /opt/ros/humble/setup.bash
-   cd /home/ziwen/ros2_humble_perception_pipeline/ros2_pp_ws
-   colcon build --symlink-install
+   cd comp0250_s26_labs
+   colcon build --mixin release
 
 Shell 1 (MoveIt perception demo):
 
