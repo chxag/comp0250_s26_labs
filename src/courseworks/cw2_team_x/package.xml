@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>cw2_team_x</name>
+  <name>cw2_team_30</name>
   <version>0.1.0</version>
   <description>Template package for CW2 ROS2 solution</description>
   <maintainer email="ziwen@ziwen.local">ziwen</maintainer>

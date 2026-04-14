@@ -49,7 +49,7 @@ cw2::cw2(const rclcpp::Node::SharedPtr &node)
 
   RCLCPP_INFO(
     node_->get_logger(),
-    "cw2_team_x template initialised with pointcloud topic '%s' (%s QoS)",
+    "cw2_team_30 template initialised with pointcloud topic '%s' (%s QoS)",
     pointcloud_topic_.c_str(),
     pointcloud_qos_reliable_ ? "reliable" : "sensor-data");
 }
@@ -87,7 +87,7 @@ void cw2::t1_callback(
 
   RCLCPP_WARN(
     node_->get_logger(),
-    "Task 1 is not implemented in cw2_team_x. Latest cloud: seq=%llu frame='%s' points=%zu",
+    "Task 1 is not implemented in cw2_team_30. Latest cloud: seq=%llu frame='%s' points=%zu",
     static_cast<unsigned long long>(sequence),
     frame_id.c_str(),
     point_count);
@@ -112,7 +112,7 @@ void cw2::t2_callback(
 
   RCLCPP_WARN(
     node_->get_logger(),
-    "Task 2 is not implemented in cw2_team_x. Latest cloud: seq=%llu frame='%s' points=%zu",
+    "Task 2 is not implemented in cw2_team_30. Latest cloud: seq=%llu frame='%s' points=%zu",
     static_cast<unsigned long long>(sequence),
     frame_id.c_str(),
     point_count);
@@ -139,7 +139,7 @@ void cw2::t3_callback(
 
   RCLCPP_WARN(
     node_->get_logger(),
-    "Task 3 is not implemented in cw2_team_x. Latest cloud: seq=%llu frame='%s' points=%zu",
+    "Task 3 is not implemented in cw2_team_30. Latest cloud: seq=%llu frame='%s' points=%zu",
     static_cast<unsigned long long>(sequence),
     frame_id.c_str(),
     point_count);

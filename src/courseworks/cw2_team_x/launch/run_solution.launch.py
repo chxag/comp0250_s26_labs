@@ -67,7 +67,7 @@ def generate_launch_description():
         ),
 
         Node(
-            package='cw2_team_x',
+            package='cw2_team_30',
             executable='cw2_solution_node',
             name='cw2_solution_node',
             output='screen',
