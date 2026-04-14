@@ -53,7 +53,7 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/charvi/comp0250_s26_labs/courseworks/cw1_world_spawner
+CMAKE_SOURCE_DIR = /home/charvi/comp0250_s26_labs/src/courseworks/cw1_world_spawner
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/charvi/comp0250_s26_labs/build/cw1_world_spawner
@@ -249,6 +249,6 @@ CMakeFiles/cw1_world_spawner__rosidl_typesupport_cpp.dir/depend: rosidl_typesupp
 CMakeFiles/cw1_world_spawner__rosidl_typesupport_cpp.dir/depend: rosidl_typesupport_cpp/cw1_world_spawner/srv/task2_service__type_support.cpp
 CMakeFiles/cw1_world_spawner__rosidl_typesupport_cpp.dir/depend: rosidl_typesupport_cpp/cw1_world_spawner/srv/task3_service__type_support.cpp
 CMakeFiles/cw1_world_spawner__rosidl_typesupport_cpp.dir/depend: rosidl_typesupport_cpp/cw1_world_spawner/srv/task_setup__type_support.cpp
-	cd /home/charvi/comp0250_s26_labs/build/cw1_world_spawner && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/charvi/comp0250_s26_labs/courseworks/cw1_world_spawner /home/charvi/comp0250_s26_labs/courseworks/cw1_world_spawner /home/charvi/comp0250_s26_labs/build/cw1_world_spawner /home/charvi/comp0250_s26_labs/build/cw1_world_spawner /home/charvi/comp0250_s26_labs/build/cw1_world_spawner/CMakeFiles/cw1_world_spawner__rosidl_typesupport_cpp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/charvi/comp0250_s26_labs/build/cw1_world_spawner && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/charvi/comp0250_s26_labs/src/courseworks/cw1_world_spawner /home/charvi/comp0250_s26_labs/src/courseworks/cw1_world_spawner /home/charvi/comp0250_s26_labs/build/cw1_world_spawner /home/charvi/comp0250_s26_labs/build/cw1_world_spawner /home/charvi/comp0250_s26_labs/build/cw1_world_spawner/CMakeFiles/cw1_world_spawner__rosidl_typesupport_cpp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/cw1_world_spawner__rosidl_typesupport_cpp.dir/depend
 

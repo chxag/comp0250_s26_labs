@@ -53,7 +53,7 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/charvi/comp0250_s26_labs/courseworks/panda_moveit_config
+CMAKE_SOURCE_DIR = /home/charvi/comp0250_s26_labs/src/courseworks/panda_moveit_config
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/charvi/comp0250_s26_labs/build/panda_moveit_config
@@ -78,6 +78,6 @@ CMakeFiles/uninstall.dir/clean:
 .PHONY : CMakeFiles/uninstall.dir/clean
 
 CMakeFiles/uninstall.dir/depend:
-	cd /home/charvi/comp0250_s26_labs/build/panda_moveit_config && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/charvi/comp0250_s26_labs/courseworks/panda_moveit_config /home/charvi/comp0250_s26_labs/courseworks/panda_moveit_config /home/charvi/comp0250_s26_labs/build/panda_moveit_config /home/charvi/comp0250_s26_labs/build/panda_moveit_config /home/charvi/comp0250_s26_labs/build/panda_moveit_config/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/charvi/comp0250_s26_labs/build/panda_moveit_config && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/charvi/comp0250_s26_labs/src/courseworks/panda_moveit_config /home/charvi/comp0250_s26_labs/src/courseworks/panda_moveit_config /home/charvi/comp0250_s26_labs/build/panda_moveit_config /home/charvi/comp0250_s26_labs/build/panda_moveit_config /home/charvi/comp0250_s26_labs/build/panda_moveit_config/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/uninstall.dir/depend
 

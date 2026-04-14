@@ -1191,7 +1191,7 @@ cw1_team_x_BINARY_DIR:STATIC=/home/charvi/comp0250_s26_labs/build/cw1_team_x
 cw1_team_x_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
-cw1_team_x_SOURCE_DIR:STATIC=/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30
+cw1_team_x_SOURCE_DIR:STATIC=/home/charvi/comp0250_s26_labs/src/courseworks/cw1_team_30
 
 //Dependencies for the target
 cw1_team_x__rosidl_generator_c_LIB_DEPENDS:STATIC=general;std_msgs::std_msgs__rosidl_generator_c;general;builtin_interfaces::builtin_interfaces__rosidl_generator_c;general;geometry_msgs::geometry_msgs__rosidl_generator_c;general;rosidl_runtime_c::rosidl_runtime_c;general;rcutils::rcutils;
@@ -1722,7 +1722,7 @@ CMAKE_HAVE_REMOVE:INTERNAL=1
 CMAKE_HAVE_SHMAT:INTERNAL=1
 //Source directory with the top level CMakeLists.txt file for this
 // project
-CMAKE_HOME_DIRECTORY:INTERNAL=/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30
+CMAKE_HOME_DIRECTORY:INTERNAL=/home/charvi/comp0250_s26_labs/src/courseworks/cw1_team_30
 //Install .so files without execute permission.
 CMAKE_INSTALL_SO_NO_EXE:INTERNAL=1
 //Have library ICE

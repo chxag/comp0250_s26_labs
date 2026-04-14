@@ -53,7 +53,7 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/charvi/comp0250_s26_labs/courseworks/cw1_team_30
+CMAKE_SOURCE_DIR = /home/charvi/comp0250_s26_labs/src/courseworks/cw1_team_30
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/charvi/comp0250_s26_labs/build/cw1_team_x
@@ -66,7 +66,7 @@ include CMakeFiles/cw1_team_x.dir/compiler_depend.make
 # Include the progress variables for this target.
 include CMakeFiles/cw1_team_x.dir/progress.make
 
-CMakeFiles/cw1_team_x: /home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/srv/Example.srv
+CMakeFiles/cw1_team_x: /home/charvi/comp0250_s26_labs/src/courseworks/cw1_team_30/srv/Example.srv
 CMakeFiles/cw1_team_x: rosidl_cmake/srv/Example_Request.msg
 CMakeFiles/cw1_team_x: rosidl_cmake/srv/Example_Response.msg
 CMakeFiles/cw1_team_x: /opt/ros/humble/share/std_msgs/msg/Bool.idl
@@ -145,6 +145,6 @@ CMakeFiles/cw1_team_x.dir/clean:
 .PHONY : CMakeFiles/cw1_team_x.dir/clean
 
 CMakeFiles/cw1_team_x.dir/depend:
-	cd /home/charvi/comp0250_s26_labs/build/cw1_team_x && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/charvi/comp0250_s26_labs/courseworks/cw1_team_30 /home/charvi/comp0250_s26_labs/courseworks/cw1_team_30 /home/charvi/comp0250_s26_labs/build/cw1_team_x /home/charvi/comp0250_s26_labs/build/cw1_team_x /home/charvi/comp0250_s26_labs/build/cw1_team_x/CMakeFiles/cw1_team_x.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/charvi/comp0250_s26_labs/build/cw1_team_x && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/charvi/comp0250_s26_labs/src/courseworks/cw1_team_30 /home/charvi/comp0250_s26_labs/src/courseworks/cw1_team_30 /home/charvi/comp0250_s26_labs/build/cw1_team_x /home/charvi/comp0250_s26_labs/build/cw1_team_x /home/charvi/comp0250_s26_labs/build/cw1_team_x/CMakeFiles/cw1_team_x.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/cw1_team_x.dir/depend
 

@@ -1,4 +1,4 @@
-# Install script for directory: /home/charvi/comp0250_s26_labs/courseworks/cw1_world_spawner
+# Install script for directory: /home/charvi/comp0250_s26_labs/src/courseworks/cw1_world_spawner
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -372,7 +372,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cw1_world_spawner/srv" TYPE FILE FILES "/home/charvi/comp0250_s26_labs/courseworks/cw1_world_spawner/srv/TaskSetup.srv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cw1_world_spawner/srv" TYPE FILE FILES "/home/charvi/comp0250_s26_labs/src/courseworks/cw1_world_spawner/srv/TaskSetup.srv")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -384,7 +384,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cw1_world_spawner/srv" TYPE FILE FILES "/home/charvi/comp0250_s26_labs/courseworks/cw1_world_spawner/srv/Task1Service.srv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cw1_world_spawner/srv" TYPE FILE FILES "/home/charvi/comp0250_s26_labs/src/courseworks/cw1_world_spawner/srv/Task1Service.srv")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -396,7 +396,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cw1_world_spawner/srv" TYPE FILE FILES "/home/charvi/comp0250_s26_labs/courseworks/cw1_world_spawner/srv/Task2Service.srv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cw1_world_spawner/srv" TYPE FILE FILES "/home/charvi/comp0250_s26_labs/src/courseworks/cw1_world_spawner/srv/Task2Service.srv")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -408,7 +408,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cw1_world_spawner/srv" TYPE FILE FILES "/home/charvi/comp0250_s26_labs/courseworks/cw1_world_spawner/srv/Task3Service.srv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cw1_world_spawner/srv" TYPE FILE FILES "/home/charvi/comp0250_s26_labs/src/courseworks/cw1_world_spawner/srv/Task3Service.srv")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -424,7 +424,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/local/lib/python3.10/dist-packages/coursework_world_spawner_lib" TYPE DIRECTORY FILES "/home/charvi/comp0250_s26_labs/courseworks/cw1_world_spawner/src/coursework_world_spawner_lib/" REGEX "/[^/]*\\.pyc$" EXCLUDE REGEX "/\\_\\_pycache\\_\\_$" EXCLUDE)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/local/lib/python3.10/dist-packages/coursework_world_spawner_lib" TYPE DIRECTORY FILES "/home/charvi/comp0250_s26_labs/src/courseworks/cw1_world_spawner/src/coursework_world_spawner_lib/" REGEX "/[^/]*\\.pyc$" EXCLUDE REGEX "/\\_\\_pycache\\_\\_$" EXCLUDE)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -437,15 +437,15 @@ endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cw1_world_spawner" TYPE PROGRAM FILES
-    "/home/charvi/comp0250_s26_labs/courseworks/cw1_world_spawner/scripts/world_spawner.py"
-    "/home/charvi/comp0250_s26_labs/courseworks/cw1_world_spawner/scripts/test_coursework.py"
+    "/home/charvi/comp0250_s26_labs/src/courseworks/cw1_world_spawner/scripts/world_spawner.py"
+    "/home/charvi/comp0250_s26_labs/src/courseworks/cw1_world_spawner/scripts/test_coursework.py"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cw1_world_spawner" TYPE DIRECTORY FILES
-    "/home/charvi/comp0250_s26_labs/courseworks/cw1_world_spawner/models"
-    "/home/charvi/comp0250_s26_labs/courseworks/cw1_world_spawner/launch"
+    "/home/charvi/comp0250_s26_labs/src/courseworks/cw1_world_spawner/models"
+    "/home/charvi/comp0250_s26_labs/src/courseworks/cw1_world_spawner/launch"
     )
 endif()
 
@@ -701,7 +701,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cw1_world_spawner" TYPE FILE FILES "/home/charvi/comp0250_s26_labs/courseworks/cw1_world_spawner/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cw1_world_spawner" TYPE FILE FILES "/home/charvi/comp0250_s26_labs/src/courseworks/cw1_world_spawner/package.xml")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)

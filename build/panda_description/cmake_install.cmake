@@ -1,4 +1,4 @@
-# Install script for directory: /home/charvi/comp0250_s26_labs/courseworks/panda_description
+# Install script for directory: /home/charvi/comp0250_s26_labs/src/courseworks/panda_description
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,18 +44,18 @@ endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/panda_description" TYPE DIRECTORY FILES
-    "/home/charvi/comp0250_s26_labs/courseworks/panda_description/config"
-    "/home/charvi/comp0250_s26_labs/courseworks/panda_description/meshes"
-    "/home/charvi/comp0250_s26_labs/courseworks/panda_description/rviz"
-    "/home/charvi/comp0250_s26_labs/courseworks/panda_description/sdf"
-    "/home/charvi/comp0250_s26_labs/courseworks/panda_description/srdf"
-    "/home/charvi/comp0250_s26_labs/courseworks/panda_description/urdf"
-    "/home/charvi/comp0250_s26_labs/courseworks/panda_description/xacro"
+    "/home/charvi/comp0250_s26_labs/src/courseworks/panda_description/config"
+    "/home/charvi/comp0250_s26_labs/src/courseworks/panda_description/meshes"
+    "/home/charvi/comp0250_s26_labs/src/courseworks/panda_description/rviz"
+    "/home/charvi/comp0250_s26_labs/src/courseworks/panda_description/sdf"
+    "/home/charvi/comp0250_s26_labs/src/courseworks/panda_description/srdf"
+    "/home/charvi/comp0250_s26_labs/src/courseworks/panda_description/urdf"
+    "/home/charvi/comp0250_s26_labs/src/courseworks/panda_description/xacro"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/panda_description" TYPE DIRECTORY FILES "/home/charvi/comp0250_s26_labs/courseworks/panda_description/launch" REGEX "/[^/]*\\.launch$" EXCLUDE)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/panda_description" TYPE DIRECTORY FILES "/home/charvi/comp0250_s26_labs/src/courseworks/panda_description/launch" REGEX "/[^/]*\\.launch$" EXCLUDE)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -114,7 +114,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/panda_description" TYPE FILE FILES "/home/charvi/comp0250_s26_labs/courseworks/panda_description/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/panda_description" TYPE FILE FILES "/home/charvi/comp0250_s26_labs/src/courseworks/panda_description/package.xml")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)

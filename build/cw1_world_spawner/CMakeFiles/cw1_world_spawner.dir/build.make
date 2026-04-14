@@ -53,7 +53,7 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/charvi/comp0250_s26_labs/courseworks/cw1_world_spawner
+CMAKE_SOURCE_DIR = /home/charvi/comp0250_s26_labs/src/courseworks/cw1_world_spawner
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/charvi/comp0250_s26_labs/build/cw1_world_spawner
@@ -66,16 +66,16 @@ include CMakeFiles/cw1_world_spawner.dir/compiler_depend.make
 # Include the progress variables for this target.
 include CMakeFiles/cw1_world_spawner.dir/progress.make
 
-CMakeFiles/cw1_world_spawner: /home/charvi/comp0250_s26_labs/courseworks/cw1_world_spawner/srv/TaskSetup.srv
+CMakeFiles/cw1_world_spawner: /home/charvi/comp0250_s26_labs/src/courseworks/cw1_world_spawner/srv/TaskSetup.srv
 CMakeFiles/cw1_world_spawner: rosidl_cmake/srv/TaskSetup_Request.msg
 CMakeFiles/cw1_world_spawner: rosidl_cmake/srv/TaskSetup_Response.msg
-CMakeFiles/cw1_world_spawner: /home/charvi/comp0250_s26_labs/courseworks/cw1_world_spawner/srv/Task1Service.srv
+CMakeFiles/cw1_world_spawner: /home/charvi/comp0250_s26_labs/src/courseworks/cw1_world_spawner/srv/Task1Service.srv
 CMakeFiles/cw1_world_spawner: rosidl_cmake/srv/Task1Service_Request.msg
 CMakeFiles/cw1_world_spawner: rosidl_cmake/srv/Task1Service_Response.msg
-CMakeFiles/cw1_world_spawner: /home/charvi/comp0250_s26_labs/courseworks/cw1_world_spawner/srv/Task2Service.srv
+CMakeFiles/cw1_world_spawner: /home/charvi/comp0250_s26_labs/src/courseworks/cw1_world_spawner/srv/Task2Service.srv
 CMakeFiles/cw1_world_spawner: rosidl_cmake/srv/Task2Service_Request.msg
 CMakeFiles/cw1_world_spawner: rosidl_cmake/srv/Task2Service_Response.msg
-CMakeFiles/cw1_world_spawner: /home/charvi/comp0250_s26_labs/courseworks/cw1_world_spawner/srv/Task3Service.srv
+CMakeFiles/cw1_world_spawner: /home/charvi/comp0250_s26_labs/src/courseworks/cw1_world_spawner/srv/Task3Service.srv
 CMakeFiles/cw1_world_spawner: rosidl_cmake/srv/Task3Service_Request.msg
 CMakeFiles/cw1_world_spawner: rosidl_cmake/srv/Task3Service_Response.msg
 CMakeFiles/cw1_world_spawner: /opt/ros/humble/share/geometry_msgs/msg/Accel.idl
@@ -154,6 +154,6 @@ CMakeFiles/cw1_world_spawner.dir/clean:
 .PHONY : CMakeFiles/cw1_world_spawner.dir/clean
 
 CMakeFiles/cw1_world_spawner.dir/depend:
-	cd /home/charvi/comp0250_s26_labs/build/cw1_world_spawner && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/charvi/comp0250_s26_labs/courseworks/cw1_world_spawner /home/charvi/comp0250_s26_labs/courseworks/cw1_world_spawner /home/charvi/comp0250_s26_labs/build/cw1_world_spawner /home/charvi/comp0250_s26_labs/build/cw1_world_spawner /home/charvi/comp0250_s26_labs/build/cw1_world_spawner/CMakeFiles/cw1_world_spawner.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/charvi/comp0250_s26_labs/build/cw1_world_spawner && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/charvi/comp0250_s26_labs/src/courseworks/cw1_world_spawner /home/charvi/comp0250_s26_labs/src/courseworks/cw1_world_spawner /home/charvi/comp0250_s26_labs/build/cw1_world_spawner /home/charvi/comp0250_s26_labs/build/cw1_world_spawner /home/charvi/comp0250_s26_labs/build/cw1_world_spawner/CMakeFiles/cw1_world_spawner.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/cw1_world_spawner.dir/depend
 

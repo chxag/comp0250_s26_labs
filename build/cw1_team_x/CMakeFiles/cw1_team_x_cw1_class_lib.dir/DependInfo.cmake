@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp" "CMakeFiles/cw1_team_x_cw1_class_lib.dir/src/cw1_class.cpp.o" "gcc" "CMakeFiles/cw1_team_x_cw1_class_lib.dir/src/cw1_class.cpp.o.d"
+  "/home/charvi/comp0250_s26_labs/src/courseworks/cw1_team_30/src/cw1_class.cpp" "CMakeFiles/cw1_team_x_cw1_class_lib.dir/src/cw1_class.cpp.o" "gcc" "CMakeFiles/cw1_team_x_cw1_class_lib.dir/src/cw1_class.cpp.o.d"
   )
 
 # Targets to which this target links.

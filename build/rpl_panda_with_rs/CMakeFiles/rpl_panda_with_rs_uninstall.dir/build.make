@@ -53,7 +53,7 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/charvi/comp0250_s26_labs/courseworks/rpl_panda_with_rs
+CMAKE_SOURCE_DIR = /home/charvi/comp0250_s26_labs/src/courseworks/rpl_panda_with_rs
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/charvi/comp0250_s26_labs/build/rpl_panda_with_rs
@@ -82,6 +82,6 @@ CMakeFiles/rpl_panda_with_rs_uninstall.dir/clean:
 .PHONY : CMakeFiles/rpl_panda_with_rs_uninstall.dir/clean
 
 CMakeFiles/rpl_panda_with_rs_uninstall.dir/depend:
-	cd /home/charvi/comp0250_s26_labs/build/rpl_panda_with_rs && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/charvi/comp0250_s26_labs/courseworks/rpl_panda_with_rs /home/charvi/comp0250_s26_labs/courseworks/rpl_panda_with_rs /home/charvi/comp0250_s26_labs/build/rpl_panda_with_rs /home/charvi/comp0250_s26_labs/build/rpl_panda_with_rs /home/charvi/comp0250_s26_labs/build/rpl_panda_with_rs/CMakeFiles/rpl_panda_with_rs_uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/charvi/comp0250_s26_labs/build/rpl_panda_with_rs && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/charvi/comp0250_s26_labs/src/courseworks/rpl_panda_with_rs /home/charvi/comp0250_s26_labs/src/courseworks/rpl_panda_with_rs /home/charvi/comp0250_s26_labs/build/rpl_panda_with_rs /home/charvi/comp0250_s26_labs/build/rpl_panda_with_rs /home/charvi/comp0250_s26_labs/build/rpl_panda_with_rs/CMakeFiles/rpl_panda_with_rs_uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/rpl_panda_with_rs_uninstall.dir/depend
 

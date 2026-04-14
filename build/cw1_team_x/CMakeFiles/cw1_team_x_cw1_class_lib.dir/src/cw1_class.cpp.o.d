@@ -1,7 +1,7 @@
 CMakeFiles/cw1_team_x_cw1_class_lib.dir/src/cw1_class.cpp.o: \
- /home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp \
+ /home/charvi/comp0250_s26_labs/src/courseworks/cw1_team_30/src/cw1_class.cpp \
  /usr/include/stdc-predef.h \
- /home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/include/cw1_class.h \
+ /home/charvi/comp0250_s26_labs/src/courseworks/cw1_team_30/include/cw1_class.h \
  /usr/include/c++/11/atomic /usr/include/c++/11/bits/atomic_base.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \

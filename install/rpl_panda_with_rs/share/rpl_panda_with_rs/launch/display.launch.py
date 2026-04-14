@@ -32,6 +32,7 @@ def generate_launch_description():
     use_rviz = LaunchConfiguration('use_rviz')
     use_gazebo_gui = LaunchConfiguration('use_gazebo_gui')
     use_software_rendering = LaunchConfiguration('use_software_rendering')
+    extra_gazebo_model_path = LaunchConfiguration('extra_gazebo_model_path')
     ros2_control_params = LaunchConfiguration('ros2_control_params')
 
     panda_share = get_package_share_directory('panda_description')
@@ -305,8 +306,9 @@ def generate_launch_description():
         DeclareLaunchArgument('use_rviz', default_value='true'),
         DeclareLaunchArgument('use_gazebo_gui', default_value='true'),
         DeclareLaunchArgument('use_software_rendering', default_value='false'),
+        DeclareLaunchArgument('extra_gazebo_model_path', default_value=''),
         SetEnvironmentVariable('GAZEBO_RESOURCE_PATH', gazebo_resource_path),
-        SetEnvironmentVariable('GAZEBO_MODEL_PATH', gazebo_model_path),
+        SetEnvironmentVariable('GAZEBO_MODEL_PATH', [gazebo_model_path, ':', extra_gazebo_model_path]),
         SetEnvironmentVariable('GAZEBO_PLUGIN_PATH', gazebo_plugin_path),
         SetEnvironmentVariable('GAZEBO_MASTER_URI', 'http://localhost:11345'),
         SetEnvironmentVariable('OGRE_RESOURCE_PATH', '/usr/lib/x86_64-linux-gnu/OGRE-1.9.0'),

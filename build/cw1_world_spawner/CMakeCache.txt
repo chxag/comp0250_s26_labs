@@ -367,7 +367,7 @@ cw1_world_spawner_BINARY_DIR:STATIC=/home/charvi/comp0250_s26_labs/build/cw1_wor
 cw1_world_spawner_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
-cw1_world_spawner_SOURCE_DIR:STATIC=/home/charvi/comp0250_s26_labs/courseworks/cw1_world_spawner
+cw1_world_spawner_SOURCE_DIR:STATIC=/home/charvi/comp0250_s26_labs/src/courseworks/cw1_world_spawner
 
 //Dependencies for the target
 cw1_world_spawner__rosidl_generator_c_LIB_DEPENDS:STATIC=general;geometry_msgs::geometry_msgs__rosidl_generator_c;general;std_msgs::std_msgs__rosidl_generator_c;general;builtin_interfaces::builtin_interfaces__rosidl_generator_c;general;rosidl_runtime_c::rosidl_runtime_c;general;rcutils::rcutils;
@@ -562,7 +562,7 @@ CMAKE_GENERATOR_PLATFORM:INTERNAL=
 CMAKE_GENERATOR_TOOLSET:INTERNAL=
 //Source directory with the top level CMakeLists.txt file for this
 // project
-CMAKE_HOME_DIRECTORY:INTERNAL=/home/charvi/comp0250_s26_labs/courseworks/cw1_world_spawner
+CMAKE_HOME_DIRECTORY:INTERNAL=/home/charvi/comp0250_s26_labs/src/courseworks/cw1_world_spawner
 //Install .so files without execute permission.
 CMAKE_INSTALL_SO_NO_EXE:INTERNAL=1
 //ADVANCED property for variable: CMAKE_LINKER

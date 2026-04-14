@@ -1,4 +1,4 @@
-# Install script for directory: /home/charvi/comp0250_s26_labs/courseworks/cw1_team_30
+# Install script for directory: /home/charvi/comp0250_s26_labs/src/courseworks/cw1_team_30
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -360,7 +360,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cw1_team_x/srv" TYPE FILE FILES "/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/srv/Example.srv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cw1_team_x/srv" TYPE FILE FILES "/home/charvi/comp0250_s26_labs/src/courseworks/cw1_team_30/srv/Example.srv")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -415,7 +415,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cw1_team_x" TYPE DIRECTORY FILES "/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/launch" REGEX "/[^/]*\\.launch$" EXCLUDE)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cw1_team_x" TYPE DIRECTORY FILES "/home/charvi/comp0250_s26_labs/src/courseworks/cw1_team_30/launch" REGEX "/[^/]*\\.launch$" EXCLUDE)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -670,7 +670,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cw1_team_x" TYPE FILE FILES "/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cw1_team_x" TYPE FILE FILES "/home/charvi/comp0250_s26_labs/src/courseworks/cw1_team_30/package.xml")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)

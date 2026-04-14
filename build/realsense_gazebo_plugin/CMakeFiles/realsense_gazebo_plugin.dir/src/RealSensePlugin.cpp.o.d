@@ -1,7 +1,7 @@
 CMakeFiles/realsense_gazebo_plugin.dir/src/RealSensePlugin.cpp.o: \
- /home/charvi/comp0250_s26_labs/courseworks/realsense_gazebo_plugin/src/RealSensePlugin.cpp \
+ /home/charvi/comp0250_s26_labs/src/courseworks/realsense_gazebo_plugin/src/RealSensePlugin.cpp \
  /usr/include/stdc-predef.h \
- /home/charvi/comp0250_s26_labs/courseworks/realsense_gazebo_plugin/include/realsense_gazebo_plugin/RealSensePlugin.hpp \
+ /home/charvi/comp0250_s26_labs/src/courseworks/realsense_gazebo_plugin/include/realsense_gazebo_plugin/RealSensePlugin.hpp \
  /usr/include/c++/11/memory /usr/include/c++/11/bits/stl_algobase.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \

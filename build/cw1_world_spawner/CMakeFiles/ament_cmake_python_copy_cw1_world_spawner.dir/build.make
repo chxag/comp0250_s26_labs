@@ -53,7 +53,7 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/charvi/comp0250_s26_labs/courseworks/cw1_world_spawner
+CMAKE_SOURCE_DIR = /home/charvi/comp0250_s26_labs/src/courseworks/cw1_world_spawner
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/charvi/comp0250_s26_labs/build/cw1_world_spawner
@@ -82,6 +82,6 @@ CMakeFiles/ament_cmake_python_copy_cw1_world_spawner.dir/clean:
 .PHONY : CMakeFiles/ament_cmake_python_copy_cw1_world_spawner.dir/clean
 
 CMakeFiles/ament_cmake_python_copy_cw1_world_spawner.dir/depend:
-	cd /home/charvi/comp0250_s26_labs/build/cw1_world_spawner && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/charvi/comp0250_s26_labs/courseworks/cw1_world_spawner /home/charvi/comp0250_s26_labs/courseworks/cw1_world_spawner /home/charvi/comp0250_s26_labs/build/cw1_world_spawner /home/charvi/comp0250_s26_labs/build/cw1_world_spawner /home/charvi/comp0250_s26_labs/build/cw1_world_spawner/CMakeFiles/ament_cmake_python_copy_cw1_world_spawner.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/charvi/comp0250_s26_labs/build/cw1_world_spawner && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/charvi/comp0250_s26_labs/src/courseworks/cw1_world_spawner /home/charvi/comp0250_s26_labs/src/courseworks/cw1_world_spawner /home/charvi/comp0250_s26_labs/build/cw1_world_spawner /home/charvi/comp0250_s26_labs/build/cw1_world_spawner /home/charvi/comp0250_s26_labs/build/cw1_world_spawner/CMakeFiles/ament_cmake_python_copy_cw1_world_spawner.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/ament_cmake_python_copy_cw1_world_spawner.dir/depend
 

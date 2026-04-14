@@ -1,4 +1,4 @@
-# Install script for directory: /home/charvi/comp0250_s26_labs/courseworks/rpl_panda_with_rs
+# Install script for directory: /home/charvi/comp0250_s26_labs/src/courseworks/rpl_panda_with_rs
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,16 +44,16 @@ endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rpl_panda_with_rs" TYPE DIRECTORY FILES
-    "/home/charvi/comp0250_s26_labs/courseworks/rpl_panda_with_rs/config"
-    "/home/charvi/comp0250_s26_labs/courseworks/rpl_panda_with_rs/launch"
-    "/home/charvi/comp0250_s26_labs/courseworks/rpl_panda_with_rs/rviz"
-    "/home/charvi/comp0250_s26_labs/courseworks/rpl_panda_with_rs/srdf"
-    "/home/charvi/comp0250_s26_labs/courseworks/rpl_panda_with_rs/urdf"
+    "/home/charvi/comp0250_s26_labs/src/courseworks/rpl_panda_with_rs/config"
+    "/home/charvi/comp0250_s26_labs/src/courseworks/rpl_panda_with_rs/launch"
+    "/home/charvi/comp0250_s26_labs/src/courseworks/rpl_panda_with_rs/rviz"
+    "/home/charvi/comp0250_s26_labs/src/courseworks/rpl_panda_with_rs/srdf"
+    "/home/charvi/comp0250_s26_labs/src/courseworks/rpl_panda_with_rs/urdf"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/rpl_panda_with_rs" TYPE PROGRAM FILES "/home/charvi/comp0250_s26_labs/courseworks/rpl_panda_with_rs/scripts/init_panda_pose.py")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/rpl_panda_with_rs" TYPE PROGRAM FILES "/home/charvi/comp0250_s26_labs/src/courseworks/rpl_panda_with_rs/scripts/init_panda_pose.py")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -112,7 +112,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rpl_panda_with_rs" TYPE FILE FILES "/home/charvi/comp0250_s26_labs/courseworks/rpl_panda_with_rs/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rpl_panda_with_rs" TYPE FILE FILES "/home/charvi/comp0250_s26_labs/src/courseworks/rpl_panda_with_rs/package.xml")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)

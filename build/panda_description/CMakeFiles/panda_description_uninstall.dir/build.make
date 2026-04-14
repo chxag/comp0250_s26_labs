@@ -53,7 +53,7 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/charvi/comp0250_s26_labs/courseworks/panda_description
+CMAKE_SOURCE_DIR = /home/charvi/comp0250_s26_labs/src/courseworks/panda_description
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/charvi/comp0250_s26_labs/build/panda_description
@@ -82,6 +82,6 @@ CMakeFiles/panda_description_uninstall.dir/clean:
 .PHONY : CMakeFiles/panda_description_uninstall.dir/clean
 
 CMakeFiles/panda_description_uninstall.dir/depend:
-	cd /home/charvi/comp0250_s26_labs/build/panda_description && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/charvi/comp0250_s26_labs/courseworks/panda_description /home/charvi/comp0250_s26_labs/courseworks/panda_description /home/charvi/comp0250_s26_labs/build/panda_description /home/charvi/comp0250_s26_labs/build/panda_description /home/charvi/comp0250_s26_labs/build/panda_description/CMakeFiles/panda_description_uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/charvi/comp0250_s26_labs/build/panda_description && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/charvi/comp0250_s26_labs/src/courseworks/panda_description /home/charvi/comp0250_s26_labs/src/courseworks/panda_description /home/charvi/comp0250_s26_labs/build/panda_description /home/charvi/comp0250_s26_labs/build/panda_description /home/charvi/comp0250_s26_labs/build/panda_description/CMakeFiles/panda_description_uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/panda_description_uninstall.dir/depend
 

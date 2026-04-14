@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -DRCUTILS_ENABLE_FAULT_INJECTION -DROSIDL_TYPESUPPORT_CPP_BUILDING_DLL -DROS_PACKAGE_NAME=\"cw1_team_x\"
 
-CXX_INCLUDES = -I/home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/include -I/usr/include/pcl-1.12 -I/home/charvi/comp0250_s26_labs/build/cw1_team_x/rosidl_generator_cpp -isystem /opt/ros/humble/include/std_msgs -isystem /opt/ros/humble/include/builtin_interfaces -isystem /opt/ros/humble/include/rosidl_runtime_cpp -isystem /opt/ros/humble/include/rosidl_runtime_c -isystem /opt/ros/humble/include/rcutils -isystem /opt/ros/humble/include/rosidl_typesupport_interface -isystem /opt/ros/humble/include/geometry_msgs -isystem /opt/ros/humble/include/rosidl_typesupport_cpp -isystem /opt/ros/humble/include/rosidl_typesupport_c
+CXX_INCLUDES = -I/home/charvi/comp0250_s26_labs/src/courseworks/cw1_team_30/include -I/usr/include/pcl-1.12 -I/home/charvi/comp0250_s26_labs/build/cw1_team_x/rosidl_generator_cpp -isystem /opt/ros/humble/include/std_msgs -isystem /opt/ros/humble/include/builtin_interfaces -isystem /opt/ros/humble/include/rosidl_runtime_cpp -isystem /opt/ros/humble/include/rosidl_runtime_c -isystem /opt/ros/humble/include/rcutils -isystem /opt/ros/humble/include/rosidl_typesupport_interface -isystem /opt/ros/humble/include/geometry_msgs -isystem /opt/ros/humble/include/rosidl_typesupport_cpp -isystem /opt/ros/humble/include/rosidl_typesupport_c
 
 CXX_FLAGS = -O3 -DNDEBUG -fPIC -Wall -Wextra -Wpedantic -std=gnu++14
 

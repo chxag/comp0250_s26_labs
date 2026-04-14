@@ -1,5 +1,5 @@
 # CMake generated Testfile for 
-# Source directory: /home/charvi/comp0250_s26_labs/courseworks/panda_description
+# Source directory: /home/charvi/comp0250_s26_labs/src/courseworks/panda_description
 # Build directory: /home/charvi/comp0250_s26_labs/build/panda_description
 # 
 # This file includes the relevant testing commands required for 

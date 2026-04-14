@@ -53,7 +53,7 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/charvi/comp0250_s26_labs/courseworks/realsense_gazebo_plugin
+CMAKE_SOURCE_DIR = /home/charvi/comp0250_s26_labs/src/courseworks/realsense_gazebo_plugin
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/charvi/comp0250_s26_labs/build/realsense_gazebo_plugin
@@ -78,6 +78,6 @@ CMakeFiles/uninstall.dir/clean:
 .PHONY : CMakeFiles/uninstall.dir/clean
 
 CMakeFiles/uninstall.dir/depend:
-	cd /home/charvi/comp0250_s26_labs/build/realsense_gazebo_plugin && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/charvi/comp0250_s26_labs/courseworks/realsense_gazebo_plugin /home/charvi/comp0250_s26_labs/courseworks/realsense_gazebo_plugin /home/charvi/comp0250_s26_labs/build/realsense_gazebo_plugin /home/charvi/comp0250_s26_labs/build/realsense_gazebo_plugin /home/charvi/comp0250_s26_labs/build/realsense_gazebo_plugin/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/charvi/comp0250_s26_labs/build/realsense_gazebo_plugin && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/charvi/comp0250_s26_labs/src/courseworks/realsense_gazebo_plugin /home/charvi/comp0250_s26_labs/src/courseworks/realsense_gazebo_plugin /home/charvi/comp0250_s26_labs/build/realsense_gazebo_plugin /home/charvi/comp0250_s26_labs/build/realsense_gazebo_plugin /home/charvi/comp0250_s26_labs/build/realsense_gazebo_plugin/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/uninstall.dir/depend
 

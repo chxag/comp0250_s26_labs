@@ -1,7 +1,7 @@
 CMakeFiles/realsense_gazebo_plugin.dir/src/gazebo_ros_realsense.cpp.o: \
- /home/charvi/comp0250_s26_labs/courseworks/realsense_gazebo_plugin/src/gazebo_ros_realsense.cpp \
+ /home/charvi/comp0250_s26_labs/src/courseworks/realsense_gazebo_plugin/src/gazebo_ros_realsense.cpp \
  /usr/include/stdc-predef.h \
- /home/charvi/comp0250_s26_labs/courseworks/realsense_gazebo_plugin/include/realsense_gazebo_plugin/gazebo_ros_realsense.hpp \
+ /home/charvi/comp0250_s26_labs/src/courseworks/realsense_gazebo_plugin/include/realsense_gazebo_plugin/gazebo_ros_realsense.hpp \
  /usr/include/c++/11/memory /usr/include/c++/11/bits/stl_algobase.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -671,7 +671,7 @@ CMakeFiles/realsense_gazebo_plugin.dir/src/gazebo_ros_realsense.cpp.o: \
  /opt/ros/humble/include/rclcpp/rclcpp/wait_set_policies/thread_safe_synchronization.hpp \
  /opt/ros/humble/include/rclcpp/rclcpp/wait_set_policies/detail/write_preferring_read_write_lock.hpp \
  /opt/ros/humble/include/rclcpp/rclcpp/wait_set_template.hpp \
- /home/charvi/comp0250_s26_labs/courseworks/realsense_gazebo_plugin/include/realsense_gazebo_plugin/RealSensePlugin.hpp \
+ /home/charvi/comp0250_s26_labs/src/courseworks/realsense_gazebo_plugin/include/realsense_gazebo_plugin/RealSensePlugin.hpp \
  /usr/include/gazebo-11/gazebo/common/Plugin.hh \
  /usr/include/x86_64-linux-gnu/sys/stat.h \
  /usr/include/x86_64-linux-gnu/bits/stat.h \

@@ -1,6 +1,0 @@
-# this is the request message
-float64 example_float
-int32 example_int
-string example_string
-geometry_msgs/Pose example_pose
-geometry_msgs/Pose[] example_std_vector_of_poses

@@ -53,7 +53,7 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/charvi/comp0250_s26_labs/courseworks/realsense_gazebo_plugin
+CMAKE_SOURCE_DIR = /home/charvi/comp0250_s26_labs/src/courseworks/realsense_gazebo_plugin
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/charvi/comp0250_s26_labs/build/realsense_gazebo_plugin
@@ -70,32 +70,32 @@ include CMakeFiles/realsense_gazebo_plugin.dir/progress.make
 include CMakeFiles/realsense_gazebo_plugin.dir/flags.make
 
 CMakeFiles/realsense_gazebo_plugin.dir/src/RealSensePlugin.cpp.o: CMakeFiles/realsense_gazebo_plugin.dir/flags.make
-CMakeFiles/realsense_gazebo_plugin.dir/src/RealSensePlugin.cpp.o: /home/charvi/comp0250_s26_labs/courseworks/realsense_gazebo_plugin/src/RealSensePlugin.cpp
+CMakeFiles/realsense_gazebo_plugin.dir/src/RealSensePlugin.cpp.o: /home/charvi/comp0250_s26_labs/src/courseworks/realsense_gazebo_plugin/src/RealSensePlugin.cpp
 CMakeFiles/realsense_gazebo_plugin.dir/src/RealSensePlugin.cpp.o: CMakeFiles/realsense_gazebo_plugin.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/charvi/comp0250_s26_labs/build/realsense_gazebo_plugin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/realsense_gazebo_plugin.dir/src/RealSensePlugin.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/realsense_gazebo_plugin.dir/src/RealSensePlugin.cpp.o -MF CMakeFiles/realsense_gazebo_plugin.dir/src/RealSensePlugin.cpp.o.d -o CMakeFiles/realsense_gazebo_plugin.dir/src/RealSensePlugin.cpp.o -c /home/charvi/comp0250_s26_labs/courseworks/realsense_gazebo_plugin/src/RealSensePlugin.cpp
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/realsense_gazebo_plugin.dir/src/RealSensePlugin.cpp.o -MF CMakeFiles/realsense_gazebo_plugin.dir/src/RealSensePlugin.cpp.o.d -o CMakeFiles/realsense_gazebo_plugin.dir/src/RealSensePlugin.cpp.o -c /home/charvi/comp0250_s26_labs/src/courseworks/realsense_gazebo_plugin/src/RealSensePlugin.cpp
 
 CMakeFiles/realsense_gazebo_plugin.dir/src/RealSensePlugin.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/realsense_gazebo_plugin.dir/src/RealSensePlugin.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/charvi/comp0250_s26_labs/courseworks/realsense_gazebo_plugin/src/RealSensePlugin.cpp > CMakeFiles/realsense_gazebo_plugin.dir/src/RealSensePlugin.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/charvi/comp0250_s26_labs/src/courseworks/realsense_gazebo_plugin/src/RealSensePlugin.cpp > CMakeFiles/realsense_gazebo_plugin.dir/src/RealSensePlugin.cpp.i
 
 CMakeFiles/realsense_gazebo_plugin.dir/src/RealSensePlugin.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/realsense_gazebo_plugin.dir/src/RealSensePlugin.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/charvi/comp0250_s26_labs/courseworks/realsense_gazebo_plugin/src/RealSensePlugin.cpp -o CMakeFiles/realsense_gazebo_plugin.dir/src/RealSensePlugin.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/charvi/comp0250_s26_labs/src/courseworks/realsense_gazebo_plugin/src/RealSensePlugin.cpp -o CMakeFiles/realsense_gazebo_plugin.dir/src/RealSensePlugin.cpp.s
 
 CMakeFiles/realsense_gazebo_plugin.dir/src/gazebo_ros_realsense.cpp.o: CMakeFiles/realsense_gazebo_plugin.dir/flags.make
-CMakeFiles/realsense_gazebo_plugin.dir/src/gazebo_ros_realsense.cpp.o: /home/charvi/comp0250_s26_labs/courseworks/realsense_gazebo_plugin/src/gazebo_ros_realsense.cpp
+CMakeFiles/realsense_gazebo_plugin.dir/src/gazebo_ros_realsense.cpp.o: /home/charvi/comp0250_s26_labs/src/courseworks/realsense_gazebo_plugin/src/gazebo_ros_realsense.cpp
 CMakeFiles/realsense_gazebo_plugin.dir/src/gazebo_ros_realsense.cpp.o: CMakeFiles/realsense_gazebo_plugin.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/charvi/comp0250_s26_labs/build/realsense_gazebo_plugin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/realsense_gazebo_plugin.dir/src/gazebo_ros_realsense.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/realsense_gazebo_plugin.dir/src/gazebo_ros_realsense.cpp.o -MF CMakeFiles/realsense_gazebo_plugin.dir/src/gazebo_ros_realsense.cpp.o.d -o CMakeFiles/realsense_gazebo_plugin.dir/src/gazebo_ros_realsense.cpp.o -c /home/charvi/comp0250_s26_labs/courseworks/realsense_gazebo_plugin/src/gazebo_ros_realsense.cpp
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/realsense_gazebo_plugin.dir/src/gazebo_ros_realsense.cpp.o -MF CMakeFiles/realsense_gazebo_plugin.dir/src/gazebo_ros_realsense.cpp.o.d -o CMakeFiles/realsense_gazebo_plugin.dir/src/gazebo_ros_realsense.cpp.o -c /home/charvi/comp0250_s26_labs/src/courseworks/realsense_gazebo_plugin/src/gazebo_ros_realsense.cpp
 
 CMakeFiles/realsense_gazebo_plugin.dir/src/gazebo_ros_realsense.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/realsense_gazebo_plugin.dir/src/gazebo_ros_realsense.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/charvi/comp0250_s26_labs/courseworks/realsense_gazebo_plugin/src/gazebo_ros_realsense.cpp > CMakeFiles/realsense_gazebo_plugin.dir/src/gazebo_ros_realsense.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/charvi/comp0250_s26_labs/src/courseworks/realsense_gazebo_plugin/src/gazebo_ros_realsense.cpp > CMakeFiles/realsense_gazebo_plugin.dir/src/gazebo_ros_realsense.cpp.i
 
 CMakeFiles/realsense_gazebo_plugin.dir/src/gazebo_ros_realsense.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/realsense_gazebo_plugin.dir/src/gazebo_ros_realsense.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/charvi/comp0250_s26_labs/courseworks/realsense_gazebo_plugin/src/gazebo_ros_realsense.cpp -o CMakeFiles/realsense_gazebo_plugin.dir/src/gazebo_ros_realsense.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/charvi/comp0250_s26_labs/src/courseworks/realsense_gazebo_plugin/src/gazebo_ros_realsense.cpp -o CMakeFiles/realsense_gazebo_plugin.dir/src/gazebo_ros_realsense.cpp.s
 
 # Object files for target realsense_gazebo_plugin
 realsense_gazebo_plugin_OBJECTS = \
@@ -280,6 +280,6 @@ CMakeFiles/realsense_gazebo_plugin.dir/clean:
 .PHONY : CMakeFiles/realsense_gazebo_plugin.dir/clean
 
 CMakeFiles/realsense_gazebo_plugin.dir/depend:
-	cd /home/charvi/comp0250_s26_labs/build/realsense_gazebo_plugin && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/charvi/comp0250_s26_labs/courseworks/realsense_gazebo_plugin /home/charvi/comp0250_s26_labs/courseworks/realsense_gazebo_plugin /home/charvi/comp0250_s26_labs/build/realsense_gazebo_plugin /home/charvi/comp0250_s26_labs/build/realsense_gazebo_plugin /home/charvi/comp0250_s26_labs/build/realsense_gazebo_plugin/CMakeFiles/realsense_gazebo_plugin.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/charvi/comp0250_s26_labs/build/realsense_gazebo_plugin && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/charvi/comp0250_s26_labs/src/courseworks/realsense_gazebo_plugin /home/charvi/comp0250_s26_labs/src/courseworks/realsense_gazebo_plugin /home/charvi/comp0250_s26_labs/build/realsense_gazebo_plugin /home/charvi/comp0250_s26_labs/build/realsense_gazebo_plugin /home/charvi/comp0250_s26_labs/build/realsense_gazebo_plugin/CMakeFiles/realsense_gazebo_plugin.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/realsense_gazebo_plugin.dir/depend
 

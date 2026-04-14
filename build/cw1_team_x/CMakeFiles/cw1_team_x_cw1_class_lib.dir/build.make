@@ -53,7 +53,7 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/charvi/comp0250_s26_labs/courseworks/cw1_team_30
+CMAKE_SOURCE_DIR = /home/charvi/comp0250_s26_labs/src/courseworks/cw1_team_30
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/charvi/comp0250_s26_labs/build/cw1_team_x
@@ -70,18 +70,18 @@ include CMakeFiles/cw1_team_x_cw1_class_lib.dir/progress.make
 include CMakeFiles/cw1_team_x_cw1_class_lib.dir/flags.make
 
 CMakeFiles/cw1_team_x_cw1_class_lib.dir/src/cw1_class.cpp.o: CMakeFiles/cw1_team_x_cw1_class_lib.dir/flags.make
-CMakeFiles/cw1_team_x_cw1_class_lib.dir/src/cw1_class.cpp.o: /home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp
+CMakeFiles/cw1_team_x_cw1_class_lib.dir/src/cw1_class.cpp.o: /home/charvi/comp0250_s26_labs/src/courseworks/cw1_team_30/src/cw1_class.cpp
 CMakeFiles/cw1_team_x_cw1_class_lib.dir/src/cw1_class.cpp.o: CMakeFiles/cw1_team_x_cw1_class_lib.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/charvi/comp0250_s26_labs/build/cw1_team_x/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/cw1_team_x_cw1_class_lib.dir/src/cw1_class.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cw1_team_x_cw1_class_lib.dir/src/cw1_class.cpp.o -MF CMakeFiles/cw1_team_x_cw1_class_lib.dir/src/cw1_class.cpp.o.d -o CMakeFiles/cw1_team_x_cw1_class_lib.dir/src/cw1_class.cpp.o -c /home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cw1_team_x_cw1_class_lib.dir/src/cw1_class.cpp.o -MF CMakeFiles/cw1_team_x_cw1_class_lib.dir/src/cw1_class.cpp.o.d -o CMakeFiles/cw1_team_x_cw1_class_lib.dir/src/cw1_class.cpp.o -c /home/charvi/comp0250_s26_labs/src/courseworks/cw1_team_30/src/cw1_class.cpp
 
 CMakeFiles/cw1_team_x_cw1_class_lib.dir/src/cw1_class.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cw1_team_x_cw1_class_lib.dir/src/cw1_class.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp > CMakeFiles/cw1_team_x_cw1_class_lib.dir/src/cw1_class.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/charvi/comp0250_s26_labs/src/courseworks/cw1_team_30/src/cw1_class.cpp > CMakeFiles/cw1_team_x_cw1_class_lib.dir/src/cw1_class.cpp.i
 
 CMakeFiles/cw1_team_x_cw1_class_lib.dir/src/cw1_class.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cw1_team_x_cw1_class_lib.dir/src/cw1_class.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/charvi/comp0250_s26_labs/courseworks/cw1_team_30/src/cw1_class.cpp -o CMakeFiles/cw1_team_x_cw1_class_lib.dir/src/cw1_class.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/charvi/comp0250_s26_labs/src/courseworks/cw1_team_30/src/cw1_class.cpp -o CMakeFiles/cw1_team_x_cw1_class_lib.dir/src/cw1_class.cpp.s
 
 # Object files for target cw1_team_x_cw1_class_lib
 cw1_team_x_cw1_class_lib_OBJECTS = \
@@ -573,6 +573,6 @@ CMakeFiles/cw1_team_x_cw1_class_lib.dir/clean:
 .PHONY : CMakeFiles/cw1_team_x_cw1_class_lib.dir/clean
 
 CMakeFiles/cw1_team_x_cw1_class_lib.dir/depend:
-	cd /home/charvi/comp0250_s26_labs/build/cw1_team_x && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/charvi/comp0250_s26_labs/courseworks/cw1_team_30 /home/charvi/comp0250_s26_labs/courseworks/cw1_team_30 /home/charvi/comp0250_s26_labs/build/cw1_team_x /home/charvi/comp0250_s26_labs/build/cw1_team_x /home/charvi/comp0250_s26_labs/build/cw1_team_x/CMakeFiles/cw1_team_x_cw1_class_lib.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/charvi/comp0250_s26_labs/build/cw1_team_x && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/charvi/comp0250_s26_labs/src/courseworks/cw1_team_30 /home/charvi/comp0250_s26_labs/src/courseworks/cw1_team_30 /home/charvi/comp0250_s26_labs/build/cw1_team_x /home/charvi/comp0250_s26_labs/build/cw1_team_x /home/charvi/comp0250_s26_labs/build/cw1_team_x/CMakeFiles/cw1_team_x_cw1_class_lib.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/cw1_team_x_cw1_class_lib.dir/depend
 

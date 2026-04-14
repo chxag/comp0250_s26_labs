@@ -1,4 +1,4 @@
-# Install script for directory: /home/charvi/comp0250_s26_labs/courseworks/realsense_gazebo_plugin
+# Install script for directory: /home/charvi/comp0250_s26_labs/src/courseworks/realsense_gazebo_plugin
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -66,14 +66,14 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/" TYPE DIRECTORY FILES "/home/charvi/comp0250_s26_labs/courseworks/realsense_gazebo_plugin/include/")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/" TYPE DIRECTORY FILES "/home/charvi/comp0250_s26_labs/src/courseworks/realsense_gazebo_plugin/include/")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/realsense_gazebo_plugin" TYPE DIRECTORY FILES
-    "/home/charvi/comp0250_s26_labs/courseworks/realsense_gazebo_plugin/models"
-    "/home/charvi/comp0250_s26_labs/courseworks/realsense_gazebo_plugin/urdf"
-    "/home/charvi/comp0250_s26_labs/courseworks/realsense_gazebo_plugin/worlds"
+    "/home/charvi/comp0250_s26_labs/src/courseworks/realsense_gazebo_plugin/models"
+    "/home/charvi/comp0250_s26_labs/src/courseworks/realsense_gazebo_plugin/urdf"
+    "/home/charvi/comp0250_s26_labs/src/courseworks/realsense_gazebo_plugin/worlds"
     )
 endif()
 
@@ -149,7 +149,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/realsense_gazebo_plugin" TYPE FILE FILES "/home/charvi/comp0250_s26_labs/courseworks/realsense_gazebo_plugin/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/realsense_gazebo_plugin" TYPE FILE FILES "/home/charvi/comp0250_s26_labs/src/courseworks/realsense_gazebo_plugin/package.xml")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)

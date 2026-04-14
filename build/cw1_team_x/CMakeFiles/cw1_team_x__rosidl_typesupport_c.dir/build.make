@@ -53,7 +53,7 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/charvi/comp0250_s26_labs/courseworks/cw1_team_30
+CMAKE_SOURCE_DIR = /home/charvi/comp0250_s26_labs/src/courseworks/cw1_team_30
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/charvi/comp0250_s26_labs/build/cw1_team_x
@@ -189,6 +189,6 @@ CMakeFiles/cw1_team_x__rosidl_typesupport_c.dir/clean:
 .PHONY : CMakeFiles/cw1_team_x__rosidl_typesupport_c.dir/clean
 
 CMakeFiles/cw1_team_x__rosidl_typesupport_c.dir/depend: rosidl_typesupport_c/cw1_team_x/srv/example__type_support.cpp
-	cd /home/charvi/comp0250_s26_labs/build/cw1_team_x && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/charvi/comp0250_s26_labs/courseworks/cw1_team_30 /home/charvi/comp0250_s26_labs/courseworks/cw1_team_30 /home/charvi/comp0250_s26_labs/build/cw1_team_x /home/charvi/comp0250_s26_labs/build/cw1_team_x /home/charvi/comp0250_s26_labs/build/cw1_team_x/CMakeFiles/cw1_team_x__rosidl_typesupport_c.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/charvi/comp0250_s26_labs/build/cw1_team_x && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/charvi/comp0250_s26_labs/src/courseworks/cw1_team_30 /home/charvi/comp0250_s26_labs/src/courseworks/cw1_team_30 /home/charvi/comp0250_s26_labs/build/cw1_team_x /home/charvi/comp0250_s26_labs/build/cw1_team_x /home/charvi/comp0250_s26_labs/build/cw1_team_x/CMakeFiles/cw1_team_x__rosidl_typesupport_c.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/cw1_team_x__rosidl_typesupport_c.dir/depend
 
