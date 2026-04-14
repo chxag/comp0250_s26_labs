@@ -67,7 +67,17 @@ public:
 
   std::string pointcloud_topic_;
   bool pointcloud_qos_reliable_ = false;
-  void moveToPreGraspPosition(const geometry_msgs::msg::Point &object_point, const std::string &shape_type, const geometry_msgs::msg::Point &goal_point);
+  // void moveToPreGraspPosition(const geometry_msgs::msg::Point &object_point, const std::string &shape_type, const geometry_msgs::msg::Point &goal_point);
+  void moveToNamedPose(const std::string &pose_name);
+  void openGripper();
+  void closeGripper();
+  void moveToPose(const geometry_msgs::msg::Pose &target_pose);
+  bool computeAndExecuteCartesianPath(const geometry_msgs::msg::Pose &target);
+  geometry_msgs::msg::Pose makeAGraspOffset(
+    const geometry_msgs::msg::Point &point,
+    const std::string &shape_type,
+    double z_offset,
+    const tf2::Quaternion &orientation);
 };
 
 
