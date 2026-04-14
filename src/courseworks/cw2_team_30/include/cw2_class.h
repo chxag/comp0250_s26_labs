@@ -67,6 +67,8 @@ public:
 
   std::string pointcloud_topic_;
   bool pointcloud_qos_reliable_ = false;
+  void moveToPreGraspPosition(const geometry_msgs::msg::Point &object_point, const std::string &shape_type, const geometry_msgs::msg::Point &goal_point);
 };
+
 
 #endif  // CW2_CLASS_H_
