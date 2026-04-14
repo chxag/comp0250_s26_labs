@@ -1,4 +1,0 @@
-source;share/cw1_team_x/environment/ament_prefix_path.sh
-source;share/cw1_team_x/environment/library_path.sh
-source;share/cw1_team_x/environment/path.sh
-source;share/cw1_team_x/environment/pythonpath.sh

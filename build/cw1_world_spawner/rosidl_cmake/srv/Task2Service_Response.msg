@@ -1,3 +1,0 @@
-
-string[] basket_colours
-

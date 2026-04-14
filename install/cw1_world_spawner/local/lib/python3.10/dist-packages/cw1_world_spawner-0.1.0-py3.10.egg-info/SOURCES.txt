@@ -1,6 +1,0 @@
-setup.py
-cw1_world_spawner/__init__.py
-cw1_world_spawner.egg-info/PKG-INFO
-cw1_world_spawner.egg-info/SOURCES.txt
-cw1_world_spawner.egg-info/dependency_links.txt
-cw1_world_spawner.egg-info/top_level.txt
