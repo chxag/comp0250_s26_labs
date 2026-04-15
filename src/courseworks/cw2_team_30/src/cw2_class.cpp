@@ -140,117 +140,6 @@ geometry_msgs::msg::Pose cw2::makeAGraspOffset(
   return pose;
 }
 
-// void cw2::moveToPreGraspPosition(const geometry_msgs::msg::Point &object_point, const std::string &shape_type, const geometry_msgs::msg::Point &goal_point)
-// {
-//   arm_group_->setNamedTarget("ready");
-//   arm_group_->move();
-
-//   tf2::Quaternion orientation;
-//   orientation.setRPY(M_PI, 0, -M_PI / 4); // Change when T1_ANY_ORIENTATION = True
-
-//   // Step 1: Move to a pre-grasp position above the object
-//   geometry_msgs::msg::Pose approach_pose;
-//   if (shape_type == "nought") {
-//     approach_pose.position.x = object_point.x;
-//     approach_pose.position.y = object_point.y + 0.08;
-//   }
-//   else {
-//     approach_pose.position.x = object_point.x + 0.06;
-//     approach_pose.position.y = object_point.y;
-//   }
-
-//   approach_pose.position.z = object_point.z + 0.5;
-//   approach_pose.orientation = tf2::toMsg(orientation);
-//   arm_group_->setPoseTarget(approach_pose);
-//   arm_group_->move();
-
-//   // Step 2: Open the gripper
-//   hand_group_->setNamedTarget("open");
-//   hand_group_->move();
-
-//   // Step 3: Move down to grasp the object
-//   geometry_msgs::msg::Pose grasp_pose = approach_pose;
-//   grasp_pose.position.z = object_point.z + 0.15;
-
-//   std::vector<geometry_msgs::msg::Pose> waypoints;
-//   waypoints.push_back(grasp_pose);
-
-//   moveit_msgs::msg::RobotTrajectory trajectory;
-//   double fraction = arm_group_->computeCartesianPath(waypoints, 0.01, 0.0, trajectory);
-//   RCLCPP_INFO(node_->get_logger(), "Cartesian path computed with %.2f%% success", fraction * 100.0);
-
-//   if (fraction > 0.9) {
-//     arm_group_->execute(trajectory);
-//   }
-
-//   // Step 4: Close the gripper to grasp the object
-//   hand_group_->setNamedTarget("close");
-//   hand_group_->move();
-
-//   // Step 5: Lift the object
-//   geometry_msgs::msg::Pose lift_pose = grasp_pose;
-//   lift_pose.position.z = object_point.z + 0.5;
-  
-//   waypoints.clear();
-//   waypoints.push_back(lift_pose);
-//   fraction = arm_group_->computeCartesianPath(waypoints, 0.01, 0.0, trajectory);
-//   RCLCPP_INFO(node_->get_logger(), "Cartesian path computed with %.2f%% success", fraction * 100.0);
-
-//   if (fraction > 0.9) {
-//     arm_group_->execute(trajectory);
-//   }
-
-//   // Step 6: Move back to basket position
-//   geometry_msgs::msg::Pose basket_pose;
-
-//   if (shape_type == "nought") {
-//     basket_pose.position.x = goal_point.x;
-//     basket_pose.position.y = goal_point.y + 0.08;
-//   }
-//   else {
-//     basket_pose.position.x = goal_point.x;
-//     basket_pose.position.y = goal_point.y;
-//   }
-//   basket_pose.position.z = goal_point.z + 0.5;
-//   basket_pose.orientation = tf2::toMsg(orientation);
-//   arm_group_->setPoseTarget(basket_pose);
-//   arm_group_->move();
-
-//   // Step 7: Lower the object into the basket
-//   geometry_msgs::msg::Pose lower_pose = basket_pose;
-//   lower_pose.position.z = goal_point.z + 0.15;
-//   waypoints.clear();
-//   waypoints.push_back(lower_pose);
-//   fraction = arm_group_->computeCartesianPath(waypoints, 0.01, 0.0, trajectory);
-//   RCLCPP_INFO(node_->get_logger(), "Cartesian path computed with %.2f%% success", fraction * 100.0);
-//   if (fraction > 0.9) {
-//     arm_group_->execute(trajectory);
-//   }
-
-//   // Step 8: Open the gripper to release the object
-//   hand_group_->setNamedTarget("open");
-//   hand_group_->move();
-
-//   // Step 9: Lift back up after releasing the object
-//   geometry_msgs::msg::Pose lift_pose_after = lower_pose;
-//   lift_pose_after.position.z = goal_point.z + 0.5;
-  
-//   waypoints.clear();
-//   waypoints.push_back(lift_pose_after);
-//   fraction = arm_group_->computeCartesianPath(waypoints, 0.01, 0.0, trajectory);
-//   RCLCPP_INFO(node_->get_logger(), "Cartesian path computed with %.2f%% success", fraction * 100.0);
-
-//   if (fraction > 0.9) {
-//     arm_group_->execute(trajectory);
-//   }
-
-//   // Step 10: Move back to the ready position
-//   arm_group_->setNamedTarget("ready");
-//   arm_group_->move();
-
-// }
-
-
 void cw2::t1_callback(
   const std::shared_ptr<cw2_world_spawner::srv::Task1Service::Request> request,
   std::shared_ptr<cw2_world_spawner::srv::Task1Service::Response> response)
@@ -288,9 +177,14 @@ void cw2::t1_callback(
   } else {
     moveToPose(makeAGraspOffset(basket, " ",  0.5, orientation));
   }
-  
+
   // 8. Descend to place the object in the basket
-  computeAndExecuteCartesianPath(makeAGraspOffset(basket, " ", 0.15, orientation));
+  if (shape_type == "nought") {
+    computeAndExecuteCartesianPath(makeAGraspOffset(basket, "nought", 0.17, orientation));
+  } else {
+    computeAndExecuteCartesianPath(makeAGraspOffset(basket, " ", 0.17, orientation));
+  }
+  
   // 9. Open gripper to release the object
   openGripper();
 
