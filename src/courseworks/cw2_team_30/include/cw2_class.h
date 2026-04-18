@@ -52,8 +52,8 @@ struct KeyHash {
 
 // Structure to hold detected object information
 struct DetectedObj {
-  std::string category;      // "object", "basket", "obstacle"
-  std::string shape;         // "nought", "cross", "N/A"
+  std::string category;      // "object" or "basket"
+  std::string shape;         // "nought" or "cross"
   geometry_msgs::msg::Point centroid;
   std::unordered_set<octomap::OcTreeKey, KeyHash> voxel_keys;
   double min_x, max_x, min_y, max_y, min_z, max_z;
@@ -139,16 +139,15 @@ private:
   bool pointcloud_qos_reliable_ = false;
 
   // Task 3 specific members
-  std::shared_ptr<octomap::OcTree> latest_octree_;          // (unused in current T3)
+  std::shared_ptr<octomap::OcTree> latest_octree_;          
   PointCPtr accumulated_cloud_;
-  std::mutex accumulated_cloud_mutex_;                      // thread safety for accumulated_cloud_
-  std::atomic<bool> is_scanning_{false};                    // cross-thread flag
+  std::mutex accumulated_cloud_mutex_;                      
+  std::atomic<bool> is_scanning_{false};                    
 
-  // Shape classification helper (used in Task 2 and Task 3)
+  // Shape classification helper 
   std::string classifyShapeAtPoint(const geometry_msgs::msg::PointStamped &query_point);
 };
 
-// Template implementation for pass-through filter
 template <typename PointT>
 typename pcl::PointCloud<PointT>::Ptr cw2::filterPassThrough(
     const typename pcl::PointCloud<PointT>::Ptr& cloud,
