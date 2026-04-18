@@ -696,22 +696,23 @@ void cw2::t3_callback(
     std::this_thread::sleep_for(std::chrono::milliseconds(500));
   }
 
-  // ── FIXED GRASP (same reliable offset used in Task 1/2) ─────────────────
+    // ── FIXED GRASP + CENTRED PLACEMENT ─────────────────────────────────────
   goToInitial();
   double grasp_x = target.centroid.x;
   double grasp_y = target.centroid.y;
   if (target_shape == "nought") {
-    grasp_y += 0.08;
+      grasp_y += 0.08;          // your working value
   } else {
-    grasp_x += 0.06;
+      grasp_x += 0.06;
   }
   double grasp_z = target.centroid.z + 0.015;
 
-  double place_x = basket.centroid.x + (grasp_x - target.centroid.x);
-  double place_y = basket.centroid.y + (grasp_y - target.centroid.y);
+  // === NEW: always place in the exact centre of the basket ===
+  double place_x = basket.centroid.x;
+  double place_y = basket.centroid.y;
 
   RCLCPP_INFO(node_->get_logger(),
-    "T3: grasp=(%.3f,%.3f,%.3f) place=(%.3f,%.3f) [fixed offset]",
+    "T3: grasp=(%.3f,%.3f,%.3f) place=(%.3f,%.3f) [centred in basket]",
     grasp_x, grasp_y, grasp_z, place_x, place_y);
 
   // ── PICK-AND-PLACE (Cartesian, safe orientation) ───────────────────────
@@ -720,12 +721,12 @@ void cw2::t3_callback(
 
   // Cartesian descend
   {
-    std::vector<geometry_msgs::msg::Pose> wps = {makePose(grasp_x, grasp_y, grasp_z + 0.07)};
+    std::vector<geometry_msgs::msg::Pose> wps = {makePose(grasp_x, grasp_y, grasp_z + 0.08)};
     moveit_msgs::msg::RobotTrajectory traj;
     arm_group_->setStartStateToCurrentState();
     double frac = arm_group_->computeCartesianPath(wps, 0.01, 0.0, traj);
     if (frac >= 0.95) arm_group_->execute(traj);
-    else moveToPose(makePose(grasp_x, grasp_y, grasp_z + 0.07));
+    else moveToPose(makePose(grasp_x, grasp_y, grasp_z + 0.08));
   }
 
   closeGripper();
@@ -739,7 +740,7 @@ void cw2::t3_callback(
     geometry_msgs::msg::Pose lift = base_pose; lift.position.z = grasp_z + 0.40; wps.push_back(lift);
     geometry_msgs::msg::Pose mvy = lift; mvy.position.y = place_y; wps.push_back(mvy);
     geometry_msgs::msg::Pose mvx = mvy; mvx.position.x = place_x; wps.push_back(mvx);
-    geometry_msgs::msg::Pose lower = mvx; lower.position.z = basket.centroid.z + 0.40; wps.push_back(lower);
+    geometry_msgs::msg::Pose lower = mvx; lower.position.z = basket.centroid.z + 0.08; wps.push_back(lower);
 
     moveit_msgs::msg::RobotTrajectory traj;
     arm_group_->setStartStateToCurrentState();
