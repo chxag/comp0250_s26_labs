@@ -460,15 +460,19 @@ void cw2::t1_callback(
   moveToNamedPose("ready");
 }
 
+// Task 2
+
 void cw2::t2_callback(
   const std::shared_ptr<cw2_world_spawner::srv::Task2Service::Request> request,
   std::shared_ptr<cw2_world_spawner::srv::Task2Service::Response> response)
 {
   response->mystery_object_num = 1;
-
+// The same viewpoint is used for classifying all objects to ensure a fair comparison between the mystery object and the reference objects, 
+// and to simplify the implementation by not having to compute separate orientations for each object. 
   tf2::Quaternion view_orientation;
   view_orientation.setRPY(M_PI, 0.0, -M_PI / 4.0);
 
+  // Helper function to move to a viewpoint above the given point, wait for a fresh cloud, and classify the shape at that point.
   auto classify_with_viewpoint =
     [&](const geometry_msgs::msg::PointStamped &point_stamped) -> std::string {
       geometry_msgs::msg::Pose view_pose;
@@ -476,7 +480,7 @@ void cw2::t2_callback(
       view_pose.position.y  = point_stamped.point.y;
       view_pose.position.z  = point_stamped.point.z + 0.50;
       view_pose.orientation = tf2::toMsg(view_orientation);
-      moveToPose(view_pose);
+      moveToPose(view_pose); // move to the viewpoint above the object
 
       std::uint64_t before_seq = 0;
       {
@@ -494,11 +498,15 @@ void cw2::t2_callback(
         std::this_thread::sleep_for(std::chrono::milliseconds(30));
       }
 
+      // Classification
       return classifyShapeAtPoint(point_stamped);
     };
 
   std::vector<std::string> ref_shapes;
   ref_shapes.reserve(request->ref_object_points.size());
+
+  // Classify each reference object and log the results. 
+  // The classifications will be used to determine which reference object the mystery object matches with.
   for (std::size_t i = 0; i < request->ref_object_points.size(); ++i) {
     const auto shape = classify_with_viewpoint(request->ref_object_points[i]);
     ref_shapes.push_back(shape);
@@ -509,6 +517,7 @@ void cw2::t2_callback(
   const auto mystery_shape = classify_with_viewpoint(request->mystery_object_point);
   RCLCPP_INFO(node_->get_logger(), "Task2 mystery classified as: %s", mystery_shape.c_str());
 
+  // Determine which reference object the mystery object matches with, based on the classifications.
   int64_t match_index = 1;
   if (ref_shapes.size() >= 2) {
     const bool match_ref1 = (mystery_shape != "unknown" && mystery_shape == ref_shapes[0]);
@@ -530,9 +539,15 @@ void cw2::t2_callback(
   moveToNamedPose("ready");
 }
 
-// Helper function to classify shape at a given point using the latest point cloud
+// Classifies the shape ("nought" or "cross") at the given 3D query point using the latest point cloud snapshot.
+// The classification is based on whether the top surface of the shape has occupied points at its geometric centre:
+//   nought (O-shape): hollow centre -> no points near centroid -> center_count low -> "nought"
+//   cross  (+ shape): solid centre  -> points cluster at centroid -> center_count high -> "cross"
+// Returns "unknown" if the point cloud is unavailable or too sparse to make a reliable decision.
 std::string cw2::classifyShapeAtPoint(const geometry_msgs::msg::PointStamped &query_point)
 {
+  // --- Step 1: Take a thread-safe snapshot of the latest point cloud ---
+  // We copy the shared pointer under the mutex so that the rest of the function can work on a consistent cloud without holding the lock.
   PointCPtr cloud_snapshot;
   std::string cloud_frame;
   {
@@ -543,14 +558,15 @@ std::string cw2::classifyShapeAtPoint(const geometry_msgs::msg::PointStamped &qu
     cloud_snapshot = g_cloud_ptr;
     cloud_frame    = g_input_pc_frame_id_;
   }
-  // Transform the query point to the cloud frame
+
+  // --- Step 2: Look up the transform from the sensor frame to the arm base frame ---
   geometry_msgs::msg::TransformStamped tf_msg;
   try {
     tf_msg = tf_buffer_.lookupTransform(
-      query_point.header.frame_id,
-      cloud_frame,
-      tf2::TimePointZero,
-      tf2::durationFromSec(0.15));
+      query_point.header.frame_id,  // target frame: arm base (panda_link0)
+      cloud_frame,                  // source frame: camera / sensor frame
+      tf2::TimePointZero,           // use the latest available transform
+      tf2::durationFromSec(0.15));  // wait up to 150ms for the transform to become available
   } catch (const tf2::TransformException &ex) {
     RCLCPP_WARN(node_->get_logger(), "classifyShapeAtPoint TF failed: %s", ex.what());
     return "unknown";
@@ -559,25 +575,30 @@ std::string cw2::classifyShapeAtPoint(const geometry_msgs::msg::PointStamped &qu
   tf2::Transform tf_cloud_to_target;
   tf2::fromMsg(tf_msg.transform, tf_cloud_to_target);
 
+  // --- Step 3: Crop the cloud to a local cylinder around the query point ---
+  // We only keep points that are:
+  //   (a) within xy_radius (12 cm) of the query point in the horizontal plane.
+  //   (b) within a vertical band [z_min, z_max] around the known object height to discard table surface noise below and floating sensor artefacts above.
+  // We also track observed_z_max to identify the top surface in the next step.
   std::vector<geometry_msgs::msg::Point> local_points;
   local_points.reserve(4096);
 
-  const double xy_radius    = 0.12; // radius in xy plane to consider points around the query point
-  const double xy_radius_sq = xy_radius * xy_radius; // filtering points to be within this radius in the xy plane
-  const double z_min        = query_point.point.z - 0.03;
-  const double z_max        = query_point.point.z + 0.12;
-  double observed_z_max     = -std::numeric_limits<double>::max();
+  const double xy_radius    = 0.12; // horizontal crop radius [m]
+  const double xy_radius_sq = xy_radius * xy_radius;
+  const double z_min        = query_point.point.z - 0.03;  // 3 cm below centroid (table tolerance)
+  const double z_max        = query_point.point.z + 0.12;  // 12 cm above centroid (object height + margin)
+  double observed_z_max     = -std::numeric_limits<double>::max(); // running max z in the cropped region
 
-  
   for (const auto &pt : cloud_snapshot->points) {
     if (!std::isfinite(pt.x) || !std::isfinite(pt.y) || !std::isfinite(pt.z)) {
-      continue;
+      continue; // skip NaN / Inf points produced by the depth sensor at range boundaries
     }
+    // Transform the point from the camera frame into the arm base frame
     const tf2::Vector3 p_t = tf_cloud_to_target * tf2::Vector3(pt.x, pt.y, pt.z);
     const double dx = p_t.x() - query_point.point.x;
     const double dy = p_t.y() - query_point.point.y;
-    if ((dx * dx + dy * dy) > xy_radius_sq) continue;
-    if (p_t.z() < z_min || p_t.z() > z_max)  continue;
+    if ((dx * dx + dy * dy) > xy_radius_sq) continue; // outside horizontal cylinder
+    if (p_t.z() < z_min || p_t.z() > z_max)  continue; // outside vertical band
     geometry_msgs::msg::Point p;
     p.x = p_t.x(); p.y = p_t.y(); p.z = p_t.z();
     local_points.push_back(p);
@@ -586,19 +607,29 @@ std::string cw2::classifyShapeAtPoint(const geometry_msgs::msg::PointStamped &qu
 
   if (local_points.size() < 80) return "unknown";
 
+  // --- Step 4: Keep only the top 3.5 cm layer (the visible top surface) ---
+  // Side-wall points would shift the centroid and pollute the centre-density test,
+  // so we discard everything below the topmost observed point minus a small margin.
   const double top_z_min = observed_z_max - 0.035;
   std::vector<geometry_msgs::msg::Point> top_points;
   top_points.reserve(local_points.size());
   for (const auto &p : local_points)
     if (p.z >= top_z_min) top_points.push_back(p);
-  if (top_points.size() < 30) return "unknown";
+  if (top_points.size() < 30) return "unknown"; // too few top-surface points
 
+  // --- Step 5: Compute the 2D centroid of the top-surface point cloud ---
+  // For both nought and cross the centroid lies at the geometric centre of the shape,
+  // because both shapes are rotationally symmetric around their centre.
   double cx = 0.0, cy = 0.0;
   for (const auto &p : top_points) { cx += p.x; cy += p.y; }
   cx /= static_cast<double>(top_points.size());
   cy /= static_cast<double>(top_points.size());
 
-  const double center_radius    = 0.005;
+  // --- Step 6: Count points within a 5 mm radius of the centroid ---
+  // classification criterion:
+  //   nought: the centre is a hollow hole → almost no points near (cx, cy) -> center_count ≈ 0
+  //   cross:  the centre is solid material → many points near (cx, cy)     -> center_count >> 0
+  const double center_radius    = 0.005; // 5 mm decision radius
   const double center_radius_sq = center_radius * center_radius;
   int center_count = 0;
   for (const auto &p : top_points) {
@@ -606,6 +637,7 @@ std::string cw2::classifyShapeAtPoint(const geometry_msgs::msg::PointStamped &qu
     if (dx * dx + dy * dy <= center_radius_sq) ++center_count;
   }
 
+  // Empirically setting a threshold of 20 points.
   return (center_count < 20) ? "nought" : "cross";
 }
 
