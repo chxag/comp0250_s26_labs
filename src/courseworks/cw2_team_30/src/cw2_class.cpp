@@ -31,6 +31,7 @@ solution is contained within the cw2_team_<your_team_number> package */
 #include <octomap/OcTreeKey.h>
 #include <moveit_msgs/msg/collision_object.hpp>
 #include <shape_msgs/msg/solid_primitive.hpp>
+#include <pcl/features/moment_of_inertia_estimation.h>
 
 cw2::cw2(const rclcpp::Node::SharedPtr &node)
 : node_(node),
@@ -72,7 +73,7 @@ cw2::cw2(const rclcpp::Node::SharedPtr &node)
     std::bind(&cw2::cloud_callback, this, std::placeholders::_1),
     pointcloud_sub_options);
 
-    // Initialize MoveIt interfaces
+  // Initialize MoveIt interfaces
   arm_group_ = std::make_shared<moveit::planning_interface::MoveGroupInterface>(node_, "panda_arm");
   hand_group_ = std::make_shared<moveit::planning_interface::MoveGroupInterface>(node_, "hand");
 
@@ -154,6 +155,9 @@ void cw2::cloud_callback(const sensor_msgs::msg::PointCloud2::ConstSharedPtr msg
   }
 }
 
+// Task 1 Helpers 
+
+// Move the arm to a named pose defined in MoveIts configuration
 void cw2::moveToNamedPose(const std::string &pose_name)
 {
   arm_group_->clearPathConstraints();
@@ -161,18 +165,20 @@ void cw2::moveToNamedPose(const std::string &pose_name)
   arm_group_->move();
 }
 
+// Open the gripper by setting it to the "open" named target
 void cw2::openGripper()
 {
   hand_group_->setNamedTarget("open");
   hand_group_->move();
 }
 
+// Close the gripper by setting it to the "close" named target
 void cw2::closeGripper()
 {
   hand_group_->setNamedTarget("close");
   hand_group_->move();
 }
-
+// Move the arm to a specific pose using MoveIts pose target interface
 void cw2::moveToPose(const geometry_msgs::msg::Pose &target_pose)
 {
   arm_group_->setStartStateToCurrentState();
@@ -180,6 +186,8 @@ void cw2::moveToPose(const geometry_msgs::msg::Pose &target_pose)
   arm_group_->move();
 }
 
+// Compute a Cartesian path to the target pose and execute it if the path is mostly valid (fraction > 0.9). 
+// This is used for straight-line motions during grasping and placing, where we want to avoid collisions with the table and objects.
 bool cw2::computeAndExecuteCartesianPath(const geometry_msgs::msg::Pose &target)
 {
   std::vector<geometry_msgs::msg::Pose> waypoints;
@@ -199,63 +207,259 @@ bool cw2::computeAndExecuteCartesianPath(const geometry_msgs::msg::Pose &target)
   return false;
 }
 
+// Helper to compute a grasp pose offset from the centroid of the object.
+// There are slight adjustments based on shape type and orientation found through testing.
 geometry_msgs::msg::Pose cw2::makeAGraspOffset(
   const geometry_msgs::msg::Point &point,
   const std::string &shape_type,
   double z_offset,
-  const tf2::Quaternion &orientation)
+  const tf2::Quaternion &orientation,
+  double shape_yaw)
 {
+
+  // Local frame offset. Either to the nought's wall or one of the cross's arm.
   geometry_msgs::msg::Pose pose;
+  double dx = 0.0, dy = 0.0;
   if (shape_type == "nought") {
-    pose.position.x = point.x;
-    pose.position.y = point.y + 0.08;
+    dy = 0.08;
   } else if (shape_type == "cross") {
-    pose.position.x = point.x + 0.06;
-    pose.position.y = point.y;
-  } else {
-    pose.position.x = point.x;
-    pose.position.y = point.y;
+    dx = 0.06;
   }
+  
+  // Rotate the local offset by the shape's yaw (calculated later) to align the grasp point 
+  // with the wall/arm direction of the shape.
+  const double c = std::cos(shape_yaw);
+  const double s = std::sin(shape_yaw);
+  pose.position.x = point.x + dx * c - dy * s;
+  pose.position.y = point.y + dx * s + dy * c;
   pose.position.z = point.z + z_offset;
   pose.orientation = tf2::toMsg(orientation);
   return pose;
 }
 
-// ---------- Task 1 (unchanged) ----------
+// Estimates the yaw of a shape at a given point by extracting a local point cloud around the point, filtering to the top layer 
+// and using orientatied bounding box (OBB) to estimate the object's alignment in the 3D space.
+// (References https://pcl.readthedocs.io/projects/tutorials/en/latest/moment_of_inertia.html and https://stackoverflow.com/questions/61589904/not-correct-orientation-of-the-obb-box).
+// Returns the yaw in [-pi / 4, pi / 4] since both shapes have 90 degree symmetry. 
+double cw2::computeShapeOrientation(const geometry_msgs::msg::PointStamped &query_point)
+{
+  // Snapshot of latest cloud 
+  PointCPtr cloud_snapshot;
+  std::string cloud_frame;
+  {
+    std::lock_guard<std::mutex> lock(cloud_mutex_);
+    if (!g_cloud_ptr || g_cloud_ptr->empty() || g_input_pc_frame_id_.empty()) {
+      return 0.0;
+    }
+    cloud_snapshot = g_cloud_ptr;
+    cloud_frame    = g_input_pc_frame_id_;
+  }
+  
+  // Transform from the cloud frame to the query point frame (arm base).
+  geometry_msgs::msg::TransformStamped tf_msg;
+  try {
+    tf_msg = tf_buffer_.lookupTransform(
+      query_point.header.frame_id,
+      cloud_frame,
+      tf2::TimePointZero,
+      tf2::durationFromSec(0.15));
+  } catch (const tf2::TransformException &ex) {
+    RCLCPP_WARN(node_->get_logger(), "TF failed: %s", ex.what());
+    return 0.0;
+  }
+
+  tf2::Transform tf_cloud_to_target;
+  tf2::fromMsg(tf_msg.transform, tf_cloud_to_target);
+
+  // Crop the cloud around the query point. 
+  std::vector<geometry_msgs::msg::Point> local_points;
+  local_points.reserve(4096);
+
+  const double xy_radius    = 0.12; // radius in xy plane to consider points around the query point
+  const double xy_radius_sq = xy_radius * xy_radius; // filtering points to be within this radius in the xy plane
+  const double z_min        = query_point.point.z - 0.03; // only consider points that are slightly below 
+  const double z_max        = query_point.point.z + 0.12; // to moderately above the query point, to focus on the object and ignore table and floating noise 
+  double observed_z_max     = -std::numeric_limits<double>::max(); // track highest point observed, to help filter to the top layer later 
+
+  for (const auto &pt : cloud_snapshot->points) {
+    if (!std::isfinite(pt.x) || !std::isfinite(pt.y) || !std::isfinite(pt.z)) continue;
+    const tf2::Vector3 p_t = tf_cloud_to_target * tf2::Vector3(pt.x, pt.y, pt.z);
+    const double dx = p_t.x() - query_point.point.x;
+    const double dy = p_t.y() - query_point.point.y;
+    if ((dx * dx + dy * dy) > xy_radius_sq) continue;
+    if (p_t.z() < z_min || p_t.z() > z_max) continue;
+    geometry_msgs::msg::Point p;
+    p.x = p_t.x(); p.y = p_t.y(); p.z = p_t.z();
+    local_points.push_back(p);
+    observed_z_max = std::max(observed_z_max, p.z);
+  }
+
+  if (local_points.size() < 80) return 0.0;
+
+  // Keep only approx. top 3.5 cm of points to focus on the top surface of the shape 
+  // and remove the sides which can skew OBB.
+  const double top_z_min = observed_z_max - 0.035;
+  pcl::PointCloud<pcl::PointXYZ>::Ptr top_cloud (new pcl::PointCloud<pcl::PointXYZ>);
+  top_cloud->reserve(local_points.size());
+  for (const auto &p : local_points) {
+    if (p.z >= top_z_min){
+      pcl::PointXYZ pt;
+      pt.x = p.x; pt.y = p.y; pt.z = p.z;
+      top_cloud->push_back(pt);
+    }
+  }
+  if (top_cloud->size() < 30) return 0.0; 
+
+  /* 
+
+  Claude was used to implement the following edge-based filterting to improve OBB orientation estimation for symmetric shapes.
+
+  For the nought, the horizontal covariance has two near equal eigenvalues, so OBB's major axis can be noise-dominated, causing
+  the yaw to land anywhere between [0, 90] degrees. By filtering to just the edge points (low density), we leave out the interior
+  and get a cloud more biased towards the wall directions. This results in OBB aligning more reliable. This is especially important 
+  for the nought, where the grasp orientation is aligned with the wall direction, so a wrong OBB orientation can cause the grasp to 
+  be misaligned and fail.
+
+  */
+  pcl::KdTreeFLANN<pcl::PointXYZ> kdtree;
+  kdtree.setInputCloud(top_cloud);
+
+  pcl::PointCloud<pcl::PointXYZ>::Ptr edge_cloud(new pcl::PointCloud<pcl::PointXYZ>);
+  const double search_radius = 0.008;
+  const int density_threshold = 15;
+
+  std::vector<int> point_indices;
+  std::vector<float> point_distances;
+  for (const auto &pt : top_cloud->points) {
+    kdtree.radiusSearch(pt, search_radius, point_indices, point_distances);
+    if (point_indices.size() < density_threshold) {
+      edge_cloud->push_back(pt);
+    }
+  }
+
+  // Fir an oriented bounding box to the edge cloud. Its major axis gives 
+  // the dominant in-plane direction of the shape. 
+  pcl::MomentOfInertiaEstimation<pcl::PointXYZ> feature_extractor;
+  feature_extractor.setInputCloud(edge_cloud);
+  feature_extractor.compute();
+
+  pcl::PointXYZ min_OBB, max_OBB, position_OBB;
+  Eigen::Matrix3f rotational_matrix_OBB;
+  feature_extractor.getOBB(min_OBB, max_OBB, position_OBB, rotational_matrix_OBB);
+
+  // Take the yaw of the major axis and wrap it to [-pi/4, pi/4] since both shapes have 90 degree symmetry.
+  Eigen::Vector3f major = rotational_matrix_OBB.col(0);
+  double yaw = std::atan2(major.y(), major.x());
+  while (yaw > M_PI / 4.0) yaw += -M_PI / 2.0;
+  while (yaw <= -M_PI / 4.0) yaw += M_PI / 2.0;
+  return yaw;
+}
+
+// Ensures we have received fresh point cloud data after moving the arm, to improve reliability of perception before grasping or placing.
+void cw2::waitForFreshCloud(int frames_to_wait, double timeout_sec)
+{
+  uint64_t start_seq;
+  {
+    std::lock_guard<std::mutex> lock(cloud_mutex_);
+    start_seq = g_cloud_sequence_;
+  }
+
+  const auto deadline = std::chrono::steady_clock::now()
+                      + std::chrono::duration<double>(timeout_sec);
+
+  while (std::chrono::steady_clock::now() < deadline) {
+    {
+      std::lock_guard<std::mutex> lock(cloud_mutex_);
+      if (g_cloud_sequence_ >= start_seq + frames_to_wait) return;
+    }
+    std::this_thread::sleep_for(std::chrono::milliseconds(20));
+  }
+
+  RCLCPP_WARN(node_->get_logger(),
+              "waitForFreshCloud timed out waiting for %d new frames",
+              frames_to_wait);
+}
+
+// Main callback function for Task 1.
 void cw2::t1_callback(
   const std::shared_ptr<cw2_world_spawner::srv::Task1Service::Request> request,
   std::shared_ptr<cw2_world_spawner::srv::Task1Service::Response> response)
 {
   (void)response;
 
-  const auto &object     = request->object_point.point;
-  const auto &basket     = request->goal_point.point;
-  const auto &shape_type = request->shape_type;
+  const auto &object     = request->object_point.point; // centroid of the object
+  const auto &basket     = request->goal_point.point; // centroid of the basket
+  const auto &shape_type = request->shape_type; // shape of the object ("nought" or "cross")
 
-  tf2::Quaternion orientation;
-  orientation.setRPY(M_PI, 0, -M_PI / 4);
+  // Wrap the oject point with its frame header so that computeShapeOrientation can transform 
+  // it to the cloud frame for orientation estimation.
+  geometry_msgs::msg::PointStamped object_stamped;
+  object_stamped.header = request->object_point.header;
+  object_stamped.point  = object;
 
+  // Gripper orientation (pointing straight down) to observe the shape orientation clearly, or in other words, get a good point cloud.
+  tf2::Quaternion observe_orientation;
+  observe_orientation.setRPY(M_PI, 0, -M_PI / 4);
+
+  // 1. Move to ready position 
   arm_group_->setNamedTarget("ready");
-  moveToPose(makeAGraspOffset(object, shape_type, 0.5, orientation));
-  openGripper();
-  computeAndExecuteCartesianPath(makeAGraspOffset(object, shape_type, 0.15, orientation));
-  closeGripper();
-  computeAndExecuteCartesianPath(makeAGraspOffset(object, shape_type, 0.5, orientation));
+  
+  // 2. Move / position camera directly above object to have a clean top-down view before measuring orientation.
+  //    Passing " " as shape type keeps the arm centred on the centroid of the object without any grasping/placing offset.
+  moveToPose(makeAGraspOffset(object, " ", 0.5, observe_orientation, 0.0));
 
-  if (shape_type == "nought") {
-    moveToPose(makeAGraspOffset(basket, "nought", 0.5, orientation));
-    computeAndExecuteCartesianPath(makeAGraspOffset(basket, "nought", 0.17, orientation));
-  } else {
-    moveToPose(makeAGraspOffset(basket, " ", 0.5, orientation));
-    computeAndExecuteCartesianPath(makeAGraspOffset(basket, " ", 0.17, orientation));
+  // 3. Wait for a fresh cloud after moving, to ensure we have an up-to-date view of the object before measuring its orientation.
+  waitForFreshCloud();
+
+  // 4. Measure the shape orientation from the point cloud. 
+  const double shape_yaw = computeShapeOrientation(object_stamped);
+
+  // 5. Build a grasp orientation by combining measured shape orientation with the default gripper yaw. 
+  //    This aligns the gripper's fingers with the shape's rotation.
+  tf2::Quaternion orientation;
+  orientation.setRPY(M_PI, 0, -M_PI / 4 + shape_yaw);
+
+  // 6. Move to a pre-grasp pose above object, with the correct orientation of the gripper to execute a reliable grasp.
+  moveToPose(makeAGraspOffset(object, shape_type, 0.5, orientation, shape_yaw));
+
+  // 7. Open gripper.
+  openGripper();
+
+  // 8. Move stright down to grasp pose.
+  computeAndExecuteCartesianPath(makeAGraspOffset(object, shape_type, 0.15, orientation, shape_yaw));
+
+  // 9. Close gripper to grasp the object.
+  closeGripper();
+
+  // 10. Move straight up with the object. 
+  computeAndExecuteCartesianPath(makeAGraspOffset(object, shape_type, 0.5, orientation, shape_yaw));
+
+  // 11. Placement orientation goes back to teh the default gripper yaw. The basket is axis aligned so no shape yaw is needed.
+  tf2::Quaternion basket_orientation;
+  basket_orientation.setRPY(M_PI, 0, -M_PI / 4);
+
+  if (shape_type == "nought") { // if it's a nought...
+    //12a. Move to a pose offset towards the wall of the basket, to avoid collisions with the basket edges.
+    moveToPose(makeAGraspOffset(basket, "nought", 0.5, basket_orientation, 0.0));
+    // 13a. Move straight down to place the nought with a slight offset from basket centroid to avoid collisions.
+    computeAndExecuteCartesianPath(makeAGraspOffset(basket, "nought", 0.17, basket_orientation, 0.0));
+  } else { // if it's a cross...
+    // 12b. Move to a pose offset towards the center of the basket, since the cross is smaller and less likely to collide with the edges.
+    moveToPose(makeAGraspOffset(basket, " ", 0.5, basket_orientation, 0.0));
+    // 13b. Move straight down to place the cross at the basket centroid.
+    computeAndExecuteCartesianPath(makeAGraspOffset(basket, " ", 0.17, basket_orientation, 0.0));
   }
 
+  // 14. Open gripper to release the object.
   openGripper();
-  computeAndExecuteCartesianPath(makeAGraspOffset(basket, " ", 0.5, orientation));
+  
+  // 15. Move straight up after placing.
+  computeAndExecuteCartesianPath(makeAGraspOffset(basket, " ", 0.5, basket_orientation, 0.0));
+
+  // 16. Move back to ready position.
   moveToNamedPose("ready");
 }
 
-// ---------- Task 2 (unchanged) ----------
 void cw2::t2_callback(
   const std::shared_ptr<cw2_world_spawner::srv::Task2Service::Request> request,
   std::shared_ptr<cw2_world_spawner::srv::Task2Service::Response> response)

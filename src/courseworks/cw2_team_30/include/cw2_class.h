@@ -90,8 +90,13 @@ public:
     const geometry_msgs::msg::Point &point,
     const std::string &shape_type,
     double z_offset,
-    const tf2::Quaternion &orientation);
+    const tf2::Quaternion &orientation, 
+    double shape_yaw);
+  
+  double computeShapeOrientation(const geometry_msgs::msg::PointStamped &query_point);
 
+  void waitForFreshCloud(int frames_to_wait = 2, double timeout_sec = 2.0);
+  
   // OctoMap functions for Task 3 (unused but kept for compatibility)
   void buildOctomapFromAccumulatedCloud();
   bool extractObjectsFromOctomap(std::vector<DetectedObj>& out_objects);
