@@ -41,21 +41,11 @@ typedef pcl::PointXYZRGBA PointT;
 typedef pcl::PointCloud<PointT> PointC;
 typedef PointC::Ptr PointCPtr;
 
-// Hash function for octomap::OcTreeKey to use in unordered_set
-struct KeyHash {
-  std::size_t operator()(const octomap::OcTreeKey& k) const {
-    return ((static_cast<std::size_t>(k.k[0]) * 73856093) ^ 
-            (static_cast<std::size_t>(k.k[1]) * 19349663) ^ 
-            (static_cast<std::size_t>(k.k[2]) * 83492791));
-  }
-};
-
 // Structure to hold detected object information
 struct DetectedObj {
   std::string category;      // "object" or "basket"
   std::string shape;         // "nought" or "cross"
   geometry_msgs::msg::Point centroid;
-  std::unordered_set<octomap::OcTreeKey, KeyHash> voxel_keys;
   double min_x, max_x, min_y, max_y, min_z, max_z;
 };
 
@@ -100,6 +90,9 @@ public:
   // OctoMap functions for Task 3 (unused but kept for compatibility)
   void buildOctomapFromAccumulatedCloud();
   bool extractObjectsFromOctomap(std::vector<DetectedObj>& out_objects);
+  
+  std::vector<DetectedObj> classifyAccumulatedCloud();
+ std::string classifyClusterShape(const PointCPtr& cluster);
 
   // PCL filtering helpers
   template <typename PointT>
@@ -148,7 +141,7 @@ private:
   PointCPtr accumulated_cloud_;
   std::mutex accumulated_cloud_mutex_;                      
   std::atomic<bool> is_scanning_{false};                    
-
+    
   // Shape classification helper 
   std::string classifyShapeAtPoint(const geometry_msgs::msg::PointStamped &query_point);
 };
