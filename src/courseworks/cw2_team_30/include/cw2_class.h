@@ -88,23 +88,7 @@ public:
 
   void waitForFreshCloud(int frames_to_wait = 2, double timeout_sec = 2.0);
   
-  // OctoMap functions for Task 3 (unused but kept for compatibility)
-  void buildOctomapFromAccumulatedCloud();
-  bool extractObjectsFromOctomap(std::vector<DetectedObj>& out_objects);
-  
   std::vector<DetectedObj> classifyAccumulatedCloud();
- std::string classifyClusterShape(const PointCPtr& cluster);
-
-  // PCL filtering helpers
-  template <typename PointT>
-  typename pcl::PointCloud<PointT>::Ptr filterPassThrough(
-      const typename pcl::PointCloud<PointT>::Ptr& cloud,
-      const std::string& axis, float min_val, float max_val);
-  
-  PointCPtr filterTopLayer(const PointCPtr& cloud);
-
-  // TF helper
-  geometry_msgs::msg::PointStamped makePointStamped(double x, double y, double z);
 
 private:
   rclcpp::Node::SharedPtr node_;
@@ -146,19 +130,5 @@ private:
   // Shape classification helper 
   std::string classifyShapeAtPoint(const geometry_msgs::msg::PointStamped &query_point);
 };
-
-template <typename PointT>
-typename pcl::PointCloud<PointT>::Ptr cw2::filterPassThrough(
-    const typename pcl::PointCloud<PointT>::Ptr& cloud,
-    const std::string& axis, float min_val, float max_val)
-{
-  typename pcl::PointCloud<PointT>::Ptr filtered(new pcl::PointCloud<PointT>);
-  pcl::PassThrough<PointT> pass;
-  pass.setInputCloud(cloud);
-  pass.setFilterFieldName(axis);
-  pass.setFilterLimits(min_val, max_val);
-  pass.filter(*filtered);
-  return filtered;
-}
 
 #endif  // CW2_CLASS_H_
