@@ -32,6 +32,8 @@ solution is contained within the cw2_team_<your_team_number> package */
 #include <moveit_msgs/msg/collision_object.hpp>
 #include <shape_msgs/msg/solid_primitive.hpp>
 #include <pcl/features/moment_of_inertia_estimation.h>
+#include <pcl/io/pcd_io.h>
+#include <pcl/filters/radius_outlier_removal.h>
 
 cw2::cw2(const rclcpp::Node::SharedPtr &node)
 : node_(node),
@@ -77,10 +79,10 @@ cw2::cw2(const rclcpp::Node::SharedPtr &node)
   arm_group_ = std::make_shared<moveit::planning_interface::MoveGroupInterface>(node_, "panda_arm");
   hand_group_ = std::make_shared<moveit::planning_interface::MoveGroupInterface>(node_, "hand");
 
-  arm_group_->setPlanningTime(30.0);
-  arm_group_->setNumPlanningAttempts(30);
-  arm_group_->setMaxVelocityScalingFactor(0.6);
-  arm_group_->setMaxAccelerationScalingFactor(0.6);
+  arm_group_->setPlanningTime(50.0);
+  arm_group_->setNumPlanningAttempts(50);
+  arm_group_->setMaxVelocityScalingFactor(0.5);
+  arm_group_->setMaxAccelerationScalingFactor(0.5);
   arm_group_->clearPathConstraints();
 
   // accumulated cloud for Task 3 
@@ -115,11 +117,12 @@ void cw2::cloud_callback(const sensor_msgs::msg::PointCloud2::ConstSharedPtr msg
   if (is_scanning_ && latest_cloud && !latest_cloud->empty()) {
     geometry_msgs::msg::TransformStamped tf_msg;
     try {
+      const auto stamp = tf2_ros::fromMsg(msg->header.stamp);
       tf_msg = tf_buffer_.lookupTransform(
         "panda_link0",
         msg->header.frame_id,
-        tf2::TimePointZero,
-        tf2::durationFromSec(0.1));
+        stamp,
+        tf2::durationFromSec(0.25));
     } catch (const tf2::TransformException &ex) {
       RCLCPP_WARN_THROTTLE(node_->get_logger(), *node_->get_clock(), 2000,
         "TF error during scan accumulation: %s", ex.what());
@@ -142,14 +145,18 @@ void cw2::cloud_callback(const sensor_msgs::msg::PointCloud2::ConstSharedPtr msg
       tf2::Vector3 v = tf * tf2::Vector3(pt.x, pt.y, pt.z);
 
       // filtering out points that are on the floor or too high, or outside the workspace bounds
-      if (v.z() < 0.01 || v.z() > 0.5) continue;
-      if (v.x() < -0.8 || v.x() > 0.8) continue;
-      if (v.y() < -0.7 || v.y() > 0.7) continue;
+      if (v.z() < 0.03|| v.z() > 0.5) continue;
+      if (v.x() < -0.6 || v.x() > 0.7) continue;
+      if (v.y() < -0.6 || v.y() > 0.6) continue;
 
       PointT new_pt = pt; // copy intensity and other fields if present
       new_pt.x = v.x();
       new_pt.y = v.y();
       new_pt.z = v.z();
+      // filter out points that are too close to the arm base to avoid accumulating noise from the arm itself.
+      const double arm_base_xy_radius_sq = 0.15 * 0.15;
+      if ((v.x() * v.x() + v.y() * v.y()) < arm_base_xy_radius_sq) continue; 
+
       accumulated_cloud_->push_back(new_pt);
     }
   }
@@ -214,16 +221,17 @@ geometry_msgs::msg::Pose cw2::makeAGraspOffset(
   const std::string &shape_type,
   double z_offset,
   const tf2::Quaternion &orientation,
-  double shape_yaw)
+  double shape_yaw, 
+  double size)
 {
 
   // Local frame offset. Either to the nought's wall or one of the cross's arm.
   geometry_msgs::msg::Pose pose;
   double dx = 0.0, dy = 0.0;
   if (shape_type == "nought") {
-    dy = 0.08;
+    dy = 0.4 * size;
   } else if (shape_type == "cross") {
-    dx = 0.06;
+    dx = 0.3 * size;
   }
   
   // Rotate the local offset by the shape's yaw (calculated later) to align the grasp point 
@@ -406,7 +414,7 @@ void cw2::t1_callback(
   
   // 2. Move / position camera directly above object to have a clean top-down view before measuring orientation.
   //    Passing " " as shape type keeps the arm centred on the centroid of the object without any grasping/placing offset.
-  moveToPose(makeAGraspOffset(object, " ", 0.5, observe_orientation, 0.0));
+  moveToPose(makeAGraspOffset(object, " ", 0.5, observe_orientation, 0.0, 0.2));
 
   // 3. Wait for a fresh cloud after moving, to ensure we have an up-to-date view of the object before measuring its orientation.
   waitForFreshCloud();
@@ -420,19 +428,19 @@ void cw2::t1_callback(
   orientation.setRPY(M_PI, 0, -M_PI / 4 + shape_yaw);
 
   // 6. Move to a pre-grasp pose above object, with the correct orientation of the gripper to execute a reliable grasp.
-  moveToPose(makeAGraspOffset(object, shape_type, 0.5, orientation, shape_yaw));
+  moveToPose(makeAGraspOffset(object, shape_type, 0.5, orientation, shape_yaw, 0.2));
 
   // 7. Open gripper.
   openGripper();
 
   // 8. Move stright down to grasp pose.
-  computeAndExecuteCartesianPath(makeAGraspOffset(object, shape_type, 0.15, orientation, shape_yaw));
+  computeAndExecuteCartesianPath(makeAGraspOffset(object, shape_type, 0.15, orientation, shape_yaw, 0.2));
 
   // 9. Close gripper to grasp the object.
   closeGripper();
 
   // 10. Move straight up with the object. 
-  computeAndExecuteCartesianPath(makeAGraspOffset(object, shape_type, 0.5, orientation, shape_yaw));
+  computeAndExecuteCartesianPath(makeAGraspOffset(object, shape_type, 0.5, orientation, shape_yaw, 0.2));
 
   // 11. Placement orientation goes back to teh the default gripper yaw. The basket is axis aligned so no shape yaw is needed.
   tf2::Quaternion basket_orientation;
@@ -440,35 +448,34 @@ void cw2::t1_callback(
 
   if (shape_type == "nought") { // if it's a nought...
     //12a. Move to a pose offset towards the wall of the basket, to avoid collisions with the basket edges.
-    moveToPose(makeAGraspOffset(basket, "nought", 0.5, basket_orientation, 0.0));
+    moveToPose(makeAGraspOffset(basket, "nought", 0.5, basket_orientation, 0.0, 0.2));
     // 13a. Move straight down to place the nought with a slight offset from basket centroid to avoid collisions.
-    computeAndExecuteCartesianPath(makeAGraspOffset(basket, "nought", 0.17, basket_orientation, 0.0));
+    computeAndExecuteCartesianPath(makeAGraspOffset(basket, "nought", 0.17, basket_orientation, 0.0, 0.2));
   } else { // if it's a cross...
     // 12b. Move to a pose offset towards the center of the basket, since the cross is smaller and less likely to collide with the edges.
-    moveToPose(makeAGraspOffset(basket, " ", 0.5, basket_orientation, 0.0));
+    moveToPose(makeAGraspOffset(basket, " ", 0.5, basket_orientation, 0.0, 0.2));
     // 13b. Move straight down to place the cross at the basket centroid.
-    computeAndExecuteCartesianPath(makeAGraspOffset(basket, " ", 0.17, basket_orientation, 0.0));
+    computeAndExecuteCartesianPath(makeAGraspOffset(basket, " ", 0.17, basket_orientation, 0.0, 0.2));
   }
 
   // 14. Open gripper to release the object.
   openGripper();
   
   // 15. Move straight up after placing.
-  computeAndExecuteCartesianPath(makeAGraspOffset(basket, " ", 0.5, basket_orientation, 0.0));
+  computeAndExecuteCartesianPath(makeAGraspOffset(basket, " ", 0.5, basket_orientation, 0.0, 0.2));
 
   // 16. Move back to ready position.
   moveToNamedPose("ready");
 }
 
 // Task 2
-
 void cw2::t2_callback(
   const std::shared_ptr<cw2_world_spawner::srv::Task2Service::Request> request,
   std::shared_ptr<cw2_world_spawner::srv::Task2Service::Response> response)
 {
   response->mystery_object_num = 1;
-// The same viewpoint is used for classifying all objects to ensure a fair comparison between the mystery object and the reference objects, 
-// and to simplify the implementation by not having to compute separate orientations for each object. 
+  // The same viewpoint is used for classifying all objects to ensure a fair comparison between the mystery object and the reference objects, 
+  // and to simplify the implementation by not having to compute separate orientations for each object. 
   tf2::Quaternion view_orientation;
   view_orientation.setRPY(M_PI, 0.0, -M_PI / 4.0);
 
@@ -529,14 +536,14 @@ void cw2::t2_callback(
   }
   response->mystery_object_num = match_index;
 
+  moveToNamedPose("ready");
+
   RCLCPP_INFO(node_->get_logger(),
     "Task2 final output: ref1=%s ref2=%s mystery=%s -> mystery_object_num=%lld",
     ref_shapes.size() > 0 ? ref_shapes[0].c_str() : "n/a",
     ref_shapes.size() > 1 ? ref_shapes[1].c_str() : "n/a",
     mystery_shape.c_str(),
     static_cast<long long>(response->mystery_object_num));
-
-  moveToNamedPose("ready");
 }
 
 // Classifies the shape ("nought" or "cross") at the given 3D query point using the latest point cloud snapshot.
@@ -641,29 +648,151 @@ std::string cw2::classifyShapeAtPoint(const geometry_msgs::msg::PointStamped &qu
   return (center_count < 20) ? "nought" : "cross";
 }
 
+// Task 3 Helper
 
-// Task 3 
+// Clusters accumulated point cloud into individual objects and classifies them.
+std::vector<DetectedObj> cw2::classifyAccumulatedCloud()
+{
+  std::vector<DetectedObj> detected;
 
-// creates hashable keys for octomap and a struct to hold detected object info, then performs flood-fill clustering on the octree
-  struct T3KeyHash {
-    std::size_t operator()(const octomap::OcTreeKey& k) const {
-      return ((std::size_t(k.k[0]) * 73856093) ^
-              (std::size_t(k.k[1]) * 19349663) ^
-              (std::size_t(k.k[2]) * 83492791));
+  // Snapshot accumulated cloud
+  PointCPtr snapshot(new PointC);
+  {
+    std::lock_guard<std::mutex> lock(accumulated_cloud_mutex_);
+    if (!accumulated_cloud_ || accumulated_cloud_->empty()) return detected;
+    *snapshot = *accumulated_cloud_;
+  }
+
+  // Drop points that are likely on the green floor or are too high, and points that are likely noise (e.g. halo pixels at object boundaries).
+  PointCPtr filtered(new PointC);
+  filtered->reserve(snapshot->size());
+  for (const auto &pt : snapshot->points) {
+    if (!std::isfinite(pt.x) || !std::isfinite(pt.y) || !std::isfinite(pt.z)) continue; // invalid points
+    if (pt.z > 0.25) continue; // points that are too high 
+    if (pt.g > 1.3f * pt.r && pt.g > 1.3f * pt.b && pt.g > 60.0f) continue; //  points that are likely on the green floor
+    filtered->push_back(pt);
+  }
+  if (filtered->empty()) return detected;
+
+  // Voxel grid filter to downsample and unify point density. 
+  PointCPtr voxelised(new PointC);
+  pcl::VoxelGrid<PointT> voxel;
+  voxel.setInputCloud(filtered);
+  voxel.setLeafSize(0.005f, 0.005f, 0.005f);
+  voxel.filter(*voxelised);
+
+  // Radius outlier removel to drop isolated points that are likely noise, e.g. residual arm points, sensor artefacts etc.
+  // Added as a result of testing to improve robustness of clustering and classification.
+  PointCPtr cleaned(new PointC);
+  pcl::RadiusOutlierRemoval<PointT> ror;
+  ror.setInputCloud(voxelised);
+  ror.setRadiusSearch(0.02);
+  ror.setMinNeighborsInRadius(4);
+  ror.filter(*cleaned);
+
+  // Euclidean clustering to find individual object clusters.
+  pcl::search::KdTree<PointT>::Ptr tree(new pcl::search::KdTree<PointT>);
+  tree->setInputCloud(cleaned);
+  std::vector<pcl::PointIndices> cluster_indices;
+  pcl::EuclideanClusterExtraction<PointT> ec;
+  ec.setClusterTolerance(0.012);
+  ec.setMinClusterSize(200);
+  ec.setMaxClusterSize(100000);
+  ec.setSearchMethod(tree);
+  ec.setInputCloud(cleaned);
+  ec.extract(cluster_indices);
+
+  // Known basket spawn locations used to help identify clusters that are likely the baskets based on proximity, 
+  // instead of relying on just colour.
+  static constexpr std::array<std::pair<double, double>, 2> BASKET_SPAWN_LOCATIONS = {{
+    {-0.41, -0.36}, {-0.41, 0.36}
+  }};
+
+  // Categorise each cluster
+  for (size_t i = 0; i < cluster_indices.size(); ++i) {
+    PointCPtr cluster(new PointC); // extract the cluster point cloud
+    cluster->reserve(cluster_indices[i].indices.size());
+    for (int index : cluster_indices[i].indices) {
+      cluster->push_back(cleaned->points[index]);
     }
-  };
 
-  // struct to hold detected object information
-  struct T3Object {
-    std::string category;   // "object" or "basket" 
-    std::string shape;      // "nought" or "cross"
-    geometry_msgs::msg::Point centroid;
-    std::unordered_set<octomap::OcTreeKey, T3KeyHash> voxel_keys;
-    double min_x, max_x, min_y, max_y, min_z, max_z;
-  };
+    // Compute the centroid and axis-aligned bounding box of the cluster. 
+    // The centroid is used for computing object positions, and the bounding box is used for size estimation (obstacles)
+    // and filtering out noise clusters and large clusters that are likely the table or floor.
+    Eigen::Vector4f c4;
+    pcl::compute3DCentroid(*cluster, c4);
+    double min_x = 1e9, min_y = 1e9, min_z = 1e9, max_x = -1e9, max_y = -1e9, max_z = -1e9;
+    for (const auto &pt : cluster->points) {
+      min_x = std::min(min_x, (double)pt.x); max_x = std::max(max_x, (double)pt.x);
+      min_y = std::min(min_y, (double)pt.y); max_y = std::max(max_y, (double)pt.y);
+      min_z = std::min(min_z, (double)pt.z); max_z = std::max(max_z, (double)pt.z);
+    }
 
+    DetectedObj obj;
+    // The centroid is the midpoint of the bounding box in x and y since it's more robust to partial views.
+    // PCL centroid fine for z since all visible points sit on shape's top surface.
+    obj.centroid.x = 0.5 * (min_x + max_x);
+    obj.centroid.y = 0.5 * (min_y + max_y);
+    obj.centroid.z = c4[2];
+    obj.min_x = min_x; obj.max_x = max_x;
+    obj.min_y = min_y; obj.max_y = max_y;
+    obj.min_z = min_z; obj.max_z = max_z;
 
+    const double footprint_x = max_x - min_x;
+    const double footprint_y = max_y - min_y;
+    const double max_dim = std::max({footprint_x, footprint_y, max_z - min_z});
+    const size_t points = cluster->size();
 
+    // Reject phantom and degenerate clusters that are too small (likely noise), or too large (likely the table or floor).
+    if (points < 600 || max_dim < 0.07 || max_dim > 0.45){
+      continue;
+    }
+
+    // Mean RBG normalised to [0,1] to get a simple colour descriptor for classification.
+    double mean_r = 0, mean_g = 0, mean_b = 0;
+    for (const auto &pt : cluster->points) {
+      mean_r += pt.r;
+      mean_g += pt.g;
+      mean_b += pt.b;
+    }
+    const double n = static_cast<double>(cluster->size());
+    mean_r /= (n * 255.0);
+    mean_g /= (n * 255.0);
+    mean_b /= (n * 255.0);
+
+    // If the cluster's centroid is near a known basket location, and the cluster is large and reddish, we classify it as a basket.
+    auto near_basket = [&](){
+      for (const auto &b : BASKET_SPAWN_LOCATIONS) {
+        const double dx = obj.centroid.x - b.first;
+        const double dy = obj.centroid.y - b.second;
+        if ((dx * dx + dy * dy) < 0.15 * 0.15) return true;
+      }
+      return false;
+    };
+
+    // Three simple rules based on colour and size to classify the cluster:
+    //   - If it's very dark, it's likely an obstacle (e.g. the black box).
+    //   - If it's large, reddish, and near a known basket location, it's likely a basket.
+    //   - Otherwise, it's classified as a generic object.
+    const bool is_dark = (mean_r < 0.10 && mean_g < 0.10 && mean_b < 0.10);
+    const bool is_large = (footprint_x > 0.30 || footprint_y > 0.30);
+    const bool is_reddish = (mean_r > 1.5 * mean_g && mean_r > 1.5 * mean_b && mean_r > 0.15);
+
+    if (is_dark) {
+      obj.category = "obstacle";
+    } else if (is_large && is_reddish && near_basket()) {
+      obj.category = "basket";
+    } else {
+      obj.category = "object";
+    }
+
+    detected.push_back(obj);
+  }
+
+  return detected;
+}
+
+// Main callback function for Task 3.
 void cw2::t3_callback(
   const std::shared_ptr<cw2_world_spawner::srv::Task3Service::Request> request,
   std::shared_ptr<cw2_world_spawner::srv::Task3Service::Response> response)
@@ -672,64 +801,50 @@ void cw2::t3_callback(
   response->total_num_shapes = 0;
   response->num_most_common_shape = 0;
 
-  RCLCPP_INFO(node_->get_logger(), "Task 3 started: scanning environment and building OctoMap");
-
-  // Clearing previous data and resetting state for Task 3
+  // Reset accumulated cloud and state for a fresh scan.
   {
-    std::lock_guard<std::mutex> lk(accumulated_cloud_mutex_);
+    std::lock_guard<std::mutex> lock(accumulated_cloud_mutex_);
     if (!accumulated_cloud_) accumulated_cloud_.reset(new PointC);
     accumulated_cloud_->clear();
   }
-  if (latest_octree_) latest_octree_->clear();
   is_scanning_ = false;
   arm_group_->clearPathConstraints();
 
-  // downward orientation for scanning poses
+  // Standard end-effector orientation, pointing straight down. 
   tf2::Quaternion down_q;
-  down_q.setRPY(M_PI, 0.0, -M_PI / 4.0); // 45 degree tilt to get better view of object tops
+  down_q.setRPY(M_PI, 0, -M_PI / 4);
 
-  // create a pose from x,y,z with the fixed downward orientation
+  // Helper function to create a pose with the standard down-facing orientation and given position.
   auto makePose = [&](double x, double y, double z) -> geometry_msgs::msg::Pose {
-    geometry_msgs::msg::Pose p;
-    p.position.x = x; p.position.y = y; p.position.z = z;
-    p.orientation = tf2::toMsg(down_q);
-    return p;
+    geometry_msgs::msg::Pose pose;
+    pose.position.x = x;
+    pose.position.y = y;
+    pose.position.z = z;
+    pose.orientation = tf2::toMsg(down_q);
+    return pose;
   };
 
-  // scan sub area defined by 4 corner points, returns false if path planning failed
-  auto scanSubArea = [&](const std::vector<std::array<double,3>> &corners) -> bool {
-    if (corners.size() != 4) return false;
-    moveToPose(makePose(corners[0][0], corners[0][1], corners[0][2]));
-    std::this_thread::sleep_for(std::chrono::milliseconds(500));
-
-  // generate waypoints in a boustrophedon pattern between the corners
-    std::vector<geometry_msgs::msg::Pose> waypoints;
-    for (int i = 1; i < 4; ++i)
-      waypoints.push_back(makePose(corners[i][0], corners[i][1], corners[i][2]));
-
-    moveit_msgs::msg::RobotTrajectory trajectory;
-    arm_group_->setStartStateToCurrentState();
-    double fraction = arm_group_->computeCartesianPath(waypoints, 0.01, 0.0, trajectory);
-    if (fraction < 0.90) {
-      RCLCPP_WARN(node_->get_logger(), "Scan Cartesian path only %.1f%%", fraction * 100.0);
-      return false;
-    }
-
-    // execute the planned trajectory while allowing the point cloud callback to accumulate data
-    is_scanning_ = true;
-    arm_group_->execute(trajectory);
+  // Helper function to move robot to a viewpoint with scanning off, settle so the arm has fully stopped, 
+  // then accumulate cloud with scanning on for a short fixed duration, then stop scanning and log the observation.
+  // No motion blur.
+  auto observeAt = [&](double x, double y, double z, const std::string &label){
     is_scanning_ = false;
-    std::this_thread::sleep_for(std::chrono::milliseconds(200));
-    return true;
+    moveToPose(makePose(x, y, z));
+    std::this_thread::sleep_for(std::chrono::milliseconds(700));
+    is_scanning_ = true;
+    std::this_thread::sleep_for(std::chrono::milliseconds(800));
+    is_scanning_ = false;
+    RCLCPP_INFO(node_->get_logger(), "T3 observed at %s (%.2f, %.2f, %.2f)",
+                label.c_str(), x, y, z);
   };
 
   openGripper();
   moveToNamedPose("ready");
 
-  // save initial joint state to return to between scans
+  // Cache the joint configuration of the ready pose to return to a known-good state between scan rows.
   std::vector<double> initial_joints;
   try { initial_joints = arm_group_->getCurrentJointValues(); } catch (...) {}
-  auto goToInitial = [&]() {
+  auto goToInitial = [&](){
     arm_group_->clearPathConstraints();
     if (!initial_joints.empty()) {
       arm_group_->setJointValueTarget(initial_joints);
@@ -739,284 +854,328 @@ void cw2::t3_callback(
     }
   };
 
-  // Scan the area in 4 passes from different angles to get better coverage, starting with a front view
-  moveToPose(makePose(0.5, 0.0, 0.5));
-  std::this_thread::sleep_for(std::chrono::milliseconds(300));
-
-  RCLCPP_INFO(node_->get_logger(), "T3: scanning front sub-area");
-  scanSubArea({{{0.5,0.45,0.5},{0.5,-0.45,0.5},{0.3,-0.45,0.5},{0.3,0.45,0.5}}});
+  // Phase 1: Discovering the scene with a coarse scan to find the rought locations of obstacles.
+  // Without, the robot was crashing into obstacles during the finer scan in phase 2. 
+  const double preliminary_scan_z = 0.65; // high z to avoid obstacles while discovering.
+  observeAt( 0.30,  0.30, preliminary_scan_z, "discovery_front_left");
+  observeAt( 0.30, -0.30, preliminary_scan_z, "discovery_front_right");
+  observeAt(-0.30,  0.30, preliminary_scan_z, "discovery_back_left");
+  observeAt(-0.30, -0.30, preliminary_scan_z, "discovery_back_right");
   goToInitial();
 
-  RCLCPP_INFO(node_->get_logger(), "T3: scanning left sub-area");
-  scanSubArea({{{0.10,0.45,0.5},{0.10,0.40,0.5},{-0.10,0.40,0.5},{-0.10,0.45,0.5}}});
-  goToInitial();
+  auto initial_detection = classifyAccumulatedCloud();
 
-  RCLCPP_INFO(node_->get_logger(), "T3: scanning right sub-area");
-  scanSubArea({{{0.10,-0.45,0.5},{0.10,-0.40,0.5},{-0.10,-0.40,0.5},{-0.10,-0.45,0.5}}});
-  goToInitial();
-
-  RCLCPP_INFO(node_->get_logger(), "T3: scanning back sub-area");
-  scanSubArea({{{-0.5,-0.45,0.5},{-0.5,0.45,0.5},{-0.40,0.45,0.5},{-0.40,-0.45,0.5}}});
-
-  // Downsample accumulated cloud to speed up OctoMap insertion and clustering, using a voxel grid filter with 3mm leaf size
-  PointCPtr acc_ds(new PointC);
-  {
-    std::lock_guard<std::mutex> lk(accumulated_cloud_mutex_);
-    if (!accumulated_cloud_ || accumulated_cloud_->empty()) {
-      RCLCPP_ERROR(node_->get_logger(), "T3: accumulated cloud empty – aborting");
-      goToInitial(); return;
-    }
-    pcl::VoxelGrid<PointT> vg;
-    vg.setInputCloud(accumulated_cloud_);
-    vg.setLeafSize(0.003f, 0.003f, 0.003f); // 3mm voxel grid
-    vg.filter(*acc_ds);
-  }
-
-  // Build OctoMap 
-  const double OCT_RES = 0.005; // 5mm octree resolution
-  latest_octree_ = std::make_shared<octomap::OcTree>(OCT_RES);
-  for (const auto &pt : acc_ds->points) {
-    if (!std::isfinite(pt.x) || !std::isfinite(pt.y) || !std::isfinite(pt.z) || pt.z < 0.04) continue;
-    latest_octree_->updateNode(octomap::point3d(pt.x, pt.y, pt.z), true);
-  }
-  latest_octree_->updateInnerOccupancy();
-
-  // Flood-fill clustering on occupied octree voxels to detect objects and baskets, using 26-connectivity.
-  using Key = octomap::OcTreeKey;
-  const int deltas[26][3] = {
-    {-1,0,0},{1,0,0},{0,-1,0},{0,1,0},{0,0,-1},{0,0,1},
-    {-1,-1,0},{-1,1,0},{1,-1,0},{1,1,0},
-    {-1,0,-1},{-1,0,1},{1,0,-1},{1,0,1},
-    {0,-1,-1},{0,-1,1},{0,1,-1},{0,1,1},
-    {-1,-1,-1},{-1,-1,1},{-1,1,-1},{-1,1,1},
-    {1,-1,-1},{1,-1,1},{1,1,-1},{1,1,1}
-  };
-
-  // collecting all occupied voxels in the octree into a hash set for access during clustering
-  std::unordered_set<Key, T3KeyHash> occ;
-  for (auto it = latest_octree_->begin_leafs(); it != latest_octree_->end_leafs(); ++it) {
-    if (latest_octree_->isNodeOccupied(*it)) occ.insert(it.getKey());
-  }
-  
-  // minimum number of voxels for a cluster to be considered a valid object or basket to filter out noise
-  const int MIN_VOXELS = 150;
-  std::unordered_set<Key, T3KeyHash> vis;
-  std::vector<Key> stack;
-  std::vector<T3Object> detected;
-
-  // flood-fill clustering and keeping track of visited voxels to avoid reprocessing
-  for (const Key &seed : occ) {
-    if (vis.count(seed)) continue;
-
-    double min_x=1e9, max_x=-1e9, min_y=1e9, max_y=-1e9, min_z=1e9, max_z=-1e9;
-    std::unordered_set<Key, T3KeyHash> cluster;
-    stack.clear();
-    stack.push_back(seed);
-    vis.insert(seed);
-
-    //flood-fill to find all connected voxels in this cluster, while updating the bounding box of the cluster
-    while (!stack.empty()) {
-      Key cur = stack.back(); stack.pop_back();
-      cluster.insert(cur);
-      octomap::point3d p = latest_octree_->keyToCoord(cur);
-      min_x = std::min(min_x, (double)p.x()); max_x = std::max(max_x, (double)p.x());
-      min_y = std::min(min_y, (double)p.y()); max_y = std::max(max_y, (double)p.y());
-      min_z = std::min(min_z, (double)p.z()); max_z = std::max(max_z, (double)p.z());
-      for (int i = 0; i < 26; ++i) {
-        Key nbk(cur[0]+deltas[i][0], cur[1]+deltas[i][1], cur[2]+deltas[i][2]);
-        if (occ.count(nbk) && !vis.count(nbk)) {
-          vis.insert(nbk);
-          stack.push_back(nbk);
-        }
-      }
-    }
-
-    // classifying it as "object", "basket", or "obstacle" based on its height, and determining its shape if it's an object
-    if ((int)cluster.size() < MIN_VOXELS) continue;
-
-    const double height = (max_z - min_z) + OCT_RES;
-    T3Object d;
-    d.min_x = min_x; d.max_x = max_x; d.min_y = min_y; d.max_y = max_y;
-    d.min_z = min_z; d.max_z = max_z;
-    d.voxel_keys = cluster;
-
-    // height-based classification: taller clusters - obstacles, medium-height clusters - baskets, and shorter - objects
-    if (height > 0.05)       d.category = "obstacle";
-    else if (height >= 0.03) d.category = "basket";
-    else                     d.category = "object";
-
-    d.shape = "N/A"; // default shape is N/A, only determined for objects
-    d.centroid.x = d.centroid.y = d.centroid.z = 0.0; //only computed for objects, will be used for grasping
-
-    //determining shape for objects by checking the distribution of occupied voxels at the top layer of the cluster
-
-    //if central occupied area (cross) or not (nought)
-    if (d.category == "object") {
-      Key top_ref_key = latest_octree_->coordToKey(0, 0, max_z);
-      std::vector<octomap::point3d> surf;
-      for (const Key &k : cluster)
-        if (k[2] == top_ref_key[2]) surf.push_back(latest_octree_->keyToCoord(k));
-      if (surf.empty()) continue;
-      for (const auto &p : surf) {
-        d.centroid.x += p.x(); d.centroid.y += p.y(); d.centroid.z += p.z();
-      }
-      d.centroid.x /= surf.size();
-      d.centroid.y /= surf.size();
-      d.centroid.z /= surf.size();
-
-      // check if there are occupied voxels in the central area around the centroid at the top layer to determine shape
-      Key ck = latest_octree_->coordToKey(d.centroid.x, d.centroid.y, max_z);
-      bool occupied = false;
-      for (int dx = -1; dx <= 1 && !occupied; ++dx)
-        for (int dy = -1; dy <= 1 && !occupied; ++dy) {
-          Key q(ck[0]+dx, ck[1]+dy, ck[2]);
-          if (cluster.count(q)) occupied = true;
-        }
-      d.shape = occupied ? "cross" : "nought";
-    } else if (d.category == "basket") { // to place in the centre of the basket
-      d.centroid.x = 0.5 * (min_x + max_x);
-      d.centroid.y = 0.5 * (min_y + max_y);
-      d.centroid.z = 0.5 * (min_z + max_z);
-    }
-
-    detected.push_back(d); // add the detected cluster to the list of detected objects/baskets/obstacles
-  }
-
-  // Count detected objects and determine target shape based on majority
-  int n_noughts = 0, n_crosses = 0;
-  for (const auto &d : detected)
-    if (d.category == "object") {
-      if (d.shape == "nought") ++n_noughts;
-      else if (d.shape == "cross") ++n_crosses;
-    }
-
-   // If no shapes detected then log an error and return to initial pose 
-  if (n_noughts + n_crosses == 0) {
-    RCLCPP_ERROR(node_->get_logger(), "T3: no shapes detected");
-    goToInitial(); return;
-  }
-
-  // Determine target shape based on majority or randomly if same
-  std::string target_shape = (n_noughts > n_crosses) ? "nought" :
-                             (n_crosses > n_noughts) ? "cross" :
-                             (std::rand() % 2 ? "nought" : "cross");
-
-  response->total_num_shapes = static_cast<int64_t>(n_noughts + n_crosses);
-  response->num_most_common_shape = (n_noughts == n_crosses) ?
-    static_cast<int64_t>(n_noughts) : static_cast<int64_t>(std::max(n_noughts, n_crosses));
-
-  // Finding basket and target object based on detected clusters
-  T3Object basket, target;
-  bool basket_ok = false, target_ok = false;
-  for (auto &d : detected) {
-    if (!basket_ok && d.category == "basket") { basket = d; basket_ok = true; }
-    if (!target_ok && d.category == "object" && d.shape == target_shape) { target = d; target_ok = true; }
-  }
-  if (!target_ok) {
-    RCLCPP_ERROR(node_->get_logger(), "T3: target object missing");
-    goToInitial(); return;
-  }
-  if (!basket_ok) {
-    RCLCPP_WARN(node_->get_logger(), "T3: basket not detected – using fallback");
-    basket.centroid.x = -0.41;
-    basket.centroid.y = (target.centroid.y < 0) ? -0.36 : 0.36;
-    basket.centroid.z = 0.04;
-  }
-
-  // Add detected obstacles for collision avoidance during pick-and-place
+  // Phase 2: Register the detected obstacles in the planning scene.
+  // Tells MoveIt about obstacles before fine scan to avoid collision whilst scanning.
+  auto planning_scene_interface =
+    std::make_shared<moveit::planning_interface::PlanningSceneInterface>();
   std::vector<moveit_msgs::msg::CollisionObject> collision_objects;
-  int obs_idx = 0; // unique ID for each obstacle
-  for (const auto& d : detected) {
-    if (d.category == "obstacle") {
-      moveit_msgs::msg::CollisionObject co;
-      co.id = "obs_" + std::to_string(obs_idx++);
-      co.header.frame_id = arm_group_->getPlanningFrame();
-      co.primitives.resize(1);
-      co.primitives[0].type = shape_msgs::msg::SolidPrimitive::BOX;
-      co.primitives[0].dimensions.resize(3);          // <-- fixed for Humble
-      co.primitives[0].dimensions[0] = d.max_x - d.min_x + 0.02;
-      co.primitives[0].dimensions[1] = d.max_y - d.min_y + 0.02;
-      co.primitives[0].dimensions[2] = d.max_z - d.min_z + 0.02;
 
-      // place the box primitive at the center of the detected obstacle cluster
-      co.primitive_poses.resize(1);
-      co.primitive_poses[0].position.x = (d.min_x + d.max_x) * 0.5;
-      co.primitive_poses[0].position.y = (d.min_y + d.max_y) * 0.5;
-      co.primitive_poses[0].position.z = (d.min_z + d.max_z) * 0.5;
-      co.primitive_poses[0].orientation.w = 1.0;
+  int obstacle_id = 0; // used to give unique IDs to each obstacle, which is required by MoveIt to manage them in the planning scene.
+  for (const auto &obj : initial_detection) {
+    if (obj.category != "obstacle") continue;
+    
+    moveit_msgs::msg::CollisionObject co;
+    co.header.frame_id = arm_group_->getPlanningFrame();
+    co.id = "obstacle_" + std::to_string(obstacle_id++);
+
+    // Create a box primitive for the obstacle based on the bounding box of the cluster. 
+    shape_msgs::msg::SolidPrimitive box;
+    box.type = shape_msgs::msg::SolidPrimitive::BOX;
+    box.dimensions.resize(3);
+    // Add a small margin to the bounding box dimensions to account for sensor noise and ensure the box fully encompasses the obstacle.
+    box.dimensions[0] = (obj.max_x - obj.min_x) + 0.06;
+    box.dimensions[1] = (obj.max_y - obj.min_y) + 0.06;
+    box.dimensions[2] = std::max(0.25, (obj.max_z - obj.min_z) + 0.06); // ensure a minimum height to account for any underestimation of the obstacle height due to partial views.
+
+    geometry_msgs::msg::Pose box_pose;
+    box_pose.orientation.w = 1.0;
+    box_pose.position.x = obj.centroid.x;
+    box_pose.position.y = obj.centroid.y;
+    // Set the box pose z to be half of the box height so that the box sits on the table surface. 
+    box_pose.position.z = box.dimensions[2] / 2.0;
+
+    co.primitives.push_back(box);
+    co.primitive_poses.push_back(box_pose);
+    co.operation = moveit_msgs::msg::CollisionObject::ADD;
+    collision_objects.push_back(co);
+
+  }
+  planning_scene_interface->applyCollisionObjects(collision_objects);
+  std::this_thread::sleep_for(std::chrono::milliseconds(500));
+
+  // Phase 3: Systematic fine scan to classify objects. The robot moves in a grid pattern with 8 rows of 5 viewpoints each, 
+  // covering the whole workspace with significant overlap between viewpoints to ensure good coverage and classification accuracy.
+
+  // Clear the accumulated cloud before starting the fine scan to ensure we only have points from the fine scan, which has better coverage. 
+  {
+    std::lock_guard<std::mutex> lock(accumulated_cloud_mutex_);
+    accumulated_cloud_->clear();
+  }
+
+  // 36 viewpoints in a 8x5 grid pattern covering the workspace with goToInitial() called between rows to return to a known-good state 
+  // to avoid awkward joint configurations between viewpoints. 
+
+  const double scan_z = 0.55;
+
+  // Front far row
+  observeAt( 0.55,  0.45, scan_z, "front_far_far_left");
+  observeAt( 0.55,  0.20, scan_z, "front_far_left");
+  observeAt( 0.55,  0.00, scan_z, "front_far_middle");
+  observeAt( 0.55, -0.20, scan_z, "front_far_right");
+  observeAt( 0.55, -0.45, scan_z, "front_far_far_right");
+  goToInitial(); 
+
+  // Front row 
+  observeAt( 0.30,  0.45, scan_z, "front_far_left");
+  observeAt( 0.30,  0.20, scan_z, "front_left");
+  observeAt( 0.30,  0.00, scan_z, "front_middle");
+  observeAt( 0.30, -0.20, scan_z, "front_right");
+  observeAt( 0.30, -0.45, scan_z, "front_far_right");
+  goToInitial();
+
+  // Midfront row
+  observeAt( 0.05,  0.45, scan_z, "midfront_far_left");
+  observeAt( 0.05,  0.20, scan_z, "midfront_left");
+  observeAt( 0.05, -0.20, scan_z, "midfront_right");
+  observeAt( 0.05, -0.45, scan_z, "midfront_far_right");
+  goToInitial();
+
+  // Left edge traversal: front-to-back
+  observeAt( 0.40,  0.45, scan_z, "left_edge_front");
+  observeAt( 0.10,  0.45, scan_z, "left_edge_midfront");
+  observeAt(-0.10,  0.45, scan_z, "left_edge_midback");
+  observeAt(-0.30,  0.45, scan_z, "left_edge_back");
+  goToInitial();
+
+  // Right edge traversal: front-to-back
+  observeAt( 0.40, -0.45, scan_z, "right_edge_front");
+  observeAt( 0.10, -0.45, scan_z, "right_edge_midfront");
+  observeAt(-0.10, -0.45, scan_z, "right_edge_midback");
+  observeAt(-0.30, -0.45, scan_z, "right_edge_back");
+  goToInitial();
+
+  // Midback row
+  observeAt(-0.20,  0.45, scan_z, "midback_far_left");
+  observeAt(-0.20,  0.20, scan_z, "midback_left");
+  observeAt(-0.20, -0.20, scan_z, "midback_right");
+  observeAt(-0.20, -0.45, scan_z, "midback_far_right");
+  goToInitial();
+
+  // Back row
+  observeAt(-0.40,  0.45, scan_z, "back_far_left");
+  observeAt(-0.40,  0.20, scan_z, "back_left");
+  observeAt(-0.40,  0.00, scan_z, "back_middle");
+  observeAt(-0.40, -0.20, scan_z, "back_right");
+  observeAt(-0.40, -0.45, scan_z, "back_far_right");
+  goToInitial();
+
+  // Back far row
+  observeAt(-0.55,  0.45, scan_z, "back_far_far_left");
+  observeAt(-0.55,  0.20, scan_z, "back_far_left");
+  observeAt(-0.55,  0.00, scan_z, "back_far_middle");
+  observeAt(-0.55, -0.20, scan_z, "back_far_right");
+  observeAt(-0.55, -0.45, scan_z, "back_far_far_right");
+  goToInitial();
+
+  // Phase 4: Cluster and categorise accumulated cloud.
+
+  // Return each cluster as a DetectedObj tagged with its category ("object", "basket", "obstacle"), centroid, bounding box, and point count.
+  auto detected = classifyAccumulatedCloud();
+
+
+  // Phase 5: Inspect each candidate object overhead to classify its shape using Task 2.
+  for (auto &obj : detected) {
+    if (obj.category != "object") continue;
+    
+    // Move to a viewpoint above the object's centroid
+    geometry_msgs::msg::Pose inspect = makePose(obj.centroid.x, obj.centroid.y, 0.5);
+    moveToPose(inspect);
+    // Wait for a fresh cloud to ensure the classification is based on the latest observation from the new viewpoint, which has better coverage of the object. 
+    waitForFreshCloud(3, 2.0);
+
+    // Classify the shape at the object's centroid using the same method as Task 2. 
+    geometry_msgs::msg::PointStamped query;
+    query.header.frame_id = "panda_link0";
+    query.point.x = obj.centroid.x;
+    query.point.y = obj.centroid.y;
+    query.point.z = obj.centroid.z;
+    obj.shape = classifyShapeAtPoint(query);
+  }
+
+  goToInitial();
+
+  // Count how many noughts and crosses were classified for the output. 
+  int nought_count = 0, cross_count = 0;
+  for (const auto &obj : detected) {
+    if (obj.category == "object") {
+      if (obj.shape == "nought") ++nought_count;
+      else if (obj.shape == "cross") ++cross_count;
+    }
+  }
+
+  const int total_shapes = nought_count + cross_count;
+  const int most_common = std::max(nought_count, cross_count);
+  response->total_num_shapes = total_shapes;
+  response->num_most_common_shape = most_common;
+
+  // Phase 6: Pick and place the most common shape into the basket.
+
+  // If no shapes just return. 
+  if (total_shapes == 0) {
+    RCLCPP_INFO(node_->get_logger(), "No shapes detected.");
+    return;
+  }
+
+  // Tie-break by picking nought. 
+  const std::string target_shape = (most_common == nought_count) ? "nought" : "cross";
+
+  // Find the basket from the finer scan. If none was detected we can't place and break.
+  const DetectedObj* basket_ptr = nullptr;
+  for (const auto &obj : detected) {
+    if (obj.category == "basket") { basket_ptr = &obj; break; }
+  }
+  if (!basket_ptr) {
+    RCLCPP_WARN(node_->get_logger(), "No basket detected, cannot proceed with Task 3 pick and place.");
+    return;
+  }
+
+  // Collect all candidate objects of the target shape (either nought or cross).
+  std::vector<const DetectedObj*> candidates;
+  for (const auto &obj : detected) {
+    if (obj.category == "object" && obj.shape == target_shape) {
+      candidates.push_back(&obj);
+    }
+  }
+  if (candidates.empty()) {
+    RCLCPP_WARN(node_->get_logger(), "No objects of the most common shape (%s) detected, cannot proceed with Task 3 pick and place.", target_shape.c_str());
+    return;
+  }
+
+  // Sort candidates by distance from the arm base. The closes is most likely to be reachable.
+  std::sort(candidates.begin(), candidates.end(),
+  [](const DetectedObj* a, const DetectedObj* b) {
+    const double da = std::hypot(a->centroid.x, a->centroid.y);
+    const double db = std::hypot(b->centroid.x, b->centroid.y);
+    return da < db;
+  });
+
+  // Refine the obstacle list using the finer scan. Any obstacle the discovery scan missed gets added now.
+  for (const auto &obj : detected) {
+    if (obj.category == "obstacle") {
+      bool already_added = false;
+      for (const auto &existing : collision_objects) {
+        const double dx = obj.centroid.x - existing.primitive_poses[0].position.x;
+        const double dy = obj.centroid.y - existing.primitive_poses[0].position.y;
+        if (std::hypot(dx, dy) < 0.1) {already_added = true; break;} // if there's already an obstacle within 10 cm, we consider it the same obstacle and skip adding a new one.
+      }
+      if (already_added) continue;
+
+      // Add new obstacle to the planning scene.
+      moveit_msgs::msg::CollisionObject co;
+      co.header.frame_id = arm_group_->getPlanningFrame();
+      co.id = "obstacle_" + std::to_string(obstacle_id++);
+      shape_msgs::msg::SolidPrimitive box;
+      box.type = shape_msgs::msg::SolidPrimitive::BOX;
+      box.dimensions.resize(3);
+      box.dimensions[0] = (obj.max_x - obj.min_x) + 0.06;
+      box.dimensions[1] = (obj.max_y - obj.min_y) + 0.06;
+      box.dimensions[2] = std::max(0.25, (obj.max_z - obj.min_z) + 0.06);
+
+      geometry_msgs::msg::Pose box_pose;
+      box_pose.orientation.w = 1.0;
+      box_pose.position.x = obj.centroid.x;
+      box_pose.position.y = obj.centroid.y;
+      box_pose.position.z = box.dimensions[2] / 2.0;
+
+      co.primitives.push_back(box);
+      co.primitive_poses.push_back(box_pose);
       co.operation = moveit_msgs::msg::CollisionObject::ADD;
       collision_objects.push_back(co);
     }
   }
-  if (!collision_objects.empty()) {
-    planning_scene_interface_.addCollisionObjects(collision_objects);
-    RCLCPP_INFO(node_->get_logger(), "T3: added %zu obstacles to planning scene", collision_objects.size());
-    std::this_thread::sleep_for(std::chrono::milliseconds(500));
-  }
+  planning_scene_interface->applyCollisionObjects(collision_objects);
+  std::this_thread::sleep_for(std::chrono::milliseconds(500));
 
-   // Compute grasp and place poses based on detected target object and basket
-  goToInitial();
-  double grasp_x = target.centroid.x;
-  double grasp_y = target.centroid.y;
-  if (target_shape == "nought") {
-      grasp_y += 0.08;     // 0.07
-  } else {
-      grasp_x += 0.06; // 0.05
-  }
-  double grasp_z = target.centroid.z + 0.015;
+  // Attempt to pick and place each candidate until one succeeds.
+  bool placed = false;
+  for (const DetectedObj *target : candidates) {
+    geometry_msgs::msg::Point target_point = target->centroid;
+    target_point.z = 0.0; // Override z to be level with the ground, the cluster centroid sits on top of the shape so we need to make it 0 for grasping. 
 
-  // place in centre of the basket
-  double place_x = basket.centroid.x; 
-  double place_y = basket.centroid.y;
+    // Measure the shape's size (20, 30, 40 mm) to scale the grasp offset so that the gripper lands on the right part of the shape for grasping.
+    const double target_size = std::max(target->max_x - target->min_x, target->max_y - target->min_y);
 
-  RCLCPP_INFO(node_->get_logger(),
-    "T3: grasp=(%.3f,%.3f,%.3f) place=(%.3f,%.3f) [centred in basket]",
-    grasp_x, grasp_y, grasp_z, place_x, place_y);
+    geometry_msgs::msg::Point basket_point = basket_ptr->centroid;
+    basket_point.z = 0.0; // Override z for placing in the same way as target.
 
-  //for pick and place 
-  openGripper();
-  moveToPose(makePose(grasp_x, grasp_y, grasp_z + 0.15));
+    // Same sequence as Task 1 for pick and place 
+    goToInitial();
 
-  // descend straight down to grasp pose with Cartesian path / fallback to regular move if it fails 
-  {
-    std::vector<geometry_msgs::msg::Pose> wps = {makePose(grasp_x, grasp_y, grasp_z + 0.08)};
-    moveit_msgs::msg::RobotTrajectory traj;
-    arm_group_->setStartStateToCurrentState();
-    double frac = arm_group_->computeCartesianPath(wps, 0.01, 0.0, traj);
-    if (frac >= 0.95) arm_group_->execute(traj);
-    else moveToPose(makePose(grasp_x, grasp_y, grasp_z + 0.08));
-  }
+    // 1. Move directly above object to have a clean point cloud for orientation estimation.
+    tf2::Quaternion observe_orienation;
+    observe_orienation.setRPY(M_PI, 0, -M_PI / 4);
+    moveToPose(makeAGraspOffset(target_point, target_shape, 0.5, observe_orienation, 0.0, target_size));
+    waitForFreshCloud();
+    
+    // 2. Compute orientation for grasping.
+    geometry_msgs::msg::PointStamped target_stamped;
+    target_stamped.header.frame_id = arm_group_->getPlanningFrame();
+    target_stamped.header.stamp = node_->get_clock()->now();
+    target_stamped.point = target_point;
+    const double shape_yaw = computeShapeOrientation(target_stamped);
 
-  closeGripper();
+    // 3. Move to the pre-grasp pose with the computed orientation.
+    tf2::Quaternion grasp_orientation;
+    grasp_orientation.setRPY(M_PI, 0, -M_PI / 4 + shape_yaw);
+    moveToPose(makeAGraspOffset(target_point, target_shape, 0.5, grasp_orientation, shape_yaw, target_size));
+    openGripper();
+    
+    // 4. Move down to grasp the object, close the gripper.
+    computeAndExecuteCartesianPath(makeAGraspOffset(target_point, target_shape, 0.15, grasp_orientation, shape_yaw, target_size));
+    closeGripper();
+    
+    // 5. Lift the object up.
+    computeAndExecuteCartesianPath(makeAGraspOffset(target_point, target_shape, 0.6, grasp_orientation, shape_yaw, target_size));
 
-  
-  {
-    geometry_msgs::msg::PoseStamped cur = arm_group_->getCurrentPose();
-    geometry_msgs::msg::Pose base_pose = cur.pose;
+    tf2::Quaternion basket_orientation;
+    basket_orientation.setRPY(M_PI, 0, -M_PI / 4);
 
-    std::vector<geometry_msgs::msg::Pose> wps;
-    geometry_msgs::msg::Pose lift = base_pose; lift.position.z = grasp_z + 0.40; wps.push_back(lift);
-    geometry_msgs::msg::Pose mvy = lift; mvy.position.y = place_y; wps.push_back(mvy);
-    geometry_msgs::msg::Pose mvx = mvy; mvx.position.x = place_x; wps.push_back(mvx);
-    geometry_msgs::msg::Pose lower = mvx; lower.position.z = basket.centroid.z + 0.08; wps.push_back(lower);
-
-    moveit_msgs::msg::RobotTrajectory traj;
-    arm_group_->setStartStateToCurrentState();
-    double frac = arm_group_->computeCartesianPath(wps, 0.01, 0.0, traj);
-    if (frac >= 0.95) {
-      arm_group_->execute(traj);
+    // 6. Move above the basket, then down to place the object.
+    if (target_shape == "nought") {
+      moveToPose(makeAGraspOffset(basket_point, "nought", 0.6, basket_orientation, 0.0, target_size));
+      computeAndExecuteCartesianPath(makeAGraspOffset(basket_point, "nought", 0.17, basket_orientation, 0.0, target_size));
     } else {
-      moveToPose(makePose(grasp_x, grasp_y, grasp_z + 0.40));
-      moveToPose(makePose(place_x, place_y, basket.centroid.z + 0.40));
+      moveToPose(makeAGraspOffset(basket_point, " ", 0.6, basket_orientation, 0.0, target_size));
+      computeAndExecuteCartesianPath(makeAGraspOffset(basket_point, " ", 0.17, basket_orientation, 0.0, target_size));
     }
+    
+    // 7. Release the object.
+    openGripper();
+
+    // 8. Move up to clear the basket.
+    computeAndExecuteCartesianPath(makeAGraspOffset(basket_point, " ", 0.5, basket_orientation, 0.0, target_size));
+
+    // If we reached this point without exceptions, we consider the place successful and break the loop.
+    placed = true;
+    break;
   }
 
-  openGripper();
-  goToInitial();
+  // Clean up the collision objects from the planning scene after we're done.
+  std::vector<std::string> remove_objects;
+  for (const auto &co : collision_objects) {
+    remove_objects.push_back(co.id);
+  }
+  planning_scene_interface->removeCollisionObjects(remove_objects);
 
+  if (!placed) {
+    RCLCPP_WARN(node_->get_logger(), "Failed to place any %s in the basket.", target_shape.c_str());
+  }
+
+  moveToNamedPose("ready");
+
+  // Log the counting result for Task 3.
   RCLCPP_INFO(node_->get_logger(),
-    "Task 3 complete: picked a %s total=%lld most_common=%lld ",
-    target_shape.c_str(),
-    static_cast<long long>(response->total_num_shapes),
-    static_cast<long long>(response->num_most_common_shape));
+    "T3 counting result: noughts=%d crosses=%d total=%d most_common=%d",
+    nought_count, cross_count, total_shapes, most_common);
 }

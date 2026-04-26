@@ -41,21 +41,11 @@ typedef pcl::PointXYZRGBA PointT;
 typedef pcl::PointCloud<PointT> PointC;
 typedef PointC::Ptr PointCPtr;
 
-// Hash function for octomap::OcTreeKey to use in unordered_set
-struct KeyHash {
-  std::size_t operator()(const octomap::OcTreeKey& k) const {
-    return ((static_cast<std::size_t>(k.k[0]) * 73856093) ^ 
-            (static_cast<std::size_t>(k.k[1]) * 19349663) ^ 
-            (static_cast<std::size_t>(k.k[2]) * 83492791));
-  }
-};
-
 // Structure to hold detected object information
 struct DetectedObj {
   std::string category;      // "object" or "basket"
   std::string shape;         // "nought" or "cross"
   geometry_msgs::msg::Point centroid;
-  std::unordered_set<octomap::OcTreeKey, KeyHash> voxel_keys;
   double min_x, max_x, min_y, max_y, min_z, max_z;
 };
 
@@ -91,26 +81,14 @@ public:
     const std::string &shape_type,
     double z_offset,
     const tf2::Quaternion &orientation, 
-    double shape_yaw);
+    double shape_yaw,
+    double size = 0.2);
   
   double computeShapeOrientation(const geometry_msgs::msg::PointStamped &query_point);
 
   void waitForFreshCloud(int frames_to_wait = 2, double timeout_sec = 2.0);
   
-  // OctoMap functions for Task 3 (unused but kept for compatibility)
-  void buildOctomapFromAccumulatedCloud();
-  bool extractObjectsFromOctomap(std::vector<DetectedObj>& out_objects);
-
-  // PCL filtering helpers
-  template <typename PointT>
-  typename pcl::PointCloud<PointT>::Ptr filterPassThrough(
-      const typename pcl::PointCloud<PointT>::Ptr& cloud,
-      const std::string& axis, float min_val, float max_val);
-  
-  PointCPtr filterTopLayer(const PointCPtr& cloud);
-
-  // TF helper
-  geometry_msgs::msg::PointStamped makePointStamped(double x, double y, double z);
+  std::vector<DetectedObj> classifyAccumulatedCloud();
 
 private:
   rclcpp::Node::SharedPtr node_;
@@ -148,23 +126,9 @@ private:
   PointCPtr accumulated_cloud_;
   std::mutex accumulated_cloud_mutex_;                      
   std::atomic<bool> is_scanning_{false};                    
-
+    
   // Shape classification helper 
   std::string classifyShapeAtPoint(const geometry_msgs::msg::PointStamped &query_point);
 };
-
-template <typename PointT>
-typename pcl::PointCloud<PointT>::Ptr cw2::filterPassThrough(
-    const typename pcl::PointCloud<PointT>::Ptr& cloud,
-    const std::string& axis, float min_val, float max_val)
-{
-  typename pcl::PointCloud<PointT>::Ptr filtered(new pcl::PointCloud<PointT>);
-  pcl::PassThrough<PointT> pass;
-  pass.setInputCloud(cloud);
-  pass.setFilterFieldName(axis);
-  pass.setFilterLimits(min_val, max_val);
-  pass.filter(*filtered);
-  return filtered;
-}
 
 #endif  // CW2_CLASS_H_

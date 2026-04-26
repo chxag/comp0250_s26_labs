@@ -34,7 +34,7 @@ T1_SHAPE_X_LIMS = [0.40, 0.55]           # xrange a shape can spawn
 T1_SHAPE_Y_LIMS = [-0.40, 0.40]          # yrange a shape can spawn
 T1_ANY_ORIENTATION = True                # do we allow any rotation of a shape
 T1_GROUND_PLANE_NOISE = 0e-3             # do we add noise on the z height of the green tiles
-T1_USE_MULTIPLE_SIZES = False            # do we spawn objects with varying sizes
+T1_USE_MULTIPLE_SIZES = False             # do we spawn objects with varying sizes
 
 # task 2 parameters
 T2_SHAPE_X_LIMS = [0.40, 0.55]           # xrange a shape can spawn
@@ -44,16 +44,16 @@ T2_OBJECT_REF_POINTS = [(-0.43, -0.4),
                         (-0.43,  0.4)]
 T2_ANY_ORIENTATION = True                # do we allow any rotation of a shape
 T2_GROUND_PLANE_NOISE = 0e-3             # do we add noise on the z height of the green tiles
-T2_USE_MULTIPLE_SIZES = False            # do we spawn objects with varying sizes
+T2_USE_MULTIPLE_SIZES = True            # do we spawn objects with varying sizes
 
 # task 3 parameters
 T3_MAX_SHAPES = 7                        # maximum number of spawned shapes
 T3_SHAPE_X_LIMS = [-0.6, 0.7]            # xrange a shape can spawn
 T3_SHAPE_Y_LIMS = [-0.55, 0.55]          # yrange a shape can spawn
-T3_N_OBSTACLES = 2
+T3_N_OBSTACLES = 4
 T3_ANY_ORIENTATION = True                # do we allow any rotation of a shape
 T3_GROUND_PLANE_NOISE = 0e-3             # do we add noise on the z height of the green tiles
-T3_USE_MULTIPLE_SIZES = False            # do we spawn objects with varying sizes
+T3_USE_MULTIPLE_SIZES = True            # do we spawn objects with varying sizes
 
 # possible goal basket locations (x, y)
 BASKET_LOCATIONS = [(-0.41, -0.36),
