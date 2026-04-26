@@ -79,10 +79,10 @@ cw2::cw2(const rclcpp::Node::SharedPtr &node)
   arm_group_ = std::make_shared<moveit::planning_interface::MoveGroupInterface>(node_, "panda_arm");
   hand_group_ = std::make_shared<moveit::planning_interface::MoveGroupInterface>(node_, "hand");
 
-  arm_group_->setPlanningTime(30.0);
-  arm_group_->setNumPlanningAttempts(30);
-  arm_group_->setMaxVelocityScalingFactor(0.6);
-  arm_group_->setMaxAccelerationScalingFactor(0.6);
+  arm_group_->setPlanningTime(50.0);
+  arm_group_->setNumPlanningAttempts(50);
+  arm_group_->setMaxVelocityScalingFactor(0.5);
+  arm_group_->setMaxAccelerationScalingFactor(0.5);
   arm_group_->clearPathConstraints();
 
   // accumulated cloud for Task 3 
@@ -219,16 +219,17 @@ geometry_msgs::msg::Pose cw2::makeAGraspOffset(
   const std::string &shape_type,
   double z_offset,
   const tf2::Quaternion &orientation,
-  double shape_yaw)
+  double shape_yaw, 
+  double size)
 {
 
   // Local frame offset. Either to the nought's wall or one of the cross's arm.
   geometry_msgs::msg::Pose pose;
   double dx = 0.0, dy = 0.0;
   if (shape_type == "nought") {
-    dy = 0.08;
+    dy = 0.4 * size;
   } else if (shape_type == "cross") {
-    dx = 0.06;
+    dx = 0.3 * size;
   }
   
   // Rotate the local offset by the shape's yaw (calculated later) to align the grasp point 
@@ -411,7 +412,7 @@ void cw2::t1_callback(
   
   // 2. Move / position camera directly above object to have a clean top-down view before measuring orientation.
   //    Passing " " as shape type keeps the arm centred on the centroid of the object without any grasping/placing offset.
-  moveToPose(makeAGraspOffset(object, " ", 0.5, observe_orientation, 0.0));
+  moveToPose(makeAGraspOffset(object, " ", 0.5, observe_orientation, 0.0, 0.2));
 
   // 3. Wait for a fresh cloud after moving, to ensure we have an up-to-date view of the object before measuring its orientation.
   waitForFreshCloud();
@@ -425,19 +426,19 @@ void cw2::t1_callback(
   orientation.setRPY(M_PI, 0, -M_PI / 4 + shape_yaw);
 
   // 6. Move to a pre-grasp pose above object, with the correct orientation of the gripper to execute a reliable grasp.
-  moveToPose(makeAGraspOffset(object, shape_type, 0.5, orientation, shape_yaw));
+  moveToPose(makeAGraspOffset(object, shape_type, 0.5, orientation, shape_yaw, 0.2));
 
   // 7. Open gripper.
   openGripper();
 
   // 8. Move stright down to grasp pose.
-  computeAndExecuteCartesianPath(makeAGraspOffset(object, shape_type, 0.15, orientation, shape_yaw));
+  computeAndExecuteCartesianPath(makeAGraspOffset(object, shape_type, 0.15, orientation, shape_yaw, 0.2));
 
   // 9. Close gripper to grasp the object.
   closeGripper();
 
   // 10. Move straight up with the object. 
-  computeAndExecuteCartesianPath(makeAGraspOffset(object, shape_type, 0.5, orientation, shape_yaw));
+  computeAndExecuteCartesianPath(makeAGraspOffset(object, shape_type, 0.5, orientation, shape_yaw, 0.2));
 
   // 11. Placement orientation goes back to teh the default gripper yaw. The basket is axis aligned so no shape yaw is needed.
   tf2::Quaternion basket_orientation;
@@ -445,21 +446,21 @@ void cw2::t1_callback(
 
   if (shape_type == "nought") { // if it's a nought...
     //12a. Move to a pose offset towards the wall of the basket, to avoid collisions with the basket edges.
-    moveToPose(makeAGraspOffset(basket, "nought", 0.5, basket_orientation, 0.0));
+    moveToPose(makeAGraspOffset(basket, "nought", 0.5, basket_orientation, 0.0, 0.2));
     // 13a. Move straight down to place the nought with a slight offset from basket centroid to avoid collisions.
-    computeAndExecuteCartesianPath(makeAGraspOffset(basket, "nought", 0.17, basket_orientation, 0.0));
+    computeAndExecuteCartesianPath(makeAGraspOffset(basket, "nought", 0.17, basket_orientation, 0.0, 0.2));
   } else { // if it's a cross...
     // 12b. Move to a pose offset towards the center of the basket, since the cross is smaller and less likely to collide with the edges.
-    moveToPose(makeAGraspOffset(basket, " ", 0.5, basket_orientation, 0.0));
+    moveToPose(makeAGraspOffset(basket, " ", 0.5, basket_orientation, 0.0, 0.2));
     // 13b. Move straight down to place the cross at the basket centroid.
-    computeAndExecuteCartesianPath(makeAGraspOffset(basket, " ", 0.17, basket_orientation, 0.0));
+    computeAndExecuteCartesianPath(makeAGraspOffset(basket, " ", 0.17, basket_orientation, 0.0, 0.2));
   }
 
   // 14. Open gripper to release the object.
   openGripper();
   
   // 15. Move straight up after placing.
-  computeAndExecuteCartesianPath(makeAGraspOffset(basket, " ", 0.5, basket_orientation, 0.0));
+  computeAndExecuteCartesianPath(makeAGraspOffset(basket, " ", 0.5, basket_orientation, 0.0, 0.2));
 
   // 16. Move back to ready position.
   moveToNamedPose("ready");
@@ -627,65 +628,13 @@ std::vector<DetectedObj> cw2::classifyAccumulatedCloud()
     *snapshot = *accumulated_cloud_;
   }
 
-  // ---- HSV helpers ----
-  // RGB→HSV per-point. H in [0, 360), S and V in [0, 1].
-  auto rgbToHSV = [](float r, float g, float b, float &H, float &S, float &V) {
-    r /= 255.0f; g /= 255.0f; b /= 255.0f;
-    const float mx = std::max({r, g, b});
-    const float mn = std::min({r, g, b});
-    const float d  = mx - mn;
-    V = mx;
-    S = (mx > 1e-6f) ? (d / mx) : 0.0f;
-    if (d < 1e-6f) { H = 0.0f; return; }
-    if      (mx == r) H = 60.0f * std::fmod((g - b) / d, 6.0f);
-    else if (mx == g) H = 60.0f * ((b - r) / d + 2.0f);
-    else              H = 60.0f * ((r - g) / d + 4.0f);
-    if (H < 0) H += 360.0f;
-  };
-
-  // Median-over-cluster HSV. Robust to ~30% edge contamination, unlike mean RGB.
-  auto medianHSV = [&](const PointCPtr &cluster, float &H, float &S, float &V) {
-    std::vector<float> hs, ss, vs;
-    hs.reserve(cluster->size());
-    ss.reserve(cluster->size());
-    vs.reserve(cluster->size());
-    for (const auto &p : cluster->points) {
-      float h, s, v;
-      rgbToHSV(p.r, p.g, p.b, h, s, v);
-      hs.push_back(h); ss.push_back(s); vs.push_back(v);
-    }
-    auto med = [](std::vector<float> &x) {
-      std::nth_element(x.begin(), x.begin() + x.size()/2, x.end());
-      return x[x.size()/2];
-    };
-    // Hue is circular (0 ≈ 360), so naive median fails for reds spanning the wrap.
-    // Project to unit circle, take mean direction, convert back.
-    double sx = 0.0, sy = 0.0;
-    for (float h : hs) {
-      const double rad = h * M_PI / 180.0;
-      sx += std::cos(rad); sy += std::sin(rad);
-    }
-    double h_mean = std::atan2(sy, sx) * 180.0 / M_PI;
-    if (h_mean < 0) h_mean += 360.0;
-    H = static_cast<float>(h_mean);
-    S = med(ss);
-    V = med(vs);
-  };
-
-  // ---- Filter: drop floor (HSV-green), arm base, height bounds ----
+  // Drop points that are likely on the floor or are too high, and points that are likely noise.
   PointCPtr filtered(new PointC);
   filtered->reserve(snapshot->size());
   for (const auto &pt : snapshot->points) {
     if (!std::isfinite(pt.x) || !std::isfinite(pt.y) || !std::isfinite(pt.z)) continue;
-    if (pt.z < 0.035 || pt.z > 0.25) continue;
-    if ((pt.x * pt.x + pt.y * pt.y) < (0.15 * 0.15)) continue;
-    
-    // HSV-based green floor rejection: catches the table without rejecting
-    // dark or saturated colors that happen to have high green channel.
-    float h, s, v;
-    rgbToHSV(pt.r, pt.g, pt.b, h, s, v);
-    if (h > 80.0f && h < 160.0f && s > 0.25f && v > 0.20f) continue;  // green
-
+    if (pt.z > 0.25) continue;
+    if (pt.g > 1.3f * pt.r && pt.g > 1.3f * pt.b && pt.g > 60.0f) continue; // filter out points that are likely on the green floor
     filtered->push_back(pt);
   }
   if (filtered->empty()) return detected;
@@ -703,7 +652,6 @@ std::vector<DetectedObj> cw2::classifyAccumulatedCloud()
   ror.setMinNeighborsInRadius(4);
   ror.filter(*cleaned);
 
-  // Cluster
   pcl::search::KdTree<PointT>::Ptr tree(new pcl::search::KdTree<PointT>);
   tree->setInputCloud(cleaned);
   std::vector<pcl::PointIndices> cluster_indices;
@@ -715,131 +663,78 @@ std::vector<DetectedObj> cw2::classifyAccumulatedCloud()
   ec.setInputCloud(cleaned);
   ec.extract(cluster_indices);
 
-  RCLCPP_INFO(node_->get_logger(), "Detected %zu clusters", cluster_indices.size());
-
-  static constexpr std::array<std::pair<double, double>, 2> BASKET_SPAWN_LOCS = {{
-    {-0.41, -0.36}, {-0.41,  0.36}
+  static constexpr std::array<std::pair<double, double>, 2> BASKET_SPAWN_LOCATIONS = {{
+    {-0.41, -0.36}, {-0.41, 0.36}
   }};
 
-  std::vector<PointCPtr> clusters_to_process;
   for (size_t i = 0; i < cluster_indices.size(); ++i) {
     PointCPtr cluster(new PointC);
     cluster->reserve(cluster_indices[i].indices.size());
-    for (int idx : cluster_indices[i].indices) cluster->push_back(cleaned->points[idx]);
-
-    // Quick footprint check
-    double mnx=1e9, mxx=-1e9, mny=1e9, mxy=-1e9;
-    for (const auto &p : cluster->points) {
-      mnx = std::min(mnx, (double)p.x); mxx = std::max(mxx, (double)p.x);
-      mny = std::min(mny, (double)p.y); mxy = std::max(mxy, (double)p.y);
+    for (int index : cluster_indices[i].indices) {
+      cluster->push_back(cleaned->points[index]);
     }
-    const double max_dim = std::max(mxx - mnx, mxy - mny);
 
-    if (max_dim < 0.40) {
-      clusters_to_process.push_back(cluster);
-    } else {
-      RCLCPP_INFO(node_->get_logger(), "Cluster %zu (max_dim=%.2f) re-splitting", i, max_dim);
-      pcl::search::KdTree<PointT>::Ptr sub_tree(new pcl::search::KdTree<PointT>);
-      sub_tree->setInputCloud(cluster);
-      std::vector<pcl::PointIndices> sub_indices;
-      pcl::EuclideanClusterExtraction<PointT> sub_ec;
-      sub_ec.setClusterTolerance(0.008);
-      sub_ec.setMinClusterSize(150);
-      sub_ec.setMaxClusterSize(100000);
-      sub_ec.setSearchMethod(sub_tree);
-      sub_ec.setInputCloud(cluster);
-      sub_ec.extract(sub_indices);
-
-      for (const auto &sub : sub_indices) {
-        PointCPtr sub_c(new PointC);
-        for (int idx : sub.indices) sub_c->push_back(cluster->points[idx]);
-        clusters_to_process.push_back(sub_c);
-      }
-    }
-  }
-
-  for (size_t i = 0; i < clusters_to_process.size(); ++i) {
-    PointCPtr cluster = clusters_to_process[i];
-
-    // Centroid + AABB
     Eigen::Vector4f c4;
     pcl::compute3DCentroid(*cluster, c4);
-    double mnx=1e9, mny=1e9, mnz=1e9, mxx=-1e9, mxy=-1e9, mxz=-1e9;
-    for (const auto &p : cluster->points) {
-      mnx = std::min(mnx, (double)p.x); mxx = std::max(mxx, (double)p.x);
-      mny = std::min(mny, (double)p.y); mxy = std::max(mxy, (double)p.y);
-      mnz = std::min(mnz, (double)p.z); mxz = std::max(mxz, (double)p.z);
+    double min_x = 1e9, min_y = 1e9, min_z = 1e9, max_x = -1e9, max_y = -1e9, max_z = -1e9;
+    for (const auto &pt : cluster->points) {
+      min_x = std::min(min_x, (double)pt.x); max_x = std::max(max_x, (double)pt.x);
+      min_y = std::min(min_y, (double)pt.y); max_y = std::max(max_y, (double)pt.y);
+      min_z = std::min(min_z, (double)pt.z); max_z = std::max(max_z, (double)pt.z);
     }
 
     DetectedObj obj;
-    obj.centroid.x = 0.5 * (mnx + mxx);
-    obj.centroid.y = 0.5 * (mny + mxy);
+    obj.centroid.x = 0.5 * (min_x + max_x);
+    obj.centroid.y = 0.5 * (min_y + max_y);
     obj.centroid.z = c4[2];
-    obj.min_x = mnx; obj.max_x = mxx;
-    obj.min_y = mny; obj.max_y = mxy;
-    obj.min_z = mnz; obj.max_z = mxz;
+    obj.min_x = min_x; obj.max_x = max_x;
+    obj.min_y = min_y; obj.max_y = max_y;
+    obj.min_z = min_z; obj.max_z = max_z;
 
-    const double fx = mxx - mnx, fy = mxy - mny;
-    const double max_dim = std::max(fx, fy);
-    const size_t pts = cluster->size();
+    const double footprint_x = max_x - min_x;
+    const double footprint_y = max_y - min_y;
+    const double max_dim = std::max({footprint_x, footprint_y, max_z - min_z});
+    const size_t points = cluster->size();
 
-    // ---- Sanity floor: reject phantoms ----
-    constexpr size_t kMinValidPts       = 600;
-    constexpr double kMinValidFootprint = 0.07;
-    constexpr double kMaxValidFootprint = 0.45;
-    if (pts < kMinValidPts ||
-        max_dim < kMinValidFootprint ||
-        max_dim > kMaxValidFootprint)
-    {
-      RCLCPP_INFO(node_->get_logger(),
-        "Cluster %zu REJECTED (pts=%zu, footprint=%.2fx%.2f) — likely noise",
-        i, pts, fx, fy);
-      continue;
+    if (points < 600 || max_dim < 0.07 || max_dim > 0.45){
+      continue; // filter out small clusters that are likely noise, and very large clusters that are likely the table or floor
     }
 
-    // ---- HSV classification ----
-    float H, S, V;
-    medianHSV(cluster, H, S, V);
+    double mean_r = 0, mean_g = 0, mean_b = 0;
+    for (const auto &pt : cluster->points) {
+      mean_r += pt.r;
+      mean_g += pt.g;
+      mean_b += pt.b;
+    }
+    const double n = static_cast<double>(cluster->size());
+    mean_r /= (n * 255.0);
+    mean_g /= (n * 255.0);
+    mean_b /= (n * 255.0);
 
-    auto near_basket = [&]() {
-      for (const auto &b : BASKET_SPAWN_LOCS) {
+    auto near_basket = [&](){
+      for (const auto &b : BASKET_SPAWN_LOCATIONS) {
         const double dx = obj.centroid.x - b.first;
         const double dy = obj.centroid.y - b.second;
-        if (dx*dx + dy*dy < 0.15 * 0.15) return true;
+        if ((dx * dx + dy * dy) < 0.15 * 0.15) return true;
       }
       return false;
     };
 
-    const bool is_large    = (fx > 0.3 || fy > 0.3);
-    const bool is_dark     = (V < 0.15f);                            // black obstacle
-    const bool is_gray     = (S < 0.20f && V >= 0.15f);              // washed-out — phantom
-    // Reddish hue: near 0 or 360 in HSV. Basket also tends to be lower V than fresh red shape.
-    const bool is_reddish  = ((H < 20.0f || H > 340.0f) && S > 0.30f);
+    const bool is_dark = (mean_r < 0.10 && mean_g < 0.10 && mean_b < 0.10);
+    const bool is_large = (footprint_x > 0.30 || footprint_y > 0.30);
+    const bool is_reddish = (mean_r > 1.5 * mean_g && mean_r > 1.5 * mean_b && mean_r > 0.15);
 
-    // Reject mid-saturation gray clusters — these are the phantom self-points
-    // that mean-RGB couldn't catch. A real shape always has S > ~0.4.
-    if (is_gray) {
-      RCLCPP_INFO(node_->get_logger(),
-        "Cluster %zu REJECTED (gray: H=%.0f S=%.2f V=%.2f) — phantom",
-        i, H, S, V);
-      continue;
-    }
-
-    if (is_large && is_reddish && near_basket()) {
-      obj.category = "basket";
-    } else if (is_dark) {
+    if (is_dark) {
       obj.category = "obstacle";
+    } else if (is_large && is_reddish && near_basket()) {
+      obj.category = "basket";
     } else {
       obj.category = "object";
     }
 
-    RCLCPP_INFO(node_->get_logger(),
-      "Cluster %zu: cat=%s pts=%zu centroid=(%.2f, %.2f, %.2f) footprint=%.2fx%.2f HSV=(%.0f, %.2f, %.2f)",
-      i, obj.category.c_str(), pts,
-      obj.centroid.x, obj.centroid.y, obj.centroid.z, fx, fy, H, S, V);
-
     detected.push_back(obj);
   }
+
   return detected;
 }
 
@@ -898,36 +793,117 @@ void cw2::t3_callback(
     }
   };
 
-  const double scan_z = 0.6;
-
-  // Front row
-  observeAt( 0.50,  0.40, scan_z, "front_left");
-  observeAt( 0.50,  0.00, scan_z, "front_centre");
-  observeAt( 0.50, -0.40, scan_z, "front_right");
+  const double preliminary_scan_z = 0.65;
+  observeAt( 0.30,  0.30, preliminary_scan_z, "discovery_front_left");
+  observeAt( 0.30, -0.30, preliminary_scan_z, "discovery_front_right");
+  observeAt(-0.30,  0.30, preliminary_scan_z, "discovery_back_left");
+  observeAt(-0.30, -0.30, preliminary_scan_z, "discovery_back_right");
   goToInitial();
 
-  // Middle row  
-  observeAt( 0.10,  0.40, scan_z, "mid_left");
-  observeAt( 0.10, -0.40, scan_z, "mid_right");
-  goToInitial();
+  auto initial_detection = classifyAccumulatedCloud();
 
-  observeAt(-0.30,  0.40, scan_z, "back_left");
-  observeAt(-0.30,  0.00, scan_z, "back_centre");
-  observeAt(-0.30, -0.40, scan_z, "back_right");
-  goToInitial();
+  auto planning_scene_interface =
+    std::make_shared<moveit::planning_interface::PlanningSceneInterface>();
+  std::vector<moveit_msgs::msg::CollisionObject> collision_objects;
 
-  observeAt(-0.50,  0.00, scan_z, "deep_back");
-  goToInitial();
+  int obstacle_id = 0;
+  for (const auto &obj : initial_detection) {
+    if (obj.category != "obstacle") continue;
 
-  if (accumulated_cloud_ && !accumulated_cloud_->empty()) {
-    pcl::io::savePCDFileBinary("/home/charvi/t3_scan.pcd", *accumulated_cloud_);
-    RCLCPP_INFO(node_->get_logger(), "Saved scan to /home/charvi/t3_scan.pcd");
+    moveit_msgs::msg::CollisionObject co;
+    co.header.frame_id = arm_group_->getPlanningFrame();
+    co.id = "obstacle_" + std::to_string(obstacle_id++);
+
+    shape_msgs::msg::SolidPrimitive box;
+    box.type = shape_msgs::msg::SolidPrimitive::BOX;
+    box.dimensions.resize(3);
+    box.dimensions[0] = (obj.max_x - obj.min_x) + 0.06;
+    box.dimensions[1] = (obj.max_y - obj.min_y) + 0.06;
+    box.dimensions[2] = std::max(0.25, (obj.max_z - obj.min_z) + 0.06);
+
+    geometry_msgs::msg::Pose box_pose;
+    box_pose.orientation.w = 1.0;
+    box_pose.position.x = obj.centroid.x;
+    box_pose.position.y = obj.centroid.y;
+    box_pose.position.z = box.dimensions[2] / 2.0;
+
+    co.primitives.push_back(box);
+    co.primitive_poses.push_back(box_pose);
+    co.operation = moveit_msgs::msg::CollisionObject::ADD;
+    collision_objects.push_back(co);
+
   }
-  
-  auto detected = classifyAccumulatedCloud();
-  RCLCPP_INFO(node_->get_logger(), "T3 Phase 2: located %zu objects", detected.size());
+  planning_scene_interface->applyCollisionObjects(collision_objects);
+  std::this_thread::sleep_for(std::chrono::milliseconds(500));
 
-  RCLCPP_INFO(node_->get_logger(), "T3 Phase 3: inspecting each candidate");
+  {
+    std::lock_guard<std::mutex> lock(accumulated_cloud_mutex_);
+    accumulated_cloud_->clear();
+  }
+
+  const double scan_z = 0.55;
+
+  // Front far row
+  observeAt( 0.55,  0.45, scan_z, "front_far_far_left");
+  observeAt( 0.55,  0.20, scan_z, "front_far_left");
+  observeAt( 0.55,  0.00, scan_z, "front_far_middle");
+  observeAt( 0.55, -0.20, scan_z, "front_far_right");
+  observeAt( 0.55, -0.45, scan_z, "front_far_far_right");
+  goToInitial();
+
+  // Front row 
+  observeAt( 0.30,  0.45, scan_z, "front_far_left");
+  observeAt( 0.30,  0.20, scan_z, "front_left");
+  observeAt( 0.30,  0.00, scan_z, "front_middle");
+  observeAt( 0.30, -0.20, scan_z, "front_right");
+  observeAt( 0.30, -0.45, scan_z, "front_far_right");
+  goToInitial();
+
+  // Midfront row
+  observeAt( 0.05,  0.45, scan_z, "midfront_far_left");
+  observeAt( 0.05,  0.20, scan_z, "midfront_left");
+  observeAt( 0.05, -0.20, scan_z, "midfront_right");
+  observeAt( 0.05, -0.45, scan_z, "midfront_far_right");
+  goToInitial();
+
+  // Left edge traversal: front-to-back
+  observeAt( 0.40,  0.45, scan_z, "left_edge_front");
+  observeAt( 0.10,  0.45, scan_z, "left_edge_midfront");
+  observeAt(-0.10,  0.45, scan_z, "left_edge_midback");
+  observeAt(-0.30,  0.45, scan_z, "left_edge_back");
+  goToInitial();
+
+  // Right edge traversal: front-to-back
+  observeAt( 0.40, -0.45, scan_z, "right_edge_front");
+  observeAt( 0.10, -0.45, scan_z, "right_edge_midfront");
+  observeAt(-0.10, -0.45, scan_z, "right_edge_midback");
+  observeAt(-0.30, -0.45, scan_z, "right_edge_back");
+  goToInitial();
+
+  // Midback row
+  observeAt(-0.20,  0.45, scan_z, "midback_far_left");
+  observeAt(-0.20,  0.20, scan_z, "midback_left");
+  observeAt(-0.20, -0.20, scan_z, "midback_right");
+  observeAt(-0.20, -0.45, scan_z, "midback_far_right");
+  goToInitial();
+
+  // Back row
+  observeAt(-0.40,  0.45, scan_z, "back_far_left");
+  observeAt(-0.40,  0.20, scan_z, "back_left");
+  observeAt(-0.40,  0.00, scan_z, "back_middle");
+  observeAt(-0.40, -0.20, scan_z, "back_right");
+  observeAt(-0.40, -0.45, scan_z, "back_far_right");
+  goToInitial();
+
+  // Back far row
+  observeAt(-0.55,  0.45, scan_z, "back_far_far_left");
+  observeAt(-0.55,  0.20, scan_z, "back_far_left");
+  observeAt(-0.55,  0.00, scan_z, "back_far_middle");
+  observeAt(-0.55, -0.20, scan_z, "back_far_right");
+  observeAt(-0.55, -0.45, scan_z, "back_far_far_right");
+  goToInitial();
+
+  auto detected = classifyAccumulatedCloud();
 
   for (auto &obj : detected) {
     if (obj.category != "object") continue;
@@ -936,7 +912,6 @@ void cw2::t3_callback(
     moveToPose(inspect);
     waitForFreshCloud(3, 2.0);
 
-    // Use Task 2 classifier
     geometry_msgs::msg::PointStamped query;
     query.header.frame_id = "panda_link0";
     query.point.x = obj.centroid.x;
@@ -1000,28 +975,31 @@ void cw2::t3_callback(
       return da < db;
     });
 
-    auto planning_scene_interface = std::make_shared<moveit::planning_interface::PlanningSceneInterface>();
-    std::vector<moveit_msgs::msg::CollisionObject> collision_objects;
-    int obstacle_id = 0;
     for (const auto &obj : detected) {
       if (obj.category == "obstacle") {
+        bool already_added = false;
+        for (const auto &existing : collision_objects) {
+          const double dx = obj.centroid.x - existing.primitive_poses[0].position.x;
+          const double dy = obj.centroid.y - existing.primitive_poses[0].position.y;
+          if (std::hypot(dx, dy) < 0.1) {already_added = true; break;}
+        }
+        if (already_added) continue;
+
         moveit_msgs::msg::CollisionObject co;
         co.header.frame_id = arm_group_->getPlanningFrame();
         co.id = "obstacle_" + std::to_string(obstacle_id++);
-
         shape_msgs::msg::SolidPrimitive box;
         box.type = shape_msgs::msg::SolidPrimitive::BOX;
         box.dimensions.resize(3);
+        box.dimensions[0] = (obj.max_x - obj.min_x) + 0.06;
+        box.dimensions[1] = (obj.max_y - obj.min_y) + 0.06;
+        box.dimensions[2] = std::max(0.25, (obj.max_z - obj.min_z) + 0.06);
 
-        box.dimensions[0] = obj.max_x - obj.min_x + 0.04;
-        box.dimensions[1] = obj.max_y - obj.min_y + 0.04;
-        box.dimensions[2] = obj.max_z - obj.min_z + 0.04;
-        
         geometry_msgs::msg::Pose box_pose;
         box_pose.orientation.w = 1.0;
         box_pose.position.x = obj.centroid.x;
         box_pose.position.y = obj.centroid.y;
-        box_pose.position.z = 0.5 * (obj.min_z + obj.max_z);
+        box_pose.position.z = box.dimensions[2] / 2.0;
 
         co.primitives.push_back(box);
         co.primitive_poses.push_back(box_pose);
@@ -1037,13 +1015,15 @@ void cw2::t3_callback(
       geometry_msgs::msg::Point target_point = target->centroid;
       target_point.z = 0.0;
 
+      const double target_size = std::max(target->max_x - target->min_x, target->max_y - target->min_y);
+
       geometry_msgs::msg::Point basket_point = basket_ptr->centroid;
       basket_point.z = 0.0;
 
       goToInitial();
       tf2::Quaternion observe_orienation;
       observe_orienation.setRPY(M_PI, 0, -M_PI / 4);
-      moveToPose(makeAGraspOffset(target_point, target_shape, 0.5, observe_orienation, 0.0));
+      moveToPose(makeAGraspOffset(target_point, target_shape, 0.5, observe_orienation, 0.0, target_size));
       waitForFreshCloud();
 
       geometry_msgs::msg::PointStamped target_stamped;
@@ -1054,28 +1034,27 @@ void cw2::t3_callback(
 
       tf2::Quaternion grasp_orientation;
       grasp_orientation.setRPY(M_PI, 0, -M_PI / 4 + shape_yaw);
-      moveToPose(makeAGraspOffset(target_point, target_shape, 0.5, grasp_orientation, shape_yaw));
+      moveToPose(makeAGraspOffset(target_point, target_shape, 0.5, grasp_orientation, shape_yaw, target_size));
       openGripper();
 
-      computeAndExecuteCartesianPath(makeAGraspOffset(target_point, target_shape, 0.15, grasp_orientation, shape_yaw));
+      computeAndExecuteCartesianPath(makeAGraspOffset(target_point, target_shape, 0.15, grasp_orientation, shape_yaw, target_size));
       closeGripper();
 
-      computeAndExecuteCartesianPath(makeAGraspOffset(target_point, target_shape, 0.5, grasp_orientation, shape_yaw));
+      computeAndExecuteCartesianPath(makeAGraspOffset(target_point, target_shape, 0.6, grasp_orientation, shape_yaw, target_size));
 
       tf2::Quaternion basket_orientation;
       basket_orientation.setRPY(M_PI, 0, -M_PI / 4);
 
       if (target_shape == "nought") {
-        moveToPose(makeAGraspOffset(basket_point, "nought", 0.5, basket_orientation, 0.0));
-        computeAndExecuteCartesianPath(makeAGraspOffset(basket_point, "nought", 0.17, basket_orientation, 0.0));
+        moveToPose(makeAGraspOffset(basket_point, "nought", 0.6, basket_orientation, 0.0, target_size));
+        computeAndExecuteCartesianPath(makeAGraspOffset(basket_point, "nought", 0.17, basket_orientation, 0.0, target_size));
       } else {
-        moveToPose(makeAGraspOffset(basket_point, " ", 0.5, basket_orientation, 0.0));
-        computeAndExecuteCartesianPath(makeAGraspOffset(basket_point, " ", 0.17, basket_orientation, 0.0));
+        moveToPose(makeAGraspOffset(basket_point, " ", 0.6, basket_orientation, 0.0, target_size));
+        computeAndExecuteCartesianPath(makeAGraspOffset(basket_point, " ", 0.17, basket_orientation, 0.0, target_size));
       }
 
       openGripper();
-      computeAndExecuteCartesianPath(makeAGraspOffset(basket_point, " ", 0.5, basket_orientation, 0.0));
-
+      computeAndExecuteCartesianPath(makeAGraspOffset(basket_point, " ", 0.5, basket_orientation, 0.0, target_size));
       placed = true;
       RCLCPP_INFO(node_->get_logger(), "Successfully placed a %s in the basket!", target_shape.c_str());
       break;

@@ -81,7 +81,8 @@ public:
     const std::string &shape_type,
     double z_offset,
     const tf2::Quaternion &orientation, 
-    double shape_yaw);
+    double shape_yaw,
+    double size = 0.2);
   
   double computeShapeOrientation(const geometry_msgs::msg::PointStamped &query_point);
 
