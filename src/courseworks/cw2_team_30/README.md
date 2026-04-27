@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](../LICENSE)
 
 ## Acknowledgement
-We acknowledge the use of Claude and ChatGPT for brainstorming and code debugging. Claude was specifically used to implement the edge-based filtering step inside `computeShapeOrientation` (see inline comment in `cw2_class.cpp`).
+We acknowledge the use of Claude and ChatGPT for brainstorming and code debugging.
 
 ---
 
